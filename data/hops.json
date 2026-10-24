@@ -269,9 +269,20 @@
       "stone-fruit",
       "floral"
     ],
-    "styles": [],
-    "styleIds": [],
-    "note": "確認した出典には、よく使われるビールのスタイルの記載がなかった（要確認）。",
+    "styles": [
+      "アメリカンIPA",
+      "ペールエール",
+      "アンバーエール",
+      "小麦ビール",
+      "セゾンなどベルギー系"
+    ],
+    "styleIds": [
+      "ipa",
+      "pale-ale",
+      "amber-ale",
+      "saison"
+    ],
+    "note": "よく使われるスタイルは、ホップ商社 Charles Faram の推奨による（BarthHaas・YCHには記載なし）。同社は1990年代後半にリバティの畑で偶然見つかった品種としている。",
     "sources": [
       {
         "title": "BarthHaas – Amarillo® VGXP01 c.v.",
@@ -281,6 +292,11 @@
       {
         "title": "Yakima Chief Hops – Amarillo® Brand VGXP01",
         "url": "https://www.yakimachief.com/variety/amarillo-brand",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Charles Faram – Hop Oracle: Amarillo",
+        "url": "https://charlesfaram.com/hop-oracle/amarillo/",
         "accessedAt": "2026-10-24"
       },
       {
@@ -481,6 +497,11 @@
       {
         "title": "Brew Your Own – Comparing and Selecting Hops",
         "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Wikipedia – List of hop varieties",
+        "url": "https://en.wikipedia.org/wiki/List_of_hop_varieties",
         "accessedAt": "2026-10-24"
       }
     ]
@@ -836,9 +857,16 @@
       "spicy",
       "herbal"
     ],
-    "styles": [],
-    "styleIds": [],
-    "note": "確認した出典に特定のスタイルの記載はなく、苦味づけのベースとしてよく使われるとされる。α酸の目安はYCH 12〜15%、BarthHaas 9〜18.2%、BYO 11〜16%。",
+    "styles": [
+      "ラガー・エール全般（苦味づけのベース）",
+      "IPA",
+      "ペールエール"
+    ],
+    "styleIds": [
+      "ipa",
+      "pale-ale"
+    ],
+    "note": "多くの出典（YCH・Brooklyn Brew Shop）は苦味づけ用とし、ラガーにもエールにも使えるとしている。一方、ホップ商社 Lupex は香りづけ用としてIPAやペールエールに勧めており、用途の見方が分かれる。α酸の目安はYCH 12〜15%、BarthHaas 9〜18.2%、BYO 11〜16%。",
     "sources": [
       {
         "title": "Yakima Chief Hops – Magnum",
@@ -848,6 +876,16 @@
       {
         "title": "BarthHaas – Hallertauer Magnum",
         "url": "https://www.barthhaas.com/hops-and-products/hops/hallertauer-magnum",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brooklyn Brew Shop – Hop of the Month: Magnum",
+        "url": "https://brooklynbrewshop.com/blogs/themash/hop-of-the-month-magnum",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Lupex – Hallertauer Magnum",
+        "url": "https://lupex.de/en/product/hallertauer-magnum/",
         "accessedAt": "2026-10-24"
       },
       {
@@ -876,9 +914,16 @@
       "wood",
       "spicy"
     ],
-    "styles": [],
-    "styleIds": [],
-    "note": "用途の説明が出典で異なる（BarthHaas：香りづけ、BYO：苦味づけ、Wikipedia：両用）。ここでは両用とした。確認した出典にスタイルの記載はなかった（要確認）。",
+    "styles": [
+      "IPA",
+      "セゾン",
+      "小麦ビール"
+    ],
+    "styleIds": [
+      "ipa",
+      "saison"
+    ],
+    "note": "用途の説明が出典で異なる（BarthHaas：香りづけ、BYO・Brooklyn Brew Shop：苦味づけ、Wikipedia：両用）。ここでは両用とした。よく使われるスタイルは Brooklyn Brew Shop の推奨による。",
     "sources": [
       {
         "title": "BarthHaas – Sorachi Ace",
@@ -888,6 +933,11 @@
       {
         "title": "Yakima Chief Hops – Sorachi Ace",
         "url": "https://www.yakimachief.com/variety/sorachi-ace",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brooklyn Brew Shop – Hop of the Month: Sorachi Ace",
+        "url": "https://brooklynbrewshop.com/blogs/themash/hop-of-the-month-sorachi-ace",
         "accessedAt": "2026-10-24"
       },
       {
