@@ -69,3 +69,77 @@ export function rangeBarSvg(range, max, { color = 'var(--primary)' } = {}) {
 function escapeAttr(s) {
   return String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 }
+
+// ---- 用語：IBU・SRM のスケール ----
+
+const SCALE_W = 320;
+const LABEL_W = 104;
+const ROW_H = 22;
+
+function scaleX(v, max) {
+  return LABEL_W + (Math.min(v, max) / max) * (SCALE_W - LABEL_W - 10);
+}
+
+function styleRows(styles, key, max, top, fillOf) {
+  return styles
+    .filter((s) => Array.isArray(s[key]))
+    .map((s, i) => {
+      const y = top + i * ROW_H;
+      const x0 = scaleX(s[key][0], max);
+      const x1 = scaleX(s[key][1], max);
+      return `<text x="${LABEL_W - 6}" y="${y + 12}" text-anchor="end" font-size="10" fill="currentColor">${escapeText(s.name)}</text>
+  <rect x="${x0.toFixed(1)}" y="${y + 3}" width="${Math.max(3, x1 - x0).toFixed(1)}" height="12" rx="6" fill="${fillOf(s)}"/>`;
+    })
+    .join('\n  ');
+}
+
+function ticks(values, max, y, { below = null } = {}) {
+  return values
+    .map((v) => {
+      const x = scaleX(v, max).toFixed(1);
+      return `<line x1="${x}" y1="${y}" x2="${x}" y2="${y + 4}" stroke="currentColor" stroke-opacity=".5"/>
+  <text x="${x}" y="${y + 14}" text-anchor="middle" font-size="9.5" fill="currentColor" fill-opacity=".75">${v}</text>${
+    below ? `\n  <text x="${x}" y="${y + 26}" text-anchor="middle" font-size="9.5" fill="currentColor" fill-opacity=".55">${below(v)}</text>` : ''
+  }`;
+    })
+    .join('\n  ');
+}
+
+/** IBU のスケールと代表的なスタイルの範囲（styles は表示したい順に渡す） */
+export function ibuScaleSvg(styles, max = 100) {
+  const rows = styles.filter((s) => Array.isArray(s.ibu));
+  const axisY = 8 + rows.length * ROW_H + 4;
+  const h = axisY + 22;
+  return `<svg xmlns="${NS}" viewBox="0 0 ${SCALE_W} ${h}" class="scale-art" role="img" aria-label="IBUの目安：${escapeAttr(rows.map((s) => s.name).join('、'))}">
+  <line x1="${LABEL_W}" y1="${axisY}" x2="${SCALE_W - 10}" y2="${axisY}" stroke="currentColor" stroke-opacity=".5"/>
+  ${styleRows(rows, 'ibu', max, 8, () => 'var(--primary)')}
+  ${ticks([0, 20, 40, 60, 80, 100], max, axisY)}
+  <text x="${LABEL_W - 6}" y="${axisY + 14}" text-anchor="end" font-size="9.5" fill="currentColor" fill-opacity=".75">IBU</text>
+</svg>`;
+}
+
+/** SRM の色見本（EBC 換算付き）と代表的なスタイルの範囲。toHex は SRM → 色 */
+export function srmScaleSvg(styles, toHex, max = 40) {
+  const rows = styles.filter((s) => Array.isArray(s.srm));
+  const stripY = 8;
+  const strip = [];
+  for (let v = 0; v < max; v++) {
+    const x0 = scaleX(v, max);
+    const x1 = scaleX(v + 1, max);
+    strip.push(`<rect x="${x0.toFixed(1)}" y="${stripY}" width="${(x1 - x0 + 0.4).toFixed(1)}" height="16" fill="${toHex(v + 0.5)}"/>`);
+  }
+  const axisY = stripY + 18;
+  const top = axisY + 34;
+  const h = top + rows.length * ROW_H + 4;
+  return `<svg xmlns="${NS}" viewBox="0 0 ${SCALE_W} ${h}" class="scale-art" role="img" aria-label="SRMの色見本と目安：${escapeAttr(rows.map((s) => s.name).join('、'))}">
+  ${strip.join('')}
+  <text x="${LABEL_W - 6}" y="${axisY + 14}" text-anchor="end" font-size="9.5" fill="currentColor" fill-opacity=".75">SRM</text>
+  <text x="${LABEL_W - 6}" y="${axisY + 26}" text-anchor="end" font-size="9.5" fill="currentColor" fill-opacity=".55">EBC(約)</text>
+  ${ticks([2, 6, 10, 20, 30, 40], max, axisY, { below: (v) => Math.round(v * 1.97) })}
+  ${styleRows(rows, 'srm', max, top, (s) => toHex((s.srm[0] + s.srm[1]) / 2))}
+</svg>`;
+}
+
+function escapeText(s) {
+  return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]);
+}

@@ -63,4 +63,20 @@ test('styles.json：Phase 1〜3 の暫定スタイル ID をすべて引き継�
   for (const id of Object.keys(LEGACY_STYLE_NAMES)) assert.ok(ids.has(id), id);
 });
 
+test('terms.json：必須用語・本文・関連スタイル・出典', () => {
+  const terms = load('terms');
+  const ids = checkCommon(terms, ['name', 'fullName', 'summary']);
+  const styleIds = new Set(load('styles').map((s) => s.id));
+  for (const id of ['abv', 'ibu', 'srm-ebc', 'og-fg', 'ddh', 'neipa', 'ba', 'nitro', 'dry-hopping', 'keg-cask', 'hazy', 'fresh-hop']) {
+    assert.ok(ids.has(id), `用語 ${id} が無い`);
+  }
+  for (const t of terms) {
+    assert.ok(Array.isArray(t.body) && t.body.length > 0 && t.body.every((p) => typeof p === 'string' && p.trim()), `${t.id}: body`);
+    assert.ok(t.scale === null || ['ibu', 'srm'].includes(t.scale), `${t.id}: scale`);
+    for (const sid of t.relatedStyles) assert.ok(styleIds.has(sid), `${t.id}: 関連スタイル ${sid} が存在しない`);
+  }
+  assert.equal(terms.find((t) => t.id === 'ibu').scale, 'ibu');
+  assert.equal(terms.find((t) => t.id === 'srm-ebc').scale, 'srm');
+});
+
 export { load, checkCommon, flavorTagIds, isRange };

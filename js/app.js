@@ -24,6 +24,7 @@ const routes = [
   { path: '/search', view: searchView, title: '検索', tab: 'search' },
   { path: '/knowledge', view: knowledgeView, title: '知識', tab: 'knowledge' },
   { path: '/knowledge/style/:id', view: knowledgeView, kind: 'style', title: 'スタイル', tab: 'knowledge', back: '#/knowledge' },
+  { path: '/knowledge/term/:id', view: knowledgeView, kind: 'term', title: '用語', tab: 'knowledge', back: '#/knowledge' },
   { path: '/more', view: moreView, title: 'その他', tab: 'more' },
   { path: '/wishlist', view: wishlistView, title: '飲みたいリスト', tab: 'more', back: '#/more' },
   { path: '/wishlist/new', view: beerEditView, title: '飲みたい銘柄を追加', tab: 'more', back: '#/wishlist' },
@@ -58,6 +59,7 @@ async function start() {
   }
   const styles = await loadJson('data/styles.json', []);
   let current = null;
+  let knowledge = null;
   const validStyleIds = new Set(styles.map((s) => s.id));
   const migrateStyles = async () => {
     try {
@@ -77,6 +79,11 @@ async function start() {
     goBack: (fallback) => router.goBack(fallback),
     refresh: () => router.refresh(),
     migrateStyles: () => (styles.length ? migrateStyles() : 0),
+    /** 知識データ（用語・ホップ・香りタグ）を初回だけ読み込む */
+    loadKnowledge: () =>
+      (knowledge ??= Promise.all([loadJson('data/terms.json', []), loadJson('data/hops.json', []), loadJson('data/flavor-tags.json', [])]).then(
+        ([terms, hops, flavorTags]) => ({ terms, hops, flavorTags }),
+      )),
     setTitle: (t) => {
       titleEl.textContent = t;
       document.title = `${t} | ホップ手帖`;

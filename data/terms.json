@@ -1,1 +1,385 @@
-[]
+[
+  {
+    "id": "abv",
+    "name": "ABV",
+    "fullName": "Alcohol by Volume（アルコール度数）",
+    "aliases": [
+      "アルコール度数",
+      "度数",
+      "ABW"
+    ],
+    "summary": "ビールに含まれるアルコールの割合を、体積で表した数値。",
+    "body": [
+      "ABVは Alcohol by Volume の略で、ビールの体積のうち何%がアルコールかを示します。このアプリで記録する「度数」もABVです。",
+      "重さで表す ABW（Alcohol by Weight）という表し方もあり、同じビールならABWのほうが小さい数値になります。",
+      "発酵の前後で測った比重（OG・FG）の差から、おおよそのABVを計算できます。"
+    ],
+    "scale": null,
+    "relatedStyles": [],
+    "sources": [
+      {
+        "title": "CraftBeer.com – Beer Glossary",
+        "url": "https://www.craftbeer.com/beer/beer-glossary",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "ibu",
+    "name": "IBU",
+    "fullName": "International Bitterness Units（国際苦味単位）",
+    "aliases": [
+      "苦味",
+      "苦み",
+      "ビタネス"
+    ],
+    "summary": "ホップ由来の苦味成分の量を表す数値。大きいほど苦味成分が多い。",
+    "body": [
+      "IBUは、ホップから溶け出した苦味成分（イソα酸）がビール1リットルに何ミリグラム含まれるかを表します。",
+      "目安として、軽いラガーは5〜10程度、苦味の強いIPAでは50〜70程度になることがあります。",
+      "ただし、麦芽の甘みやボディがしっかりしたビールでは苦味がやわらいで感じられるため、IBUの数値と実際に感じる苦さは必ずしも一致しません。"
+    ],
+    "scale": "ibu",
+    "relatedStyles": [],
+    "sources": [
+      {
+        "title": "CraftBeer.com – Beer Glossary",
+        "url": "https://www.craftbeer.com/beer/beer-glossary",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 21C Hazy IPA",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/21/21c-hazy-ipa.md",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "srm-ebc",
+    "name": "SRM / EBC",
+    "fullName": "ビールの色の単位",
+    "aliases": [
+      "SRM",
+      "EBC",
+      "色",
+      "ロビボンド",
+      "Lovibond"
+    ],
+    "summary": "ビールの色の濃さを表す数値。SRMは主にアメリカ、EBCは主にヨーロッパで使われる。",
+    "body": [
+      "どちらも、ビールに特定の波長（430nm）の光を当て、どれだけ吸収されるかを測って求めます。数値が大きいほど色が濃くなります。",
+      "SRMは淡い黄色の1前後から、黒に近い40以上まで。測定に使う容器の厚みが違うため、淡い色のビールではEBCはSRMのおよそ2倍（約1.97倍）になります。",
+      "SRMは、麦芽の色を表す古い単位であるロビボンドとほぼ同じ値になるよう作られています。"
+    ],
+    "scale": "srm",
+    "relatedStyles": [],
+    "sources": [
+      {
+        "title": "Brew Your Own – Color of Beer",
+        "url": "https://byo.com/articles/color-of-beer/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "American Homebrewers Association – What is SRM (Standard Reference Method)?",
+        "url": "https://homebrewersassociation.org/how-to-brew/what-is-srm-standard-reference-method/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com – Beer Glossary",
+        "url": "https://www.craftbeer.com/beer/beer-glossary",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "og-fg",
+    "name": "OG / FG",
+    "fullName": "初期比重 / 最終比重",
+    "aliases": [
+      "OG",
+      "FG",
+      "比重",
+      "オリジナルグラビティ",
+      "ファイナルグラビティ",
+      "発酵度"
+    ],
+    "summary": "発酵前の麦汁（OG）と発酵後のビール（FG）の比重。差が大きいほどアルコールが多くできている。",
+    "body": [
+      "比重は、水を1としたときの液体の重さの比です。麦汁に溶けている糖が多いほどOGは高くなります。",
+      "酵母が糖をアルコールと炭酸ガスに変えると比重が下がり、発酵が終わった時点の比重がFGです。例えばOG 1.050、FG 1.012なら、ABVは約5%になります。",
+      "比重がどれだけ下がったかの割合を発酵度（アテニュエーション）といい、多くのビールで65〜80%程度です。"
+    ],
+    "scale": null,
+    "relatedStyles": [],
+    "sources": [
+      {
+        "title": "CraftBeer.com – Beer Glossary",
+        "url": "https://www.craftbeer.com/beer/beer-glossary",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "dry-hopping",
+    "name": "ドライホッピング",
+    "fullName": "Dry Hopping",
+    "aliases": [
+      "ドライホップ",
+      "dry hop"
+    ],
+    "summary": "煮沸の後、発酵中や発酵後のビールにホップを加えて香りをつける方法。",
+    "body": [
+      "ホップは煮沸すると苦味が出ます。ドライホッピングは煮沸の後にホップを加えるため、苦味をほとんど増やさずに、ホップの香りを強く引き出せます。",
+      "加えるタイミングは発酵中、熟成中、貯蔵中などさまざまで、それによって香りの出方も変わります。",
+      "乾燥させたホップ（Dried hop）を使うこととは別の話で、「ドライ」は製法を指す言葉です。"
+    ],
+    "scale": null,
+    "relatedStyles": [
+      "ipa",
+      "hazy-ipa",
+      "double-ipa"
+    ],
+    "sources": [
+      {
+        "title": "CraftBeer.com – Beer Glossary",
+        "url": "https://www.craftbeer.com/beer/beer-glossary",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "BarthHaas – What is Double Dry Hopping (DDH)?",
+        "url": "https://www.barthhaas.com/en/barthhaas-blog/blog/what-is-double-dry-hopping-ddh",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "VinePair – The Difference Between Wet Hop, Fresh Hop, and Dry Hop Beers",
+        "url": "https://vinepair.com/articles/difference-wet-hop-fresh-hop-dry-hop-beers/",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "ddh",
+    "name": "DDH",
+    "fullName": "Double Dry Hopped",
+    "aliases": [
+      "ダブルドライホップ",
+      "double dry hopped",
+      "TDH"
+    ],
+    "summary": "ドライホッピングを通常より強化したことを示す表示。",
+    "body": [
+      "「ダブル」の意味は醸造所によって異なり、ホップの量を倍にする、2回に分けて加える、などさまざまです。統一された定義はありません。",
+      "ヘイジーIPAの流行とともに、香りの強さを示す表示として広まりました。DDHと書かれていれば、ホップの香りが強いことが期待できます。"
+    ],
+    "scale": null,
+    "relatedStyles": [
+      "hazy-ipa",
+      "double-ipa"
+    ],
+    "sources": [
+      {
+        "title": "BarthHaas – What is Double Dry Hopping (DDH)?",
+        "url": "https://www.barthhaas.com/en/barthhaas-blog/blog/what-is-double-dry-hopping-ddh",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "VinePair – What Does DDH Mean?",
+        "url": "https://vinepair.com/articles/ddh-ipa-beer-explainer/",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "neipa",
+    "name": "NEIPA",
+    "fullName": "New England IPA（ニューイングランドIPA）",
+    "aliases": [
+      "ニューイングランドIPA",
+      "new england ipa"
+    ],
+    "summary": "アメリカ北東部のニューイングランド地方で生まれたIPA。ヘイジーIPAとほぼ同じ意味で使われる。",
+    "body": [
+      "濁った見た目、マンゴーや柑橘のようなフルーティーな香り、なめらかな口当たりと穏やかな苦味が特徴です。",
+      "2010年代に広まった比較的新しいスタイルで、BJCPでは「ヘイジーIPA」という名前で扱われています。"
+    ],
+    "scale": null,
+    "relatedStyles": [
+      "hazy-ipa"
+    ],
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 21C Hazy IPA",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/21/21c-hazy-ipa.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – Juicy or Hazy India Pale Ale",
+        "url": "https://www.craftbeer.com/styles/new-england-ipa",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "hazy",
+    "name": "ヘイジー",
+    "fullName": "Hazy（濁った）",
+    "aliases": [
+      "hazy",
+      "濁り",
+      "にごり",
+      "チルヘイズ"
+    ],
+    "summary": "「かすんだ・濁った」という意味。意図的に濁りを残したビール、とくにヘイジーIPAを指して使われる。",
+    "body": [
+      "BJCPのヘイジーIPAの説明では、濁りは大量のドライホッピングによるもので、酵母やでんぷんの濁りではないとされています。見た目は濁っていても、ツヤがあり泥のようではないのが良いとされます。",
+      "なお、冷やしたときにタンパク質などが結びついて濁る現象は「チルヘイズ」と呼ばれ、意図した濁りとは区別されます。"
+    ],
+    "scale": null,
+    "relatedStyles": [
+      "hazy-ipa"
+    ],
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 21C Hazy IPA",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/21/21c-hazy-ipa.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com – Beer Glossary",
+        "url": "https://www.craftbeer.com/beer/beer-glossary",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "ba",
+    "name": "BA",
+    "fullName": "Barrel Aged（バレルエイジド）",
+    "aliases": [
+      "バレルエイジド",
+      "樽熟成",
+      "barrel aged",
+      "バレル"
+    ],
+    "summary": "木の樽で熟成させたビール。樽の木の香りや、前に入っていたお酒の風味が加わる。",
+    "body": [
+      "新しい樽のほか、ウイスキーなどの蒸留酒やワインに使われていた樽を使うことが多く、木の風味とともに前のお酒の香りがビールに移ります。",
+      "樽の内側は焦がしたりあぶったりしてあることが多く、木の香りを引き出します。樽の代わりに木片をタンクに入れる方法もあります。",
+      "ベースになるビールはラガーでもエールでもよく、スタイルを問いません。なお、アメリカの醸造者団体 Brewers Association も「BA」と略されることがあります。"
+    ],
+    "scale": null,
+    "relatedStyles": [],
+    "sources": [
+      {
+        "title": "CraftBeer.com Beer Styles – Barrel-Aged Beer",
+        "url": "https://www.craftbeer.com/styles/barrel-aged-beer",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com – Beer Glossary",
+        "url": "https://www.craftbeer.com/beer/beer-glossary",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "nitro",
+    "name": "ナイトロ",
+    "fullName": "Nitro（窒素ガス）",
+    "aliases": [
+      "nitro",
+      "窒素",
+      "ウィジェット",
+      "ナイトロビール"
+    ],
+    "summary": "炭酸ガスに加えて窒素ガスを使い、きめ細かくクリーミーな泡にしたビール。",
+    "body": [
+      "窒素は炭酸ガスより泡が細かくなるため、厚みのあるクリーミーな泡と、なめらかな口当たりになります。注いだ直後に細かい泡が沈んでいく様子も特徴です。",
+      "スタウトのナイトロ注ぎがよく知られています。缶入りでは「ウィジェット」という小さな部品を入れ、開けたときに泡立つ仕組みにしたものがあり、ギネスが1989年に缶で本格的に導入しました。"
+    ],
+    "scale": null,
+    "relatedStyles": [
+      "stout"
+    ],
+    "sources": [
+      {
+        "title": "CraftBeer.com – Beer Glossary",
+        "url": "https://www.craftbeer.com/beer/beer-glossary",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Wikipedia – Widget (beer)",
+        "url": "https://en.wikipedia.org/wiki/Widget_(beer)",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 15B Irish Stout",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/15/15b-irish-stout.md",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "keg-cask",
+    "name": "ケグ / カスク",
+    "fullName": "Keg / Cask",
+    "aliases": [
+      "ケグ",
+      "カスク",
+      "リアルエール",
+      "real ale",
+      "樽"
+    ],
+    "summary": "どちらもビールを入れる樽。ケグはガスの圧力で注ぎ、カスクは樽の中で自然に炭酸をつける。",
+    "body": [
+      "ケグは金属製の密閉容器で、炭酸ガスなどの圧力でビールを押し出して注ぎます。ケグに詰めるビールは、ろ過や加熱処理をしたものが一般的です。",
+      "カスクは、ろ過や加熱処理をしないビールを入れ、容器の中で二次発酵させて自然な炭酸をつける樽です。炭酸ガスを加えずに注ぐのが特徴で、イギリスでは「リアルエール」として親しまれています。",
+      "カスクのビールは、パブの地下セラーなど決まった温度で管理しながら熟成させます。"
+    ],
+    "scale": null,
+    "relatedStyles": [],
+    "sources": [
+      {
+        "title": "CAMRA – What is Real or Cask Ale?",
+        "url": "https://brd.camra.org.uk/what-is-cask-ale/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com – Beer Glossary",
+        "url": "https://www.craftbeer.com/beer/beer-glossary",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "fresh-hop",
+    "name": "フレッシュホップ",
+    "fullName": "Fresh Hop / Wet Hop",
+    "aliases": [
+      "ウェットホップ",
+      "wet hop",
+      "fresh hop",
+      "生ホップ"
+    ],
+    "summary": "収穫したばかりのホップを使って造る、季節限定のビール。",
+    "body": [
+      "乾燥させずに使うものを「ウェットホップ」、収穫後すぐ乾燥させて使うものを「フレッシュホップ」と呼び分けることもありますが、同じ意味で使う醸造所も多く、表示は統一されていません。",
+      "乾燥させないホップは収穫から約24時間以内に使う必要があるため、収穫期（アメリカでは8月下旬〜9月）にしか造れません。",
+      "乾燥ホップより成分が薄いため多くの量を使い、草や青葉のような香りが出やすいのが特徴です。"
+    ],
+    "scale": null,
+    "relatedStyles": [],
+    "sources": [
+      {
+        "title": "VinePair – The Difference Between Wet Hop, Fresh Hop, and Dry Hop Beers",
+        "url": "https://vinepair.com/articles/difference-wet-hop-fresh-hop-dry-hop-beers/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com – Beer Glossary",
+        "url": "https://www.craftbeer.com/beer/beer-glossary",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  }
+]

@@ -99,6 +99,8 @@ export function searchKnowledge(items, query, getTexts) {
   });
 }
 
+export const termTexts = (t) => [t.name, t.fullName, ...(t.aliases || []), t.summary];
+
 export const styleTexts = (s) => [s.name, s.nameEn, s.category, ...(s.aliases || []), s.summary, s.flavor];
 
 /** 範囲を「4.2〜5.8」の形にする。null は「さまざま」 */

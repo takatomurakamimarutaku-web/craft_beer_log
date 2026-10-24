@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { srmToHex, styleDisplaySrm, searchKnowledge, styleTexts, formatRange } from '../js/knowledge.js';
-import { glassSvg, rangeBarSvg, GLASS_TYPES } from '../js/illust.js';
+import { glassSvg, rangeBarSvg, ibuScaleSvg, srmScaleSvg, GLASS_TYPES } from '../js/illust.js';
 
 test('srmToHex：端・中間・不正値', () => {
   assert.equal(srmToHex(0), '#ffe699');
@@ -54,4 +54,19 @@ test('glassSvg：全グラスで切り抜きIDが一意、色は検証される'
 test('rangeBarSvg：範囲外は上限で切り、null は空バー', () => {
   assert.match(rangeBarSvg([50, 150], 100), /x="100.0" y="2" width="100.0"/);
   assert.doesNotMatch(rangeBarSvg(null, 100), /y="2"/);
+});
+
+test('ibuScaleSvg / srmScaleSvg：範囲の無いスタイルは除き、名前はエスケープする', () => {
+  const styles = [
+    { name: 'A<b>', ibu: [10, 20], srm: [2, 4] },
+    { name: 'サワー', ibu: null, srm: null },
+  ];
+  const ibu = ibuScaleSvg(styles);
+  assert.match(ibu, /A&lt;b&gt;/);
+  assert.doesNotMatch(ibu, /サワー<\/text>/);
+  assert.equal((ibu.match(/rx="6"/g) || []).length, 1);
+  const srm = srmScaleSvg(styles, srmToHex);
+  assert.equal((srm.match(/height="16"/g) || []).length, 40, '色見本は40段階');
+  assert.match(srm, />79</, 'SRM 40 ≒ EBC 79');
+  assert.match(ibuScaleSvg([]), /^<svg/, '0件でも描ける');
 });

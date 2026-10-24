@@ -1,7 +1,7 @@
 // 知識（#/knowledge 一覧、#/knowledge/style/:id など詳細）
 import { h, svg, emptyState } from '../ui.js';
-import { searchKnowledge, styleTexts, srmToHex, styleDisplaySrm, formatRange, GLASS_LABELS } from '../knowledge.js';
-import { glassSvg, rangeBarSvg } from '../illust.js';
+import { searchKnowledge, styleTexts, termTexts, srmToHex, styleDisplaySrm, formatRange, GLASS_LABELS } from '../knowledge.js';
+import { glassSvg, rangeBarSvg, ibuScaleSvg, srmScaleSvg } from '../illust.js';
 
 const TABS = [
   { value: 'styles', label: 'スタイル' },
@@ -36,10 +36,13 @@ function saveState(s) {
 export async function render(ctx) {
   const { route } = ctx;
   if (route.kind === 'style') return renderStyle(ctx);
-  return renderList(ctx);
+  const data = await ctx.app.loadKnowledge();
+  if (ctx.isStale()) return;
+  if (route.kind === 'term') return renderTerm(ctx, data);
+  return renderList(ctx, data);
 }
 
-function renderList({ app, outlet, query }) {
+function renderList({ app, outlet, query }, data) {
   let s = { ...loadState() };
   if (query.tab && TABS.some((t) => t.value === query.tab)) s.tab = query.tab;
   saveState(s);
@@ -68,7 +71,8 @@ function renderList({ app, outlet, query }) {
 
   function renderBody() {
     if (s.tab === 'styles') return body.replaceChildren(...styleList(app.styles, s.q));
-    body.replaceChildren(emptyState(s.tab === 'terms' ? '用語は Phase 4-2 で追加予定です。' : 'ホップは Phase 4-3 で追加予定です。'));
+    if (s.tab === 'terms') return body.replaceChildren(...termList(data.terms, s.q));
+    body.replaceChildren(emptyState('ホップは Phase 4-3 で追加予定です。'));
   }
 }
 
@@ -130,6 +134,34 @@ function styleList(styles, q) {
   return out;
 }
 
+function termList(terms, q) {
+  const items = searchKnowledge(terms, q, termTexts);
+  if (!items.length) return [h('p', { class: 'list-meta', text: '該当する用語がありません。' })];
+  return [
+    h('p', { class: 'list-meta', text: `${items.length}件` }),
+    h(
+      'ul',
+      { class: 'card-list' },
+      items.map((t) =>
+        h(
+          'li',
+          {},
+          h(
+            'a',
+            { class: 'card card-text', href: `#/knowledge/term/${encodeURIComponent(t.id)}` },
+            h(
+              'div',
+              { class: 'card-body' },
+              h('div', { class: 'card-title' }, t.name, h('span', { class: 'muted small term-full', text: t.fullName })),
+              h('div', { class: 'term-summary', text: t.summary }),
+            ),
+          ),
+        ),
+      ),
+    ),
+  ];
+}
+
 function styleGlass(st) {
   return svg(glassSvg(st.glass, srmToHex(styleDisplaySrm(st)), { title: `${st.name}のイメージ` }));
 }
@@ -144,7 +176,7 @@ function renderStyle({ app, outlet, params }) {
   }
   app.setTitle(st.name);
   const color = srmToHex(styleDisplaySrm(st));
-  outlet.replaceChildren(
+  fill(outlet,
     h(
       'div',
       { class: 'knowledge-hero' },
@@ -179,6 +211,45 @@ function renderStyle({ app, outlet, params }) {
   );
 }
 
+// ---- 用語詳細 ----
+
+const IBU_EXAMPLES = ['berliner-weisse', 'weizen', 'helles', 'pilsner', 'pale-ale', 'stout', 'ipa', 'double-ipa'];
+const SRM_EXAMPLES = ['pilsner', 'weizen', 'pale-ale', 'amber-ale', 'brown-ale', 'porter', 'stout'];
+
+function pickStyles(styles, ids) {
+  return ids.map((id) => styles.find((s) => s.id === id)).filter(Boolean);
+}
+
+function renderTerm({ app, outlet, params }, { terms }) {
+  const t = terms.find((x) => x.id === params.id);
+  if (!t) {
+    outlet.replaceChildren(emptyState('用語が見つかりません。', h('a', { class: 'btn', href: '#/knowledge', text: '知識へ' })));
+    return;
+  }
+  app.setTitle(t.name);
+  let scale = null;
+  if (t.scale === 'ibu') {
+    scale = section('スタイルごとの目安', svg(ibuScaleSvg(pickStyles(app.styles, IBU_EXAMPLES))), scaleNote());
+  } else if (t.scale === 'srm') {
+    scale = section('色の見本とスタイルごとの目安', svg(srmScaleSvg(pickStyles(app.styles, SRM_EXAMPLES), srmToHex)), scaleNote('色は画面表示用の近似です。'));
+  }
+  const related = pickStyles(app.styles, t.relatedStyles);
+  fill(outlet,
+    h('div', { class: 'term-hero' }, h('h2', { class: 'knowledge-name', text: t.name }), h('p', { class: 'muted', text: t.fullName })),
+    h('p', { class: 'knowledge-lead', text: t.summary }),
+    section('くわしく', ...t.body.map((p) => h('p', { class: 'para', text: p }))),
+    scale,
+    related.length
+      ? section('関連するスタイル', h('div', { class: 'chips' }, related.map((s) => h('a', { class: 'chip', href: `#/knowledge/style/${encodeURIComponent(s.id)}`, text: s.name }))))
+      : null,
+    sourcesSection(t.sources),
+  );
+}
+
+function scaleNote(extra = '') {
+  return h('p', { class: 'small muted', text: `バーは「スタイル」に掲載している代表的な目安の範囲です。${extra}` });
+}
+
 function rangeRow(label, text, range, max, extra = null) {
   return h(
     'div',
@@ -209,4 +280,9 @@ export function sourcesSection(sources) {
     ),
     h('p', { class: 'small muted', text: '説明文は上記を参考に独自にまとめたものです。リンク先は外部サイトです。' }),
   );
+}
+
+/** null の項目（該当データが無いセクション）を除いて表示する */
+function fill(outlet, ...children) {
+  outlet.replaceChildren(...children.filter(Boolean));
 }

@@ -1,6 +1,6 @@
 // Service Worker
 // ファイルを変更したら CACHE_VERSION を上げる（README「キャッシュ更新手順」参照）
-const CACHE_VERSION = 'v6';
+const CACHE_VERSION = 'v7';
 const CACHE_NAME = `craft-beer-log-${CACHE_VERSION}`;
 
 // 事前にキャッシュするファイル（相対パス）。ファイルを追加・削除したらここも更新する

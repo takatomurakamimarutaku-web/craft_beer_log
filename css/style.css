@@ -302,3 +302,10 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--primary); o
 .plain-list { margin: 0; padding-left: 1.2em; }
 .sources { margin: 0; padding-left: 1.4em; display: grid; gap: 6px; word-break: break-word; }
 .sources a { font-size: 0.92rem; }
+.card-text { grid-template-columns: 1fr; }
+.term-full { font-weight: 400; margin-left: 8px; }
+.term-summary { font-size: 0.88rem; color: var(--muted); }
+.term-hero { margin: 8px 2px 6px; }
+.para + .para { margin-top: 0.6em; }
+.scale-art { display: block; width: 100%; height: auto; color: var(--text); margin: 4px 0 8px; }
+a.chip { text-decoration: none; display: inline-block; }
