@@ -143,3 +143,41 @@ export function srmScaleSvg(styles, toHex, max = 40) {
 function escapeText(s) {
   return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]);
 }
+
+// ---- ホップ ----
+
+// 段ごとの苞（ほう）の数と幅。上の段ほど手前に重なるよう、下の段から描く
+const CONE_ROWS = [
+  [2, 15],
+  [3, 21],
+  [3, 25],
+  [4, 26],
+  [3, 24],
+  [3, 19],
+  [2, 13],
+];
+
+/** ホップの毬花（きゅうか）のイラスト */
+export function hopConeSvg({ title = '' } = {}) {
+  const bracts = [];
+  for (let r = CONE_ROWS.length - 1; r >= 0; r--) {
+    const [n, half] = CONE_ROWS[r];
+    const y = 30 + r * 10.5;
+    const w = (half * 2) / n;
+    for (let i = 0; i < n; i++) {
+      const cx = 50 - half + w * (i + 0.5);
+      const bw = w / 2 + 3;
+      const h = 17;
+      const fill = (r + i) % 2 ? 'var(--hop-1)' : 'var(--hop-2)';
+      bracts.push(
+        `<path d="M${(cx - bw).toFixed(1)} ${y} C${(cx - bw).toFixed(1)} ${y + h * 0.75} ${(cx - bw * 0.3).toFixed(1)} ${y + h} ${cx.toFixed(1)} ${y + h} C${(cx + bw * 0.3).toFixed(1)} ${y + h} ${(cx + bw).toFixed(1)} ${y + h * 0.75} ${(cx + bw).toFixed(1)} ${y} Z" fill="${fill}" stroke="var(--hop-line)" stroke-width="1.2"/>`,
+      );
+    }
+  }
+  return `<svg xmlns="${NS}" viewBox="0 0 100 120" class="hop-art" role="img" aria-label="${escapeAttr(title)}">
+  <path d="M50 4 C50 12 50 18 50 28" stroke="var(--hop-line)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  <path d="M50 14 C60 6 74 6 82 12 C74 20 60 22 50 14 Z" fill="var(--hop-2)" stroke="var(--hop-line)" stroke-width="1.2"/>
+  <path d="M52 14 C62 12 70 12 78 12" stroke="var(--hop-line)" stroke-width="1" fill="none"/>
+  ${bracts.join('\n  ')}
+</svg>`;
+}

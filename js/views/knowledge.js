@@ -1,7 +1,7 @@
 // 知識（#/knowledge 一覧、#/knowledge/style/:id など詳細）
-import { h, svg, emptyState } from '../ui.js';
-import { searchKnowledge, styleTexts, termTexts, srmToHex, styleDisplaySrm, formatRange, GLASS_LABELS } from '../knowledge.js';
-import { glassSvg, rangeBarSvg, ibuScaleSvg, srmScaleSvg } from '../illust.js';
+import { h, svg, emptyState, chipGroup } from '../ui.js';
+import { searchKnowledge, styleTexts, termTexts, hopTexts, filterByTags, HOP_USE_LABELS, srmToHex, styleDisplaySrm, formatRange, GLASS_LABELS } from '../knowledge.js';
+import { glassSvg, rangeBarSvg, ibuScaleSvg, srmScaleSvg, hopConeSvg } from '../illust.js';
 
 const TABS = [
   { value: 'styles', label: 'スタイル' },
@@ -15,11 +15,11 @@ function loadState() {
   if (state) return state;
   try {
     const raw = sessionStorage.getItem(STORAGE_KEY);
-    if (raw) return (state = { tab: 'styles', q: '', ...JSON.parse(raw) });
+    if (raw) return (state = { tab: 'styles', q: '', tags: [], ...JSON.parse(raw) });
   } catch {
     /* 読めなければ初期値 */
   }
-  return (state = { tab: 'styles', q: '' });
+  return (state = { tab: 'styles', q: '', tags: [] });
 }
 
 function saveState(s) {
@@ -39,12 +39,15 @@ export async function render(ctx) {
   const data = await ctx.app.loadKnowledge();
   if (ctx.isStale()) return;
   if (route.kind === 'term') return renderTerm(ctx, data);
+  if (route.kind === 'hop') return renderHop(ctx, data);
   return renderList(ctx, data);
 }
 
 function renderList({ app, outlet, query }, data) {
   let s = { ...loadState() };
   if (query.tab && TABS.some((t) => t.value === query.tab)) s.tab = query.tab;
+  // #/knowledge?tab=hops&tag=citrus のように香りタグを指定して開ける
+  if (query.tag) s.tags = query.tag.split(',').filter((t) => data.flavorTags.some((x) => x.id === t));
   saveState(s);
 
   const input = h('input', {
@@ -72,7 +75,11 @@ function renderList({ app, outlet, query }, data) {
   function renderBody() {
     if (s.tab === 'styles') return body.replaceChildren(...styleList(app.styles, s.q));
     if (s.tab === 'terms') return body.replaceChildren(...termList(data.terms, s.q));
-    body.replaceChildren(emptyState('ホップは Phase 4-3 で追加予定です。'));
+    body.replaceChildren(...hopList(data, s, (tags) => {
+      s = { ...s, tags };
+      saveState(s);
+      renderBody();
+    }));
   }
 }
 
@@ -162,6 +169,57 @@ function termList(terms, q) {
   ];
 }
 
+function hopList({ hops, flavorTags }, s, onTags) {
+  // ホップに使われているタグだけを選択肢にする
+  const used = new Set(hops.flatMap((x) => x.flavorTags));
+  const filter = h(
+    'div',
+    { class: 'tag-filter' },
+    h('p', { class: 'small muted', text: '香りで絞り込む（選んだタグをすべて持つホップ）' }),
+    chipGroup({
+      label: '香りタグ',
+      options: flavorTags.filter((t) => used.has(t.id)).map((t) => ({ value: t.id, label: t.label })),
+      values: s.tags,
+      onChange: onTags,
+    }),
+  );
+  const items = filterByTags(searchKnowledge(hops, s.q, hopTexts), s.tags);
+  const labelOf = tagLabeler(flavorTags);
+  return [
+    filter,
+    h('p', { class: 'list-meta', text: `${items.length}件` }),
+    items.length
+      ? h(
+          'ul',
+          { class: 'card-list' },
+          items.map((x) =>
+            h(
+              'li',
+              {},
+              h(
+                'a',
+                { class: 'card', href: `#/knowledge/hop/${encodeURIComponent(x.id)}` },
+                h('div', { class: 'thumb knowledge-thumb' }, svg(hopConeSvg({ title: x.name }))),
+                h(
+                  'div',
+                  { class: 'card-body' },
+                  h('div', { class: 'card-title', text: x.name }),
+                  h('div', { class: 'card-meta', text: `${x.nameEn}・${x.origin}${x.use ? `・${HOP_USE_LABELS[x.use]}` : ''}` }),
+                  h('div', { class: 'card-foot', text: x.flavorTags.map(labelOf).join('・') }),
+                ),
+              ),
+            ),
+          ),
+        )
+      : h('p', { class: 'list-meta', text: '条件に合うホップがありません。' }),
+  ];
+}
+
+function tagLabeler(flavorTags) {
+  const map = new Map(flavorTags.map((t) => [t.id, t.label]));
+  return (id) => map.get(id) || id;
+}
+
 function styleGlass(st) {
   return svg(glassSvg(st.glass, srmToHex(styleDisplaySrm(st)), { title: `${st.name}のイメージ` }));
 }
@@ -243,6 +301,71 @@ function renderTerm({ app, outlet, params }, { terms }) {
       ? section('関連するスタイル', h('div', { class: 'chips' }, related.map((s) => h('a', { class: 'chip', href: `#/knowledge/style/${encodeURIComponent(s.id)}`, text: s.name }))))
       : null,
     sourcesSection(t.sources),
+  );
+}
+
+// ---- ホップ詳細 ----
+
+function renderHop({ app, outlet, params }, { hops, flavorTags }) {
+  const x = hops.find((y) => y.id === params.id);
+  if (!x) {
+    outlet.replaceChildren(emptyState('ホップが見つかりません。', h('a', { class: 'btn', href: '#/knowledge?tab=hops', text: 'ホップ一覧へ' })));
+    return;
+  }
+  app.setTitle(x.name);
+  const labelOf = tagLabeler(flavorTags);
+  const linked = new Map(pickStyles(app.styles, x.styleIds).map((s) => [s.id, s]));
+  fill(
+    outlet,
+    h(
+      'div',
+      { class: 'knowledge-hero' },
+      h('div', { class: 'knowledge-art' }, svg(hopConeSvg({ title: `${x.name}のイメージ` }))),
+      h(
+        'div',
+        {},
+        h('span', { class: 'tag', text: x.origin }),
+        h('h2', { class: 'knowledge-name', text: x.name }),
+        h('p', { class: 'muted small', text: x.nameEn }),
+        x.aliases.length ? h('p', { class: 'muted small', text: `別名：${x.aliases.join('、')}` }) : null,
+      ),
+    ),
+    h('p', { class: 'knowledge-lead', text: x.aroma }),
+    section(
+      '特徴（代表的な目安）',
+      h(
+        'dl',
+        { class: 'range-list' },
+        h('div', { class: 'range-row' }, h('dt', { text: '用途' }), h('dd', { text: x.use ? HOP_USE_LABELS[x.use] : '出典に明記なし' })),
+        rangeRow('α酸', formatRange(x.alpha, '%'), x.alpha, 20),
+        h('div', { class: 'range-row' }, h('dt', { text: '由来' }), h('dd', { class: 'small', text: x.originNote })),
+      ),
+      h('p', { class: 'small muted', text: 'α酸は苦味のもとになる成分で、多いほど苦味づけの効率が高くなります。値は収穫年によって変わります。' }),
+    ),
+    section(
+      '香りタグ',
+      h(
+        'div',
+        { class: 'chips hop-tags' },
+        x.flavorTags.map((t) => h('a', { class: 'chip', href: `#/knowledge?tab=hops&tag=${encodeURIComponent(t)}`, text: labelOf(t) })),
+      ),
+      h('p', { class: 'small muted', text: 'タグをタップすると、同じ香りのホップを探せます。' }),
+    ),
+    section(
+      'よく使われるスタイル',
+      x.styles.length
+        ? h(
+            'ul',
+            { class: 'plain-list' },
+            x.styles.map((name) => h('li', { text: name })),
+          )
+        : h('p', { class: 'muted', text: '確認した出典には記載がありませんでした。' }),
+      linked.size
+        ? h('div', { class: 'chips' }, [...linked.values()].map((s) => h('a', { class: 'chip', href: `#/knowledge/style/${encodeURIComponent(s.id)}`, text: `${s.name}の解説` })))
+        : null,
+    ),
+    x.note ? section('出典による違い・補足', h('p', { class: 'small', text: x.note })) : null,
+    sourcesSection(x.sources),
   );
 }
 

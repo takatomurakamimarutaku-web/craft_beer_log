@@ -35,6 +35,7 @@ HTML / CSS / JavaScript（ES Modules）だけで作られており、ビルド�
 | `#/knowledge`（`?tab=styles\|terms\|hops`） | 知識（スタイル／用語／ホップ、キーワード検索） |
 | `#/knowledge/style/:id` | スタイルの解説（グラスと色のイラスト、数値の目安、参考リンク） |
 | `#/knowledge/term/:id` | 用語の解説（IBU・SRM はスケール図付き） |
+| `#/knowledge/hop/:id` | ホップの解説（香りタグ、α酸、よく使われるスタイル）。一覧は `?tab=hops&tag=citrus,pine` で香りタグを指定して開ける |
 | `#/stats` | 今後のフェーズで実装予定 |
 
 ## ファイル構成
@@ -141,6 +142,14 @@ NFKC 正規化 → 小文字化 → ひらがなをカタカナに統一 → 前
 
 `{ id, name, fullName, aliases, summary, body（段落の配列）, scale（"ibu" | "srm" | null）, relatedStyles（スタイルID）, sources }`。scale を指定すると、styles.json の範囲からスケール図を描きます。
 
+### hops.json
+
+`{ id, name, nameEn, aliases, origin, originNote, alpha（α酸 [最小, 最大] %）, use（"aroma" | "bittering" | "dual" | null）, aroma, flavorTags（flavor-tags.json の ID）, styles（表示用）, styleIds（解説へのリンク）, note（出典による違い・要確認）, sources }`
+
+### flavor-tags.json
+
+香りタグの語彙 `{ id, label }`。ホップの香り（Phase 4-3）とテイスティング入力（Phase 5）で共用します。
+
 ### スタイルの移行
 
 起動時とバックアップの読み込み後に、`styles.json` に無い `styleId` を持つ銘柄を「その他」に移し、元の名前を自由入力欄に残します（`js/knowledge.js` の `migrateBeerStyle`）。銘柄ストアの構造は変わらないため DB のバージョンは上げず、実施した版を meta の `stylesVersion` に記録します。スタイルを削除・統合するときは `LEGACY_STYLE_NAMES` に旧名を追加し、`STYLES_VERSION` を上げてください。
@@ -240,6 +249,6 @@ iOS はアイコンの透過部分を黒く塗るため、背景は不透明に�
 - Phase 1：PWA の基盤と記録の基本機能
 - Phase 2：データ保護（バックアップ・復元）
 - Phase 3：検索・絞り込み・飲みたいリスト
-- Phase 4：クラフトビールの基礎知識ページ（4-1 スタイル・4-2 用語 完了）
+- Phase 4：クラフトビールの基礎知識ページ（完了：スタイル25件・用語12件・ホップ19品種）
 - Phase 5：テイスティングノートと知識との連携（予定）
 - Phase 6：統計・分析・共有（予定）

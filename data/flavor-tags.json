@@ -18,5 +18,6 @@
   { "id": "banana", "label": "バナナ" },
   { "id": "clove", "label": "クローブ" },
   { "id": "sour", "label": "酸味" },
-  { "id": "wood", "label": "木・樽" }
+  { "id": "wood", "label": "木・樽" },
+  { "id": "white-wine", "label": "白ワイン" }
 ]

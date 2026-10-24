@@ -25,6 +25,7 @@ const routes = [
   { path: '/knowledge', view: knowledgeView, title: '知識', tab: 'knowledge' },
   { path: '/knowledge/style/:id', view: knowledgeView, kind: 'style', title: 'スタイル', tab: 'knowledge', back: '#/knowledge' },
   { path: '/knowledge/term/:id', view: knowledgeView, kind: 'term', title: '用語', tab: 'knowledge', back: '#/knowledge' },
+  { path: '/knowledge/hop/:id', view: knowledgeView, kind: 'hop', title: 'ホップ', tab: 'knowledge', back: '#/knowledge' },
   { path: '/more', view: moreView, title: 'その他', tab: 'more' },
   { path: '/wishlist', view: wishlistView, title: '飲みたいリスト', tab: 'more', back: '#/more' },
   { path: '/wishlist/new', view: beerEditView, title: '飲みたい銘柄を追加', tab: 'more', back: '#/wishlist' },

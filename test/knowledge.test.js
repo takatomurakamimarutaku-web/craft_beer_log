@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { srmToHex, styleDisplaySrm, searchKnowledge, styleTexts, formatRange } from '../js/knowledge.js';
-import { glassSvg, rangeBarSvg, ibuScaleSvg, srmScaleSvg, GLASS_TYPES } from '../js/illust.js';
+import { srmToHex, styleDisplaySrm, searchKnowledge, styleTexts, formatRange, filterByTags, hopTexts } from '../js/knowledge.js';
+import { glassSvg, rangeBarSvg, ibuScaleSvg, srmScaleSvg, hopConeSvg, GLASS_TYPES } from '../js/illust.js';
 
 test('srmToHex：端・中間・不正値', () => {
   assert.equal(srmToHex(0), '#ffe699');
@@ -69,4 +69,33 @@ test('ibuScaleSvg / srmScaleSvg：範囲の無いスタイルは除き、名前�
   assert.equal((srm.match(/height="16"/g) || []).length, 40, '色見本は40段階');
   assert.match(srm, />79</, 'SRM 40 ≒ EBC 79');
   assert.match(ibuScaleSvg([]), /^<svg/, '0件でも描ける');
+});
+
+test('filterByTags：選んだタグをすべて持つものだけ', () => {
+  const hops = [
+    { id: 'a', flavorTags: ['citrus', 'tropical'] },
+    { id: 'b', flavorTags: ['citrus', 'pine'] },
+    { id: 'c', flavorTags: ['spicy'] },
+  ];
+  assert.equal(filterByTags(hops, []).length, 3);
+  assert.equal(filterByTags(hops, undefined).length, 3);
+  assert.deepEqual(filterByTags(hops, ['citrus']).map((x) => x.id), ['a', 'b']);
+  assert.deepEqual(filterByTags(hops, ['citrus', 'pine']).map((x) => x.id), ['b']);
+  assert.deepEqual(filterByTags(hops, ['citrus', 'spicy']), []);
+});
+
+test('ホップ：キーワード（別名・産地）と香りタグの組み合わせ', () => {
+  const hops = [
+    { name: 'コロンバス', nameEn: 'Columbus', origin: 'アメリカ', aliases: ['CTZ'], aroma: '', styles: [], flavorTags: ['earthy'] },
+    { name: 'ザーツ', nameEn: 'Saaz', origin: 'チェコ', aliases: [], aroma: '', styles: ['チェコのピルスナー'], flavorTags: ['spicy'] },
+  ];
+  assert.deepEqual(searchKnowledge(hops, 'ctz', hopTexts).map((x) => x.nameEn), ['Columbus']);
+  assert.deepEqual(searchKnowledge(hops, 'ちぇこ', hopTexts).map((x) => x.nameEn), ['Saaz']);
+  assert.equal(filterByTags(searchKnowledge(hops, 'ちぇこ', hopTexts), ['earthy']).length, 0);
+});
+
+test('hopConeSvg：苞の数と title のエスケープ', () => {
+  const s = hopConeSvg({ title: '<x>' });
+  assert.equal((s.match(/stroke-width="1.2"/g) || []).length, 20 + 1, '苞20枚＋葉1枚');
+  assert.match(s, /aria-label="&lt;x&gt;"/);
 });

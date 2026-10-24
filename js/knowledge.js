@@ -99,6 +99,16 @@ export function searchKnowledge(items, query, getTexts) {
   });
 }
 
+export const hopTexts = (x) => [x.name, x.nameEn, x.origin, ...(x.aliases || []), x.aroma, ...(x.styles || [])];
+
+/** 香りタグで絞り込む（指定したタグをすべて持つもの）。tags が空なら全件 */
+export function filterByTags(items, tags) {
+  if (!tags || !tags.length) return items;
+  return items.filter((x) => tags.every((t) => x.flavorTags.includes(t)));
+}
+
+export const HOP_USE_LABELS = { aroma: '香りづけ', bittering: '苦味づけ', dual: '香り・苦味の両用' };
+
 export const termTexts = (t) => [t.name, t.fullName, ...(t.aliases || []), t.summary];
 
 export const styleTexts = (s) => [s.name, s.nameEn, s.category, ...(s.aliases || []), s.summary, s.flavor];

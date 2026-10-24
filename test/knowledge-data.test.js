@@ -79,4 +79,21 @@ test('terms.json：必須用語・本文・関連スタイル・出典', () => {
   assert.equal(terms.find((t) => t.id === 'srm-ebc').scale, 'srm');
 });
 
+test('hops.json：必須項目・香りタグが語彙に存在・関連スタイル・出典', () => {
+  const hops = load('hops');
+  checkCommon(hops, ['name', 'nameEn', 'origin', 'originNote', 'aroma']);
+  assert.ok(hops.length >= 18, 'ホップは約20件');
+  const styleIds = new Set(load('styles').map((s) => s.id));
+  for (const x of hops) {
+    const where = `id=${x.id}`;
+    assert.ok(x.use === null || ['aroma', 'bittering', 'dual'].includes(x.use), `${where}: use`);
+    assert.ok(isRange(x.alpha, 0, 25), `${where}: alpha`);
+    assert.ok(Array.isArray(x.flavorTags) && x.flavorTags.length > 0, `${where}: flavorTags が空`);
+    for (const t of x.flavorTags) assert.ok(flavorTagIds.has(t), `${where}: 香りタグ ${t} が flavor-tags.json に無い`);
+    assert.equal(new Set(x.flavorTags).size, x.flavorTags.length, `${where}: 香りタグが重複`);
+    assert.ok(Array.isArray(x.styles) && Array.isArray(x.aliases), `${where}: styles / aliases は配列`);
+    for (const sid of x.styleIds) assert.ok(styleIds.has(sid), `${where}: スタイル ${sid} が存在しない`);
+  }
+});
+
 export { load, checkCommon, flavorTagIds, isRange };

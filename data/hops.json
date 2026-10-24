@@ -1,1 +1,905 @@
-[]
+[
+  {
+    "id": "citra",
+    "name": "シトラ",
+    "nameEn": "Citra",
+    "aliases": [],
+    "origin": "アメリカ",
+    "originNote": "Hop Breeding Company（HBC）が開発。2000年代後半に発表された。",
+    "alpha": [
+      10,
+      16
+    ],
+    "use": "aroma",
+    "aroma": "グレープフルーツやライム、オレンジなどの柑橘に、マンゴーやパイナップルのようなトロピカルフルーツ、桃などの核果の香りが重なる。香りが非常に強く、香りづけホップの代表格。",
+    "flavorTags": [
+      "citrus",
+      "tropical",
+      "stone-fruit"
+    ],
+    "styles": [
+      "ペールエール",
+      "IPA",
+      "ヘイジーIPA（NEIPA）",
+      "フルーツビール",
+      "セゾン",
+      "ラガー"
+    ],
+    "styleIds": [
+      "pale-ale",
+      "ipa",
+      "hazy-ipa",
+      "fruit-beer",
+      "saison"
+    ],
+    "note": "発表年はYakima Chief Hopsが2007年、BarthHaasが2008年としている。α酸の目安もYCH 10〜16%、BarthHaas 11〜14.3%、BYO 11〜13%と幅がある。",
+    "sources": [
+      {
+        "title": "BarthHaas – Citra®",
+        "url": "https://www.barthhaas.com/hops-and-products/hops/citrar",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Yakima Chief Hops – Citra® Brand HBC 394",
+        "url": "https://www.yakimachief.com/variety/citra-brand",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "mosaic",
+    "name": "モザイク",
+    "nameEn": "Mosaic",
+    "aliases": [],
+    "origin": "アメリカ",
+    "originNote": "HBCが開発し2012年に発表。シムコーを母とする品種。",
+    "alpha": [
+      10,
+      15
+    ],
+    "use": "dual",
+    "aroma": "ブルーベリーなどのベリー、柑橘、パイナップルやマンゴーのようなトロピカルフルーツ、核果の香り。松やハーブのような香りも感じられ、香りの表情が多彩。",
+    "flavorTags": [
+      "berry",
+      "citrus",
+      "tropical",
+      "stone-fruit",
+      "pine",
+      "herbal"
+    ],
+    "styles": [
+      "ペールエール",
+      "IPA",
+      "単一品種のホップを使ったビール"
+    ],
+    "styleIds": [
+      "pale-ale",
+      "ipa"
+    ],
+    "note": "α酸の目安はYCH 10〜15%、BarthHaas 10.4〜14%、BYO 11.5〜13.5%。",
+    "sources": [
+      {
+        "title": "BarthHaas – Mosaic®",
+        "url": "https://www.barthhaas.com/hops-and-products/hops/mosaicr",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Yakima Chief Hops – Mosaic® Brand HBC 369",
+        "url": "https://www.yakimachief.com/variety/mosaic-brand",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "simcoe",
+    "name": "シムコー",
+    "nameEn": "Simcoe",
+    "aliases": [],
+    "origin": "アメリカ",
+    "originNote": "Yakima Chief Ranchesが開発し、2000年に発表。",
+    "alpha": [
+      10,
+      16
+    ],
+    "use": "dual",
+    "aroma": "松や土のような香りに、グレープフルーツなどの柑橘、パッションフルーツやベリーの果実香。苦味づけにも香りづけにも使われる。",
+    "flavorTags": [
+      "pine",
+      "earthy",
+      "citrus",
+      "tropical",
+      "berry"
+    ],
+    "styles": [
+      "IPA",
+      "スタウト",
+      "ポーター"
+    ],
+    "styleIds": [
+      "ipa",
+      "stout",
+      "porter"
+    ],
+    "note": "α酸の目安はYCH 10〜16%、BYO 11〜15%。",
+    "sources": [
+      {
+        "title": "Yakima Chief Hops – Simcoe® Brand YCR 14",
+        "url": "https://www.yakimachief.com/variety/simcoe-brand",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "cascade",
+    "name": "カスケード",
+    "nameEn": "Cascade",
+    "aliases": [],
+    "origin": "アメリカ",
+    "originNote": "アメリカ農務省（USDA）のオレゴン州での育種プログラムから生まれ、1972年に発表。",
+    "alpha": [
+      4,
+      9
+    ],
+    "use": "aroma",
+    "aroma": "グレープフルーツのような柑橘と花の香りに、松やハーブ、ほのかなスパイスのニュアンス。アメリカンペールエールで広く使われてきた品種。",
+    "flavorTags": [
+      "citrus",
+      "floral",
+      "pine",
+      "herbal",
+      "spicy"
+    ],
+    "styles": [
+      "アメリカンペールエール",
+      "ブロンドエール"
+    ],
+    "styleIds": [
+      "pale-ale"
+    ],
+    "note": "親品種の説明が出典で異なる（YCH：フグルの実生の自然交配、BarthHaas：フグルとロシア品種セレブリアンカの雄株の交配）。α酸の目安もYCH 4〜9%、BarthHaas 4.5〜7.9%、BYO 4.5〜7%。",
+    "sources": [
+      {
+        "title": "BarthHaas – Cascade",
+        "url": "https://www.barthhaas.com/hops-and-products/hops/cascade",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Yakima Chief Hops – Cascade",
+        "url": "https://www.yakimachief.com/variety/cascade",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Wikipedia – List of hop varieties",
+        "url": "https://en.wikipedia.org/wiki/List_of_hop_varieties",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "centennial",
+    "name": "センテニアル",
+    "nameEn": "Centennial",
+    "aliases": [],
+    "origin": "アメリカ",
+    "originNote": "1974年に交配され、1990年にワシントン州立大学から発表。",
+    "alpha": [
+      7.8,
+      12
+    ],
+    "use": "dual",
+    "aroma": "レモンやオレンジのような柑橘と花の香り。木やスパイスのニュアンスもある。カスケードやコロンバスとあわせて「3つのC」と呼ばれる。",
+    "flavorTags": [
+      "citrus",
+      "floral",
+      "wood",
+      "spicy"
+    ],
+    "styles": [
+      "ペールエール",
+      "IPA",
+      "アメリカンスタウト",
+      "アメリカンウィート",
+      "バーレイワイン"
+    ],
+    "styleIds": [
+      "pale-ale",
+      "ipa",
+      "stout",
+      "barleywine"
+    ],
+    "note": "YCHは主に香りづけ用の品種としつつ苦味づけにも使えるとし、BarthHaasは両用としている。α酸の目安はYCH 8.5〜12%、BarthHaas 7.8〜11.5%、BYO 9.5〜11.5%。",
+    "sources": [
+      {
+        "title": "BarthHaas – Centennial",
+        "url": "https://www.barthhaas.com/hops-and-products/hops/centennial",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Yakima Chief Hops – Centennial",
+        "url": "https://www.yakimachief.com/variety/centennial",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Wikipedia – List of hop varieties",
+        "url": "https://en.wikipedia.org/wiki/List_of_hop_varieties",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "amarillo",
+    "name": "アマリロ",
+    "nameEn": "Amarillo",
+    "aliases": [],
+    "origin": "アメリカ",
+    "originNote": "ワシントン州のVirgil Gamache Farmsで見つかった品種。2003年に発表（BarthHaas）。",
+    "alpha": [
+      6.5,
+      11
+    ],
+    "use": "aroma",
+    "aroma": "グレープフルーツやオレンジのような柑橘に、アプリコットやモモのような核果の香り。花のような香りもある。",
+    "flavorTags": [
+      "citrus",
+      "stone-fruit",
+      "floral"
+    ],
+    "styles": [],
+    "styleIds": [],
+    "note": "確認した出典には、よく使われるビールのスタイルの記載がなかった（要確認）。",
+    "sources": [
+      {
+        "title": "BarthHaas – Amarillo® VGXP01 c.v.",
+        "url": "https://www.barthhaas.com/hops-and-products/hops/amarillor-vgxp01-cv",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Yakima Chief Hops – Amarillo® Brand VGXP01",
+        "url": "https://www.yakimachief.com/variety/amarillo-brand",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "chinook",
+    "name": "チヌーク",
+    "nameEn": "Chinook",
+    "aliases": [],
+    "origin": "アメリカ",
+    "originNote": "ワシントン州の育種プログラムから1985年に発表。",
+    "alpha": [
+      10.7,
+      15
+    ],
+    "use": "dual",
+    "aroma": "松やスパイス、ハーブの香りに、グレープフルーツのような柑橘。少しスモーキーと表現されることもある。",
+    "flavorTags": [
+      "pine",
+      "spicy",
+      "herbal",
+      "citrus"
+    ],
+    "styles": [
+      "アメリカンペールエール",
+      "IPA",
+      "ポーター",
+      "スタウト"
+    ],
+    "styleIds": [
+      "pale-ale",
+      "ipa",
+      "porter",
+      "stout"
+    ],
+    "note": "BarthHaasは「もとは苦味づけ用、現在のクラフトビールでは主に香りづけ用」とし、Wikipediaは苦味づけ用の品種として挙げている。",
+    "sources": [
+      {
+        "title": "BarthHaas – Chinook",
+        "url": "https://www.barthhaas.com/hops-and-products/hops/chinook",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Wikipedia – List of hop varieties",
+        "url": "https://en.wikipedia.org/wiki/List_of_hop_varieties",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "columbus",
+    "name": "コロンバス",
+    "nameEn": "Columbus（CTZ）",
+    "aliases": [
+      "CTZ",
+      "トマホーク",
+      "ゼウス",
+      "Tomahawk",
+      "Zeus"
+    ],
+    "origin": "アメリカ",
+    "originNote": "ナゲットの系統とされる高α酸品種。似た品種のトマホーク、ゼウスとあわせて「CTZ」と呼ばれる。",
+    "alpha": [
+      13.9,
+      20
+    ],
+    "use": "dual",
+    "aroma": "土やスパイス、ハーブの香り。仕込みの後半に加えるとオレンジやグレープフルーツのような柑橘の香りも出る。",
+    "flavorTags": [
+      "earthy",
+      "spicy",
+      "herbal",
+      "citrus"
+    ],
+    "styles": [
+      "アメリカンエール",
+      "IPA",
+      "インペリアルレッドエール",
+      "ラガー"
+    ],
+    "styleIds": [
+      "ipa"
+    ],
+    "note": "BarthHaasは両用、Wikipediaは苦味づけ用としている。α酸の目安はBarthHaas 13.9〜17.5%、BYO（CTZとして）15〜20%。",
+    "sources": [
+      {
+        "title": "BarthHaas – Columbus",
+        "url": "https://www.barthhaas.com/hops-and-products/hops/columbus",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Wikipedia – List of hop varieties",
+        "url": "https://en.wikipedia.org/wiki/List_of_hop_varieties",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "el-dorado",
+    "name": "エルドラド",
+    "nameEn": "El Dorado",
+    "aliases": [],
+    "origin": "アメリカ",
+    "originNote": "ワシントン州ヤキマバレーのCLS Farmsが育成。",
+    "alpha": [
+      12,
+      16
+    ],
+    "use": "aroma",
+    "aroma": "スイカや洋梨、パイナップル、マンゴーのようなトロピカルフルーツと核果の香り。キャンディのような甘い印象もある。",
+    "flavorTags": [
+      "tropical",
+      "stone-fruit"
+    ],
+    "styles": [
+      "IPA",
+      "ヘイジーIPA",
+      "アメリカンペールエール",
+      "ブロンドエール",
+      "ラガー"
+    ],
+    "styleIds": [
+      "ipa",
+      "hazy-ipa",
+      "pale-ale"
+    ],
+    "note": "BarthHaasは香りづけ用、BYOは両用としている。α酸の目安もBarthHaas 12〜14.4%、BYO 14〜16%と異なる。",
+    "sources": [
+      {
+        "title": "BarthHaas – El Dorado®",
+        "url": "https://www.barthhaas.com/hops-and-products/hops/el-dorado",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "galaxy",
+    "name": "ギャラクシー",
+    "nameEn": "Galaxy",
+    "aliases": [],
+    "origin": "オーストラリア",
+    "originNote": "Hop Products Australia（HPA）が1994年に育種を始めた品種。",
+    "alpha": [
+      11,
+      19.8
+    ],
+    "use": "aroma",
+    "aroma": "パッションフルーツ、モモ、柑橘が中心。カシスやベリーのような香りもある。",
+    "flavorTags": [
+      "tropical",
+      "stone-fruit",
+      "citrus",
+      "berry"
+    ],
+    "styles": [
+      "ペールエール",
+      "IPA",
+      "ヘイジーペールエール",
+      "NEIPA"
+    ],
+    "styleIds": [
+      "pale-ale",
+      "ipa",
+      "hazy-ipa"
+    ],
+    "note": "α酸の目安が出典で大きく異なる（HPA 15.7〜19.8%、BarthHaas 12.3〜19.8%、BYO 11〜16%）。用途もBarthHaasは香りづけ用、Wikipediaは両用としている。",
+    "sources": [
+      {
+        "title": "BarthHaas – Galaxy®",
+        "url": "https://www.barthhaas.com/hops-and-products/hops/galaxy",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Hop Products Australia – Galaxy",
+        "url": "https://hops.com.au/galaxy/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "nelson-sauvin",
+    "name": "ネルソンソーヴィン",
+    "nameEn": "Nelson Sauvin",
+    "aliases": [
+      "ネルソン"
+    ],
+    "origin": "ニュージーランド",
+    "originNote": "ニュージーランドの研究機関 Plant & Food Research が育成し、2000年に発表。",
+    "alpha": [
+      10,
+      13
+    ],
+    "use": "dual",
+    "aroma": "ソーヴィニヨン・ブランのような白ワインを思わせる果実香と、グーズベリーの香り。",
+    "flavorTags": [
+      "white-wine",
+      "berry"
+    ],
+    "styles": [
+      "アメリカンペールエール",
+      "IPA",
+      "香りを生かしたラガー"
+    ],
+    "styleIds": [
+      "pale-ale",
+      "ipa"
+    ],
+    "note": "α酸の目安はNZ Hops 10〜13%、BYO 12〜13%。",
+    "sources": [
+      {
+        "title": "NZ Hops – Nelson Sauvin™",
+        "url": "https://nzhops.co.nz/products/nelson-sauvin",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Wikipedia – List of hop varieties",
+        "url": "https://en.wikipedia.org/wiki/List_of_hop_varieties",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "motueka",
+    "name": "モトゥエカ",
+    "nameEn": "Motueka",
+    "aliases": [],
+    "origin": "ニュージーランド",
+    "originNote": "Plant & Food Research が、ニュージーランドの育種系統とザーツを交配して育成。",
+    "alpha": [
+      5.5,
+      10
+    ],
+    "use": "aroma",
+    "aroma": "ライムのような爽やかな柑橘とレモンの皮の香りが中心で、背景にトロピカルフルーツ。",
+    "flavorTags": [
+      "citrus",
+      "tropical"
+    ],
+    "styles": [
+      "セゾン",
+      "ピルスナー",
+      "軽めのラガー"
+    ],
+    "styleIds": [
+      "saison",
+      "pilsner"
+    ],
+    "note": "α酸の目安はNZ Hops 5.5〜10%、BYO 6.5〜7.5%。",
+    "sources": [
+      {
+        "title": "NZ Hops – Motueka™",
+        "url": "https://nzhops.co.nz/products/motueka",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Wikipedia – List of hop varieties",
+        "url": "https://en.wikipedia.org/wiki/List_of_hop_varieties",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "saaz",
+    "name": "ザーツ",
+    "nameEn": "Saaz",
+    "aliases": [
+      "サーツ",
+      "ジャテツ",
+      "Žatec",
+      "ザーツァー"
+    ],
+    "origin": "チェコ",
+    "originNote": "チェコのジャテツ（ドイツ語名ザーツ）地方で選ばれてきた在来品種。代表的な「ノーブルホップ」。",
+    "alpha": [
+      1.4,
+      7.5
+    ],
+    "use": "aroma",
+    "aroma": "穏やかでスパイシー、ハーブや木のような香り。花や蜂蜜のような甘いニュアンスもある。",
+    "flavorTags": [
+      "spicy",
+      "herbal",
+      "wood",
+      "floral",
+      "earthy"
+    ],
+    "styles": [
+      "チェコのピルスナー"
+    ],
+    "styleIds": [
+      "pilsner"
+    ],
+    "note": "α酸の目安はBarthHaasが1.4〜7.5%と広く、BYOは2〜5%前後。",
+    "sources": [
+      {
+        "title": "BarthHaas – Saazer",
+        "url": "https://www.barthhaas.com/hops-and-products/hops/saazer",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Wikipedia – List of hop varieties",
+        "url": "https://en.wikipedia.org/wiki/List_of_hop_varieties",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "hallertauer-mittelfrueh",
+    "name": "ハラタウアー・ミッテルフリュー",
+    "nameEn": "Hallertauer Mittelfrüh",
+    "aliases": [
+      "ハラタウ",
+      "ハラタウアー",
+      "Hallertau"
+    ],
+    "origin": "ドイツ",
+    "originNote": "ドイツ・バイエルン州のハラタウ地方の在来品種。病気に弱く一時は姿を消しかけた。",
+    "alpha": [
+      2.3,
+      6.6
+    ],
+    "use": null,
+    "aroma": "スパイスや木の香りに、ライラックのような花、干し草やレモンのような香り。",
+    "flavorTags": [
+      "spicy",
+      "wood",
+      "floral",
+      "herbal",
+      "grassy"
+    ],
+    "styles": [
+      "ドイツのラガー"
+    ],
+    "styleIds": [],
+    "note": "用途（香りづけ・苦味づけ）の分類は確認した出典に明記がなかった（要確認）。α酸の目安はBarthHaas 2.3〜6.6%、BYO 3〜5.5%。",
+    "sources": [
+      {
+        "title": "BarthHaas – Hallertauer Mittelfrüh",
+        "url": "https://www.barthhaas.com/hops-and-products/hops/hallertauer-mittelfrueh",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Wikipedia – List of hop varieties",
+        "url": "https://en.wikipedia.org/wiki/List_of_hop_varieties",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "tettnanger",
+    "name": "テトナンガー",
+    "nameEn": "Tettnanger",
+    "aliases": [
+      "テトナング",
+      "Tettnang"
+    ],
+    "origin": "ドイツ",
+    "originNote": "ドイツ南部、ボーデン湖に近いテトナン周辺で育てられてきた在来品種（ザーツ系）。",
+    "alpha": [
+      1.9,
+      5.5
+    ],
+    "use": "dual",
+    "aroma": "花や果実、ハーブ、スパイスの香り。木や紅茶のような落ち着いたニュアンスもある。",
+    "flavorTags": [
+      "floral",
+      "herbal",
+      "spicy",
+      "wood"
+    ],
+    "styles": [
+      "ヨーロッパの淡色ラガー",
+      "小麦ビール"
+    ],
+    "styleIds": [],
+    "note": "用途はWikipediaが両用としているが、BarthHaasには明記がない。BYOはドイツ産（α酸2.5〜5.5%）とアメリカ産（4〜5.5%）を分けている。",
+    "sources": [
+      {
+        "title": "BarthHaas – Tettnang Tettnanger",
+        "url": "https://www.barthhaas.com/hops-and-products/hops/tettnang-tettnanger",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Wikipedia – List of hop varieties",
+        "url": "https://en.wikipedia.org/wiki/List_of_hop_varieties",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "east-kent-goldings",
+    "name": "イーストケントゴールディング",
+    "nameEn": "East Kent Goldings",
+    "aliases": [
+      "EKG",
+      "ゴールディング",
+      "Goldings"
+    ],
+    "origin": "イギリス",
+    "originNote": "イングランド南東部ケント州の品種で、1790年に市場に出たとされる。",
+    "alpha": [
+      4,
+      6.5
+    ],
+    "use": "dual",
+    "aroma": "花や柑橘の皮、ハーブ、スパイスの香りに、ジンジャーブレッドのような甘いニュアンス。",
+    "flavorTags": [
+      "floral",
+      "citrus",
+      "herbal",
+      "spicy"
+    ],
+    "styles": [
+      "伝統的なイギリスのエール"
+    ],
+    "styleIds": [],
+    "note": "BarthHaasは伝統的なエールの香りづけに使うとし、Wikipediaは苦味づけと仕込み後半の香りづけの両方に使うとしている。",
+    "sources": [
+      {
+        "title": "BarthHaas – East Kent Golding",
+        "url": "https://www.barthhaas.com/hops-and-products/hops/east-kent-golding",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Wikipedia – List of hop varieties",
+        "url": "https://en.wikipedia.org/wiki/List_of_hop_varieties",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "fuggle",
+    "name": "フグル",
+    "nameEn": "Fuggle",
+    "aliases": [
+      "ファグル",
+      "Fuggles"
+    ],
+    "origin": "イギリス",
+    "originNote": "1875年にケント州でリチャード・フグルの名を付けて広められた品種。",
+    "alpha": [
+      3,
+      6.5
+    ],
+    "use": "aroma",
+    "aroma": "木や土のような落ち着いた香りに、ほのかなスパイスと花の香り。",
+    "flavorTags": [
+      "wood",
+      "earthy",
+      "spicy",
+      "floral"
+    ],
+    "styles": [
+      "イギリスのビター",
+      "ペールエール",
+      "マイルド",
+      "ポーター"
+    ],
+    "styleIds": [
+      "porter"
+    ],
+    "note": "α酸の目安はBarthHaas 3〜6.5%、BYO 3〜5.6%。",
+    "sources": [
+      {
+        "title": "BarthHaas – Fuggles",
+        "url": "https://www.barthhaas.com/hops-and-products/hops/fuggles",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Wikipedia – List of hop varieties",
+        "url": "https://en.wikipedia.org/wiki/List_of_hop_varieties",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "magnum",
+    "name": "マグナム",
+    "nameEn": "Hallertauer Magnum",
+    "aliases": [
+      "ハラタウアー・マグナム",
+      "Magnum"
+    ],
+    "origin": "ドイツ",
+    "originNote": "ドイツのヒュル（Hüll）ホップ研究所で1980年に育成され、1993年に発表。",
+    "alpha": [
+      9,
+      18.2
+    ],
+    "use": "bittering",
+    "aroma": "主に苦味づけのベースとして使われる高α酸品種。香りは穏やかで、スパイスやハーブ、果実のニュアンス。",
+    "flavorTags": [
+      "spicy",
+      "herbal"
+    ],
+    "styles": [],
+    "styleIds": [],
+    "note": "確認した出典に特定のスタイルの記載はなく、苦味づけのベースとしてよく使われるとされる。α酸の目安はYCH 12〜15%、BarthHaas 9〜18.2%、BYO 11〜16%。",
+    "sources": [
+      {
+        "title": "Yakima Chief Hops – Magnum",
+        "url": "https://www.yakimachief.com/variety/magnum",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "BarthHaas – Hallertauer Magnum",
+        "url": "https://www.barthhaas.com/hops-and-products/hops/hallertauer-magnum",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "sorachi-ace",
+    "name": "ソラチエース",
+    "nameEn": "Sorachi Ace",
+    "aliases": [],
+    "origin": "日本",
+    "originNote": "1984年にサッポロビールのために開発された品種。名前は北海道の空知地方に由来する。",
+    "alpha": [
+      11,
+      15
+    ],
+    "use": "dual",
+    "aroma": "レモンのような柑橘とハーブ、ディルのような独特の香り。木やスパイスのニュアンスもある。",
+    "flavorTags": [
+      "citrus",
+      "herbal",
+      "wood",
+      "spicy"
+    ],
+    "styles": [],
+    "styleIds": [],
+    "note": "用途の説明が出典で異なる（BarthHaas：香りづけ、BYO：苦味づけ、Wikipedia：両用）。ここでは両用とした。確認した出典にスタイルの記載はなかった（要確認）。",
+    "sources": [
+      {
+        "title": "BarthHaas – Sorachi Ace",
+        "url": "https://www.barthhaas.com/hops-and-products/hops/sorachi-ace",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Yakima Chief Hops – Sorachi Ace",
+        "url": "https://www.yakimachief.com/variety/sorachi-ace",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – Comparing and Selecting Hops",
+        "url": "https://byo.com/charts-calculators/comparing-and-selecting-hops/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Wikipedia – List of hop varieties",
+        "url": "https://en.wikipedia.org/wiki/List_of_hop_varieties",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  }
+]
