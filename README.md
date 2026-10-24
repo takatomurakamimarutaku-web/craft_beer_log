@@ -32,7 +32,8 @@ HTML / CSS / JavaScript（ES Modules）だけで作られており、ビルド�
 | `#/wishlist`, `#/wishlist/new` | 飲みたいリスト |
 | `#/settings` | 設定・バックアップ・復元 |
 | `#/more` | その他メニュー |
-| `#/knowledge`（`?tab=styles\|terms\|hops`） | 知識（スタイル／用語／ホップ、キーワード検索） |
+| `#/knowledge`（`?tab=basics\|styles\|terms\|hops`） | 知識（はじめに／スタイル／用語／ホップ、キーワード検索） |
+| `#/knowledge/basic/:id` | 入門記事（クラフトビールとは・原料・造り方・発酵・ホップ。工程図・比較表付き） |
 | `#/knowledge/style/:id` | スタイルの解説（グラスと色のイラスト、数値の目安、参考リンク） |
 | `#/knowledge/term/:id` | 用語の解説（IBU・SRM はスケール図付き） |
 | `#/knowledge/hop/:id` | ホップの解説（香りタグ、α酸、よく使われるスタイル）。一覧は `?tab=hops&tag=citrus,pine` で香りタグを指定して開ける |
@@ -64,6 +65,7 @@ js/views/*.js           画面ごとの描画処理
 data/styles.json        スタイル（25件。登録画面の選択肢と知識ページで共用）
 data/flavor-tags.json   香りタグの語彙
 data/terms.json, data/hops.json  知識データ（Phase 4 で作成）
+data/basics.json        入門記事（知識タブの「はじめに」）
 icons/                  アイコン（SVG と PNG）
 scripts/check-pwa.js    PWA 構成の検証
 scripts/dummy-data.js   性能確認用のダミーデータ生成
@@ -148,6 +150,10 @@ NFKC 正規化 → 小文字化 → ひらがなをカタカナに統一 → 前
 ### hops.json
 
 `{ id, name, nameEn, aliases, origin, originNote, alpha（α酸 [最小, 最大] %）, use（"aroma" | "bittering" | "dual" | null）, aroma, flavorTags（flavor-tags.json の ID）, styles（表示用）, styleIds（解説へのリンク）, note（出典による違い・要確認）, sources }`
+
+### basics.json
+
+`{ id, name, summary, sections（[{ heading, body（段落の配列） }]）, steps（[{ name, text }] または null。工程の流れとして最初の節の後に表示）, compare（{ columns, rows, note, insertAfter } または null。比較表。insertAfter の節の後に表示）, relatedBasics / relatedStyles / relatedTerms / relatedHops（各データの ID）, sources }`。配列の順が一覧の表示順（読む順）です。
 
 ### flavor-tags.json
 

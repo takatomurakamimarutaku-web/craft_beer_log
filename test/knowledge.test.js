@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { srmToHex, styleDisplaySrm, searchKnowledge, styleTexts, formatRange, filterByTags, hopTexts } from '../js/knowledge.js';
+import { srmToHex, styleDisplaySrm, searchKnowledge, styleTexts, formatRange, filterByTags, hopTexts, basicTexts } from '../js/knowledge.js';
 import { glassSvg, rangeBarSvg, ibuScaleSvg, srmScaleSvg, hopConeSvg, GLASS_TYPES } from '../js/illust.js';
 
 test('srmToHex：端・中間・不正値', () => {
@@ -98,4 +98,14 @@ test('hopConeSvg：苞の数と title のエスケープ', () => {
   const s = hopConeSvg({ title: '<x>' });
   assert.equal((s.match(/stroke-width="1.2"/g) || []).length, 20 + 1, '苞20枚＋葉1枚');
   assert.match(s, /aria-label="&lt;x&gt;"/);
+});
+
+test('basicTexts：入門記事を本文・工程名でも検索できる', async () => {
+  const { readFileSync } = await import('node:fs');
+  const basics = JSON.parse(readFileSync(new URL('../data/basics.json', import.meta.url), 'utf8'));
+  const ids = (q) => searchKnowledge(basics, q, basicTexts).map((a) => a.id);
+  assert.ok(ids('下面発酵').includes('fermentation'));
+  assert.ok(ids('ルプリン').includes('hops'));
+  assert.ok(ids('製麦').includes('brewing'));
+  assert.deepEqual(ids('存在しない語句'), []);
 });

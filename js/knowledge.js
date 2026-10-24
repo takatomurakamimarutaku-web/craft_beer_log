@@ -109,6 +109,13 @@ export function filterByTags(items, tags) {
 
 export const HOP_USE_LABELS = { aroma: '香りづけ', bittering: '苦味づけ', dual: '香り・苦味の両用' };
 
+export const basicTexts = (a) => [
+  a.name,
+  a.summary,
+  ...a.sections.flatMap((s) => [s.heading, ...s.body]),
+  ...(a.steps || []).flatMap((s) => [s.name, s.text]),
+];
+
 export const termTexts = (t) => [t.name, t.fullName, ...(t.aliases || []), t.summary];
 
 export const styleTexts = (s) => [s.name, s.nameEn, s.category, ...(s.aliases || []), s.summary, s.flavor];

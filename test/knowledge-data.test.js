@@ -97,3 +97,36 @@ test('hops.json：必須項目・香りタグが語彙に存在・関連スタ�
 });
 
 export { load, checkCommon, flavorTagIds, isRange };
+
+test('basics.json：入門記事の本文・工程・比較表・リンク先・出典', () => {
+  const basics = load('basics');
+  const ids = checkCommon(basics, ['name', 'summary']);
+  for (const id of ['craft-beer', 'brewing', 'fermentation', 'hops', 'ingredients']) assert.ok(ids.has(id), `入門 ${id} が無い`);
+  const refs = {
+    relatedStyles: new Set(load('styles').map((s) => s.id)),
+    relatedTerms: new Set(load('terms').map((t) => t.id)),
+    relatedHops: new Set(load('hops').map((x) => x.id)),
+    relatedBasics: ids,
+  };
+  for (const a of basics) {
+    const where = `id=${a.id}`;
+    assert.ok(Array.isArray(a.sections) && a.sections.length > 0, `${where}: sections`);
+    for (const s of a.sections) {
+      assert.ok(s.heading && s.heading.trim(), `${where}: 見出し`);
+      assert.ok(Array.isArray(s.body) && s.body.length > 0 && s.body.every((p) => typeof p === 'string' && p.trim()), `${where}: ${s.heading} の本文`);
+    }
+    assert.ok(a.steps === null || (Array.isArray(a.steps) && a.steps.every((s) => s.name && s.text)), `${where}: steps`);
+    if (a.compare !== null) {
+      const { columns, rows } = a.compare;
+      assert.ok(Array.isArray(columns) && columns.length >= 2, `${where}: compare.columns`);
+      for (const r of rows) assert.equal(r.length, columns.length, `${where}: compare の列数`);
+    }
+    for (const [key, valid] of Object.entries(refs)) {
+      assert.ok(Array.isArray(a[key]), `${where}: ${key} は配列`);
+      for (const id of a[key]) assert.ok(valid.has(id), `${where}: ${key} の ${id} が存在しない`);
+    }
+    assert.ok(!a.relatedBasics.includes(a.id), `${where}: 自分自身へのリンク`);
+  }
+  assert.ok(basics.find((a) => a.id === 'brewing').steps.length >= 5, '造り方は工程つき');
+  assert.ok(basics.find((a) => a.id === 'fermentation').compare, '発酵は比較表つき');
+});

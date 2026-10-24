@@ -1,11 +1,12 @@
 // 知識（#/knowledge 一覧、#/knowledge/style/:id など詳細）
 import { h, svg, emptyState, chipGroup, formatDate, stars } from '../ui.js';
-import { searchKnowledge, styleTexts, termTexts, hopTexts, filterByTags, HOP_USE_LABELS, srmToHex, styleDisplaySrm, formatRange, GLASS_LABELS } from '../knowledge.js';
+import { searchKnowledge, basicTexts, styleTexts, termTexts, hopTexts, filterByTags, HOP_USE_LABELS, srmToHex, styleDisplaySrm, formatRange, GLASS_LABELS } from '../knowledge.js';
 import { buildBeerSummaries, sortSummaries } from '../search.js';
 import { matchByFlavorTags } from '../tasting.js';
 import { glassSvg, rangeBarSvg, ibuScaleSvg, srmScaleSvg, hopConeSvg } from '../illust.js';
 
 const TABS = [
+  { value: 'basics', label: 'はじめに' },
   { value: 'styles', label: 'スタイル' },
   { value: 'terms', label: '用語' },
   { value: 'hops', label: 'ホップ' },
@@ -17,11 +18,11 @@ function loadState() {
   if (state) return state;
   try {
     const raw = sessionStorage.getItem(STORAGE_KEY);
-    if (raw) return (state = { tab: 'styles', q: '', tags: [], ...JSON.parse(raw) });
+    if (raw) return (state = { tab: 'basics', q: '', tags: [], ...JSON.parse(raw) });
   } catch {
     /* 読めなければ初期値 */
   }
-  return (state = { tab: 'styles', q: '', tags: [] });
+  return (state = { tab: 'basics', q: '', tags: [] });
 }
 
 function saveState(s) {
@@ -40,6 +41,7 @@ export async function render(ctx) {
   if (route.kind === 'style') return renderStyle(ctx);
   const data = await ctx.app.loadKnowledge();
   if (ctx.isStale()) return;
+  if (route.kind === 'basic') return renderBasic(ctx, data);
   if (route.kind === 'term') return renderTerm(ctx, data);
   if (route.kind === 'hop') return renderHop(ctx, data);
   return renderList(ctx, data);
@@ -75,6 +77,7 @@ function renderList({ app, outlet, query }, data) {
   renderBody();
 
   function renderBody() {
+    if (s.tab === 'basics') return body.replaceChildren(...basicList(data.basics, s.q));
     if (s.tab === 'styles') return body.replaceChildren(...styleList(app.styles, s.q));
     if (s.tab === 'terms') return body.replaceChildren(...termList(data.terms, s.q));
     body.replaceChildren(...hopList(data, s, (tags) => {
@@ -102,6 +105,34 @@ function segmented(value, onChange) {
   );
   wrap.append(...buttons);
   return wrap;
+}
+
+function basicList(basics, q) {
+  const items = searchKnowledge(basics, q, basicTexts);
+  if (!items.length) return [h('p', { class: 'list-meta', text: '該当する記事がありません。' })];
+  return [
+    q ? h('p', { class: 'list-meta', text: `${items.length}件` }) : h('p', { class: 'list-meta', text: 'クラフトビールをはじめて楽しむ人向けの入門です。上から順に読むのがおすすめです。' }),
+    h(
+      'ol',
+      { class: 'card-list basics-list' },
+      items.map((a) =>
+        h(
+          'li',
+          {},
+          h(
+            'a',
+            { class: 'card card-text', href: `#/knowledge/basic/${encodeURIComponent(a.id)}` },
+            h(
+              'div',
+              { class: 'card-body' },
+              h('div', { class: 'card-title' }, h('span', { class: 'basic-no', 'aria-hidden': 'true', text: String(basics.indexOf(a) + 1) }), a.name),
+              h('div', { class: 'term-summary', text: a.summary }),
+            ),
+          ),
+        ),
+      ),
+    ),
+  ];
 }
 
 function styleList(styles, q) {
@@ -272,6 +303,73 @@ async function renderStyle({ app, outlet, params, isStale }) {
     myStyleRecords(st, beers, checkins),
     sourcesSection(st.sources),
   );
+}
+
+// ---- 入門（はじめに）詳細 ----
+
+function renderBasic({ app, outlet, params }, { basics, terms, hops }) {
+  const i = basics.findIndex((x) => x.id === params.id);
+  const a = basics[i];
+  if (!a) {
+    outlet.replaceChildren(emptyState('記事が見つかりません。', h('a', { class: 'btn', href: '#/knowledge?tab=basics', text: '入門の一覧へ' })));
+    return;
+  }
+  app.setTitle(a.name);
+  const sections = a.sections.map((sec) => section(sec.heading, ...sec.body.map((p) => h('p', { class: 'para', text: p }))));
+  // 工程・比較表は本文の途中（既定は最初の節の後）に差し込む
+  const insert = (index, el) => el && sections.splice(Math.min(index + 1, sections.length), 0, el);
+  insert(a.compare?.insertAfter ?? 0, a.compare ? section('違いを比べる', compareTable(a.compare), a.compare.note ? h('p', { class: 'small muted', text: a.compare.note }) : null) : null);
+  insert(0, a.steps ? section('工程の流れ', stepList(a.steps)) : null);
+  const next = basics[i + 1];
+  fill(
+    outlet,
+    h('div', { class: 'term-hero' }, h('span', { class: 'tag', text: `入門 ${i + 1} / ${basics.length}` }), h('h2', { class: 'knowledge-name', text: a.name })),
+    h('p', { class: 'knowledge-lead', text: a.summary }),
+    ...sections,
+    relatedSection(a, { styles: app.styles, terms, hops, basics }),
+    next ? h('a', { class: 'btn btn-block basic-next', href: `#/knowledge/basic/${encodeURIComponent(next.id)}`, text: `次に読む：${next.name}` }) : null,
+    sourcesSection(a.sources),
+  );
+}
+
+function stepList(steps) {
+  return h(
+    'ol',
+    { class: 'steps' },
+    steps.map((st) => h('li', { class: 'step' }, h('strong', { class: 'step-name', text: st.name }), h('p', { class: 'small', text: st.text }))),
+  );
+}
+
+function compareTable({ columns, rows }) {
+  return h(
+    'div',
+    { class: 'table-scroll' },
+    h(
+      'table',
+      { class: 'compare-table' },
+      h('thead', {}, h('tr', {}, columns.map((c, k) => h('th', { scope: 'col', text: c, 'aria-label': k === 0 && !c ? '項目' : null })))),
+      h('tbody', {}, rows.map(([head, ...cells]) => h('tr', {}, h('th', { scope: 'row', text: head }), cells.map((c) => h('td', { text: c }))))),
+    ),
+  );
+}
+
+/** 関連するスタイル・用語・ホップ・入門記事へのリンク（存在するものだけ） */
+function relatedSection(a, { styles, terms, hops, basics }) {
+  const links = [
+    ...pickById(basics, a.relatedBasics).map((x) => ['basic', x]),
+    ...pickById(styles, a.relatedStyles).map((x) => ['style', x]),
+    ...pickById(terms, a.relatedTerms).map((x) => ['term', x]),
+    ...pickById(hops, a.relatedHops).map((x) => ['hop', x]),
+  ];
+  if (!links.length) return null;
+  return section(
+    'あわせて読む',
+    h('div', { class: 'chips' }, links.map(([kind, x]) => h('a', { class: 'chip', href: `#/knowledge/${kind}/${encodeURIComponent(x.id)}`, text: x.name }))),
+  );
+}
+
+function pickById(list, ids = []) {
+  return ids.map((id) => list.find((x) => x.id === id)).filter(Boolean);
 }
 
 // ---- 用語詳細 ----
