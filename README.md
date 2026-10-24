@@ -155,6 +155,16 @@ NFKC 正規化 → 小文字化 → ひらがなをカタカナに統一 → 前
 
 `{ id, name, summary, sections（[{ heading, body（段落の配列） }]）, steps（[{ name, text }] または null。工程の流れとして最初の節の後に表示）, compare（{ columns, rows, note, insertAfter } または null。比較表。insertAfter の節の後に表示）, relatedBasics / relatedStyles / relatedTerms / relatedHops（各データの ID）, sources }`。配列の順が一覧の表示順（読む順）です。
 
+### images.json（スタイル・ホップの画像）
+
+`{ styles: { <スタイルID>: 画像 }, hops: { <ホップID>: 画像 } }`。画像が無い項目はイラストを表示します。
+
+画像 = `{ file（images/styles/<id>.webp など）, license（"ai" | "cc-by" | "cc-by-sa" | "cc0" | "own" | "permission"）, author, licenseVersion, sourceUrl, service, generatedAt, prompt }`
+
+- AI生成（license "ai"）は service（生成サービス名）・generatedAt・prompt を必ず記録し、画面に「AI生成のイメージ（仮）」と表示します（文章の指示だけで生成し、ネット上の画像は入力しない）
+- CC BY / BY-SA と提供写真は author と sourceUrl が必須で、画面に作者・ライセンス・出典を表示します
+- 画像は長辺 640px 程度の WebP（1枚 50KB 前後）にし、`sw.js` の PRECACHE_URLS に追加します（`images/` も漏れ検査の対象）
+
 ### flavor-tags.json
 
 香りタグの語彙 `{ id, label }`。ホップの香り（Phase 4-3）とテイスティング入力（Phase 5）で共用します。

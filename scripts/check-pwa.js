@@ -7,7 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 export const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 // キャッシュ対象に含めるべきディレクトリと、対象外とするファイル
-const APP_DIRS = ['js', 'css', 'data', 'icons'];
+const APP_DIRS = ['js', 'css', 'data', 'icons', 'images'];
 // 外部URLのうち、読み込みではなく名前空間として使うもの
 const ALLOWED_URLS = ['http://www.w3.org/2000/svg'];
 

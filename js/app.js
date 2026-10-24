@@ -81,14 +81,15 @@ async function start() {
     goBack: (fallback) => router.goBack(fallback),
     refresh: () => router.refresh(),
     migrateStyles: () => (styles.length ? migrateStyles() : 0),
-    /** 知識データ（入門・用語・ホップ・香りタグ）を初回だけ読み込む */
+    /** 知識データ（入門・用語・ホップ・香りタグ・画像）を初回だけ読み込む */
     loadKnowledge: () =>
       (knowledge ??= Promise.all([
         loadJson('data/basics.json', []),
         loadJson('data/terms.json', []),
         loadJson('data/hops.json', []),
         loadJson('data/flavor-tags.json', []),
-      ]).then(([basics, terms, hops, flavorTags]) => ({ basics, terms, hops, flavorTags }))),
+        loadJson('data/images.json', {}),
+      ]).then(([basics, terms, hops, flavorTags, images]) => ({ basics, terms, hops, flavorTags, images }))),
     setTitle: (t) => {
       titleEl.textContent = t;
       document.title = `${t} | ホップ手帖`;

@@ -109,3 +109,17 @@ test('basicTexts：入門記事を本文・工程名でも検索できる', asyn
   assert.ok(ids('製麦').includes('brewing'));
   assert.deepEqual(ids('存在しない語句'), []);
 });
+
+test('imageEntry / imageCaption：画像の有無と表記', async () => {
+  const { imageEntry, imageCaption } = await import('../js/knowledge.js');
+  const images = { styles: { ipa: { file: 'images/styles/ipa.webp', license: 'ai' } }, hops: {} };
+  assert.equal(imageEntry(images, 'styles', 'ipa').file, 'images/styles/ipa.webp');
+  assert.equal(imageEntry(images, 'hops', 'citra'), null);
+  assert.equal(imageEntry({}, 'styles', 'ipa'), null);
+  assert.equal(imageEntry(null, 'styles', 'ipa'), null);
+  assert.match(imageCaption({ license: 'ai' }), /AI生成.*仮/);
+  assert.equal(imageCaption({ license: 'cc-by', author: 'Taro', licenseVersion: '4.0' }), '写真：Taro（CC BY 4.0）');
+  assert.equal(imageCaption({ license: 'cc-by-sa', author: 'Hanako' }), '写真：Hanako（CC BY-SA）');
+  assert.equal(imageCaption({ license: 'cc0' }), '写真（CC0）');
+  assert.equal(imageCaption(null), '');
+});
