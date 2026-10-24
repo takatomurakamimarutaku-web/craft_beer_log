@@ -57,11 +57,12 @@ export async function render({ app, outlet }) {
   });
   const toggle = h('button', { type: 'button', class: 'btn btn-small', 'aria-expanded': 'false', onclick: () => setPanel(panel.hidden) });
   const count = h('p', { class: 'list-meta', 'aria-live': 'polite' });
+  const monthChip = h('div', { class: 'chips month-chip' });
   const panel = h('div', { class: 'panel filter-panel', hidden: true });
   const list = h('ul', { class: 'card-list' });
   const more = h('button', { type: 'button', class: 'btn btn-block', text: 'さらに表示', onclick: () => appendPage() });
 
-  outlet.replaceChildren(h('div', { class: 'search-bar' }, keyword, toggle), panel, count, list, more);
+  outlet.replaceChildren(h('div', { class: 'search-bar' }, keyword, toggle), panel, monthChip, count, list, more);
   buildPanel();
   renderResults();
 
@@ -82,6 +83,19 @@ export async function render({ app, outlet }) {
     const n = countActiveFilters(criteria);
     toggle.textContent = n ? `絞り込み（${n}）` : '絞り込み・並べ替え';
     count.textContent = `${results.length}件 / ${summaries.length}銘柄`;
+    // 月の条件は統計画面からだけ指定するため、ここで外せるようにする
+    monthChip.replaceChildren(
+      criteria.month
+        ? h('button', {
+            type: 'button',
+            class: 'chip',
+            'aria-pressed': 'true',
+            'aria-label': `${criteria.month.replace('-', '年')}月の条件を外す`,
+            text: `${Number(criteria.month.slice(0, 4))}年${Number(criteria.month.slice(5))}月に飲んだ ×`,
+            onclick: () => update({ month: null }),
+          })
+        : '',
+    );
     list.replaceChildren();
     shown = 0;
     appendPage();

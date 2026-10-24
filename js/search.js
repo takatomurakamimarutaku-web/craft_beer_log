@@ -63,6 +63,7 @@ export function buildBeerSummaries(beers, checkins) {
     const placeTypes = new Set();
     const servings = new Set();
     const flavorTags = new Set();
+    const months = new Set();
     let incomplete = false;
     let photoCheckin = null;
     for (const c of list) {
@@ -76,6 +77,7 @@ export function buildBeerSummaries(beers, checkins) {
       if (c.place && c.place.type) placeTypes.add(c.place.type);
       if (c.serving) servings.add(c.serving);
       for (const t of c.tasting?.flavorTags || []) flavorTags.add(t);
+      if (typeof c.date === 'string') months.add(c.date.slice(0, 7));
       if (c.incomplete) incomplete = true;
     }
     return {
@@ -87,6 +89,7 @@ export function buildBeerSummaries(beers, checkins) {
       placeTypes,
       servings,
       flavorTags,
+      months,
       incomplete,
       photoId: photoCheckin ? photoCheckin.photoIds[0] : null,
     };
@@ -109,6 +112,7 @@ export function defaultCriteria() {
     placeTypes: [],
     servings: [],
     flavorTags: [], // 記録の香りタグ（すべて含む銘柄）
+    month: null, // 'YYYY-MM'：その月に飲んだ記録がある銘柄（統計から開いたとき）
     ratingMin: null,
     incompleteOnly: false,
     status: 'all', // 'all' | 'tried' | 'want'
@@ -126,6 +130,7 @@ export function countActiveFilters(criteria) {
   if (c.placeTypes.length) n++;
   if (c.servings.length) n++;
   if (c.flavorTags.length) n++;
+  if (c.month) n++;
   if (c.ratingMin !== null) n++;
   if (c.incompleteOnly) n++;
   if (c.status !== 'all') n++;
@@ -150,6 +155,7 @@ export function matchesCriteria(summary, criteria) {
   }
   if (c.placeTypes && c.placeTypes.length && !c.placeTypes.some((t) => summary.placeTypes.has(t))) return false;
   if (c.servings && c.servings.length && !c.servings.some((s) => summary.servings.has(s))) return false;
+  if (c.month && !(summary.months || new Set()).has(c.month)) return false;
   if (c.flavorTags && c.flavorTags.length) {
     const tags = summary.flavorTags || new Set();
     if (!c.flavorTags.every((t) => tags.has(t))) return false;

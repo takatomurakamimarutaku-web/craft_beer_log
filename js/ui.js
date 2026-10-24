@@ -117,7 +117,7 @@ export function showToast(message, { actionLabel, onAction, duration = 3000 } = 
  * @param {{title, message, buttons:[{label, value, variant}]}} opts
  * @returns {Promise<any>} 押したボタンの value（閉じた場合は null）
  */
-export function confirmDialog({ title, message, buttons }) {
+export function confirmDialog({ title, message, buttons, body = null }) {
   return new Promise((resolve) => {
     const prevFocus = document.activeElement;
     const finish = (v) => {
@@ -138,6 +138,7 @@ export function confirmDialog({ title, message, buttons }) {
       { class: 'dialog', role: 'alertdialog', 'aria-modal': 'true', 'aria-labelledby': 'dialog-title' },
       h('h2', { id: 'dialog-title', text: title }),
       message ? h('p', { class: 'dialog-message', text: message }) : null,
+      body,
       h(
         'div',
         { class: 'dialog-buttons' },

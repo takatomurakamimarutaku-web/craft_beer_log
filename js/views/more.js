@@ -9,7 +9,7 @@ export function render({ outlet }) {
       'ul',
       { class: 'menu' },
       item('#/wishlist', '飲みたいリスト'),
-      item('#/stats', '統計', 'Phase 6で実装予定'),
+      item('#/stats', '統計', 'スタイル・度数・ブリュワー・月別など'),
       item('#/settings', '設定・バックアップ'),
     ),
   );

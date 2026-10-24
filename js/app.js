@@ -10,8 +10,8 @@ import * as searchView from './views/search.js';
 import * as wishlistView from './views/wishlist.js';
 import * as settingsView from './views/settings.js';
 import * as moreView from './views/more.js';
-import * as placeholderView from './views/placeholder.js';
 import * as knowledgeView from './views/knowledge.js';
+import * as statsView from './views/stats.js';
 import { migrateBeerStyle, STYLES_VERSION } from './knowledge.js';
 
 // back: 戻るボタンを表示し、アプリ内の履歴が無いときに戻る先
@@ -29,7 +29,7 @@ const routes = [
   { path: '/more', view: moreView, title: 'その他', tab: 'more' },
   { path: '/wishlist', view: wishlistView, title: '飲みたいリスト', tab: 'more', back: '#/more' },
   { path: '/wishlist/new', view: beerEditView, title: '飲みたい銘柄を追加', tab: 'more', back: '#/wishlist' },
-  { path: '/stats', view: placeholderView, title: '統計', tab: 'more', back: '#/more', phase: 'Phase 6' },
+  { path: '/stats', view: statsView, title: '統計', tab: 'more', back: '#/more' },
   { path: '/settings', view: settingsView, title: '設定', tab: 'more', back: '#/more' },
 ];
 

@@ -3,6 +3,7 @@ import { h, svg, createThumbLoader, formatDate, formatAbv, formatYen, stars, con
 import { styleLabel, SERVING_LABELS, PLACE_TYPE_LABELS, STATUS_LABELS } from '../models.js';
 import { summarizeRatings } from '../stats.js';
 import { averageTasting, hasScores, tastingRadarSvg } from '../tasting.js';
+import { buildShareText, shareContent } from '../share.js';
 
 export async function render({ app, outlet, params }) {
   const beer = await app.db.getBeer(params.id);
@@ -57,6 +58,7 @@ export async function render({ app, outlet, params }) {
     { class: 'actions' },
     h('a', { class: 'btn btn-primary', href: `#/checkin/new?beerId=${encodeURIComponent(beer.id)}`, text: '＋ この銘柄を記録' }),
     h('a', { class: 'btn', href: `#/beer/${encodeURIComponent(beer.id)}/edit`, text: '編集' }),
+    h('button', { type: 'button', class: 'btn', text: '共有', onclick: () => share() }),
     h('button', { type: 'button', class: 'btn btn-danger-text', text: '削除', onclick: () => removeBeer() }),
   );
 
@@ -85,6 +87,10 @@ export async function render({ app, outlet, params }) {
   const list = h('ul', { class: 'history' });
   for (const c of checkins) list.append(historyItem(c));
   history.append(list);
+
+  // iOS は共有をタップ直後に呼ぶ必要があるため、写真は先に読み込んでおく
+  const sharePhotoId = checkins.find((c) => c.photoIds?.length)?.photoIds[0];
+  const sharePhoto = sharePhotoId ? app.db.getPhoto(sharePhotoId).then((p) => p?.blob || null, () => null) : Promise.resolve(null);
 
   outlet.append(...[info, rating, tasteSummary, actions, history].filter(Boolean));
 
@@ -140,6 +146,21 @@ export async function render({ app, outlet, params }) {
       hasScores(t) ? h('div', { class: 'radar-mini' }, svg(tastingRadarSvg(t, { size: 64, compact: true }))) : null,
       tags.length ? h('p', { class: 'small muted', text: tags.map((id) => tagLabel.get(id) || id).join('・') }) : null,
     );
+  }
+
+  async function share() {
+    // 最新の記録と、写真のある最新の記録の1枚目を共有する
+    const text = buildShareText(beer, checkins[0] || null, app.styles, { tagLabels: Object.fromEntries(tagLabel) });
+    const photo = await sharePhoto;
+    const result = await shareContent({ title: beer.name, text, photo });
+    if (result === 'copied') showToast('共有用の文章をコピーしました');
+    else if (result === 'manual') showManualCopy(text);
+  }
+
+  function showManualCopy(text) {
+    const area = h('textarea', { class: 'share-text', rows: 6, readonly: true, value: text });
+    confirmDialog({ title: '共有用の文章', message: 'コピーして使ってください。', body: area, buttons: [{ label: '閉じる', value: true, variant: 'primary' }] });
+    setTimeout(() => area.select(), 50);
   }
 
   async function removeBeer() {
