@@ -2,7 +2,7 @@
   "name": "craft-beer-log",
   "version": "0.1.0",
   "private": true,
-  "description": "iPhone向けクラフトビール記録・検索PWA",
+  "description": "ホップ手帖：iPhone向けクラフトビール記録・検索PWA",
   "type": "module",
   "scripts": {
     "test": "node --test",

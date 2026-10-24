@@ -64,7 +64,7 @@ async function start() {
     refresh: () => router.refresh(),
     setTitle: (t) => {
       titleEl.textContent = t;
-      document.title = `${t} | クラフトビール記録`;
+      document.title = `${t} | ホップ手帖`;
     },
   };
 

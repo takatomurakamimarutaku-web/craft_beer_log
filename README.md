@@ -1,4 +1,4 @@
-# クラフトビール記録
+# ホップ手帖
 
 iPhone で使うクラフトビールの記録・検索アプリ（PWA）です。
 HTML / CSS / JavaScript（ES Modules）だけで作られており、ビルドは不要です。
@@ -163,7 +163,7 @@ node scripts/check-pwa.js
 
 Service Worker がアプリのファイルをキャッシュしているため、**ファイルを変更したら必ず次を行ってください。**
 
-1. `sw.js` の `CACHE_VERSION` を上げる（例：`'v4'` → `'v5'`）
+1. `sw.js` の `CACHE_VERSION` を上げる（例：`'v5'` → `'v6'`）
 2. ファイルを追加・削除・改名した場合は `sw.js` の `PRECACHE_URLS` も更新する
 3. `npm test` と `node scripts/check-pwa.js` が通ることを確認する（キャッシュ対象の漏れはここで検出されます）
 4. コミットして push する

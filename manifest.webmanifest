@@ -1,6 +1,6 @@
 {
-  "name": "クラフトビール記録",
-  "short_name": "ビール記録",
+  "name": "ホップ手帖",
+  "short_name": "ホップ手帖",
   "description": "飲んだクラフトビールを記録・検索するアプリ",
   "lang": "ja",
   "start_url": "./",
