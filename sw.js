@@ -1,6 +1,6 @@
 // Service Worker
 // ファイルを変更したら CACHE_VERSION を上げる（README「キャッシュ更新手順」参照）
-const CACHE_VERSION = 'v12';
+const CACHE_VERSION = 'v14';
 const CACHE_NAME = `craft-beer-log-${CACHE_VERSION}`;
 
 // 事前にキャッシュするファイル（相対パス）。ファイルを追加・削除したらここも更新する
@@ -13,8 +13,10 @@ const PRECACHE_URLS = [
   'js/backup.js',
   'js/charts.js',
   'js/db.js',
+  'js/errors.js',
   'js/illust.js',
   'js/image.js',
+  'js/install.js',
   'js/knowledge.js',
   'js/models.js',
   'js/router.js',
@@ -24,6 +26,7 @@ const PRECACHE_URLS = [
   'js/tasting.js',
   'js/ui.js',
   'js/validate.js',
+  'js/version.js',
   'js/views/beer-detail.js',
   'js/views/beer-edit.js',
   'js/views/beer-fields.js',
@@ -34,10 +37,13 @@ const PRECACHE_URLS = [
   'js/views/search.js',
   'js/views/settings.js',
   'js/views/stats.js',
+  'js/views/welcome.js',
   'js/views/wishlist.js',
   'data/basics.json',
+  'data/changelog.json',
   'data/flavor-tags.json',
   'data/hops.json',
+  'data/images.json',
   'data/styles.json',
   'data/terms.json',
   'icons/apple-touch-icon.png',

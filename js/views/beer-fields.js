@@ -20,7 +20,7 @@ export function beerFields({ beer = {}, styles, breweries, withMemo = false, idP
     id: `${idPrefix}-abv`,
     type: 'text',
     inputmode: 'decimal',
-    value: typeof beer.abv === 'number' ? String(beer.abv) : '',
+    value: typeof beer.abv === 'number' ? String(beer.abv) : typeof beer.abv === 'string' ? beer.abv : '',
     placeholder: '例：5.5',
   });
   const memo = withMemo ? h('textarea', { id: `${idPrefix}-memo`, rows: 3, value: beer.memo || '' }) : null;

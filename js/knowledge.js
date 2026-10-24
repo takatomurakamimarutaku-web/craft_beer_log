@@ -127,6 +127,37 @@ export function formatRange(range, unit = '') {
   return `${f(range[0])}〜${f(range[1])}${unit}`;
 }
 
+// ---- 画像（data/images.json） ----
+
+export const IMAGE_KINDS = ['styles', 'hops'];
+export const IMAGE_LICENSES = ['ai', 'cc-by', 'cc-by-sa', 'cc0', 'own', 'permission'];
+
+/** スタイル・ホップの画像情報。無ければ null（イラストを表示する） */
+export function imageEntry(images, kind, id) {
+  const e = images?.[kind]?.[id];
+  return e && typeof e.file === 'string' ? e : null;
+}
+
+/** 画像の下に出す表記（純粋関数）。AI生成は仮である旨、CC素材は作者とライセンスを示す */
+export function imageCaption(e) {
+  if (!e) return '';
+  switch (e.license) {
+    case 'ai':
+      return 'AI生成のイメージ（仮）。実際のビール・ホップとは異なる場合があります';
+    case 'cc-by':
+    case 'cc-by-sa':
+      return `写真：${e.author}（${e.license === 'cc-by' ? 'CC BY' : 'CC BY-SA'} ${e.licenseVersion || ''}`.trimEnd() + '）';
+    case 'cc0':
+      return e.author ? `写真：${e.author}（CC0）` : '写真（CC0）';
+    case 'own':
+      return e.author ? `写真：${e.author}` : '';
+    case 'permission':
+      return `写真提供：${e.author}`;
+    default:
+      return '';
+  }
+}
+
 export const GLASS_LABELS = {
   flute: 'ピルスナーグラス（フルート型）',
   nonic: 'パイントグラス（ノニック）',

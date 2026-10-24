@@ -197,7 +197,7 @@ export async function render({ app, outlet, params }) {
   function undoToast(message, snapshot) {
     showToast(message, {
       actionLabel: '元に戻す',
-      duration: 5000,
+      duration: 10000,
       onAction: async () => {
         await app.db.restoreSnapshot(snapshot);
         app.refresh();

@@ -50,7 +50,7 @@ export async function render({ app, outlet }) {
     app.refresh();
     showToast(`「${b.name}」を削除しました`, {
       actionLabel: '元に戻す',
-      duration: 5000,
+      duration: 10000,
       onAction: async () => {
         await app.db.restoreSnapshot(snapshot);
         app.refresh();

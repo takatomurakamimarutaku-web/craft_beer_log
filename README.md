@@ -155,6 +155,16 @@ NFKC 正規化 → 小文字化 → ひらがなをカタカナに統一 → 前
 
 `{ id, name, summary, sections（[{ heading, body（段落の配列） }]）, steps（[{ name, text }] または null。工程の流れとして最初の節の後に表示）, compare（{ columns, rows, note, insertAfter } または null。比較表。insertAfter の節の後に表示）, relatedBasics / relatedStyles / relatedTerms / relatedHops（各データの ID）, sources }`。配列の順が一覧の表示順（読む順）です。
 
+### images.json（スタイル・ホップの画像）
+
+`{ styles: { <スタイルID>: 画像 }, hops: { <ホップID>: 画像 } }`。画像が無い項目はイラストを表示します。
+
+画像 = `{ file（images/styles/<id>.webp など）, license（"ai" | "cc-by" | "cc-by-sa" | "cc0" | "own" | "permission"）, author, licenseVersion, sourceUrl, service, generatedAt, prompt }`
+
+- AI生成（license "ai"）は service（生成サービス名）・generatedAt・prompt を必ず記録し、画面に「AI生成のイメージ（仮）」と表示します（文章の指示だけで生成し、ネット上の画像は入力しない）
+- CC BY / BY-SA と提供写真は author と sourceUrl が必須で、画面に作者・ライセンス・出典を表示します
+- 画像は長辺 640px 程度の WebP（1枚 50KB 前後）にし、`sw.js` の PRECACHE_URLS に追加します（`images/` も漏れ検査の対象）
+
 ### flavor-tags.json
 
 香りタグの語彙 `{ id, label }`。ホップの香り（Phase 4-3）とテイスティング入力（Phase 5）で共用します。
@@ -182,6 +192,19 @@ NFKC 正規化 → 小文字化 → ひらがなをカタカナに統一 → 前
 - 読み込み時に形式・バージョン・各データ（ID の重複、銘柄・写真の参照、日付・評価の値）を検証し、問題があれば何も取り込みません
 - アプリより新しいバージョンのファイルは読み込みません。古い形式は `js/backup.js` の `UPGRADES` で変換します
 - 「既存のデータに追加」では同じ ID のデータは既存を残し、重複させません。「置き換え」は確認のうえ全データを入れ替えます
+
+## 製品化に向けた対応（v1.1.0）
+
+- 初回起動時の案内（20歳以上の確認 → できること → データの保存先）。完了すると meta の `onboardedAt` に記録（`js/views/welcome.js`）
+- iPhone の Safari で開いているときは、ホーム画面への追加の案内を表示（判定は `js/install.js`）
+- バックアップの案内：未バックアップで最初の記録から30日以上 or 20件以上、最終バックアップから30日以上、またはその後20件以上（`backupReminder`）
+- 記録画面の入力途中の内容を meta の `checkinDraft` に自動保存（写真を除く）。タブ・戻るボタンで離れるときは確認する
+- エラーは `js/errors.js` で「何が起きたか＋次にすること」の日本語にする（容量不足・DB・許可・通信）
+- 文字サイズを iPhone の設定に合わせる（`-apple-system-body`）、フォーカス表示、ダイアログ内のフォーカス閉じ込め、「元に戻す」は10秒、色のコントラスト比4.5以上
+- 利用者向けバージョンは `js/version.js` の `APP_VERSION`。更新内容は `data/changelog.json`（package.json と一致することをテストで確認）
+- GitHub Actions（`.github/workflows/test.yml`）で push・PR ごとに `npm test` と `check-pwa` を実行
+
+リリースのたびに：`APP_VERSION`・`package.json` の version・`changelog.json` の先頭を更新し、`CACHE_VERSION` を上げる。
 
 ## テスト
 

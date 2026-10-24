@@ -111,6 +111,30 @@ export function showToast(message, { actionLabel, onAction, duration = 3000 } = 
   return close;
 }
 
+// ---- フォーカスの閉じ込め（モーダル表示中に Tab で背面へ移らないようにする） ----
+
+const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+/** container 内で Tab / Shift+Tab を循環させる。戻り値で解除 */
+export function trapFocus(container) {
+  const onKey = (e) => {
+    if (e.key !== 'Tab') return;
+    const items = [...container.querySelectorAll(FOCUSABLE)].filter((el) => !el.closest('[hidden]'));
+    if (!items.length) return;
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (e.shiftKey && (document.activeElement === first || !container.contains(document.activeElement))) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  };
+  document.addEventListener('keydown', onKey);
+  return () => document.removeEventListener('keydown', onKey);
+}
+
 // ---- 確認ダイアログ ----
 
 /**
@@ -123,6 +147,7 @@ export function confirmDialog({ title, message, buttons, body = null }) {
     const finish = (v) => {
       overlay.remove();
       document.removeEventListener('keydown', onKey);
+      release();
       if (prevFocus && prevFocus.focus) prevFocus.focus();
       resolve(v);
     };
@@ -150,6 +175,7 @@ export function confirmDialog({ title, message, buttons, body = null }) {
     const overlay = h('div', { class: 'overlay', onclick: (e) => e.target === overlay && finish(null) }, dialog);
     document.body.append(overlay);
     document.addEventListener('keydown', onKey);
+    const release = trapFocus(dialog);
     const primary = dialog.querySelector('.btn-primary, .btn-danger') || dialog.querySelector('button');
     primary.focus();
   });
@@ -261,7 +287,7 @@ export function starInput(value, onChange) {
     h('button', {
       type: 'button',
       class: 'star',
-      'aria-label': `${n}`,
+      'aria-label': `${n}つ星`,
       onclick: () => {
         current = current === n ? null : n;
         paint();
@@ -359,19 +385,28 @@ export async function showPhoto(getPhoto, id) {
   const p = await getPhoto(id);
   if (!p) return;
   const url = URL.createObjectURL(p.blob);
+  const prevFocus = document.activeElement;
+  const onKey = (e) => e.key === 'Escape' && close();
   const close = () => {
     overlay.remove();
     URL.revokeObjectURL(url);
     window.removeEventListener('hashchange', close);
+    document.removeEventListener('keydown', onKey);
+    release();
+    if (prevFocus && prevFocus.focus) prevFocus.focus();
   };
+  const closeBtn = h('button', { type: 'button', class: 'photo-close', 'aria-label': '閉じる', text: '×' });
   const overlay = h(
     'div',
-    { class: 'overlay photo-overlay', onclick: close },
+    { class: 'overlay photo-overlay', role: 'dialog', 'aria-modal': 'true', 'aria-label': '写真の拡大表示', onclick: close },
     h('img', { src: url, alt: '写真' }),
-    h('button', { type: 'button', class: 'photo-close', 'aria-label': '閉じる', text: '×' }),
+    closeBtn,
   );
   window.addEventListener('hashchange', close);
+  document.addEventListener('keydown', onKey);
   document.body.append(overlay);
+  const release = trapFocus(overlay);
+  closeBtn.focus();
 }
 
 /** 空の状態の表示 */

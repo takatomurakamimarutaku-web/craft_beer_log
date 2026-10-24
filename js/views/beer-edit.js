@@ -4,6 +4,7 @@ import { createBeer } from '../models.js';
 import { validateBeer } from '../validate.js';
 import { normalize } from '../search.js';
 import { beerFields } from './beer-fields.js';
+import { errorText } from '../errors.js';
 
 export async function render({ app, outlet, params }) {
   const editing = Boolean(params.id);
@@ -59,7 +60,7 @@ export async function render({ app, outlet, params }) {
       app.goBack(editing ? `#/beer/${encodeURIComponent(saved.id)}` : '#/wishlist');
     } catch (e) {
       console.error(e);
-      showToast(`保存できませんでした：${e.message}`, { duration: 6000 });
+      showToast(errorText(e, '保存'), { duration: 8000 });
       saving = false;
     }
   }

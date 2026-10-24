@@ -130,3 +130,27 @@ test('basics.json：入門記事の本文・工程・比較表・リンク先・
   assert.ok(basics.find((a) => a.id === 'brewing').steps.length >= 5, '造り方は工程つき');
   assert.ok(basics.find((a) => a.id === 'fermentation').compare, '発酵は比較表つき');
 });
+
+test('images.json：対象のID・ファイルの存在・ライセンス表記', async () => {
+  const { existsSync } = await import('node:fs');
+  const { IMAGE_KINDS, IMAGE_LICENSES } = await import('../js/knowledge.js');
+  const images = load('images');
+  const ids = { styles: new Set(load('styles').map((s) => s.id)), hops: new Set(load('hops').map((x) => x.id)) };
+  assert.deepEqual(Object.keys(images).sort(), [...IMAGE_KINDS].sort());
+  for (const kind of IMAGE_KINDS) {
+    for (const [id, e] of Object.entries(images[kind])) {
+      const where = `${kind}/${id}`;
+      assert.ok(ids[kind].has(id), `${where}: 対象が存在しない`);
+      assert.match(e.file, new RegExp(`^images/${kind}/[a-z0-9-]+\\.(webp|jpg|png)$`), `${where}: file`);
+      assert.ok(existsSync(new URL(`../${e.file}`, import.meta.url)), `${where}: 画像ファイルが無い`);
+      assert.ok(IMAGE_LICENSES.includes(e.license), `${where}: license`);
+      if (e.license === 'ai') {
+        // 法務検討の前提：生成サービス名・生成日・プロンプトを記録する
+        assert.ok(e.service && e.prompt, `${where}: AI画像は service と prompt が必要`);
+        assert.match(e.generatedAt, /^\d{4}-\d{2}-\d{2}$/, `${where}: generatedAt`);
+      }
+      if (['cc-by', 'cc-by-sa', 'permission'].includes(e.license)) assert.ok(e.author && e.sourceUrl, `${where}: 作者と出典が必要`);
+      if (e.sourceUrl) assert.match(e.sourceUrl, /^https:\/\//, `${where}: sourceUrl は https`);
+    }
+  }
+});

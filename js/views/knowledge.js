@@ -1,6 +1,6 @@
 // 知識（#/knowledge 一覧、#/knowledge/style/:id など詳細）
 import { h, svg, emptyState, chipGroup, formatDate, stars } from '../ui.js';
-import { searchKnowledge, basicTexts, styleTexts, termTexts, hopTexts, filterByTags, HOP_USE_LABELS, srmToHex, styleDisplaySrm, formatRange, GLASS_LABELS } from '../knowledge.js';
+import { searchKnowledge, basicTexts, styleTexts, termTexts, hopTexts, filterByTags, HOP_USE_LABELS, srmToHex, styleDisplaySrm, formatRange, GLASS_LABELS, imageEntry, imageCaption } from '../knowledge.js';
 import { buildBeerSummaries, sortSummaries } from '../search.js';
 import { matchByFlavorTags } from '../tasting.js';
 import { glassSvg, rangeBarSvg, ibuScaleSvg, srmScaleSvg, hopConeSvg } from '../illust.js';
@@ -38,9 +38,9 @@ function saveState(s) {
 
 export async function render(ctx) {
   const { route } = ctx;
-  if (route.kind === 'style') return renderStyle(ctx);
   const data = await ctx.app.loadKnowledge();
   if (ctx.isStale()) return;
+  if (route.kind === 'style') return renderStyle(ctx, data);
   if (route.kind === 'basic') return renderBasic(ctx, data);
   if (route.kind === 'term') return renderTerm(ctx, data);
   if (route.kind === 'hop') return renderHop(ctx, data);
@@ -78,7 +78,7 @@ function renderList({ app, outlet, query }, data) {
 
   function renderBody() {
     if (s.tab === 'basics') return body.replaceChildren(...basicList(data.basics, s.q));
-    if (s.tab === 'styles') return body.replaceChildren(...styleList(app.styles, s.q));
+    if (s.tab === 'styles') return body.replaceChildren(...styleList(app.styles, s.q, data.images));
     if (s.tab === 'terms') return body.replaceChildren(...termList(data.terms, s.q));
     body.replaceChildren(...hopList(data, s, (tags) => {
       s = { ...s, tags };
@@ -135,7 +135,7 @@ function basicList(basics, q) {
   ];
 }
 
-function styleList(styles, q) {
+function styleList(styles, q, images) {
   const items = searchKnowledge(styles, q, styleTexts);
   if (!items.length) return [h('p', { class: 'list-meta', text: '該当するスタイルがありません。' })];
   const groups = new Map();
@@ -157,7 +157,7 @@ function styleList(styles, q) {
             h(
               'a',
               { class: 'card', href: `#/knowledge/style/${encodeURIComponent(st.id)}` },
-              h('div', { class: 'thumb knowledge-thumb' }, styleGlass(st)),
+              h('div', { class: 'thumb knowledge-thumb' }, artwork(imageEntry(images, 'styles', st.id), () => styleGlass(st), '')),
               h(
                 'div',
                 { class: 'card-body' },
@@ -202,7 +202,7 @@ function termList(terms, q) {
   ];
 }
 
-function hopList({ hops, flavorTags }, s, onTags) {
+function hopList({ hops, flavorTags, images }, s, onTags) {
   // ホップに使われているタグだけを選択肢にする
   const used = new Set(hops.flatMap((x) => x.flavorTags));
   const filter = h(
@@ -232,7 +232,7 @@ function hopList({ hops, flavorTags }, s, onTags) {
               h(
                 'a',
                 { class: 'card', href: `#/knowledge/hop/${encodeURIComponent(x.id)}` },
-                h('div', { class: 'thumb knowledge-thumb' }, svg(hopConeSvg({ title: x.name }))),
+                h('div', { class: 'thumb knowledge-thumb' }, artwork(imageEntry(images, 'hops', x.id), () => svg(hopConeSvg({ title: x.name })), '')),
                 h(
                   'div',
                   { class: 'card-body' },
@@ -253,13 +253,29 @@ function tagLabeler(flavorTags) {
   return (id) => map.get(id) || id;
 }
 
+/** 画像があれば写真、無ければイラスト（fallback）を返す */
+function artwork(entry, fallback, alt) {
+  if (!entry) return fallback();
+  const img = h('img', { src: entry.file, alt, loading: 'lazy', decoding: 'async', class: 'knowledge-photo' });
+  // 画像が読めない（オフラインで未取得など）ときはイラストに戻す
+  img.addEventListener('error', () => img.replaceWith(fallback()), { once: true });
+  return img;
+}
+
+/** 詳細画面の画像の表記（AI生成の注記・クレジット） */
+function imageNote(entry) {
+  const text = imageCaption(entry);
+  if (!text) return null;
+  return h('p', { class: 'small muted image-note' }, text, entry.sourceUrl ? [' ', h('a', { href: entry.sourceUrl, target: '_blank', rel: 'noopener noreferrer', text: '出典' })] : null);
+}
+
 function styleGlass(st) {
   return svg(glassSvg(st.glass, srmToHex(styleDisplaySrm(st)), { title: `${st.name}のイメージ` }));
 }
 
 // ---- スタイル詳細 ----
 
-async function renderStyle({ app, outlet, params, isStale }) {
+async function renderStyle({ app, outlet, params, isStale }, { images }) {
   const st = app.styles.find((x) => x.id === params.id);
   const [beers, checkins] = st ? await Promise.all([app.db.listBeersByStatus('tried'), app.db.listCheckins()]) : [[], []];
   if (isStale()) return;
@@ -269,11 +285,12 @@ async function renderStyle({ app, outlet, params, isStale }) {
   }
   app.setTitle(st.name);
   const color = srmToHex(styleDisplaySrm(st));
+  const photo = imageEntry(images, 'styles', st.id);
   fill(outlet,
     h(
       'div',
       { class: 'knowledge-hero' },
-      h('div', { class: 'knowledge-art' }, styleGlass(st)),
+      h('div', { class: `knowledge-art${photo ? ' has-photo' : ''}` }, artwork(photo, () => styleGlass(st), `${st.name}のイメージ`)),
       h(
         'div',
         {},
@@ -283,6 +300,7 @@ async function renderStyle({ app, outlet, params, isStale }) {
         st.aliases.length ? h('p', { class: 'muted small', text: `別名：${st.aliases.join('、')}` }) : null,
       ),
     ),
+    imageNote(photo),
     h('p', { class: 'knowledge-lead', text: st.summary }),
     section(
       '数値（代表的な目安）',
@@ -409,7 +427,7 @@ function renderTerm({ app, outlet, params }, { terms }) {
 
 // ---- ホップ詳細 ----
 
-async function renderHop({ app, outlet, params, isStale }, { hops, flavorTags }) {
+async function renderHop({ app, outlet, params, isStale }, { hops, flavorTags, images }) {
   const x = hops.find((y) => y.id === params.id);
   const [beers, checkins] = x ? await Promise.all([app.db.listBeers(), app.db.listCheckins()]) : [[], []];
   if (isStale()) return;
@@ -420,12 +438,13 @@ async function renderHop({ app, outlet, params, isStale }, { hops, flavorTags })
   app.setTitle(x.name);
   const labelOf = tagLabeler(flavorTags);
   const linked = new Map(pickStyles(app.styles, x.styleIds).map((s) => [s.id, s]));
+  const photo = imageEntry(images, 'hops', x.id);
   fill(
     outlet,
     h(
       'div',
       { class: 'knowledge-hero' },
-      h('div', { class: 'knowledge-art' }, svg(hopConeSvg({ title: `${x.name}のイメージ` }))),
+      h('div', { class: `knowledge-art${photo ? ' has-photo' : ''}` }, artwork(photo, () => svg(hopConeSvg({ title: `${x.name}のイメージ` })), `${x.name}のイメージ`)),
       h(
         'div',
         {},
@@ -435,6 +454,7 @@ async function renderHop({ app, outlet, params, isStale }, { hops, flavorTags })
         x.aliases.length ? h('p', { class: 'muted small', text: `別名：${x.aliases.join('、')}` }) : null,
       ),
     ),
+    imageNote(photo),
     h('p', { class: 'knowledge-lead', text: x.aroma }),
     section(
       '特徴（代表的な目安）',
