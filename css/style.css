@@ -282,7 +282,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--primary); o
 
 /* ---- Phase 4: 知識 ---- */
 .knowledge-tabs { margin: 4px 0 8px; }
-.knowledge-tabs .seg { flex: 1; }
+.knowledge-tabs .seg { flex: 1; padding: 0 4px; white-space: nowrap; font-size: 0.88rem; }
 .seg[aria-selected="true"] { background: var(--primary); border-color: var(--primary); color: var(--on-primary); font-weight: 700; }
 .knowledge-thumb { color: var(--text); }
 .knowledge-thumb .glass-art { width: 44px; height: 60px; }
@@ -316,6 +316,19 @@ a.chip { text-decoration: none; display: inline-block; }
 .knowledge-art .hop-art { width: 80px; height: 100px; }
 .tag-filter { margin: 0 0 10px; }
 .hop-tags { margin-top: 4px; }
+.basics-list { list-style: none; padding: 0; }
+.basic-no { display: inline-grid; place-items: center; width: 1.6em; height: 1.6em; margin-right: 8px; border-radius: 50%; background: var(--primary); color: var(--on-primary); font-size: 0.85rem; }
+.steps { margin: 0; padding: 0; list-style: none; counter-reset: step; display: grid; gap: 10px; }
+.step { position: relative; padding-left: 40px; counter-increment: step; }
+.step::before { content: counter(step); position: absolute; left: 0; top: 0; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--primary); color: var(--on-primary); font-weight: 700; font-size: 0.9rem; }
+.step:not(:last-child)::after { content: ""; position: absolute; left: 13px; top: 30px; bottom: -10px; width: 2px; background: var(--border); }
+.step-name { display: block; }
+.table-scroll { overflow-x: auto; }
+.compare-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.compare-table th, .compare-table td { padding: 8px 6px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+.compare-table thead th { color: var(--muted); font-size: 0.8rem; }
+.compare-table tbody th { color: var(--muted); font-weight: 700; white-space: nowrap; }
+.basic-next { margin: 4px 0 12px; }
 
 /* ---- Phase 5: テイスティング ---- */
 .tasting-section > summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 6px; padding: 6px 0; }
