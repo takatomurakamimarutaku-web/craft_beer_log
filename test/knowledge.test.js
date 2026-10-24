@@ -1,0 +1,57 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { srmToHex, styleDisplaySrm, searchKnowledge, styleTexts, formatRange } from '../js/knowledge.js';
+import { glassSvg, rangeBarSvg, GLASS_TYPES } from '../js/illust.js';
+
+test('srmToHex：端・中間・不正値', () => {
+  assert.equal(srmToHex(0), '#ffe699');
+  assert.equal(srmToHex(1), '#ffe699');
+  assert.equal(srmToHex(40), '#36080a');
+  assert.equal(srmToHex(80), '#36080a');
+  assert.match(srmToHex(5), /^#[0-9a-f]{6}$/);
+  assert.equal(srmToHex(NaN), srmToHex(6));
+  assert.equal(srmToHex(6), '#f8a600');
+  // 数値が大きいほど暗い
+  const lum = (hex) => parseInt(hex.slice(1, 3), 16) + parseInt(hex.slice(3, 5), 16) + parseInt(hex.slice(5), 16);
+  assert.ok(lum(srmToHex(3)) > lum(srmToHex(12)) && lum(srmToHex(12)) > lum(srmToHex(35)));
+});
+
+test('styleDisplaySrm：指定値 → 範囲の中央 → 既定値', () => {
+  assert.equal(styleDisplaySrm({ displaySrm: 7, srm: [1, 40] }), 7);
+  assert.equal(styleDisplaySrm({ displaySrm: null, srm: [2, 4] }), 3);
+  assert.equal(styleDisplaySrm({ displaySrm: null, srm: null }), 6);
+});
+
+test('searchKnowledge：表記ゆれを吸収し、複数語は AND', () => {
+  const items = [
+    { name: 'ヘイジーIPA', nameEn: 'Hazy IPA', category: 'ペールエール・IPA', aliases: ['NEIPA'], summary: '', flavor: 'トロピカル' },
+    { name: 'スタウト', nameEn: 'Irish Stout', category: 'ダーク', aliases: [], summary: '', flavor: 'コーヒー' },
+  ];
+  assert.equal(searchKnowledge(items, '', styleTexts).length, 2);
+  assert.deepEqual(searchKnowledge(items, 'へいじー', styleTexts).map((s) => s.name), ['ヘイジーIPA']);
+  assert.deepEqual(searchKnowledge(items, 'ｎｅｉｐａ', styleTexts).map((s) => s.name), ['ヘイジーIPA']);
+  assert.deepEqual(searchKnowledge(items, 'stout コーヒー', styleTexts).map((s) => s.name), ['スタウト']);
+  assert.equal(searchKnowledge(items, 'stout トロピカル', styleTexts).length, 0);
+});
+
+test('formatRange', () => {
+  assert.equal(formatRange([4.2, 5.8], '%'), '4.2〜5.8%');
+  assert.equal(formatRange([20, 40]), '20〜40');
+  assert.equal(formatRange(null), 'さまざま');
+});
+
+test('glassSvg：全グラスで切り抜きIDが一意、色は検証される', () => {
+  const a = glassSvg('tulip', '#123456');
+  const b = glassSvg('tulip', '#123456');
+  const id = (s) => s.match(/clipPath id="([^"]+)"/)[1];
+  assert.notEqual(id(a), id(b));
+  assert.match(a, /fill="#123456"/);
+  assert.doesNotMatch(glassSvg('nonic', 'red;"><script>'), /script/);
+  for (const g of GLASS_TYPES) assert.match(glassSvg(g, '#ffffff'), /^<svg[\s\S]*<\/svg>$/);
+  assert.match(glassSvg('unknown', '#ffffff'), /<svg/, '不明なグラスはパイントで描く');
+});
+
+test('rangeBarSvg：範囲外は上限で切り、null は空バー', () => {
+  assert.match(rangeBarSvg([50, 150], 100), /x="100.0" y="2" width="100.0"/);
+  assert.doesNotMatch(rangeBarSvg(null, 100), /y="2"/);
+});

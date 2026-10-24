@@ -1,14 +1,1168 @@
 [
-  { "id": "pilsner", "name": "ピルスナー", "provisional": true },
-  { "id": "pale-ale", "name": "ペールエール", "provisional": true },
-  { "id": "ipa", "name": "IPA", "provisional": true },
-  { "id": "hazy-ipa", "name": "ヘイジーIPA", "provisional": true },
-  { "id": "double-ipa", "name": "ダブルIPA", "provisional": true },
-  { "id": "amber-ale", "name": "アンバーエール", "provisional": true },
-  { "id": "porter", "name": "ポーター", "provisional": true },
-  { "id": "stout", "name": "スタウト", "provisional": true },
-  { "id": "weizen", "name": "ヴァイツェン", "provisional": true },
-  { "id": "belgian-white", "name": "ベルジャンホワイト", "provisional": true },
-  { "id": "saison", "name": "セゾン", "provisional": true },
-  { "id": "sour", "name": "サワー", "provisional": true }
+  {
+    "id": "pilsner",
+    "name": "ピルスナー",
+    "nameEn": "Pilsner",
+    "category": "ラガー",
+    "aliases": [
+      "ピルス",
+      "ピルゼナー",
+      "pils",
+      "pilsener"
+    ],
+    "summary": "淡い金色で、軽やかな麦芽の味わいと花やハーブのようなホップの香り、キレのある苦味をもつラガー。チェコ系とドイツ系に大きく分かれる。",
+    "flavor": "クラッカーやパンを思わせる軽い麦芽感に、花やハーブのようなホップ香が重なる。後味は乾いていて、苦味がすっと残る。チェコ系はやや色が濃くコクがあり、ドイツ系はより淡く辛口。",
+    "history": "1842年、チェコのプルゼニ（ピルゼン）で醸造家ヨーゼフ・グロルが淡色のラガーを造ったのが始まりとされる。ドイツでは1870年代初めごろから自国流のピルスが造られるようになった。",
+    "abv": [
+      4.2,
+      5.8
+    ],
+    "ibu": [
+      22,
+      50
+    ],
+    "srm": [
+      2,
+      6
+    ],
+    "displaySrm": null,
+    "glass": "flute",
+    "pairing": [
+      "貝類",
+      "鶏肉料理",
+      "サラダ",
+      "白いチェダーチーズ"
+    ],
+    "rangeNote": "BJCPはドイツ系（ABV 4.4〜5.2%、IBU 22〜40、SRM 2〜4）とチェコ系（ABV 4.2〜5.8%、IBU 30〜45、SRM 3.5〜6）を別スタイルとしている。CraftBeer.comのドイツ系はIBU 25〜50と苦味の上限が高い。ここでは3つを合わせた範囲を表示。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 5D German Pils",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/5/5d-german-pils.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 3B Czech Premium Pale Lager",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/3/3b-czech-premium-pale-lager.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – German-Style Pilsener",
+        "url": "https://www.craftbeer.com/styles/german-style-pilsener",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "helles",
+    "name": "ヘレス",
+    "nameEn": "Munich Helles",
+    "category": "ラガー",
+    "aliases": [
+      "ミュンヘナーヘレス",
+      "helles"
+    ],
+    "summary": "ミュンヘン生まれの淡色ラガー。苦味は控えめで、穀物のやわらかな甘みを前に出した、飲み飽きない味わい。",
+    "flavor": "パンのようなやわらかい麦芽の甘みが中心で、ホップは香りづけ程度。ピルスナーより苦味が穏やかで、丸みのある印象。",
+    "history": "1894年にミュンヘンのシュパーテン醸造所が造ったのが始まりとされ、人気を広げていた淡色のピルスナーに対抗する地元のビールとして生まれた。",
+    "abv": [
+      4.7,
+      5.6
+    ],
+    "ibu": [
+      16,
+      25
+    ],
+    "srm": [
+      3,
+      5.5
+    ],
+    "displaySrm": null,
+    "glass": "flute",
+    "pairing": [
+      "ソーセージ",
+      "サモサ",
+      "コルビーチーズ",
+      "バクラヴァ"
+    ],
+    "rangeNote": "CraftBeer.comはBJCPより上限がやや高い（ABV 5.6%、IBU 25、SRM 5.5。BJCPは5.4%、22、5）。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 4A Munich Helles",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/4/4a-munich-helles.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – German-Style Helles",
+        "url": "https://www.craftbeer.com/styles/german-style-helles",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "pale-ale",
+    "name": "ペールエール",
+    "nameEn": "American Pale Ale",
+    "category": "ペールエール・IPA",
+    "aliases": [
+      "APA",
+      "アメリカンペールエール",
+      "pale ale"
+    ],
+    "summary": "アメリカ産ホップの柑橘や松のような香りが楽しめる、度数も苦味も中くらいのエール。クラフトビールの入口になる定番スタイル。",
+    "flavor": "柑橘・松・花を思わせるホップの香りに、ほどよいパンやカラメルの麦芽感。苦味は中程度で、後味はすっきり。",
+    "history": "アメリカのクラフトビール初期を代表するスタイル。1980年に登場したシエラネバダのペールエールが、多くの醸造所の手本になった。",
+    "abv": [
+      4.4,
+      6.2
+    ],
+    "ibu": [
+      30,
+      50
+    ],
+    "srm": [
+      5,
+      14
+    ],
+    "displaySrm": null,
+    "glass": "tulip",
+    "pairing": [
+      "ローストや網焼きの肉",
+      "チェダーチーズ",
+      "アップルパイ"
+    ],
+    "rangeNote": "色はBJCPがSRM 5〜10、CraftBeer.comが6〜14で、CraftBeer.comはより濃い色まで含む。度数もBJCP 4.5〜6.2%、CraftBeer.com 4.4〜5.4%と異なる。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 18B American Pale Ale",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/18/18b-american-pale-ale.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – American Pale Ale",
+        "url": "https://www.craftbeer.com/styles/american-pale-ale",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "ipa",
+    "name": "IPA",
+    "nameEn": "American IPA",
+    "category": "ペールエール・IPA",
+    "aliases": [
+      "インディアペールエール",
+      "india pale ale",
+      "アメリカンIPA",
+      "アイピーエー"
+    ],
+    "summary": "ホップの香りと苦味を主役にした、やや強めのペールエール。クラフトビールを代表するスタイル。",
+    "flavor": "柑橘、トロピカルフルーツ、松、樹脂などのホップ香がはっきり感じられ、苦味はしっかり。麦芽は脇役で、後味はドライ。",
+    "history": "イギリスのIPAをもとに、アメリカ産のホップと原料で造り直したスタイル。1975年に登場したアンカー醸造のリバティエールが先駆けとされる。",
+    "abv": [
+      5.5,
+      7.5
+    ],
+    "ibu": [
+      40,
+      70
+    ],
+    "srm": [
+      6,
+      14
+    ],
+    "displaySrm": null,
+    "glass": "tulip",
+    "pairing": [
+      "スパイシーな料理",
+      "スパイシーツナロール",
+      "ブルーチーズ"
+    ],
+    "rangeNote": "度数の下限がBJCP 5.5%、CraftBeer.com 6.3%と異なる。苦味もBJCP 40〜70、CraftBeer.com 50〜70。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 21A American IPA",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/21/21a-american-ipa.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – American India Pale Ale",
+        "url": "https://www.craftbeer.com/styles/american-india-pale-ale",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "hazy-ipa",
+    "name": "ヘイジーIPA",
+    "nameEn": "Hazy IPA / New England IPA",
+    "category": "ペールエール・IPA",
+    "aliases": [
+      "ニューイングランドIPA",
+      "NEIPA",
+      "ヘイジー",
+      "juicy ipa"
+    ],
+    "summary": "濁った見た目と、ジュースのようなフルーティーな香り、やわらかな口当たりが特徴のIPA。苦味は一般的なIPAより控えめ。",
+    "flavor": "マンゴーやパイナップル、柑橘などの果実香が強く、口当たりはなめらか。苦味は穏やか。シトラやモザイクなどのホップがよく使われる。",
+    "history": "2010年代にアメリカ北東部のニューイングランド地方で広まった比較的新しいスタイル。バーモント州のヘディトッパーが火付け役とされる。",
+    "abv": [
+      6.0,
+      9.0
+    ],
+    "ibu": [
+      25,
+      60
+    ],
+    "srm": [
+      3,
+      7
+    ],
+    "displaySrm": null,
+    "glass": "nonic",
+    "pairing": [],
+    "rangeNote": "BJCPはABV 6.0〜9.0%・IBU 25〜60と幅広く、CraftBeer.comはABV 6.3〜7.5%・IBU 30〜50とより狭い。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 21C Hazy IPA",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/21/21c-hazy-ipa.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – Juicy or Hazy India Pale Ale",
+        "url": "https://www.craftbeer.com/styles/new-england-ipa",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "double-ipa",
+    "name": "ダブルIPA",
+    "nameEn": "Double IPA",
+    "category": "ペールエール・IPA",
+    "aliases": [
+      "インペリアルIPA",
+      "DIPA",
+      "imperial ipa",
+      "ダブルアイピーエー"
+    ],
+    "summary": "IPAをさらに強くし、ホップをたっぷり使ったスタイル。度数も苦味も高いが、重すぎない飲みやすさも重視される。",
+    "flavor": "強いホップの香り（柑橘・松・トロピカル）と高い苦味。アルコールの温かみはあるが、甘さは抑えられ後味はドライ寄り。",
+    "history": "1990年代半ば〜後半にアメリカで生まれたとされる。2000年に登場したロシアンリバー醸造のプリニー・ジ・エルダーなどで広く知られるようになった。",
+    "abv": [
+      7.5,
+      10.6
+    ],
+    "ibu": [
+      60,
+      100
+    ],
+    "srm": [
+      2,
+      14
+    ],
+    "displaySrm": 8,
+    "glass": "tulip",
+    "pairing": [
+      "ポークチョップ",
+      "味噌漬けの鮭",
+      "キャロットケーキ"
+    ],
+    "rangeNote": "色はBJCPがSRM 6〜14、CraftBeer.comが2〜9と大きく異なり、CraftBeer.comはより淡色寄り。度数の上限もBJCP 10%、CraftBeer.com 10.6%。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 22A Double IPA",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/22/22a-double-ipa.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – Imperial India Pale Ale",
+        "url": "https://www.craftbeer.com/styles/imperial-india-pale-ale",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "session-ipa",
+    "name": "セッションIPA",
+    "nameEn": "Session IPA",
+    "category": "ペールエール・IPA",
+    "aliases": [
+      "session ipa"
+    ],
+    "summary": "IPAらしいホップの香りを保ちながら、度数を5%以下に抑えた軽めのIPA。",
+    "flavor": "香りはIPAに近い華やかさで、ボディは軽い。苦味はしっかりめだが、何杯か続けて飲みやすい。",
+    "history": "長時間続けて飲める低めの度数のビール（セッションビール）の考え方を、IPAに当てはめたスタイル。",
+    "abv": [
+      0.5,
+      5.0
+    ],
+    "ibu": [
+      20,
+      55
+    ],
+    "srm": [
+      3,
+      12
+    ],
+    "displaySrm": 5,
+    "glass": null,
+    "pairing": [],
+    "rangeNote": "Brewers Associationの基準は度数の下限が0.5%と非常に広い。CraftBeer.comはセッションビール全般を「5%以下」としている。",
+    "sources": [
+      {
+        "title": "Brewers Association Beer Style Guidelines",
+        "url": "https://www.brewersassociation.org/edu/brewers-association-beer-style-guidelines/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – Session Beer",
+        "url": "https://www.craftbeer.com/styles/session-beer",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "west-coast-ipa",
+    "name": "ウエストコーストIPA",
+    "nameEn": "West Coast IPA",
+    "category": "ペールエール・IPA",
+    "aliases": [
+      "ウェストコーストIPA",
+      "WCIPA",
+      "west coast ipa"
+    ],
+    "summary": "透明感のある色、ドライでキレのある後味、強い苦味が持ち味のIPA。ヘイジーIPAと対照的なスタイル。",
+    "flavor": "松・柑橘・樹脂を思わせるホップ香と、しっかりした苦味。麦芽の甘さは少なく、とてもドライ。",
+    "history": "アメリカ西海岸、とくにサンディエゴ周辺で発展した。2000年代半ばにグリーンフラッシュなどの醸造所がこのスタイルを広めた。",
+    "abv": [
+      5.5,
+      7.5
+    ],
+    "ibu": [
+      40,
+      75
+    ],
+    "srm": [
+      2,
+      14
+    ],
+    "displaySrm": 6,
+    "glass": null,
+    "pairing": [],
+    "rangeNote": "色の目安が出典で大きく異なる（Brewers Association：SRM 2〜6の淡い金色、BYO：約6〜14）。度数・苦味もBA 6.3〜7.5%・IBU 50〜75、BYO 5.5〜7.5%・IBU 40〜70。",
+    "sources": [
+      {
+        "title": "Brewers Association Beer Style Guidelines",
+        "url": "https://www.brewersassociation.org/edu/brewers-association-beer-style-guidelines/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brew Your Own – West Coast IPA",
+        "url": "https://byo.com/articles/west-coast-ipa/",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "amber-ale",
+    "name": "アンバーエール",
+    "nameEn": "American Amber Ale",
+    "category": "ペールエール・IPA",
+    "aliases": [
+      "レッドエール",
+      "アンバー",
+      "amber"
+    ],
+    "summary": "琥珀色で、カラメルのような麦芽の甘みとホップの香りのバランスが取れたエール。",
+    "flavor": "カラメルやトーストの風味に、柑橘や松のホップ香が重なる。苦味は中程度。",
+    "history": "アメリカ西海岸（カリフォルニアや太平洋岸北西部）で生まれた。1983年のメンドシーノ醸造のレッドテイルエールが初期の代表例とされる。",
+    "abv": [
+      4.4,
+      6.2
+    ],
+    "ibu": [
+      25,
+      45
+    ],
+    "srm": [
+      10,
+      18
+    ],
+    "displaySrm": null,
+    "glass": "tulip",
+    "pairing": [
+      "バーベキュー",
+      "チェダーチーズ"
+    ],
+    "rangeNote": "BJCPはABV 4.5〜6.2%・IBU 25〜40・SRM 10〜17、CraftBeer.comはABV 4.4〜6.1%・IBU 25〜45・SRM 11〜18。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 19A American Amber Ale",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/19/19a-american-amber-ale.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – American Amber Ale",
+        "url": "https://www.craftbeer.com/styles/amber-ale",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "porter",
+    "name": "ポーター",
+    "nameEn": "Porter",
+    "category": "ダーク",
+    "aliases": [
+      "porter",
+      "ロバストポーター"
+    ],
+    "summary": "焙煎した麦芽による褐色〜黒色の色合いと、チョコレートやカラメルの風味が特徴のエール。スタウトの源流にあたる。",
+    "flavor": "チョコレート、カラメル、トーストの風味。焦げた苦味はスタウトより穏やかなことが多い。アメリカ系はホップも強め。",
+    "history": "18世紀初めのロンドンで生まれた。荷を運ぶような仕事をするロンドンの労働者に好まれたことが、名前の由来といわれる。",
+    "abv": [
+      4.0,
+      6.6
+    ],
+    "ibu": [
+      18,
+      50
+    ],
+    "srm": [
+      20,
+      40
+    ],
+    "displaySrm": null,
+    "glass": "nonic",
+    "pairing": [
+      "網焼きの肉",
+      "グリュイエールチーズ"
+    ],
+    "rangeNote": "BJCPはイギリス系（ABV 4.0〜5.4%、IBU 18〜35）とアメリカ系（ABV 4.8〜6.5%、IBU 25〜50）を分けており、アメリカ系のほうが強く苦い。CraftBeer.comのロバストポーターはABV 5.1〜6.6%。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 13C English Porter",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/13/13c-english-porter.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 20A American Porter",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/20/20a-american-porter.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – Robust Porter",
+        "url": "https://www.craftbeer.com/styles/robust-porter",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "stout",
+    "name": "スタウト",
+    "nameEn": "Irish Stout",
+    "category": "ダーク",
+    "aliases": [
+      "ドライスタウト",
+      "アイリッシュスタウト",
+      "dry stout"
+    ],
+    "summary": "ローストした大麦による黒い色と、コーヒーのような香ばしさが特徴のエール。ここでは代表的なアイリッシュ（ドライ）スタウトを基準にしている。",
+    "flavor": "コーヒーやビターチョコのような焙煎香と、乾いた後味。見た目に反して度数は低め。ナイトロ（窒素ガス）で注ぐと、きめ細かくクリーミーな泡になる。",
+    "history": "ポーターの強いもの（スタウトポーター）から発展した。アイルランドのドライスタウトが代表格で、1959年にはギネスが窒素ガスを使ったドラフトを導入した。",
+    "abv": [
+      3.8,
+      5.0
+    ],
+    "ibu": [
+      25,
+      45
+    ],
+    "srm": [
+      25,
+      40
+    ],
+    "displaySrm": null,
+    "glass": "nonic",
+    "pairing": [
+      "牡蠣",
+      "ハム",
+      "チョコレート"
+    ],
+    "rangeNote": "BJCPはIBU 25〜45・SRM 25〜40、CraftBeer.comはIBU 30〜40・SRM 35〜40。度数はほぼ一致（3.8〜5%）。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 15B Irish Stout",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/15/15b-irish-stout.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – Irish-Style Dry Stout",
+        "url": "https://www.craftbeer.com/styles/irish-style-dry-stout",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "imperial-stout",
+    "name": "インペリアルスタウト",
+    "nameEn": "Imperial Stout",
+    "category": "ダーク",
+    "aliases": [
+      "ロシアンインペリアルスタウト",
+      "RIS",
+      "imperial stout"
+    ],
+    "summary": "スタウトを大きく強くしたスタイル。高いアルコールと、濃厚な焙煎・ドライフルーツの風味をもつ。",
+    "flavor": "コーヒー、ダークチョコ、干しぶどうのような濃い風味とアルコールの温かみ。とろりとした重いボディ。",
+    "history": "18世紀のイギリスで、ロシア帝国の宮廷向けに輸出された強いスタウトが起源とされ、「ロシアンインペリアルスタウト」とも呼ばれる。",
+    "abv": [
+      7,
+      12
+    ],
+    "ibu": [
+      50,
+      90
+    ],
+    "srm": [
+      30,
+      40
+    ],
+    "displaySrm": null,
+    "glass": "snifter",
+    "pairing": [
+      "フォアグラ",
+      "熟成チーズ",
+      "フラワーレスチョコレートケーキ"
+    ],
+    "rangeNote": "BJCPはABV 8〜12%・IBU 50〜90、CraftBeer.com（アメリカンインペリアルスタウト）はABV 7〜12%・IBU 50〜80。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 20C Imperial Stout",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/20/20c-imperial-stout.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – American Imperial Stout",
+        "url": "https://www.craftbeer.com/styles/american-imperial-stout",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "weizen",
+    "name": "ヴァイツェン",
+    "nameEn": "Weissbier / Hefeweizen",
+    "category": "小麦",
+    "aliases": [
+      "ヘフェヴァイツェン",
+      "hefeweizen",
+      "ヴァイスビア",
+      "ヴァイス",
+      "weissbier",
+      "ヴァイツェン"
+    ],
+    "summary": "小麦麦芽を多く使った南ドイツの白ビール。専用の酵母が生むバナナやクローブ（丁子）の香りが最大の特徴。",
+    "flavor": "バナナとクローブのような酵母由来の香りに、小麦のやわらかなパンの風味。苦味はごく弱く、炭酸は高め。酵母が残って濁っていることが多い。",
+    "history": "バイエルン地方の伝統的なスタイル。長く王家の特権として造られていたが、1872年にシュナイダー家が醸造の権利を得て広く飲まれるようになった。",
+    "abv": [
+      4.3,
+      5.6
+    ],
+    "ibu": [
+      8,
+      15
+    ],
+    "srm": [
+      2,
+      9
+    ],
+    "displaySrm": null,
+    "glass": "weizen",
+    "pairing": [
+      "魚介料理",
+      "シェーブルチーズ",
+      "キーライムパイ"
+    ],
+    "rangeNote": "色はBJCPがSRM 2〜6、CraftBeer.comが3〜9でCraftBeer.comのほうが濃い色まで含む。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 10A Weissbier",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/10/10a-weissbier.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – South German-Style Hefeweizen",
+        "url": "https://www.craftbeer.com/styles/german-style-hefeweizen",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "belgian-white",
+    "name": "ベルジャンホワイト",
+    "nameEn": "Witbier",
+    "category": "小麦",
+    "aliases": [
+      "ウィットビア",
+      "witbier",
+      "ホワイトエール",
+      "ブランシュ",
+      "ホワイトビール"
+    ],
+    "summary": "小麦を使い、コリアンダーとオレンジピールで香りづけしたベルギーの白ビール。爽やかで軽い。",
+    "flavor": "オレンジのような柑橘香とコリアンダーのスパイス感、小麦由来のやわらかさ。苦味は弱く、ほのかな酸味を感じることもある。",
+    "history": "ベルギーのルーヴェン周辺で古くから造られていたが一度途絶え、1966年にピエール・セリスがヒューガルデン村で復活させた。",
+    "abv": [
+      4.5,
+      5.6
+    ],
+    "ibu": [
+      8,
+      20
+    ],
+    "srm": [
+      2,
+      4
+    ],
+    "displaySrm": null,
+    "glass": "tulip",
+    "pairing": [
+      "ムール貝とフライドポテト"
+    ],
+    "rangeNote": "BJCPはABV 4.5〜5.5%・IBU 8〜20、CraftBeer.comはABV 4.8〜5.6%・IBU 10〜17。色は一致（SRM 2〜4）。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 24A Witbier",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/24/24a-witbier.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – Belgian-Style Witbier",
+        "url": "https://www.craftbeer.com/styles/belgian-style-wit",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "saison",
+    "name": "セゾン",
+    "nameEn": "Saison",
+    "category": "ベルギー",
+    "aliases": [
+      "saison",
+      "ファームハウス"
+    ],
+    "summary": "ベルギー南部の農家で生まれた、ドライでスパイシー、炭酸の強いエール。",
+    "flavor": "胡椒のようなスパイス感と果実の香り、とてもドライな後味と強い炭酸。度数の幅が広い。",
+    "history": "ベルギー南部、フランス語圏のワロン地方で生まれた。もとは農場や畑で働く人が飲んでも差し支えないよう、度数を低めに造られていた。",
+    "abv": [
+      3.5,
+      9.5
+    ],
+    "ibu": [
+      20,
+      38
+    ],
+    "srm": [
+      3,
+      22
+    ],
+    "displaySrm": 5,
+    "glass": "tulip",
+    "pairing": [
+      "ムール貝",
+      "ブリーチーズ"
+    ],
+    "rangeNote": "BJCPは度数別に3段階（テーブル／標準／スーパー）を設け、淡色版（SRM 5〜14）と濃色版（SRM 15〜22）も認めている。CraftBeer.comはABV 4.4〜6.8%・SRM 3〜7と標準的なものに絞った範囲。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 25B Saison",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/25/25b-saison.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – Belgian-Style Saison",
+        "url": "https://www.craftbeer.com/styles/belgian-style-saison",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "belgian-strong",
+    "name": "ベルジャンストロングエール",
+    "nameEn": "Belgian Strong Ale",
+    "category": "ベルギー",
+    "aliases": [
+      "クワドルペル",
+      "クアドルペル",
+      "quadrupel",
+      "quad",
+      "ゴールデンストロング",
+      "ダークストロング"
+    ],
+    "summary": "ベルギーの度数の高いエールをまとめて扱う。淡色の「ゴールデンストロング」と、濃色の「ダークストロング（クワドルペル）」がある。",
+    "flavor": "ゴールデンは洋梨や柑橘のような果実香とスパイス感があり、ドライで炭酸が強い。ダークはドライフルーツやカラメル、チョコレートのような複雑な風味。どちらも度数の割に飲みやすい。",
+    "history": "ゴールデンストロングは第一次世界大戦後にベルギーのモルトガット醸造所が生み出したとされる。ダークストロングは修道院系の醸造所などで第二次世界大戦前から造られていた。",
+    "abv": [
+      7,
+      12
+    ],
+    "ibu": [
+      20,
+      50
+    ],
+    "srm": [
+      3,
+      22
+    ],
+    "displaySrm": 10,
+    "glass": "tulip",
+    "pairing": [
+      "エビのフライ",
+      "トリプルクリームチーズ",
+      "鴨のロースト",
+      "熟成ゴーダ"
+    ],
+    "rangeNote": "淡色（BJCP：SRM 3〜6）と濃色（BJCP：SRM 12〜22）の両方を含めた範囲。苦味の上限はCraftBeer.com（IBU 50）がBJCP（35）より高い。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 25C Belgian Golden Strong Ale",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/25/25c-belgian-golden-strong-ale.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 26D Belgian Dark Strong Ale",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/26/26d-belgian-dark-strong-ale.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – Belgian-Style Golden Strong Ale",
+        "url": "https://www.craftbeer.com/styles/belgian-style-golden-strong-ale",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – Belgian-Style Quadrupel",
+        "url": "https://www.craftbeer.com/styles/belgian-style-quadrupel",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "tripel",
+    "name": "トリペル",
+    "nameEn": "Belgian Tripel",
+    "category": "ベルギー",
+    "aliases": [
+      "トリプル",
+      "tripel"
+    ],
+    "summary": "淡い金色で度数の高い、ベルギー修道院系のエール。スパイシーで果実味があり、後味はドライ。",
+    "flavor": "酵母由来の胡椒のようなスパイス感と、柑橘や洋梨のような果実香。度数は高いが軽やかで、炭酸も強め。",
+    "history": "1934年に修道院醸造所のウェストマールが造った強い淡色ビールが原型とされる。",
+    "abv": [
+      7.1,
+      10.1
+    ],
+    "ibu": [
+      20,
+      45
+    ],
+    "srm": [
+      4,
+      7
+    ],
+    "displaySrm": null,
+    "glass": "tulip",
+    "pairing": [
+      "ローストターキー",
+      "トリプルクリームチーズ"
+    ],
+    "rangeNote": "BJCPはABV 7.5〜9.5%・IBU 20〜40、CraftBeer.comはABV 7.1〜10.1%・IBU 20〜45。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 26C Belgian Tripel",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/26/26c-belgian-tripel.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – Belgian-Style Tripel",
+        "url": "https://www.craftbeer.com/styles/belgian-style-tripel",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "sour",
+    "name": "サワー",
+    "nameEn": "Sour Ale",
+    "category": "サワー",
+    "aliases": [
+      "サワーエール",
+      "アメリカンサワー",
+      "sour",
+      "ワイルドエール"
+    ],
+    "summary": "乳酸菌などの微生物の働きで、はっきりした酸味をもたせたビールの総称。果物やオーク樽を使うものも多い。",
+    "flavor": "乳酸によるヨーグルトのような酸味や、ときに酢のような鋭い酸味。果実や木の風味が加わることが多く、味わいの幅が非常に広い。",
+    "history": "伝統的なサワービールには、ドイツのゴーゼやベルリナーヴァイセなどがある（それぞれ個別のスタイルを参照）。",
+    "abv": null,
+    "ibu": null,
+    "srm": [
+      1,
+      40
+    ],
+    "displaySrm": 5,
+    "glass": "goblet",
+    "pairing": [
+      "風味の強いチーズ",
+      "フルーツとクリームのデザート"
+    ],
+    "rangeNote": "CraftBeer.comでは度数・苦味は「さまざま」とされ、数値の目安がない。Brewers Associationのアメリカンサワーエールの基準にも数値の範囲は示されていない。色は表示用の目安。",
+    "sources": [
+      {
+        "title": "CraftBeer.com Beer Styles – American Sour",
+        "url": "https://www.craftbeer.com/styles/american-sour",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Brewers Association Beer Style Guidelines",
+        "url": "https://www.brewersassociation.org/edu/brewers-association-beer-style-guidelines/",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "gose",
+    "name": "ゴーゼ",
+    "nameEn": "Gose",
+    "category": "サワー",
+    "aliases": [
+      "gose"
+    ],
+    "summary": "塩とコリアンダーを加えた、軽い酸味のあるドイツの小麦ビール。",
+    "flavor": "乳酸の爽やかな酸味に、ほんのりとした塩味とコリアンダーの香り。苦味はほとんど感じない。",
+    "history": "ドイツのゴスラーが発祥で、のちにライプツィヒで親しまれた。一度ほぼ姿を消したが、1980年代に復活した。",
+    "abv": [
+      4.2,
+      5.4
+    ],
+    "ibu": [
+      5,
+      15
+    ],
+    "srm": [
+      3,
+      9
+    ],
+    "displaySrm": null,
+    "glass": "flute",
+    "pairing": [
+      "スイカのサラダ",
+      "ケソフレスコ（フレッシュチーズ）"
+    ],
+    "rangeNote": "BJCPはABV 4.2〜4.8%・SRM 3〜4、CraftBeer.com（コンテンポラリーゴーゼ）はABV 4.4〜5.4%・SRM 3〜9で、果物入りなど現代的なものを含むぶん幅が広い。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 23G Gose",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/23/23g-gose.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – Contemporary-Style Gose",
+        "url": "https://www.craftbeer.com/styles/contemporary-gose",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "berliner-weisse",
+    "name": "ベルリナーヴァイセ",
+    "nameEn": "Berliner Weisse",
+    "category": "サワー",
+    "aliases": [
+      "ベルリナーヴァイス",
+      "berliner weisse"
+    ],
+    "summary": "ベルリン生まれの、度数が低く酸味の爽やかな小麦ビール。",
+    "flavor": "レモンのような鋭い酸味と軽いボディ、強い炭酸。現地ではクルマバソウ（ヴァルトマイスター）やラズベリーのシロップを加えて飲むこともある。",
+    "history": "ベルリンで古くから造られてきたスタイルで、「北のシャンパン」と呼ばれたことでも知られる。",
+    "abv": [
+      2.8,
+      3.8
+    ],
+    "ibu": [
+      3,
+      8
+    ],
+    "srm": [
+      2,
+      4
+    ],
+    "displaySrm": null,
+    "glass": "goblet",
+    "pairing": [
+      "ハム",
+      "ハバティチーズ",
+      "チーズケーキ"
+    ],
+    "rangeNote": "BJCPはABV 2.8〜3.8%・IBU 3〜8、CraftBeer.comはABV 2.8〜3.4%・IBU 3〜6。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 23A Berliner Weisse",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/23/23a-berliner-weisse.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – Berliner-Style Weisse",
+        "url": "https://www.craftbeer.com/styles/berliner-style-weisse",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "fruit-beer",
+    "name": "フルーツビール",
+    "nameEn": "Fruit Beer",
+    "category": "その他",
+    "aliases": [
+      "フルーツ",
+      "fruit beer"
+    ],
+    "summary": "果物を加えて造るビール。ベースのスタイルも、使う果物もさまざま。",
+    "flavor": "果物の香りや酸味、甘みがベースのビールと組み合わさる。軽いものから強いものまで幅広い。",
+    "history": null,
+    "abv": [
+      2.5,
+      12
+    ],
+    "ibu": [
+      5,
+      45
+    ],
+    "srm": [
+      5,
+      50
+    ],
+    "displaySrm": 12,
+    "glass": "tulip",
+    "pairing": [
+      "サラダ",
+      "クリーミーなチーズ",
+      "バニラアイスクリーム"
+    ],
+    "rangeNote": "BJCPはベースとなるスタイルによって数値が変わるとして、固定の範囲を示していない。表示はCraftBeer.comの範囲。色は表示用の目安。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 29A Fruit Beer",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/29/29a-fruit-beer.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – Fruit and Field Beer",
+        "url": "https://www.craftbeer.com/styles/fruit-field-or-flavored",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "barleywine",
+    "name": "バーレイワイン",
+    "nameEn": "Barleywine",
+    "category": "ダーク",
+    "aliases": [
+      "バーレーワイン",
+      "バーレイ",
+      "barley wine",
+      "barleywine"
+    ],
+    "summary": "ワインのように度数が高く、長期熟成にも向く濃厚なエール。",
+    "flavor": "カラメル、トフィー、ドライフルーツのような濃い麦芽の甘みとアルコールの温かみ。アメリカ系はホップの苦味と香りも強い。",
+    "history": "イギリスで生まれた強いエールで、1872年のバスNo.1が初期の例とされる。アメリカでは1975年のアンカー醸造オールドフォグホーン、1983年のシエラネバダのビッグフットが知られる。",
+    "abv": [
+      8,
+      12.2
+    ],
+    "ibu": [
+      35,
+      100
+    ],
+    "srm": [
+      8,
+      22
+    ],
+    "displaySrm": 15,
+    "glass": "snifter",
+    "pairing": [
+      "牛ほほ肉の煮込み",
+      "ブルーチーズ"
+    ],
+    "rangeNote": "BJCPのイギリス系はIBU 35〜70・SRM 8〜22、アメリカ系はIBU 50〜100・SRM 9〜18と、苦味が大きく異なる。CraftBeer.comのアメリカ系はABV 8.5〜12.2%。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 17D English Barleywine",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/17/17d-english-barleywine.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 22C American Barleywine",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/22/22c-american-barleywine.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – American-Style Barley Wine Ale",
+        "url": "https://www.craftbeer.com/styles/american-barley-wine",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "kolsch",
+    "name": "ケルシュ",
+    "nameEn": "Kölsch",
+    "category": "ハイブリッド",
+    "aliases": [
+      "kölsch",
+      "kolsch",
+      "ケルシュ"
+    ],
+    "summary": "ドイツ・ケルンの淡色ビール。エール酵母で発酵させたあと低温で熟成させるため、ラガーのようにすっきりした味わい。",
+    "flavor": "ほのかな果実香とやわらかな麦芽の甘み、軽い苦味。とてもクリーンで飲みやすい。",
+    "history": "ケルン周辺の伝統的なスタイル。1986年の「ケルシュ協定」で、ケルン周辺で造られたものだけがこの名を名乗れると定められた。現地では細長い約0.2Lのグラス（シュタンゲ）で提供される。",
+    "abv": [
+      4.4,
+      5.3
+    ],
+    "ibu": [
+      18,
+      30
+    ],
+    "srm": [
+      3,
+      6
+    ],
+    "displaySrm": null,
+    "glass": "stange",
+    "pairing": [
+      "焼きソーセージ",
+      "ナッツのような風味のチーズ"
+    ],
+    "rangeNote": "BJCPはABV 4.4〜5.2%・IBU 18〜30・SRM 3.5〜5、CraftBeer.comはABV 4.8〜5.3%・IBU 18〜28・SRM 3〜6。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 5B Kölsch",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/5/5b-kolsch.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – German-Style Kölsch",
+        "url": "https://www.craftbeer.com/styles/german-style-kolsch",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "bock",
+    "name": "ボック",
+    "nameEn": "Bock",
+    "category": "ラガー",
+    "aliases": [
+      "マイボック",
+      "ヘレスボック",
+      "ドッペルボック",
+      "doppelbock",
+      "maibock",
+      "bock"
+    ],
+    "summary": "ドイツの強めのラガー。豊かな麦芽の甘みが中心で、淡色のマイボック（ヘレスボック）から、さらに強いドッペルボックまで種類がある。",
+    "flavor": "トーストやパンの皮のような濃い麦芽の風味と、まろやかな甘み。苦味は控えめ。",
+    "history": "14世紀ごろのドイツ北部の町アインベックで生まれ、のちにミュンヘンで造られるようになった。ドイツ語の「ボック」は雄ヤギを意味する。ドッペルボックはミュンヘンのパウラーナー会の修道士が造ったのが始まりとされる。",
+    "abv": [
+      6.3,
+      10
+    ],
+    "ibu": [
+      16,
+      35
+    ],
+    "srm": [
+      6,
+      30
+    ],
+    "displaySrm": 18,
+    "glass": "tulip",
+    "pairing": [
+      "リブアイステーキ",
+      "熟成したスイスチーズ",
+      "チョコレート"
+    ],
+    "rangeNote": "ボックは種類が多く、BJCPのヘレスボック（ABV 6.3〜7.4%、SRM 6〜9）、ドッペルボック（ABV 7〜10%、SRM 6〜25）、CraftBeer.comのボック（SRM 20〜30）を合わせて表示しているため範囲が広い。",
+    "sources": [
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 4C Helles Bock",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/4/4c-helles-bock.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "BJCP 2021 Beer Style Guidelines – 9A Doppelbock",
+        "url": "https://styles.bjcp.org/bjcp-2021-beer/9/9a-doppelbock.md",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – German-Style Bock",
+        "url": "https://www.craftbeer.com/styles/german-style-bock",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "Clemson Cooperative Extension HGIC – Beer Style Highlight: Maibock",
+        "url": "https://hgic.clemson.edu/beer-style-highlight-maibock/",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  },
+  {
+    "id": "brown-ale",
+    "name": "ブラウンエール",
+    "nameEn": "American Brown Ale",
+    "category": "ダーク",
+    "aliases": [
+      "ブラウン",
+      "brown ale"
+    ],
+    "summary": "褐色の色合いで、カラメルやチョコレートのような麦芽の風味が中心のエール。アメリカ系はホップもしっかり効いている。",
+    "flavor": "カラメル、ナッツ、ミルクチョコのような麦芽の風味に、柑橘や松のホップの香りと苦味が加わる。",
+    "history": "アメリカの自家醸造家たちが、イギリスのブラウンエールをもとにホップを強めて発展させたスタイル。",
+    "abv": [
+      4.2,
+      6.3
+    ],
+    "ibu": [
+      30,
+      45
+    ],
+    "srm": [
+      15,
+      26
+    ],
+    "displaySrm": null,
+    "glass": "nonic",
+    "pairing": [
+      "網焼きの肉",
+      "熟成ゴーダ",
+      "洋梨のフリッター"
+    ],
+    "rangeNote": "Brewers AssociationとCraftBeer.comの数値は一致（ABV 4.2〜6.3%、IBU 30〜45、SRM 15〜26）。",
+    "sources": [
+      {
+        "title": "Brewers Association Beer Style Guidelines",
+        "url": "https://www.brewersassociation.org/edu/brewers-association-beer-style-guidelines/",
+        "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – American Brown Ale",
+        "url": "https://www.craftbeer.com/styles/american-brown-ale",
+        "accessedAt": "2026-10-24"
+      }
+    ]
+  }
 ]

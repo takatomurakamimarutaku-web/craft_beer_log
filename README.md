@@ -32,7 +32,9 @@ HTML / CSS / JavaScript（ES Modules）だけで作られており、ビルド�
 | `#/wishlist`, `#/wishlist/new` | 飲みたいリスト |
 | `#/settings` | 設定・バックアップ・復元 |
 | `#/more` | その他メニュー |
-| `#/knowledge`, `#/stats` | 今後のフェーズで実装予定 |
+| `#/knowledge`（`?tab=styles\|terms\|hops`） | 知識（スタイル／用語／ホップ、キーワード検索） |
+| `#/knowledge/style/:id` | スタイルの解説（グラスと色のイラスト、数値の目安、参考リンク） |
+| `#/stats` | 今後のフェーズで実装予定 |
 
 ## ファイル構成
 
@@ -49,10 +51,12 @@ js/validate.js          入力値の検証（純粋関数）
 js/search.js            正規化・検索・絞り込み（純粋関数）
 js/stats.js             集計（純粋関数）
 js/image.js             写真の縮小・圧縮
+js/knowledge.js         知識データの検索・SRM の表示色・スタイル移行（純粋関数）
+js/illust.js            自作 SVG イラスト（グラス・範囲バーなど）
 js/backup.js            バックアップの書き出し・検証・読み込み
 js/ui.js                共通 UI 部品
 js/views/*.js           画面ごとの描画処理
-data/styles.json        スタイル一覧（暫定。Phase 4 で正式版に置き換え）
+data/styles.json        スタイル（25件。登録画面の選択肢と知識ページで共用）
 data/flavor-tags.json   香りタグの語彙
 data/terms.json, data/hops.json  知識データ（Phase 4 で作成）
 icons/                  アイコン（SVG と PNG）
@@ -103,7 +107,7 @@ DB 名 `craft-beer-log`、バージョン 1。ID は `crypto.randomUUID()`。
 
 ### meta
 
-`{ key, value }`。`lastBackupAt`（最終バックアップ日時）を保存します。
+`{ key, value }`。`lastBackupAt`（最終バックアップ日時）、`stylesVersion`（実施したスタイル移行の版）を保存します。
 
 ### 正規化（検索キー）
 
@@ -113,6 +117,28 @@ NFKC 正規化 → 小文字化 → ひらがなをカタカナに統一 → 前
 ### スキーマを変更するとき
 
 `js/db.js` の `DB_VERSION` を上げ、`migrate()` に `if (oldVersion < 新バージョン) { ... }` を追加し、移行のテストを `test/db.test.js` に追加します。
+
+## 知識データ（data/*.json）
+
+アプリには同梱のデータだけを使い、実行時に外部へ取りに行きません（出典リンクは利用者がタップしたときだけ開きます）。説明文は複数の出典を確認したうえで独自にまとめたもので、出典の文章の転載・言い換えではありません。
+
+### styles.json
+
+| 項目 | 内容 |
+|---|---|
+| id | スラッグ（Phase 1〜3 の暫定 ID はすべて引き継ぎ） |
+| name / nameEn / category / aliases | 表示名・英語名・分類・別名（検索対象） |
+| summary / flavor / history | 概要・味わい・歴史（history は確認できたものだけ。無ければ null） |
+| abv / ibu / srm | `[最小, 最大]`。出典の範囲を合わせた「代表的な目安」。数値の目安が無いものは null |
+| displaySrm | イラストの色に使う SRM（範囲が広すぎるときだけ指定。無ければ範囲の中央） |
+| glass | `flute` `nonic` `tulip` `weizen` `snifter` `goblet` `stange`（出典で確認できないものは null） |
+| pairing | 合う料理の例 |
+| rangeNote | 出典による数値の違い |
+| sources | `[{ title, url（https）, accessedAt（YYYY-MM-DD） }]` 1件以上 |
+
+### スタイルの移行
+
+起動時とバックアップの読み込み後に、`styles.json` に無い `styleId` を持つ銘柄を「その他」に移し、元の名前を自由入力欄に残します（`js/knowledge.js` の `migrateBeerStyle`）。銘柄ストアの構造は変わらないため DB のバージョンは上げず、実施した版を meta の `stylesVersion` に記録します。スタイルを削除・統合するときは `LEGACY_STYLE_NAMES` に旧名を追加し、`STYLES_VERSION` を上げてください。
 
 ## バックアップ形式
 
@@ -209,6 +235,6 @@ iOS はアイコンの透過部分を黒く塗るため、背景は不透明に�
 - Phase 1：PWA の基盤と記録の基本機能
 - Phase 2：データ保護（バックアップ・復元）
 - Phase 3：検索・絞り込み・飲みたいリスト
-- Phase 4：クラフトビールの基礎知識ページ（予定）
+- Phase 4：クラフトビールの基礎知識ページ（4-1 スタイル 完了）
 - Phase 5：テイスティングノートと知識との連携（予定）
 - Phase 6：統計・分析・共有（予定）

@@ -149,6 +149,7 @@ export async function render({ app, outlet }) {
     if (!ok) return;
     try {
       const r = await app.db.importData(data, mode);
+      await app.migrateStyles(); // 古いバックアップの暫定スタイルを現在の一覧に合わせる
       const skipped = r.skipped.beers + r.skipped.checkins + r.skipped.photos;
       showToast(`読み込みました：銘柄${r.added.beers}件・記録${r.added.checkins}件・写真${r.added.photos}枚${skipped ? `（重複${skipped}件はスキップ）` : ''}`, { duration: 6000 });
       app.refresh();

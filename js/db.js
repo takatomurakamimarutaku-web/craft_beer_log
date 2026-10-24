@@ -292,6 +292,30 @@ export class Repository {
     });
   }
 
+  // ---- Phase 4: スタイル一覧の移行 ----
+
+  /**
+   * スタイル一覧に無い styleId を持つ銘柄を「その他」に移す（起動時・インポート後に実行）。
+   * 銘柄ストアのスキーマは変えないため DB のバージョンは上げず、実施した版を meta に残す。
+   * @returns 変更した銘柄の数
+   */
+  migrateStyles(validIds, version, migrateOne) {
+    return this.run(['beers', 'meta'], 'readwrite', async (tx) => {
+      const store = tx.objectStore('beers');
+      const beers = await req(store.getAll());
+      let changed = 0;
+      for (const beer of beers) {
+        const next = migrateOne(beer, validIds);
+        if (next) {
+          store.put(next);
+          changed++;
+        }
+      }
+      tx.objectStore('meta').put({ key: 'stylesVersion', value: version });
+      return changed;
+    });
+  }
+
   // ---- Phase 2: バックアップ ----
 
   async counts() {

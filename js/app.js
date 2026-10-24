@@ -11,6 +11,8 @@ import * as wishlistView from './views/wishlist.js';
 import * as settingsView from './views/settings.js';
 import * as moreView from './views/more.js';
 import * as placeholderView from './views/placeholder.js';
+import * as knowledgeView from './views/knowledge.js';
+import { migrateBeerStyle, STYLES_VERSION } from './knowledge.js';
 
 // back: 戻るボタンを表示し、アプリ内の履歴が無いときに戻る先
 const routes = [
@@ -20,7 +22,8 @@ const routes = [
   { path: '/checkin/new', view: checkinFormView, title: '記録する', tab: 'checkin', back: '#/beers' },
   { path: '/checkin/:id/edit', view: checkinFormView, title: '記録を編集', tab: 'beers', back: '#/beers' },
   { path: '/search', view: searchView, title: '検索', tab: 'search' },
-  { path: '/knowledge', view: placeholderView, title: '知識', tab: 'knowledge', phase: 'Phase 4' },
+  { path: '/knowledge', view: knowledgeView, title: '知識', tab: 'knowledge' },
+  { path: '/knowledge/style/:id', view: knowledgeView, kind: 'style', title: 'スタイル', tab: 'knowledge', back: '#/knowledge' },
   { path: '/more', view: moreView, title: 'その他', tab: 'more' },
   { path: '/wishlist', view: wishlistView, title: '飲みたいリスト', tab: 'more', back: '#/more' },
   { path: '/wishlist/new', view: beerEditView, title: '飲みたい銘柄を追加', tab: 'more', back: '#/wishlist' },
@@ -55,6 +58,17 @@ async function start() {
   }
   const styles = await loadJson('data/styles.json', []);
   let current = null;
+  const validStyleIds = new Set(styles.map((s) => s.id));
+  const migrateStyles = async () => {
+    try {
+      return await db.migrateStyles(validStyleIds, STYLES_VERSION, migrateBeerStyle);
+    } catch (e) {
+      console.error('スタイルの移行に失敗', e);
+      return 0;
+    }
+  };
+  // スタイル一覧が読めなかったとき（styles が空）は、全銘柄を「その他」にしないよう移行しない
+  if (styles.length) await migrateStyles();
 
   const app = {
     db,
@@ -62,6 +76,7 @@ async function start() {
     navigate: (hash, opts) => router.navigate(hash, opts),
     goBack: (fallback) => router.goBack(fallback),
     refresh: () => router.refresh(),
+    migrateStyles: () => (styles.length ? migrateStyles() : 0),
     setTitle: (t) => {
       titleEl.textContent = t;
       document.title = `${t} | ホップ手帖`;
