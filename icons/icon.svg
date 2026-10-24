@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#2a1d14"/>
+  <g id="glass">
+    <path d="M150 140h212l-26 290a18 18 0 0 1-18 16H194a18 18 0 0 1-18-16z" fill="#f2a93b"/>
+    <path d="M176 140h186l-4 46H174z" fill="#e08c22" opacity=".55"/>
+    <path d="M192 196l17 214" stroke="#ffd58a" stroke-width="16" stroke-linecap="round" opacity=".75"/>
+    <circle cx="292" cy="300" r="9" fill="#fff8ec" opacity=".7"/>
+    <circle cx="262" cy="360" r="7" fill="#fff8ec" opacity=".6"/>
+    <circle cx="306" cy="226" r="6" fill="#fff8ec" opacity=".6"/>
+    <path d="M136 150c-10-34 18-62 50-52 12-30 54-38 76-14 22-22 64-14 74 14 32-8 60 22 44 54-6 12-16 16-28 16H162c-14 0-24-6-26-18z" fill="#fff8ec"/>
+    <path d="M150 140h212l-26 290a18 18 0 0 1-18 16H194a18 18 0 0 1-18-16z" fill="none" stroke="#fff8ec" stroke-width="10" stroke-linejoin="round" opacity=".9"/>
+  </g>
+</svg>

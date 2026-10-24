@@ -1,0 +1,14 @@
+[
+  { "id": "pilsner", "name": "ピルスナー", "provisional": true },
+  { "id": "pale-ale", "name": "ペールエール", "provisional": true },
+  { "id": "ipa", "name": "IPA", "provisional": true },
+  { "id": "hazy-ipa", "name": "ヘイジーIPA", "provisional": true },
+  { "id": "double-ipa", "name": "ダブルIPA", "provisional": true },
+  { "id": "amber-ale", "name": "アンバーエール", "provisional": true },
+  { "id": "porter", "name": "ポーター", "provisional": true },
+  { "id": "stout", "name": "スタウト", "provisional": true },
+  { "id": "weizen", "name": "ヴァイツェン", "provisional": true },
+  { "id": "belgian-white", "name": "ベルジャンホワイト", "provisional": true },
+  { "id": "saison", "name": "セゾン", "provisional": true },
+  { "id": "sour", "name": "サワー", "provisional": true }
+]

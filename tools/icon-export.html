@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>アイコンPNG書き出し</title>
+  <style>
+    body { font-family: sans-serif; padding: 16px; }
+    .item { display: inline-block; margin: 8px; text-align: center; font-size: 12px; }
+    img { display: block; width: 96px; height: 96px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h1>アイコンPNG書き出し</h1>
+  <p>icons/*.svg から PNG を作ります。ローカルサーバーでリポジトリのルートを公開し、このページを開いて各リンクから保存してください（README参照）。</p>
+  <div id="out"></div>
+  <script type="module">
+    // 出力するファイル: [保存名, 元のSVG, 一辺のピクセル数]
+    export const TARGETS = [
+      ['apple-touch-icon.png', '../icons/icon.svg', 180],
+      ['icon-192.png', '../icons/icon.svg', 192],
+      ['icon-512.png', '../icons/icon.svg', 512],
+      ['icon-maskable-512.png', '../icons/icon-maskable.svg', 512],
+    ];
+
+    async function render([name, src, size]) {
+      const img = new Image();
+      img.src = src;
+      await img.decode();
+      const canvas = document.createElement('canvas');
+      canvas.width = canvas.height = size;
+      canvas.getContext('2d').drawImage(img, 0, 0, size, size);
+      const url = canvas.toDataURL('image/png');
+      const a = Object.assign(document.createElement('a'), { href: url, download: name, className: 'item' });
+      a.dataset.name = name;
+      a.append(Object.assign(document.createElement('img'), { src: url, alt: name }), name);
+      document.getElementById('out').append(a);
+    }
+
+    for (const t of TARGETS) await render(t);
+    document.body.dataset.ready = '1';
+  </script>
+</body>
+</html>

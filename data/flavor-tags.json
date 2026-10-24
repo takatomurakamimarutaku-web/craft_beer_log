@@ -1,0 +1,22 @@
+[
+  { "id": "citrus", "label": "柑橘" },
+  { "id": "tropical", "label": "トロピカル" },
+  { "id": "stone-fruit", "label": "桃・杏" },
+  { "id": "berry", "label": "ベリー" },
+  { "id": "pine", "label": "松" },
+  { "id": "resin", "label": "樹脂" },
+  { "id": "herbal", "label": "ハーブ" },
+  { "id": "floral", "label": "花" },
+  { "id": "spicy", "label": "スパイス" },
+  { "id": "earthy", "label": "土・草" },
+  { "id": "grassy", "label": "青草" },
+  { "id": "malty", "label": "麦芽" },
+  { "id": "caramel", "label": "カラメル" },
+  { "id": "roasty", "label": "ロースト" },
+  { "id": "chocolate", "label": "チョコレート" },
+  { "id": "coffee", "label": "コーヒー" },
+  { "id": "banana", "label": "バナナ" },
+  { "id": "clove", "label": "クローブ" },
+  { "id": "sour", "label": "酸味" },
+  { "id": "wood", "label": "木・樽" }
+]
