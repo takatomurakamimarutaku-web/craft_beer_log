@@ -13,6 +13,9 @@ import * as moreView from './views/more.js';
 import * as knowledgeView from './views/knowledge.js';
 import * as statsView from './views/stats.js';
 import { migrateBeerStyle, STYLES_VERSION } from './knowledge.js';
+import { friendlyError } from './errors.js';
+import { APP_VERSION } from './version.js';
+import { showWelcome, ONBOARDED_KEY } from './views/welcome.js';
 
 // back: 戻るボタンを表示し、アプリ内の履歴が無いときに戻る先
 const routes = [
@@ -54,9 +57,7 @@ async function start() {
   try {
     db = await openDB();
   } catch (e) {
-    outlet.replaceChildren(
-      h('div', { class: 'empty' }, h('p', { text: 'データベースを開けませんでした。' }), h('p', { class: 'small muted', text: e.message })),
-    );
+    outlet.replaceChildren(errorView(friendlyError(e, 'データを開くことが')));
     return;
   }
   const styles = await loadJson('data/styles.json', []);
@@ -101,6 +102,7 @@ async function start() {
     defaultHash: '#/beers',
     onRoute: async ({ route, params, query }, isStale) => {
       current = route;
+      app.leaveGuard = null; // スワイプで戻った場合など、確認を経ずに移動したとき
       app.setTitle(route.title);
       backBtn.hidden = !route.back;
       for (const a of document.querySelectorAll('.tabbar a')) {
@@ -113,15 +115,59 @@ async function start() {
         return await route.view.render({ app, outlet, params, query, route, isStale });
       } catch (e) {
         console.error(e);
-        if (!isStale()) outlet.replaceChildren(h('div', { class: 'empty' }, h('p', { text: '画面を表示できませんでした。' }), h('p', { class: 'small muted', text: e.message })));
+        if (!isStale()) outlet.replaceChildren(errorView(friendlyError(e, '画面を表示')));
         return null;
       }
     },
   });
 
-  backBtn.addEventListener('click', () => router.goBack(current?.back));
+  backBtn.addEventListener('click', () => leaveIfAllowed(() => router.goBack(current?.back)));
+  // 入力途中の画面から、タブ・リンクで離れるときに確認する
+  document.addEventListener(
+    'click',
+    (e) => {
+      const a = e.target.closest?.('a[href^="#"]');
+      if (!a || !app.leaveGuard || a.getAttribute('href') === location.hash) return;
+      e.preventDefault();
+      leaveIfAllowed(() => router.navigate(a.getAttribute('href')));
+    },
+    true,
+  );
+  async function leaveIfAllowed(go) {
+    if (app.leaveGuard && !(await app.leaveGuard())) return;
+    app.leaveGuard = null;
+    go();
+  }
+
+  if (!(await db.getMeta(ONBOARDED_KEY).catch(() => null))) await showWelcome(db);
   router.start();
   requestPersistence();
+  notifyUpdated(db);
+}
+
+/** エラー画面（何が起きたか・次にすること・再読み込み） */
+function errorView({ message, hint, detail }) {
+  return h(
+    'div',
+    { class: 'empty error-view', role: 'alert' },
+    h('p', { class: 'error-title', text: message }),
+    h('p', { class: 'small', text: hint }),
+    h('button', { type: 'button', class: 'btn', text: '再読み込み', onclick: () => location.reload() }),
+    detail ? h('p', { class: 'small muted error-detail', text: `詳細：${detail}` }) : null,
+  );
+}
+
+/** 更新後の初回起動で、新しいバージョンになったことを知らせる */
+async function notifyUpdated(db) {
+  try {
+    const seen = await db.getMeta('seenVersion');
+    if (seen === APP_VERSION) return;
+    await db.setMeta('seenVersion', APP_VERSION);
+    if (!seen) return; // 初回インストール時は知らせない
+    showToast(`バージョン${APP_VERSION}に更新しました`, { actionLabel: '内容を見る', onAction: () => (location.hash = '#/settings'), duration: 8000 });
+  } catch (e) {
+    console.warn('seenVersion', e);
+  }
 }
 
 /** 対応環境ではストレージの永続化を要求する（非対応・拒否でも止めない） */

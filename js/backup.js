@@ -187,3 +187,34 @@ export function shouldRemindBackup(lastBackupAt, oldestRecordAt, now = new Date(
   if (!Number.isFinite(t)) return false;
   return now.getTime() - t >= limit;
 }
+
+export const BACKUP_REMIND_COUNT = 20;
+
+/**
+ * バックアップの案内を出すか、その理由（純粋関数）。
+ * - never：一度もバックアップしておらず、最初の記録から30日以上、または記録が20件以上
+ * - days：最終バックアップから30日以上
+ * - count：最終バックアップ後の記録が20件以上
+ * @param {{ lastBackupAt: string|null, checkins: Array<{createdAt: string}>, now?: Date }} p
+ * @returns {null | { reason: 'never'|'days'|'count', count: number }}
+ */
+export function backupReminder({ lastBackupAt, checkins, now = new Date() }) {
+  if (!checkins.length) return null;
+  const since = lastBackupAt ? checkins.filter((c) => c.createdAt > lastBackupAt).length : checkins.length;
+  if (!lastBackupAt) {
+    const oldest = checkins.reduce((min, c) => (!min || c.createdAt < min ? c.createdAt : min), null);
+    if (shouldRemindBackup(null, oldest, now) || since >= BACKUP_REMIND_COUNT) return { reason: 'never', count: since };
+    return null;
+  }
+  if (shouldRemindBackup(lastBackupAt, null, now)) return { reason: 'days', count: since };
+  if (since >= BACKUP_REMIND_COUNT) return { reason: 'count', count: since };
+  return null;
+}
+
+/** 案内の文面 */
+export function backupReminderText(r) {
+  if (!r) return '';
+  if (r.reason === 'never') return `まだバックアップしていません（記録${r.count}件）。端末の故障や機種変更に備えて、バックアップを作成してください。`;
+  if (r.reason === 'days') return '最後のバックアップから30日以上経っています。';
+  return `最後のバックアップのあとに${r.count}件の記録があります。`;
+}

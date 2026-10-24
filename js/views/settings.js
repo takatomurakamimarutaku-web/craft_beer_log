@@ -1,14 +1,20 @@
 // 設定・バックアップ（#/settings）
 import { h, formatBytes, confirmDialog, showToast } from '../ui.js';
-import { createBackupBlob, backupFileName, parseBackup, BackupError, shouldRemindBackup } from '../backup.js';
+import { createBackupBlob, backupFileName, parseBackup, BackupError, backupReminder, backupReminderText } from '../backup.js';
+import { errorText } from '../errors.js';
+import { APP_VERSION } from '../version.js';
+import { currentInstallState } from '../install.js';
+import { showInstallGuide } from './welcome.js';
 
 export async function render({ app, outlet }) {
-  const [counts, lastBackupAt, estimate, persisted, cacheName] = await Promise.all([
+  const [counts, lastBackupAt, estimate, persisted, cacheName, checkins, changelog] = await Promise.all([
     app.db.counts(),
     app.db.getMeta('lastBackupAt'),
     navigator.storage?.estimate ? navigator.storage.estimate().catch(() => null) : null,
     navigator.storage?.persisted ? navigator.storage.persisted().catch(() => null) : null,
     currentCacheName(),
+    app.db.listCheckins(),
+    fetch('data/changelog.json').then((r) => (r.ok ? r.json() : []), () => []),
   ]);
 
   const row = (label, value) => h('div', { class: 'kv' }, h('span', { class: 'muted', text: label }), h('span', { text: value }));
@@ -24,14 +30,14 @@ export async function render({ app, outlet }) {
     row('データの永続化', persisted === null ? 'この環境では未対応' : persisted ? '有効' : '未許可（ブラウザが容量不足時に削除する可能性があります）'),
   );
 
-  const remind = shouldRemindBackup(lastBackupAt, null);
+  const remind = backupReminder({ lastBackupAt, checkins });
   const exportBtn = h('button', { type: 'button', class: 'btn btn-primary btn-block', text: 'バックアップを作成', onclick: () => doExport() });
   const backup = h(
     'section',
     { class: 'panel' },
     h('h3', { class: 'section-title', text: 'バックアップ' }),
     row('最終バックアップ', lastBackupAt ? new Date(lastBackupAt).toLocaleString('ja-JP') : 'まだありません'),
-    remind ? h('p', { class: 'field-hint warn', text: '最後のバックアップから30日以上経っています。' }) : null,
+    remind ? h('p', { class: 'field-hint warn', role: 'status', text: backupReminderText(remind) }) : null,
     h('p', { class: 'field-hint', text: '写真を含む全データを1つのファイル（JSON）に書き出します。iPhoneでは共有メニューから「ファイルに保存」を選んでください。' }),
     exportBtn,
   );
@@ -62,12 +68,28 @@ export async function render({ app, outlet }) {
     h('label', { class: 'btn btn-block', for: 'import-file', text: 'バックアップファイルを選ぶ' }),
   );
 
+  const install = currentInstallState();
+  const latest = Array.isArray(changelog) ? changelog[0] : null;
   const about = h(
     'section',
     { class: 'panel' },
     h('h3', { class: 'section-title', text: 'このアプリについて' }),
-    row('バージョン', cacheName || '—'),
+    row('バージョン', `${APP_VERSION}${cacheName ? `（${cacheName.replace('craft-beer-log-', '')}）` : ''}`),
+    row('起動方法', install === 'installed' ? 'ホーム画面のアプリ' : 'ブラウザ'),
+    install === 'ios-browser'
+      ? h('p', { class: 'field-hint warn' }, 'Safari で開いています。記録はホーム画面のアプリとは別に保存されます。', h('button', { type: 'button', class: 'link', text: '追加の手順', onclick: () => showInstallGuide() }))
+      : null,
     h('p', { class: 'field-hint', text: 'データはこの端末のブラウザ内にのみ保存され、外部へ送信されません。' }),
+    latest
+      ? h(
+          'details',
+          { class: 'changelog' },
+          h('summary', { text: `更新内容（${latest.version}）` }),
+          changelog.slice(0, 5).map((v) =>
+            h('div', { class: 'changelog-entry' }, h('strong', { text: `${v.version}（${v.date.replaceAll('-', '/')}）` }), h('ul', { class: 'plain-list small' }, v.items.map((t) => h('li', { text: t })))),
+          ),
+        )
+      : null,
   );
 
   outlet.replaceChildren(usage, backup, restore, about);
@@ -107,7 +129,7 @@ export async function render({ app, outlet }) {
       app.refresh();
     } catch (e) {
       console.error(e);
-      showToast(`バックアップを作成できませんでした：${e.message}`, { duration: 6000 });
+      showToast(errorText(e, 'バックアップを作成'), { duration: 8000 });
     } finally {
       exportBtn.disabled = false;
       exportBtn.textContent = 'バックアップを作成';
@@ -122,7 +144,7 @@ export async function render({ app, outlet }) {
     try {
       data = parseBackup(await file.text());
     } catch (e) {
-      const msg = e instanceof BackupError ? e.message : `読み込めませんでした：${e.message}`;
+      const msg = e instanceof BackupError ? e.message : errorText(e, 'ファイルを読み込み');
       await confirmDialog({ title: '読み込めませんでした', message: msg, buttons: [{ label: 'OK', value: true, variant: 'primary' }] });
       return;
     }
@@ -155,7 +177,7 @@ export async function render({ app, outlet }) {
       app.refresh();
     } catch (e) {
       console.error(e);
-      showToast(`読み込めませんでした：${e.message}`, { duration: 6000 });
+      showToast(errorText(e, 'データを読み込み'), { duration: 8000 });
     }
   }
 }

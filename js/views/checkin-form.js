@@ -6,6 +6,24 @@ import { normalize } from '../search.js';
 import { processImage } from '../image.js';
 import { beerFields } from './beer-fields.js';
 import { TASTE_AXES, TASTE_MAX, hasTasting } from '../tasting.js';
+import { errorText } from '../errors.js';
+
+export const DRAFT_KEY = 'checkinDraft';
+
+/** 下書きから記録の初期値を作る（純粋関数。写真は下書きに含めない） */
+export function checkinFromDraft(d) {
+  return createCheckin({
+    ...(d.date ? { date: d.date } : {}),
+    place: { type: d.placeType || 'drank', name: d.placeName || '' },
+    serving: d.serving ?? null,
+    volumeMl: d.volume ?? null,
+    price: d.price ?? null,
+    rating: d.rating ?? null,
+    memo: d.memo || '',
+    tasting: d.tasting,
+    photoIds: [],
+  });
+}
 
 export async function render({ app, outlet, params, query }) {
   const editing = Boolean(params.id);
@@ -26,7 +44,11 @@ export async function render({ app, outlet, params, query }) {
   } else {
     checkin = createCheckin();
   }
-  let selected = beers.find((b) => b.id === (editing ? checkin.beerId : query.beerId)) || null;
+  // 新規の記録だけ、入力途中の内容を下書きとして残す
+  const draft = editing ? null : await app.db.getMeta(DRAFT_KEY).catch(() => null);
+  const restoring = Boolean(draft && query.restore === '1');
+  if (restoring) checkin = checkinFromDraft(draft);
+  let selected = beers.find((b) => b.id === (editing ? checkin.beerId : restoring ? draft.beerId : query.beerId)) || null;
 
   // ---- 写真の状態 ----
   const urls = new Set();
@@ -46,7 +68,8 @@ export async function render({ app, outlet, params, query }) {
   const nameField = field('銘柄名（必須）', name, { name: 'name' });
   const matchNotice = h('div', { class: 'notice', hidden: true });
   const selectedView = h('div', { class: 'selected-beer', hidden: true });
-  const newBeer = beerFields({ styles: app.styles, breweries, idPrefix: 'f' });
+  if (restoring) name.value = draft.name || '';
+  const newBeer = beerFields({ beer: restoring ? draft.beer || {} : {}, styles: app.styles, breweries, idPrefix: 'f' });
   const newBeerBox = h('div', { class: 'new-beer' }, h('p', { class: 'field-hint', text: '新しい銘柄として登録します' }), newBeer.el);
 
   if (editing) {
@@ -220,9 +243,85 @@ export async function render({ app, outlet, params, query }) {
     saveBtn,
   );
 
+  // 前回の入力途中の内容があれば、復元するか選べるようにする
+  const draftNotice =
+    draft && !restoring && !editing
+      ? h(
+          'div',
+          { class: 'notice', role: 'status' },
+          h('span', { text: `入力途中の記録があります${draft.name ? `（${draft.name}）` : ''}。写真は復元されません。` }),
+          h('button', { type: 'button', class: 'link', text: '復元する', onclick: () => app.navigate('#/checkin/new?restore=1', { replace: true }) }),
+          h('button', {
+            type: 'button',
+            class: 'link',
+            text: '破棄',
+            onclick: async () => {
+              await app.db.setMeta(DRAFT_KEY, null).catch(() => {});
+              draftNotice.remove();
+            },
+          }),
+        )
+      : null;
+
   form.append(beerSection, recSection, tasteSection, footer);
-  outlet.replaceChildren(form);
+  outlet.replaceChildren(...[draftNotice, form].filter(Boolean));
   renderPhotos();
+
+  // ---- 下書きの自動保存と、離れるときの確認 ----
+  let dirty = restoring;
+  let saved = false;
+  let draftTimer = null;
+  const readDraft = () => ({
+    savedAt: new Date().toISOString(),
+    beerId: selected?.id || null,
+    name: name.value,
+    beer: newBeer.read(),
+    date: date.value,
+    placeType,
+    placeName: placeName.value,
+    serving,
+    volume: volume.value,
+    price: price.value,
+    rating,
+    memo: memo.value,
+    tasting,
+  });
+  const writeDraft = () => {
+    clearTimeout(draftTimer);
+    if (editing || saved || !dirty) return;
+    app.db.setMeta(DRAFT_KEY, readDraft()).catch((e) => console.warn('下書きを保存できませんでした', e));
+  };
+  const markDirty = () => {
+    dirty = true;
+    clearTimeout(draftTimer);
+    draftTimer = setTimeout(writeDraft, 600);
+  };
+  for (const type of ['input', 'change', 'click']) form.addEventListener(type, markDirty);
+  const onHide = () => document.visibilityState === 'hidden' && writeDraft();
+  document.addEventListener('visibilitychange', onHide);
+  app.leaveGuard = async () => {
+    if (!dirty || saved) return true;
+    writeDraft();
+    return confirmDialog(
+      editing
+        ? {
+            title: '変更を破棄しますか？',
+            message: '保存していない変更は失われます。',
+            buttons: [
+              { label: '入力を続ける', value: false },
+              { label: '破棄して移動', value: true, variant: 'danger' },
+            ],
+          }
+        : {
+            title: '記録はまだ保存されていません',
+            message: '入力途中の内容は下書きとして残り、次に「記録」を開いたときに復元できます（写真を除く）。',
+            buttons: [
+              { label: '入力を続ける', value: false, variant: 'primary' },
+              { label: '移動する', value: true },
+            ],
+          },
+    );
+  };
 
   function renderPhotos() {
     photoGrid.replaceChildren(
@@ -326,19 +425,25 @@ export async function render({ app, outlet, params, query }) {
         const res = await app.db.createBeerWithCheckin(createBeer(beerValue), record, newPhotos);
         beerId = res.beer.id;
       }
+      saved = true;
+      app.leaveGuard = null;
+      if (!editing) await app.db.setMeta(DRAFT_KEY, null).catch(() => {});
       showToast(editing ? '保存しました' : '記録しました');
       // 編集は元の画面へ戻る。新規は銘柄詳細へ置き換えて遷移（戻る操作でフォームに戻らないように）
       if (editing) app.goBack(`#/beer/${encodeURIComponent(beerId)}`);
       else app.navigate(`#/beer/${encodeURIComponent(beerId)}`, { replace: true });
     } catch (e) {
       console.error(e);
-      showToast(`保存できませんでした：${e.message}`, { duration: 6000 });
+      showToast(errorText(e, '保存'), { duration: 8000 });
       saving = false;
       saveBtn.disabled = false;
     }
   }
 
   return () => {
+    writeDraft();
+    document.removeEventListener('visibilitychange', onHide);
+    app.leaveGuard = null;
     for (const u of urls) URL.revokeObjectURL(u);
     urls.clear();
   };

@@ -1,7 +1,9 @@
 // 記録一覧（#/beers）
 import { h, createThumbLoader, thumbView, formatDate, formatAbv, stars, emptyState } from '../ui.js';
 import { styleLabel } from '../models.js';
-import { shouldRemindBackup } from '../backup.js';
+import { backupReminder, backupReminderText } from '../backup.js';
+import { currentInstallState } from '../install.js';
+import { showInstallGuide } from './welcome.js';
 
 const PAGE = 50;
 
@@ -15,6 +17,8 @@ export async function render({ app, outlet }) {
   const loader = createThumbLoader((id) => app.db.getThumb(id));
 
   outlet.replaceChildren();
+  const install = installNotice();
+  if (install) outlet.append(install);
 
   if (!checkins.length) {
     outlet.append(
@@ -27,13 +31,13 @@ export async function render({ app, outlet }) {
   }
 
   // バックアップの案内（控えめに表示）
-  const oldest = checkins.reduce((min, c) => (!min || c.createdAt < min ? c.createdAt : min), null);
-  if (!sessionStorageGet('backupReminderClosed') && shouldRemindBackup(lastBackupAt, oldest)) {
+  const remind = backupReminder({ lastBackupAt, checkins });
+  if (!sessionStorageGet('backupReminderClosed') && remind) {
     const note = h(
       'div',
       { class: 'notice' },
-      h('span', { text: lastBackupAt ? '最後のバックアップから30日以上経っています。' : 'まだバックアップしていません。' }),
-      h('a', { href: '#/settings', text: 'バックアップ' }),
+      h('span', { text: backupReminderText(remind) }),
+      h('a', { href: '#/settings', text: 'バックアップする' }),
       h('button', {
         type: 'button',
         class: 'notice-close',
@@ -94,6 +98,28 @@ function checkinCard(c, beer, app, loader) {
       ),
     ),
   );
+}
+
+/** Safari で開いているときの、ホーム画面への追加の案内（閉じても次回の起動でまた出す） */
+function installNotice() {
+  if (currentInstallState() !== 'ios-browser' || sessionStorageGet('installNoticeClosed')) return null;
+  const note = h(
+    'div',
+    { class: 'notice notice-install', role: 'note' },
+    h('span', { text: 'ホーム画面に追加して使ってください。Safari とホーム画面のアプリでは記録が別々に保存されます。' }),
+    h('button', { type: 'button', class: 'link', text: '追加の手順', onclick: () => showInstallGuide() }),
+    h('button', {
+      type: 'button',
+      class: 'notice-close',
+      'aria-label': '案内を閉じる',
+      text: '×',
+      onclick: () => {
+        sessionStorageSet('installNoticeClosed', '1');
+        note.remove();
+      },
+    }),
+  );
+  return note;
 }
 
 function sessionStorageGet(k) {

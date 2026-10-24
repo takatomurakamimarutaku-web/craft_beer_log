@@ -193,6 +193,19 @@ NFKC 正規化 → 小文字化 → ひらがなをカタカナに統一 → 前
 - アプリより新しいバージョンのファイルは読み込みません。古い形式は `js/backup.js` の `UPGRADES` で変換します
 - 「既存のデータに追加」では同じ ID のデータは既存を残し、重複させません。「置き換え」は確認のうえ全データを入れ替えます
 
+## 製品化に向けた対応（v1.1.0）
+
+- 初回起動時の案内（20歳以上の確認 → できること → データの保存先）。完了すると meta の `onboardedAt` に記録（`js/views/welcome.js`）
+- iPhone の Safari で開いているときは、ホーム画面への追加の案内を表示（判定は `js/install.js`）
+- バックアップの案内：未バックアップで最初の記録から30日以上 or 20件以上、最終バックアップから30日以上、またはその後20件以上（`backupReminder`）
+- 記録画面の入力途中の内容を meta の `checkinDraft` に自動保存（写真を除く）。タブ・戻るボタンで離れるときは確認する
+- エラーは `js/errors.js` で「何が起きたか＋次にすること」の日本語にする（容量不足・DB・許可・通信）
+- 文字サイズを iPhone の設定に合わせる（`-apple-system-body`）、フォーカス表示、ダイアログ内のフォーカス閉じ込め、「元に戻す」は10秒、色のコントラスト比4.5以上
+- 利用者向けバージョンは `js/version.js` の `APP_VERSION`。更新内容は `data/changelog.json`（package.json と一致することをテストで確認）
+- GitHub Actions（`.github/workflows/test.yml`）で push・PR ごとに `npm test` と `check-pwa` を実行
+
+リリースのたびに：`APP_VERSION`・`package.json` の version・`changelog.json` の先頭を更新し、`CACHE_VERSION` を上げる。
+
 ## テスト
 
 ```sh
