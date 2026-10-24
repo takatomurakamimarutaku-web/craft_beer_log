@@ -13,7 +13,9 @@ HTML / CSS / JavaScript（ES Modules）だけで作られており、ビルド�
    - 候補を選ぶと既存の銘柄に記録を追加、選ばなければ新しい銘柄として登録します
    - 名前だけでも保存できます。ブリュワー・スタイル・度数のどれかが空の場合は「未入力あり」と表示されます
    - 写真は1件につき4枚まで。長辺1280px の JPEG に縮小して保存します
-4. 「その他」→「設定」でバックアップ（書き出し）と復元ができます。**定期的にバックアップしてください**
+4. 「検索」で名前・ブリュワーのキーワード、スタイル・度数・評価などで絞り込みと並べ替えができます
+5. 「その他」→「飲みたいリスト」に気になる銘柄を登録し、飲んだら「飲んだ」から記録します
+6. 「その他」→「設定」でバックアップ（書き出し）と復元ができます。**定期的にバックアップしてください**
 
 > iOS では、Safari で開いたときとホーム画面のアプリとでデータの保存場所が別になります。ホーム画面に追加したアプリで使ってください。
 
@@ -26,9 +28,11 @@ HTML / CSS / JavaScript（ES Modules）だけで作られており、ビルド�
 | `#/beer/:id/edit` | 銘柄の編集 |
 | `#/checkin/new`（`?beerId=` で銘柄を指定） | 記録の登録 |
 | `#/checkin/:id/edit` | 記録の編集 |
+| `#/search` | 検索・絞り込み・並べ替え |
+| `#/wishlist`, `#/wishlist/new` | 飲みたいリスト |
 | `#/settings` | 設定・バックアップ・復元 |
 | `#/more` | その他メニュー |
-| `#/search`, `#/wishlist`, `#/knowledge`, `#/stats` | 今後のフェーズで実装予定 |
+| `#/knowledge`, `#/stats` | 今後のフェーズで実装予定 |
 
 ## ファイル構成
 
@@ -42,7 +46,7 @@ js/router.js            ハッシュルーティング
 js/db.js                IndexedDB 操作
 js/models.js            データの生成・定数
 js/validate.js          入力値の検証（純粋関数）
-js/search.js            正規化・候補の抽出（純粋関数）
+js/search.js            正規化・検索・絞り込み（純粋関数）
 js/stats.js             集計（純粋関数）
 js/image.js             写真の縮小・圧縮
 js/backup.js            バックアップの書き出し・検証・読み込み
@@ -53,6 +57,7 @@ data/flavor-tags.json   香りタグの語彙
 data/terms.json, data/hops.json  知識データ（Phase 4 で作成）
 icons/                  アイコン（SVG と PNG）
 scripts/check-pwa.js    PWA 構成の検証
+scripts/dummy-data.js   性能確認用のダミーデータ生成
 tools/icon-export.html  SVG アイコンから PNG を書き出すページ
 test/*.test.js          テスト
 ```
@@ -158,7 +163,7 @@ node scripts/check-pwa.js
 
 Service Worker がアプリのファイルをキャッシュしているため、**ファイルを変更したら必ず次を行ってください。**
 
-1. `sw.js` の `CACHE_VERSION` を上げる（例：`'v2'` → `'v3'`）
+1. `sw.js` の `CACHE_VERSION` を上げる（例：`'v3'` → `'v4'`）
 2. ファイルを追加・削除・改名した場合は `sw.js` の `PRECACHE_URLS` も更新する
 3. `npm test` と `node scripts/check-pwa.js` が通ることを確認する（キャッシュ対象の漏れはここで検出されます）
 4. コミットして push する
@@ -203,7 +208,7 @@ iOS はアイコンの透過部分を黒く塗るため、背景は不透明に�
 
 - Phase 1：PWA の基盤と記録の基本機能
 - Phase 2：データ保護（バックアップ・復元）
-- Phase 3：検索・絞り込み・飲みたいリスト（予定）
+- Phase 3：検索・絞り込み・飲みたいリスト
 - Phase 4：クラフトビールの基礎知識ページ（予定）
 - Phase 5：テイスティングノートと知識との連携（予定）
 - Phase 6：統計・分析・共有（予定）

@@ -6,6 +6,8 @@ import * as beersView from './views/beers.js';
 import * as beerDetailView from './views/beer-detail.js';
 import * as beerEditView from './views/beer-edit.js';
 import * as checkinFormView from './views/checkin-form.js';
+import * as searchView from './views/search.js';
+import * as wishlistView from './views/wishlist.js';
 import * as settingsView from './views/settings.js';
 import * as moreView from './views/more.js';
 import * as placeholderView from './views/placeholder.js';
@@ -17,10 +19,11 @@ const routes = [
   { path: '/beer/:id/edit', view: beerEditView, title: '銘柄を編集', tab: 'beers', back: '#/beers' },
   { path: '/checkin/new', view: checkinFormView, title: '記録する', tab: 'checkin', back: '#/beers' },
   { path: '/checkin/:id/edit', view: checkinFormView, title: '記録を編集', tab: 'beers', back: '#/beers' },
-  { path: '/search', view: placeholderView, title: '検索', tab: 'search', phase: 'Phase 3' },
+  { path: '/search', view: searchView, title: '検索', tab: 'search' },
   { path: '/knowledge', view: placeholderView, title: '知識', tab: 'knowledge', phase: 'Phase 4' },
   { path: '/more', view: moreView, title: 'その他', tab: 'more' },
-  { path: '/wishlist', view: placeholderView, title: '飲みたいリスト', tab: 'more', back: '#/more', phase: 'Phase 3' },
+  { path: '/wishlist', view: wishlistView, title: '飲みたいリスト', tab: 'more', back: '#/more' },
+  { path: '/wishlist/new', view: beerEditView, title: '飲みたい銘柄を追加', tab: 'more', back: '#/wishlist' },
   { path: '/stats', view: placeholderView, title: '統計', tab: 'more', back: '#/more', phase: 'Phase 6' },
   { path: '/settings', view: settingsView, title: '設定', tab: 'more', back: '#/more' },
 ];
