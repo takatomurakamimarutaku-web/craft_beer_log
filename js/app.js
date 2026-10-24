@@ -6,6 +6,7 @@ import * as beersView from './views/beers.js';
 import * as beerDetailView from './views/beer-detail.js';
 import * as beerEditView from './views/beer-edit.js';
 import * as checkinFormView from './views/checkin-form.js';
+import * as settingsView from './views/settings.js';
 import * as moreView from './views/more.js';
 import * as placeholderView from './views/placeholder.js';
 
@@ -21,7 +22,7 @@ const routes = [
   { path: '/more', view: moreView, title: 'その他', tab: 'more' },
   { path: '/wishlist', view: placeholderView, title: '飲みたいリスト', tab: 'more', back: '#/more', phase: 'Phase 3' },
   { path: '/stats', view: placeholderView, title: '統計', tab: 'more', back: '#/more', phase: 'Phase 6' },
-  { path: '/settings', view: placeholderView, title: '設定', tab: 'more', back: '#/more', phase: 'Phase 2' },
+  { path: '/settings', view: settingsView, title: '設定', tab: 'more', back: '#/more' },
 ];
 
 const outlet = document.getElementById('view');
@@ -89,6 +90,18 @@ async function start() {
 
   backBtn.addEventListener('click', () => router.goBack(current?.back));
   router.start();
+  requestPersistence();
+}
+
+/** 対応環境ではストレージの永続化を要求する（非対応・拒否でも止めない） */
+async function requestPersistence() {
+  try {
+    if (navigator.storage?.persist && !(await navigator.storage.persisted())) {
+      await navigator.storage.persist();
+    }
+  } catch (e) {
+    console.warn('persist', e);
+  }
 }
 
 // ---- Service Worker と更新の通知 ----

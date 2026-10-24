@@ -291,4 +291,52 @@ export class Repository {
       tx.objectStore('meta').put({ key, value });
     });
   }
+
+  // ---- Phase 2: バックアップ ----
+
+  async counts() {
+    return this.run(DATA_STORES, 'readonly', async (tx) => ({
+      beers: await req(tx.objectStore('beers').count()),
+      checkins: await req(tx.objectStore('checkins').count()),
+      photos: await req(tx.objectStore('photos').count()),
+    }));
+  }
+
+  /** 全データの取得 */
+  dumpAll() {
+    return this.run(DATA_STORES, 'readonly', async (tx) => ({
+      beers: await req(tx.objectStore('beers').getAll()),
+      checkins: await req(tx.objectStore('checkins').getAll()),
+      photos: await req(tx.objectStore('photos').getAll()),
+    }));
+  }
+
+  /**
+   * データの取り込み。
+   * mode="replace"：既存のデータを消してから登録する
+   * mode="merge"：同じIDのデータは既存を残し、無いものだけ追加する
+   * @returns {{added:{beers,checkins,photos}, skipped:{beers,checkins,photos}}}
+   */
+  importData(data, mode) {
+    if (mode !== 'replace' && mode !== 'merge') throw new Error('取り込み方法が不正です');
+    return this.run(DATA_STORES, 'readwrite', async (tx) => {
+      const added = { beers: 0, checkins: 0, photos: 0 };
+      const skipped = { beers: 0, checkins: 0, photos: 0 };
+      for (const name of DATA_STORES) {
+        const store = tx.objectStore(name);
+        if (mode === 'replace') await req(store.clear());
+        const existing = mode === 'merge' ? new Set(await req(store.getAllKeys())) : new Set();
+        for (const record of data[name] || []) {
+          if (existing.has(record.id)) {
+            skipped[name] += 1;
+            continue;
+          }
+          store.put(name === 'beers' ? withBeerKeys(record) : record);
+          existing.add(record.id);
+          added[name] += 1;
+        }
+      }
+      return { added, skipped };
+    });
+  }
 }

@@ -1,6 +1,6 @@
 // Service Worker
 // ファイルを変更したら CACHE_VERSION を上げる（README「キャッシュ更新手順」参照）
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const CACHE_NAME = `craft-beer-log-${CACHE_VERSION}`;
 
 // 事前にキャッシュするファイル（相対パス）。ファイルを追加・削除したらここも更新する
@@ -10,6 +10,7 @@ const PRECACHE_URLS = [
   'manifest.webmanifest',
   'css/style.css',
   'js/app.js',
+  'js/backup.js',
   'js/db.js',
   'js/image.js',
   'js/models.js',
@@ -25,6 +26,7 @@ const PRECACHE_URLS = [
   'js/views/checkin-form.js',
   'js/views/more.js',
   'js/views/placeholder.js',
+  'js/views/settings.js',
   'data/flavor-tags.json',
   'data/hops.json',
   'data/styles.json',

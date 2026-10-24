@@ -13,6 +13,7 @@ HTML / CSS / JavaScript（ES Modules）だけで作られており、ビルド�
    - 候補を選ぶと既存の銘柄に記録を追加、選ばなければ新しい銘柄として登録します
    - 名前だけでも保存できます。ブリュワー・スタイル・度数のどれかが空の場合は「未入力あり」と表示されます
    - 写真は1件につき4枚まで。長辺1280px の JPEG に縮小して保存します
+4. 「その他」→「設定」でバックアップ（書き出し）と復元ができます。**定期的にバックアップしてください**
 
 > iOS では、Safari で開いたときとホーム画面のアプリとでデータの保存場所が別になります。ホーム画面に追加したアプリで使ってください。
 
@@ -25,8 +26,9 @@ HTML / CSS / JavaScript（ES Modules）だけで作られており、ビルド�
 | `#/beer/:id/edit` | 銘柄の編集 |
 | `#/checkin/new`（`?beerId=` で銘柄を指定） | 記録の登録 |
 | `#/checkin/:id/edit` | 記録の編集 |
+| `#/settings` | 設定・バックアップ・復元 |
 | `#/more` | その他メニュー |
-| `#/search`, `#/wishlist`, `#/settings`, `#/knowledge`, `#/stats` | 今後のフェーズで実装予定 |
+| `#/search`, `#/wishlist`, `#/knowledge`, `#/stats` | 今後のフェーズで実装予定 |
 
 ## ファイル構成
 
@@ -43,6 +45,7 @@ js/validate.js          入力値の検証（純粋関数）
 js/search.js            正規化・候補の抽出（純粋関数）
 js/stats.js             集計（純粋関数）
 js/image.js             写真の縮小・圧縮
+js/backup.js            バックアップの書き出し・検証・読み込み
 js/ui.js                共通 UI 部品
 js/views/*.js           画面ごとの描画処理
 data/styles.json        スタイル一覧（暫定。Phase 4 で正式版に置き換え）
@@ -106,6 +109,26 @@ NFKC 正規化 → 小文字化 → ひらがなをカタカナに統一 → 前
 
 `js/db.js` の `DB_VERSION` を上げ、`migrate()` に `if (oldVersion < 新バージョン) { ... }` を追加し、移行のテストを `test/db.test.js` に追加します。
 
+## バックアップ形式
+
+写真を base64 で埋め込んだ JSON ファイル（1ファイル）です。
+
+```json
+{
+  "format": "craft-beer-log-backup",
+  "version": 1,
+  "exportedAt": "2026-10-24T12:00:00.000Z",
+  "counts": { "beers": 1, "checkins": 1, "photos": 1 },
+  "beers": [ ... ],
+  "checkins": [ ... ],
+  "photos": [ { "id": "...", "type": "image/jpeg", "data": "<base64>", "thumbType": "image/jpeg", "thumb": "<base64>" } ]
+}
+```
+
+- 読み込み時に形式・バージョン・各データ（ID の重複、銘柄・写真の参照、日付・評価の値）を検証し、問題があれば何も取り込みません
+- アプリより新しいバージョンのファイルは読み込みません。古い形式は `js/backup.js` の `UPGRADES` で変換します
+- 「既存のデータに追加」では同じ ID のデータは既存を残し、重複させません。「置き換え」は確認のうえ全データを入れ替えます
+
 ## テスト
 
 ```sh
@@ -135,7 +158,7 @@ node scripts/check-pwa.js
 
 Service Worker がアプリのファイルをキャッシュしているため、**ファイルを変更したら必ず次を行ってください。**
 
-1. `sw.js` の `CACHE_VERSION` を上げる（例：`'v1'` → `'v2'`）
+1. `sw.js` の `CACHE_VERSION` を上げる（例：`'v2'` → `'v3'`）
 2. ファイルを追加・削除・改名した場合は `sw.js` の `PRECACHE_URLS` も更新する
 3. `npm test` と `node scripts/check-pwa.js` が通ることを確認する（キャッシュ対象の漏れはここで検出されます）
 4. コミットして push する
@@ -179,7 +202,7 @@ iOS はアイコンの透過部分を黒く塗るため、背景は不透明に�
 ## 開発フェーズ
 
 - Phase 1：PWA の基盤と記録の基本機能
-- Phase 2：データ保護（バックアップ・復元）（予定）
+- Phase 2：データ保護（バックアップ・復元）
 - Phase 3：検索・絞り込み・飲みたいリスト（予定）
 - Phase 4：クラフトビールの基礎知識ページ（予定）
 - Phase 5：テイスティングノートと知識との連携（予定）

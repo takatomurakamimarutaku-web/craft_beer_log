@@ -1,11 +1,16 @@
 // 記録一覧（#/beers）
 import { h, createThumbLoader, thumbView, formatDate, formatAbv, stars, emptyState } from '../ui.js';
 import { styleLabel } from '../models.js';
+import { shouldRemindBackup } from '../backup.js';
 
 const PAGE = 50;
 
 export async function render({ app, outlet }) {
-  const [checkins, beers] = await Promise.all([app.db.listCheckins(), app.db.listBeers()]);
+  const [checkins, beers, lastBackupAt] = await Promise.all([
+    app.db.listCheckins(),
+    app.db.listBeers(),
+    app.db.getMeta('lastBackupAt'),
+  ]);
   const beerMap = new Map(beers.map((b) => [b.id, b]));
   const loader = createThumbLoader((id) => app.db.getThumb(id));
 
@@ -19,6 +24,28 @@ export async function render({ app, outlet }) {
       ),
     );
     return () => loader.destroy();
+  }
+
+  // バックアップの案内（控えめに表示）
+  const oldest = checkins.reduce((min, c) => (!min || c.createdAt < min ? c.createdAt : min), null);
+  if (!sessionStorageGet('backupReminderClosed') && shouldRemindBackup(lastBackupAt, oldest)) {
+    const note = h(
+      'div',
+      { class: 'notice' },
+      h('span', { text: lastBackupAt ? '最後のバックアップから30日以上経っています。' : 'まだバックアップしていません。' }),
+      h('a', { href: '#/settings', text: 'バックアップ' }),
+      h('button', {
+        type: 'button',
+        class: 'notice-close',
+        'aria-label': '閉じる',
+        text: '×',
+        onclick: () => {
+          sessionStorageSet('backupReminderClosed', '1');
+          note.remove();
+        },
+      }),
+    );
+    outlet.append(note);
   }
 
   outlet.append(h('p', { class: 'list-meta', text: `${checkins.length}件の記録` }));
@@ -67,4 +94,19 @@ function checkinCard(c, beer, app, loader) {
       ),
     ),
   );
+}
+
+function sessionStorageGet(k) {
+  try {
+    return sessionStorage.getItem(k);
+  } catch {
+    return null;
+  }
+}
+function sessionStorageSet(k, v) {
+  try {
+    sessionStorage.setItem(k, v);
+  } catch {
+    /* 保存できなくても動作に影響しない */
+  }
 }

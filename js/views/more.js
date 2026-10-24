@@ -10,7 +10,7 @@ export function render({ outlet }) {
       { class: 'menu' },
       item('#/wishlist', '飲みたいリスト', 'Phase 3で実装予定'),
       item('#/stats', '統計', 'Phase 6で実装予定'),
-      item('#/settings', '設定・バックアップ', 'Phase 2で実装予定'),
+      item('#/settings', '設定・バックアップ'),
     ),
   );
 }
