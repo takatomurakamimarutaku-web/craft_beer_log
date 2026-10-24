@@ -52,6 +52,7 @@ js/models.js            データの生成・定数
 js/validate.js          入力値の検証（純粋関数）
 js/search.js            正規化・検索・絞り込み（純粋関数）
 js/stats.js             集計（純粋関数）
+js/tasting.js           テイスティングの平均・レーダーの座標・香りタグの照合（純粋関数）
 js/image.js             写真の縮小・圧縮
 js/knowledge.js         知識データの検索・SRM の表示色・スタイル移行（純粋関数）
 js/illust.js            自作 SVG イラスト（グラス・範囲バーなど）
@@ -96,7 +97,7 @@ DB 名 `craft-beer-log`、バージョン 1。ID は `crypto.randomUUID()`。
 | serving | `"draft"`（樽生）/ `"can"` / `"bottle"` / `"other"` / null |
 | volumeMl, price | 容量（ml）、価格（円） |
 | rating | 評価 1〜5（任意） |
-| tasting | `{ bitter, sweet, sour, body, aroma（各1〜5・任意）, flavorTags[] }`（Phase 5 で使用） |
+| tasting | `{ bitter, sweet, sour, body, aroma（各1〜5・未入力は null）, flavorTags[]（flavor-tags.json の ID） }`。記録画面の「テイスティング」（折りたたみ）で入力 |
 | memo, photoIds[] | メモ、写真ID（最大4件） |
 | incomplete | 銘柄のブリュワー・スタイル・度数のいずれかが空なら true |
 | createdAt, updatedAt | 作成・更新日時 |
@@ -250,5 +251,9 @@ iOS はアイコンの透過部分を黒く塗るため、背景は不透明に�
 - Phase 2：データ保護（バックアップ・復元）
 - Phase 3：検索・絞り込み・飲みたいリスト
 - Phase 4：クラフトビールの基礎知識ページ（完了：スタイル25件・用語12件・ホップ19品種）
-- Phase 5：テイスティングノートと知識との連携（予定）
+- Phase 5：テイスティングノートと知識との連携（完了）
+  - 記録画面でテイスティング（5項目＋香りタグ）を入力、銘柄の詳細にレーダーチャート（平均と記録ごと）
+  - レーダーは未入力の項目を中心に置き、ラベルに「－」と表示（形がゆがんで見えないよう、未入力は0とは区別）
+  - 銘柄のスタイル → 知識の解説、スタイルの解説 →「このスタイルの自分の記録」、ホップ →「同じ香りタグの自分の記録」
+  - 検索に香りタグの絞り込み（銘柄の全記録のタグを合わせ、選んだタグをすべて含むもの）
 - Phase 6：統計・分析・共有（予定）

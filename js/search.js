@@ -45,7 +45,7 @@ export function suggest(items, query, getKey, limit = 8) {
 
 /**
  * 銘柄ごとの集計（検索・並べ替え用）を作る。
- * @returns {Array<{beer, count, lastDate, avgRating, latestRating, placeTypes:Set, servings:Set, incomplete:boolean, photoId}>}
+ * @returns {Array<{beer, count, lastDate, avgRating, latestRating, placeTypes:Set, servings:Set, flavorTags:Set, incomplete:boolean, photoId}>}
  */
 export function buildBeerSummaries(beers, checkins) {
   const byBeer = new Map();
@@ -62,6 +62,7 @@ export function buildBeerSummaries(beers, checkins) {
     let rated = 0;
     const placeTypes = new Set();
     const servings = new Set();
+    const flavorTags = new Set();
     let incomplete = false;
     let photoCheckin = null;
     for (const c of list) {
@@ -74,6 +75,7 @@ export function buildBeerSummaries(beers, checkins) {
       }
       if (c.place && c.place.type) placeTypes.add(c.place.type);
       if (c.serving) servings.add(c.serving);
+      for (const t of c.tasting?.flavorTags || []) flavorTags.add(t);
       if (c.incomplete) incomplete = true;
     }
     return {
@@ -84,6 +86,7 @@ export function buildBeerSummaries(beers, checkins) {
       latestRating: latest ? latest.rating : null,
       placeTypes,
       servings,
+      flavorTags,
       incomplete,
       photoId: photoCheckin ? photoCheckin.photoIds[0] : null,
     };
@@ -105,6 +108,7 @@ export function defaultCriteria() {
     abvMax: null,
     placeTypes: [],
     servings: [],
+    flavorTags: [], // 記録の香りタグ（すべて含む銘柄）
     ratingMin: null,
     incompleteOnly: false,
     status: 'all', // 'all' | 'tried' | 'want'
@@ -121,6 +125,7 @@ export function countActiveFilters(criteria) {
   if (c.abvMin !== null || c.abvMax !== null) n++;
   if (c.placeTypes.length) n++;
   if (c.servings.length) n++;
+  if (c.flavorTags.length) n++;
   if (c.ratingMin !== null) n++;
   if (c.incompleteOnly) n++;
   if (c.status !== 'all') n++;
@@ -145,6 +150,10 @@ export function matchesCriteria(summary, criteria) {
   }
   if (c.placeTypes && c.placeTypes.length && !c.placeTypes.some((t) => summary.placeTypes.has(t))) return false;
   if (c.servings && c.servings.length && !c.servings.some((s) => summary.servings.has(s))) return false;
+  if (c.flavorTags && c.flavorTags.length) {
+    const tags = summary.flavorTags || new Set();
+    if (!c.flavorTags.every((t) => tags.has(t))) return false;
+  }
   if (c.ratingMin !== null && c.ratingMin !== undefined) {
     if (summary.avgRating === null || summary.avgRating < c.ratingMin) return false;
   }

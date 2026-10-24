@@ -94,3 +94,23 @@ test('countActiveFilters と初期値', () => {
   assert.equal(matchesCriteria(summaries[0], defaultCriteria()), true);
   assert.equal(sortSummaries([], 'unknown').length, 0);
 });
+
+test('香りタグ：銘柄の記録に付いたタグをすべて含むものだけ（Phase 5）', () => {
+  const bs = [createBeer({ id: 'x', name: 'X' }), createBeer({ id: 'y', name: 'Y' }), createBeer({ id: 'z', name: 'Z' })];
+  const cs = [
+    ck('x', '2026-01-01', { tasting: { flavorTags: ['citrus'] } }),
+    ck('x', '2026-02-01', { tasting: { flavorTags: ['tropical'] } }),
+    ck('y', '2026-01-01', { tasting: { flavorTags: ['citrus', 'pine'] } }),
+    ck('z', '2026-01-01', {}),
+  ];
+  const ss = buildBeerSummaries(bs, cs);
+  const f = (flavorTags) => searchBeers(ss, { flavorTags, sort: 'name', order: 'asc' }).map((s) => s.beer.id);
+  assert.deepEqual(f([]), ['x', 'y', 'z'], '未指定なら全件');
+  assert.deepEqual(f(['citrus']), ['x', 'y']);
+  assert.deepEqual(f(['citrus', 'tropical']), ['x'], '別々の記録のタグも銘柄単位で合わせて判定');
+  assert.deepEqual(f(['citrus', 'pine']), ['y']);
+  assert.deepEqual(f(['coffee']), []);
+  assert.equal(countActiveFilters({ flavorTags: ['citrus'] }), 1);
+  // 古い集計（flavorTags なし）でも落ちない
+  assert.equal(matchesCriteria({ ...ss[2], flavorTags: undefined }, { ...defaultCriteria(), flavorTags: ['citrus'] }), false);
+});

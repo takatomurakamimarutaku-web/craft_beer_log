@@ -1,6 +1,8 @@
 // 知識（#/knowledge 一覧、#/knowledge/style/:id など詳細）
-import { h, svg, emptyState, chipGroup } from '../ui.js';
+import { h, svg, emptyState, chipGroup, formatDate, stars } from '../ui.js';
 import { searchKnowledge, styleTexts, termTexts, hopTexts, filterByTags, HOP_USE_LABELS, srmToHex, styleDisplaySrm, formatRange, GLASS_LABELS } from '../knowledge.js';
+import { buildBeerSummaries, sortSummaries } from '../search.js';
+import { matchByFlavorTags } from '../tasting.js';
 import { glassSvg, rangeBarSvg, ibuScaleSvg, srmScaleSvg, hopConeSvg } from '../illust.js';
 
 const TABS = [
@@ -226,8 +228,10 @@ function styleGlass(st) {
 
 // ---- スタイル詳細 ----
 
-function renderStyle({ app, outlet, params }) {
+async function renderStyle({ app, outlet, params, isStale }) {
   const st = app.styles.find((x) => x.id === params.id);
+  const [beers, checkins] = st ? await Promise.all([app.db.listBeersByStatus('tried'), app.db.listCheckins()]) : [[], []];
+  if (isStale()) return;
   if (!st) {
     outlet.replaceChildren(emptyState('スタイルが見つかりません。', h('a', { class: 'btn', href: '#/knowledge', text: '知識へ' })));
     return;
@@ -265,6 +269,7 @@ function renderStyle({ app, outlet, params }) {
     st.history ? section('歴史・由来', h('p', { text: st.history })) : null,
     st.glass ? section('よく使われるグラス', h('p', { text: GLASS_LABELS[st.glass] || st.glass })) : null,
     st.pairing.length ? section('合う料理の例', h('ul', { class: 'plain-list' }, st.pairing.map((p) => h('li', { text: p })))) : null,
+    myStyleRecords(st, beers, checkins),
     sourcesSection(st.sources),
   );
 }
@@ -306,8 +311,10 @@ function renderTerm({ app, outlet, params }, { terms }) {
 
 // ---- ホップ詳細 ----
 
-function renderHop({ app, outlet, params }, { hops, flavorTags }) {
+async function renderHop({ app, outlet, params, isStale }, { hops, flavorTags }) {
   const x = hops.find((y) => y.id === params.id);
+  const [beers, checkins] = x ? await Promise.all([app.db.listBeers(), app.db.listCheckins()]) : [[], []];
+  if (isStale()) return;
   if (!x) {
     outlet.replaceChildren(emptyState('ホップが見つかりません。', h('a', { class: 'btn', href: '#/knowledge?tab=hops', text: 'ホップ一覧へ' })));
     return;
@@ -364,9 +371,79 @@ function renderHop({ app, outlet, params }, { hops, flavorTags }) {
         ? h('div', { class: 'chips' }, [...linked.values()].map((s) => h('a', { class: 'chip', href: `#/knowledge/style/${encodeURIComponent(s.id)}`, text: `${s.name}の解説` })))
         : null,
     ),
+    myHopRecords(x, beers, checkins, labelOf),
     x.note ? section('出典による違い・補足', h('p', { class: 'small', text: x.note })) : null,
     sourcesSection(x.sources),
   );
+}
+
+// ---- 自分の記録との連携（Phase 5） ----
+
+const MY_LIMIT = 20;
+
+/** このスタイルの自分の記録（銘柄ごと、最近飲んだ順） */
+function myStyleRecords(st, beers, checkins) {
+  const mine = beers.filter((b) => b.styleId === st.id);
+  const summaries = sortSummaries(buildBeerSummaries(mine, checkins), 'lastDate', 'desc');
+  const body = summaries.length
+    ? h(
+        'ul',
+        { class: 'card-list my-records' },
+        summaries.slice(0, MY_LIMIT).map((s) =>
+          h(
+            'li',
+            {},
+            h(
+              'a',
+              { class: 'card card-text', href: `#/beer/${encodeURIComponent(s.beer.id)}` },
+              h(
+                'div',
+                { class: 'card-body' },
+                h('div', { class: 'card-title', text: s.beer.name }),
+                h('div', { class: 'card-meta', text: [s.beer.brewery, s.lastDate ? `最終 ${formatDate(s.lastDate)}` : '', `${s.count}回`].filter(Boolean).join(' · ') }),
+                s.avgRating !== null ? h('div', { class: 'card-foot', text: `${stars(s.avgRating)} ${s.avgRating.toFixed(1)}` }) : null,
+              ),
+            ),
+          ),
+        ),
+      )
+    : h('p', { class: 'muted', text: 'このスタイルの記録はまだありません。' });
+  return section(`このスタイルの自分の記録${summaries.length ? `（${summaries.length}銘柄）` : ''}`, body, more(summaries.length));
+}
+
+/** このホップと同じ香りタグを付けた自分の記録 */
+function myHopRecords(x, beers, checkins, labelOf) {
+  const byId = new Map(beers.map((b) => [b.id, b]));
+  const hits = matchByFlavorTags(checkins, x.flavorTags).filter((m) => byId.has(m.checkin.beerId));
+  const body = hits.length
+    ? h(
+        'ul',
+        { class: 'card-list my-records' },
+        hits.slice(0, MY_LIMIT).map(({ checkin, matched }) => {
+          const b = byId.get(checkin.beerId);
+          return h(
+            'li',
+            {},
+            h(
+              'a',
+              { class: 'card card-text', href: `#/beer/${encodeURIComponent(b.id)}` },
+              h(
+                'div',
+                { class: 'card-body' },
+                h('div', { class: 'card-title', text: b.name }),
+                h('div', { class: 'card-meta', text: [formatDate(checkin.date), b.brewery].filter(Boolean).join(' · ') }),
+                h('div', { class: 'card-foot', text: `共通の香り：${matched.map(labelOf).join('・')}` }),
+              ),
+            ),
+          );
+        }),
+      )
+    : h('p', { class: 'muted', text: '同じ香りタグを付けた記録はまだありません。記録のテイスティングで香りタグを選ぶと、ここに表示されます。' });
+  return section('同じ香りタグの自分の記録', body, more(hits.length));
+}
+
+function more(n) {
+  return n > MY_LIMIT ? h('p', { class: 'small muted', text: `ほか${n - MY_LIMIT}件` }) : null;
 }
 
 function scaleNote(extra = '') {

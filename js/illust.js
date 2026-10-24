@@ -181,3 +181,48 @@ export function hopConeSvg({ title = '' } = {}) {
   ${bracts.join('\n  ')}
 </svg>`;
 }
+
+// ---- テイスティングのレーダーチャート ----
+
+/**
+ * values: { bitter, sweet, sour, body, aroma }（1〜5 / null）
+ * points / axisEnd は js/tasting.js の radarPoints / radarAxisEnd（ここでは描画だけを担う）
+ */
+export function radarSvg({ points, axisEnds, labels, max = 5, size = 220, compact = false, title = '' }) {
+  const c = size / 2;
+  const grid = [];
+  for (let level = 1; level <= max; level++) {
+    const ring = axisEnds.map((e) => `${(c + (e.x - c) * (level / max)).toFixed(1)},${(c + (e.y - c) * (level / max)).toFixed(1)}`).join(' ');
+    grid.push(`<polygon points="${ring}" fill="none" stroke="currentColor" stroke-opacity="${level === max ? 0.35 : 0.15}"/>`);
+  }
+  const spokes = axisEnds.map((e) => `<line x1="${c}" y1="${c}" x2="${e.x}" y2="${e.y}" stroke="currentColor" stroke-opacity=".15"/>`).join('');
+  const shape = points.some((p) => !p.missing)
+    ? `<polygon points="${points.map((p) => `${p.x},${p.y}`).join(' ')}" fill="var(--primary)" fill-opacity=".28" stroke="var(--primary)" stroke-width="2" stroke-linejoin="round"/>`
+    : '';
+  const dots = points
+    .map((p) =>
+      p.missing
+        ? ''
+        : `<circle cx="${p.x}" cy="${p.y}" r="${compact ? 2.5 : 3.5}" fill="var(--primary)"/>`,
+    )
+    .join('');
+  const text = compact
+    ? ''
+    : axisEnds
+        .map((e, i) => {
+          const dx = e.x - c;
+          const dy = e.y - c;
+          const lx = c + dx * 1.2;
+          const ly = c + dy * 1.2 + 4;
+          const anchor = Math.abs(dx) < 4 ? 'middle' : dx > 0 ? 'start' : 'end';
+          const p = points[i];
+          const val = p.missing ? '－' : String(p.value);
+          return `<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${anchor}" font-size="12" fill="currentColor">${escapeText(labels[i])} <tspan font-weight="700">${val}</tspan></text>`;
+        })
+        .join('');
+  const padX = compact ? 4 : 64;
+  const padY = compact ? 4 : 26;
+  return `<svg xmlns="${NS}" viewBox="${-padX} ${-padY} ${size + padX * 2} ${size + padY * 2}" class="radar${compact ? ' radar-compact' : ''}" role="img" aria-label="${escapeAttr(title)}">
+  ${grid.join('')}${spokes}${shape}${dots}${text}
+</svg>`;
+}

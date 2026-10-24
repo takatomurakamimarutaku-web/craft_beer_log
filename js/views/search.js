@@ -34,7 +34,7 @@ export function setCriteria(partial) {
 }
 
 export async function render({ app, outlet }) {
-  const [beers, checkins] = await Promise.all([app.db.listBeers(), app.db.listCheckins()]);
+  const [beers, checkins, knowledge] = await Promise.all([app.db.listBeers(), app.db.listCheckins(), app.loadKnowledge()]);
   const summaries = buildBeerSummaries(beers, checkins);
   const loader = createThumbLoader((id) => app.db.getThumb(id));
   let criteria = { ...loadCriteria() };
@@ -195,6 +195,15 @@ export async function render({ app, outlet }) {
           options: Object.entries(SERVING_LABELS).map(([value, label]) => ({ value, label })),
           values: criteria.servings,
           onChange: (v) => update({ servings: v }),
+        }),
+      ),
+      group(
+        '香りタグ（記録に付けたタグをすべて含む）',
+        chipGroup({
+          label: '香りタグ',
+          options: knowledge.flavorTags.map((t) => ({ value: t.id, label: t.label })),
+          values: criteria.flavorTags,
+          onChange: (v) => update({ flavorTags: v }),
         }),
       ),
       group(

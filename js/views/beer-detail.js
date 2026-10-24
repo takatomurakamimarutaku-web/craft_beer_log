@@ -1,7 +1,8 @@
 // 銘柄の詳細（#/beer/:id）
-import { h, createThumbLoader, formatDate, formatAbv, formatYen, stars, confirmDialog, showToast, showPhoto, glassIcon } from '../ui.js';
+import { h, svg, createThumbLoader, formatDate, formatAbv, formatYen, stars, confirmDialog, showToast, showPhoto, glassIcon } from '../ui.js';
 import { styleLabel, SERVING_LABELS, PLACE_TYPE_LABELS, STATUS_LABELS } from '../models.js';
 import { summarizeRatings } from '../stats.js';
+import { averageTasting, hasScores, tastingRadarSvg } from '../tasting.js';
 
 export async function render({ app, outlet, params }) {
   const beer = await app.db.getBeer(params.id);
@@ -11,7 +12,10 @@ export async function render({ app, outlet, params }) {
     return;
   }
   app.setTitle(beer.name);
-  const checkins = await app.db.listCheckinsByBeer(beer.id);
+  const [checkins, knowledge] = await Promise.all([app.db.listCheckinsByBeer(beer.id), app.loadKnowledge()]);
+  const tagLabel = new Map(knowledge.flavorTags.map((t) => [t.id, t.label]));
+  // スタイルが知識ページにあれば、タップで解説を開く
+  const knownStyle = app.styles.find((x) => x.id === beer.styleId);
   const summary = summarizeRatings(checkins);
   const loader = createThumbLoader((id) => app.db.getThumb(id));
   const style = styleLabel(beer, app.styles);
@@ -28,7 +32,11 @@ export async function render({ app, outlet, params }) {
       h(
         'div',
         { class: 'tags' },
-        style ? h('span', { class: 'tag', text: style }) : null,
+        knownStyle
+          ? h('a', { class: 'tag tag-link', href: `#/knowledge/style/${encodeURIComponent(knownStyle.id)}`, text: `${style} ›`, 'aria-label': `${style}の解説を見る` })
+          : style
+            ? h('span', { class: 'tag', text: style })
+            : null,
         beer.abv !== null ? h('span', { class: 'tag', text: formatAbv(beer.abv) }) : null,
         beer.status === 'want' ? h('span', { class: 'tag tag-want', text: STATUS_LABELS.want }) : null,
       ),
@@ -52,13 +60,33 @@ export async function render({ app, outlet, params }) {
     h('button', { type: 'button', class: 'btn btn-danger-text', text: '削除', onclick: () => removeBeer() }),
   );
 
+  // テイスティングの平均（入力のある記録だけ）
+  const tasted = checkins.filter((c) => hasScores(c.tasting));
+  const allTags = countTags(checkins);
+  const tasteSummary =
+    tasted.length || allTags.length
+      ? h(
+          'section',
+          { class: 'panel taste-summary' },
+          h('h3', { class: 'section-title', text: tasted.length > 1 ? `テイスティング（${tasted.length}件の平均）` : 'テイスティング' }),
+          tasted.length ? h('div', { class: 'radar-wrap' }, svg(tastingRadarSvg(averageTasting(tasted)))) : null,
+          allTags.length
+            ? h(
+                'div',
+                { class: 'chips' },
+                allTags.map(([id, n]) => h('span', { class: 'chip chip-static', text: n > 1 ? `${tagLabel.get(id) || id} ×${n}` : tagLabel.get(id) || id })),
+              )
+            : null,
+        )
+      : null;
+
   const history = h('section', {}, h('h3', { class: 'section-title', text: '飲んだ記録' }));
   if (!checkins.length) history.append(h('p', { class: 'muted', text: 'まだ記録がありません。' }));
   const list = h('ul', { class: 'history' });
   for (const c of checkins) list.append(historyItem(c));
   history.append(list);
 
-  outlet.append(info, rating, actions, history);
+  outlet.append(...[info, rating, tasteSummary, actions, history].filter(Boolean));
 
   function historyItem(c) {
     const detail = [
@@ -82,6 +110,7 @@ export async function render({ app, outlet, params }) {
       place ? h('p', { class: 'small', text: place }) : null,
       detail ? h('p', { class: 'small muted', text: detail }) : null,
       c.memo ? h('p', { class: 'memo', text: c.memo }) : null,
+      tastingLine(c.tasting),
       c.photoIds?.length
         ? h(
             'div',
@@ -99,6 +128,17 @@ export async function render({ app, outlet, params }) {
         h('a', { class: 'link', href: `#/checkin/${encodeURIComponent(c.id)}/edit`, text: '編集' }),
         h('button', { type: 'button', class: 'link danger', text: '削除', onclick: () => removeCheckin(c) }),
       ),
+    );
+  }
+
+  function tastingLine(t) {
+    const tags = t?.flavorTags || [];
+    if (!hasScores(t) && !tags.length) return null;
+    return h(
+      'div',
+      { class: 'taste-line' },
+      hasScores(t) ? h('div', { class: 'radar-mini' }, svg(tastingRadarSvg(t, { size: 64, compact: true }))) : null,
+      tags.length ? h('p', { class: 'small muted', text: tags.map((id) => tagLabel.get(id) || id).join('・') }) : null,
     );
   }
 
@@ -146,4 +186,11 @@ export async function render({ app, outlet, params }) {
   }
 
   return () => loader.destroy();
+}
+
+/** 記録に付いた香りタグの出現回数（多い順） */
+function countTags(checkins) {
+  const m = new Map();
+  for (const c of checkins) for (const t of c.tasting?.flavorTags || []) m.set(t, (m.get(t) || 0) + 1);
+  return [...m.entries()].sort((a, b) => b[1] - a[1]);
 }

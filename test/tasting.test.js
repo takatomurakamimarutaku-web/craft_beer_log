@@ -1,0 +1,94 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { radarPoints, radarAxisEnd, averageTasting, hasTasting, hasScores, matchByFlavorTags, tastingRadarSvg, TASTE_AXES } from '../js/tasting.js';
+import { validateCheckin, parseTasting } from '../js/validate.js';
+import { createCheckin } from '../js/models.js';
+
+const near = (a, b) => assert.ok(Math.abs(a - b) < 0.01, `${a} ≒ ${b}`);
+
+test('radarPoints：満点は軸の端、真上から時計回り', () => {
+  const pts = radarPoints({ bitter: 5, sweet: 5, sour: 5, body: 5, aroma: 5 }, { cx: 100, cy: 100, r: 100 });
+  assert.deepEqual(pts.map((p) => p.key), TASTE_AXES.map((a) => a.key));
+  near(pts[0].x, 100);
+  near(pts[0].y, 0); // 真上
+  assert.ok(pts[1].x > 100 && pts[1].y < 100, '2本目は右上');
+  assert.ok(pts[4].x < 100, '5本目は左側');
+  for (let i = 0; i < 5; i++) {
+    const e = radarAxisEnd(i, { cx: 100, cy: 100, r: 100 });
+    near(pts[i].x, e.x);
+    near(pts[i].y, e.y);
+  }
+});
+
+test('radarPoints：値に比例した距離', () => {
+  const [p] = radarPoints({ bitter: 3 }, { cx: 0, cy: 0, r: 50 });
+  near(p.x, 0);
+  near(p.y, -30);
+  assert.equal(p.value, 3);
+});
+
+test('radarPoints：未入力は中心に置き missing、範囲外は丸める', () => {
+  const pts = radarPoints({ bitter: null, sweet: undefined, sour: 9, body: -1, aroma: NaN }, { cx: 10, cy: 20, r: 40 });
+  assert.equal(pts[0].missing, true);
+  assert.deepEqual([pts[0].x, pts[0].y], [10, 20]);
+  assert.equal(pts[1].missing, true);
+  assert.equal(pts[2].missing, false);
+  assert.equal(pts[2].value, 5, '上限で丸める');
+  assert.equal(pts[3].value, 0, '下限で丸める');
+  assert.equal(pts[4].missing, true, 'NaN は未入力扱い');
+  assert.ok(radarPoints(null).every((p) => p.missing), 'values が無くても落ちない');
+});
+
+test('averageTasting：項目ごとに未入力を除いて平均', () => {
+  const avg = averageTasting([
+    { tasting: { bitter: 4, sweet: null, sour: 1 } },
+    { tasting: { bitter: 5, sweet: null, sour: 2 } },
+    { tasting: null },
+  ]);
+  assert.equal(avg.bitter, 4.5);
+  assert.equal(avg.sweet, null);
+  assert.equal(avg.sour, 1.5);
+  assert.equal(avg.aroma, null);
+  assert.deepEqual(averageTasting([]), { bitter: null, sweet: null, sour: null, body: null, aroma: null });
+});
+
+test('hasTasting / hasScores', () => {
+  assert.equal(hasTasting(createCheckin().tasting), false);
+  assert.equal(hasTasting({ flavorTags: ['citrus'] }), true);
+  assert.equal(hasScores({ flavorTags: ['citrus'] }), false);
+  assert.equal(hasScores({ body: 2 }), true);
+});
+
+test('parseTasting / validateCheckin：1〜5の整数か未入力、タグは重複除去', () => {
+  assert.deepEqual(parseTasting({ bitter: '3', sweet: '', flavorTags: ['citrus', 'citrus', 1, ''] }), {
+    bitter: 3, sweet: null, sour: null, body: null, aroma: null, flavorTags: ['citrus'],
+  });
+  const ng = validateCheckin({ date: '2026-10-01', tasting: { bitter: 6 } });
+  assert.equal(ng.ok, false);
+  assert.ok(ng.errors.tasting);
+  const ok = validateCheckin({ date: '2026-10-01', tasting: { aroma: 5, flavorTags: ['pine'] } });
+  assert.equal(ok.ok, true);
+  assert.equal(ok.value.tasting.aroma, 5);
+  assert.deepEqual(validateCheckin({ date: '2026-10-01' }).value.tasting.flavorTags, [], '未指定でも空の形');
+});
+
+test('matchByFlavorTags：重なりの多い順 → 新しい順、重ならない記録は除く', () => {
+  const cs = [
+    { id: '1', date: '2026-01-01', tasting: { flavorTags: ['citrus'] } },
+    { id: '2', date: '2026-03-01', tasting: { flavorTags: ['citrus'] } },
+    { id: '3', date: '2026-02-01', tasting: { flavorTags: ['citrus', 'pine', 'coffee'] } },
+    { id: '4', date: '2026-04-01', tasting: { flavorTags: ['coffee'] } },
+    { id: '5', date: '2026-05-01' },
+  ];
+  const r = matchByFlavorTags(cs, ['citrus', 'pine']);
+  assert.deepEqual(r.map((m) => m.checkin.id), ['3', '2', '1']);
+  assert.deepEqual(r[0].matched, ['citrus', 'pine']);
+});
+
+test('tastingRadarSvg：未入力の項目は「－」と表示し、全部未入力なら形を描かない', () => {
+  const s = tastingRadarSvg({ bitter: 3, sweet: null });
+  assert.match(s, /甘味 <tspan font-weight="700">－<\/tspan>/);
+  assert.match(s, /aria-label="テイスティング：苦味3、甘味未入力/);
+  assert.doesNotMatch(tastingRadarSvg({}), /fill-opacity=".28"/);
+  assert.doesNotMatch(tastingRadarSvg({ bitter: 2 }, { compact: true }), /<text/, '小さい版はラベルなし');
+});

@@ -102,8 +102,29 @@ export function validateCheckin(input = {}) {
     rating: rating.value,
     memo: String(input.memo ?? ''),
     photoIds,
+    tasting: parseTasting(input.tasting, errors),
   };
   return { ok: Object.keys(errors).length === 0, errors, value };
+}
+
+const TASTE_KEYS = ['bitter', 'sweet', 'sour', 'body', 'aroma'];
+
+/** テイスティング：5項目は 1〜5 の整数か未入力、香りタグは重複を除いた文字列の配列 */
+export function parseTasting(input = {}, errors = {}) {
+  const t = input || {};
+  const out = {};
+  for (const key of TASTE_KEYS) {
+    const v = t[key];
+    if (v === null || v === undefined || v === '') out[key] = null;
+    else if (Number.isInteger(Number(v)) && Number(v) >= 1 && Number(v) <= 5) out[key] = Number(v);
+    else {
+      out[key] = null;
+      errors.tasting = 'テイスティングは1〜5で入力してください';
+    }
+  }
+  const tags = Array.isArray(t.flavorTags) ? t.flavorTags : [];
+  out.flavorTags = [...new Set(tags.filter((x) => typeof x === 'string' && x))];
+  return out;
 }
 
 /** 「未入力あり」：ブリュワー・スタイル・度数のいずれかが空 */

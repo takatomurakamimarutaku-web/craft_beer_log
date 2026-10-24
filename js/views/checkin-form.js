@@ -1,17 +1,19 @@
 // 記録の登録・編集（#/checkin/new, #/checkin/:id/edit）
-import { h, field, attachSuggest, segmented, starInput, showErrors, showToast, confirmDialog, formatAbv } from '../ui.js';
+import { h, field, attachSuggest, segmented, chipGroup, starInput, showErrors, showToast, confirmDialog, formatAbv } from '../ui.js';
 import { createBeer, createCheckin, styleLabel, SERVING_LABELS, PLACE_TYPE_LABELS, MAX_PHOTOS } from '../models.js';
 import { validateBeer, validateCheckin } from '../validate.js';
 import { normalize } from '../search.js';
 import { processImage } from '../image.js';
 import { beerFields } from './beer-fields.js';
+import { TASTE_AXES, TASTE_MAX, hasTasting } from '../tasting.js';
 
 export async function render({ app, outlet, params, query }) {
   const editing = Boolean(params.id);
-  const [beers, breweries, places] = await Promise.all([
+  const [beers, breweries, places, knowledge] = await Promise.all([
     app.db.listBeers(),
     app.db.listDistinctValues('brewery'),
     app.db.listDistinctValues('place'),
+    app.loadKnowledge(),
   ]);
   let checkin;
   if (editing) {
@@ -178,6 +180,38 @@ export async function render({ app, outlet, params, query }) {
   recSection.querySelector('[data-field="volumeMl"] label').setAttribute('for', volume.id);
   recSection.querySelector('[data-field="price"] label').setAttribute('for', price.id);
 
+  // ---- テイスティング（折りたたみ。入力済みなら開いておく） ----
+  const tasting = { ...checkin.tasting, flavorTags: [...(checkin.tasting?.flavorTags || [])] };
+  const tasteSection = h(
+    'details',
+    { class: 'form-section tasting-section', open: hasTasting(checkin.tasting) },
+    h('summary', { class: 'section-title' }, 'テイスティング', h('span', { class: 'muted small', text: '（任意）' })),
+    h('p', { class: 'field-hint', text: '1＝弱い 〜 5＝強い。もう一度タップすると未入力に戻せます。' }),
+    ...TASTE_AXES.map(({ key, label }) =>
+      field(
+        label,
+        segmented({
+          name: label,
+          options: Array.from({ length: TASTE_MAX }, (_, i) => ({ value: i + 1, label: String(i + 1) })),
+          value: tasting[key],
+          allowEmpty: true,
+          onChange: (v) => (tasting[key] = v),
+        }),
+        { name: `taste-${key}` },
+      ),
+    ),
+    field(
+      '香りタグ（複数選択可）',
+      chipGroup({
+        label: '香りタグ',
+        options: knowledge.flavorTags.map((t) => ({ value: t.id, label: t.label })),
+        values: tasting.flavorTags,
+        onChange: (v) => (tasting.flavorTags = v),
+      }),
+      { name: 'tasting' },
+    ),
+  );
+
   const saveBtn = h('button', { type: 'submit', class: 'btn btn-primary btn-block', text: editing ? '保存する' : '記録する' });
   const footer = h(
     'div',
@@ -186,7 +220,7 @@ export async function render({ app, outlet, params, query }) {
     saveBtn,
   );
 
-  form.append(beerSection, recSection, footer);
+  form.append(beerSection, recSection, tasteSection, footer);
   outlet.replaceChildren(form);
   renderPhotos();
 
@@ -255,6 +289,7 @@ export async function render({ app, outlet, params, query }) {
       rating,
       memo: memo.value,
       photoIds: photos.map((p) => p.id),
+      tasting,
     });
     Object.assign(errors, c.errors);
     if (!showErrors(form, errors)) return;
