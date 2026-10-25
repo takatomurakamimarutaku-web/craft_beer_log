@@ -13,6 +13,10 @@ import * as moreView from './views/more.js';
 import * as knowledgeView from './views/knowledge.js';
 import * as statsView from './views/stats.js';
 import * as eventsView from './views/events.js';
+import * as breweriesView from './views/breweries.js';
+import * as breweryDetailView from './views/brewery-detail.js';
+import * as breweryMapView from './views/brewery-map.js';
+import { buildBreweryIndex } from './breweries.js';
 import { migrateBeerStyle, STYLES_VERSION } from './knowledge.js';
 import { friendlyError } from './errors.js';
 import { APP_VERSION } from './version.js';
@@ -38,6 +42,9 @@ const routes = [
   { path: '/event/:id', view: eventsView, title: 'イベント', tab: 'more', back: '#/events' },
   { path: '/stats', view: statsView, title: '統計', tab: 'more', back: '#/more' },
   { path: '/settings', view: settingsView, title: '設定', tab: 'more', back: '#/more' },
+  { path: '/breweries', view: breweriesView, title: 'ブリュワー', tab: 'more', back: '#/more' },
+  { path: '/breweries/map', view: breweryMapView, title: 'ブリュワーの地図', tab: 'more', back: '#/breweries' },
+  { path: '/brewery/:id', view: breweryDetailView, title: 'ブリュワー', tab: 'more', back: '#/breweries' },
 ];
 
 const outlet = document.getElementById('view');
@@ -67,6 +74,7 @@ async function start() {
   let current = null;
   let knowledge = null;
   let events = null;
+  let breweries = null;
   const validStyleIds = new Set(styles.map((s) => s.id));
   const migrateStyles = async () => {
     try {
@@ -100,6 +108,12 @@ async function start() {
       (events ??= loadJson('data/events.json', null).then((d) => {
         if (!d || !Array.isArray(d.events)) events = null;
         return d && Array.isArray(d.events) ? d : null;
+      })),
+    /** ブリュワー情報（data/breweries.json）を初回だけ読み込み、名前照合の索引を作る */
+    loadBreweries: () =>
+      (breweries ??= loadJson('data/breweries.json', { meta: {}, breweries: [] }).then((d) => {
+        const list = Array.isArray(d?.breweries) ? d.breweries : [];
+        return { meta: d?.meta || {}, list, index: buildBreweryIndex(list) };
       })),
     setTitle: (t) => {
       titleEl.textContent = t;

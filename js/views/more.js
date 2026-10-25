@@ -10,6 +10,7 @@ export function render({ outlet }) {
       { class: 'menu' },
       item('#/wishlist', '飲みたいリスト'),
       item('#/events', 'イベント', '全国のビアフェス・ビールイベント'),
+      item('#/breweries', 'ブリュワー', '東北のブリュワーの一覧と地図（試作）'),
       item('#/stats', '統計', 'スタイル・度数・ブリュワー・月別など'),
       item('#/settings', '設定・バックアップ'),
       item('feedback/', '感想を送る', '選ぶだけのかんたんアンケート'),

@@ -16,6 +16,10 @@
   --beer-hi: #ffd58a;
   --foam: #fff8ec;
   --shadow: 0 1px 3px rgba(60, 40, 20, 0.08);
+  --pin-tried: #b05f12;
+  --pin-visited: #2e7d55;
+  --pin-want: #c08a00;
+  --pin-none: #8a7d72;
   --tabbar-h: 58px;
   --header-h: 48px;
   --radius: 12px;
@@ -40,6 +44,10 @@
     --beer-hi: #f7c46c;
     --foam: #f6ead6;
     --shadow: none;
+    --pin-tried: #f0a24a;
+    --pin-visited: #6fcf97;
+    --pin-want: #f2c94c;
+    --pin-none: #9c8f84;
   }
 }
 
@@ -411,3 +419,42 @@ a.chip { text-decoration: none; display: inline-block; }
 .badge-plan { background: var(--surface-2); color: var(--primary); border: 1px solid var(--primary); }
 .event-memo-label { margin-top: 14px; }
 .event-field .segmented .seg { white-space: normal; text-align: left; min-height: 40px; height: auto; padding: 6px 14px; }
+/* ---- ブリュワー ---- */
+.brewery-prefs { margin: 0 0 6px; }
+.brewery-credit { margin: 18px 2px 0; }
+.pin-icon { width: 34px; height: 34px; }
+.pin-color-tried { color: var(--pin-tried); }
+.pin-color-visited { color: var(--pin-visited); }
+.pin-color-want { color: var(--pin-want); }
+.pin-color-none { color: var(--pin-none); }
+.badge-tried { background: var(--pin-tried); color: var(--on-primary); }
+.badge-visited { background: var(--pin-visited); color: #fff; }
+.visit-list { list-style: none; padding: 0; margin: 8px 0; }
+.visit-list .row { justify-content: space-between; }
+.brewery-source summary { cursor: pointer; font-weight: 700; }
+.brewery-source > * + * { margin-top: 6px; }
+.map-tools { margin-bottom: 8px; }
+.brewery-map {
+  height: calc(100dvh - var(--header-h) - var(--tabbar-h) - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 150px);
+  min-height: 320px; border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden;
+  background: var(--surface-2); z-index: 0;
+}
+.map-pin, .legend-dot {
+  border-radius: 50%; border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+.legend-dot { display: inline-block; width: 14px; height: 14px; border-width: 2px; vertical-align: -2px; margin-right: 4px; }
+.pin-tried { background: var(--pin-tried); }
+.pin-visited { background: var(--pin-visited); }
+.pin-want { background: var(--pin-want); }
+.pin-none { background: var(--pin-none); }
+.map-pin.pin-area, .legend-dot.pin-area { border-style: dashed; opacity: 0.85; }
+.map-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 8px 2px; color: var(--muted); }
+.map-popup { display: grid; gap: 2px; min-width: 160px; font-family: inherit; }
+.map-popup a { font-weight: 700; margin-top: 4px; }
+.map-here { fill: #2f80ed; fill-opacity: 0.9; stroke: #fff; stroke-width: 3; }
+.brewery-map .leaflet-popup-content-wrapper, .brewery-map .leaflet-popup-tip { background: var(--surface); color: var(--text); }
+.brewery-map.leaflet-container { font: inherit; font-size: 0.9rem; }
+.brewery-map .leaflet-control-attribution { font-size: 0.7rem; }
+/* クラスタはピンの色（行った＝緑など）と紛れないよう、無彩色にする */
+.brewery-map .marker-cluster { background: color-mix(in srgb, var(--pin-none) 35%, transparent); }
+.brewery-map .marker-cluster div { background: var(--pin-none); color: #fff; font-weight: 700; }
