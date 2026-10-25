@@ -12,6 +12,29 @@ export const PREFS = {
   '43': '熊本県', '44': '大分県', '45': '宮崎県', '46': '鹿児島県', '47': '沖縄県',
 };
 
+/** 地方（画面の分け方）。8地方区分の中部を北陸・甲信越と東海に分けた9区分 */
+export const REGIONS = [
+  { id: 'hokkaido', name: '北海道', prefs: ['01'] },
+  { id: 'tohoku', name: '東北', prefs: ['02', '03', '04', '05', '06', '07'] },
+  { id: 'kanto', name: '関東', prefs: ['08', '09', '10', '11', '12', '13', '14'] },
+  { id: 'hokuriku-koshinetsu', name: '北陸・甲信越', prefs: ['15', '16', '17', '18', '19', '20'] },
+  { id: 'tokai', name: '東海', prefs: ['21', '22', '23', '24'] },
+  { id: 'kinki', name: '近畿', prefs: ['25', '26', '27', '28', '29', '30'] },
+  { id: 'chugoku', name: '中国', prefs: ['31', '32', '33', '34', '35'] },
+  { id: 'shikoku', name: '四国', prefs: ['36', '37', '38', '39'] },
+  { id: 'kyushu-okinawa', name: '九州・沖縄', prefs: ['40', '41', '42', '43', '44', '45', '46', '47'] },
+];
+
+/** 県コードから地方を引く */
+export function regionOf(prefCode) {
+  return REGIONS.find((r) => r.prefs.includes(prefCode)) || null;
+}
+
+/** データのある地方（REGIONS の順）と件数 */
+export function countByRegion(list) {
+  return REGIONS.map((r) => [r, list.filter((b) => r.prefs.includes(b.prefCode)).length]).filter(([, n]) => n > 0);
+}
+
 export const KIND_LABELS = { brewery: '醸造所', brewpub: 'ブルーパブ', contract: '委託醸造', major: '大手の工場' };
 
 export const VERIFICATION_LABELS = {
@@ -136,9 +159,10 @@ export function groupBeersByBrewery(beers, index) {
  * 一覧の絞り込みと並べ替え。キーワードは名前・住所・代表銘柄に一致させる。
  * sort：pref（県コード順）／founded（創業が古い順、不明は後ろ）／availability（買いやすい順、不明は後ろ）。
  * 同じ順位はよみがな順。
- * @param {{ pref?: string, query?: string, feature?: string, sort?: string }} filter
+ * @param {{ region?: string, pref?: string, query?: string, feature?: string, sort?: string }} filter
  */
-export function filterBreweries(list, { pref = '', query = '', feature = '', sort = 'pref' } = {}) {
+export function filterBreweries(list, { region = '', pref = '', query = '', feature = '', sort = 'pref' } = {}) {
+  const regionPrefs = REGIONS.find((r) => r.id === region)?.prefs;
   const q = normalize(query);
   const kana = (a, b) => (a.nameKana || a.name).localeCompare(b.nameKana || b.name, 'ja');
   const year = (b) => b.founded ?? 9999;
@@ -149,6 +173,7 @@ export function filterBreweries(list, { pref = '', query = '', feature = '', sor
     availability: (a, b) => avail(b) - avail(a),
   }[sort] || (() => 0);
   return list
+    .filter((b) => !regionPrefs || regionPrefs.includes(b.prefCode))
     .filter((b) => !pref || b.prefCode === pref)
     .filter((b) => !feature || (b.features || []).includes(feature))
     .filter((b) => !q || [...namesOf(b), b.city, b.address, ...(b.flagships || []).map((f) => f.name)].some((s) => normalize(s).includes(q)))

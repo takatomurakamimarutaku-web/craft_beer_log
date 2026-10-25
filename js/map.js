@@ -7,10 +7,10 @@ export const TILE_ATTRIBUTION_URL = 'https://maps.gsi.go.jp/development/ichiran.
 export const TILE_MAX_ZOOM = 18;
 export const TILE_MIN_ZOOM = 5;
 
-// 東北6県がおさまる範囲（南西・北東）
-export const TOHOKU_BOUNDS = [
-  [36.8, 139.1],
-  [41.6, 142.1],
+// ピンが無いときに表示する範囲（日本全体。南西・北東）
+export const JAPAN_BOUNDS = [
+  [24.0, 122.9],
+  [45.6, 146.0],
 ];
 
 let loading = null;

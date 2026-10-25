@@ -3,6 +3,9 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   PREFS,
+  REGIONS,
+  regionOf,
+  countByRegion,
   KIND_LABELS,
   VERIFICATION_LABELS,
   FEATURE_LABELS,
@@ -165,4 +168,18 @@ test('一覧：特徴で絞り込み、創業順・買いやすい順に並べ�
 test('データ：代表銘柄と特徴が付いた件数（調査済みの範囲）', () => {
   assert.ok(list.filter((b) => b.flagships?.length).length >= 30);
   assert.ok(list.filter((b) => b.kind === 'major').every((b) => b.availability === 'national'));
+});
+
+test('地方：47都道府県がちょうど1つの地方に入り、地方で絞り込める', () => {
+  const codes = REGIONS.flatMap((r) => r.prefs);
+  assert.equal(codes.length, 47);
+  assert.deepEqual([...new Set(codes)].sort(), Object.keys(PREFS).sort());
+  assert.equal(regionOf('15').name, '北陸・甲信越');
+  assert.equal(regionOf('23').name, '東海');
+  const rows = [
+    { id: 'a', name: 'a', prefCode: '04' },
+    { id: 'b', name: 'b', prefCode: '13' },
+  ];
+  assert.deepEqual(filterBreweries(rows, { region: 'kanto' }).map((b) => b.id), ['b']);
+  assert.deepEqual(countByRegion(rows).map(([r, n]) => [r.id, n]), [['tohoku', 1], ['kanto', 1]]);
 });
