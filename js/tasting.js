@@ -10,10 +10,63 @@ export const TASTE_AXES = [
 ];
 export const TASTE_MAX = 5;
 
-/** 5項目のどれか、または香りタグが入っているか */
+/** 味の大まかな選択肢（記録画面のチップ。id は保存するので変えない） */
+export const TASTE_TAGS = [
+  { id: 'crisp', label: 'すっきり' },
+  { id: 'sharp', label: 'キレがある' },
+  { id: 'dry', label: 'ドライ' },
+  { id: 'smooth', label: 'まろやか' },
+  { id: 'light', label: '軽い' },
+  { id: 'rich', label: '濃厚' },
+  { id: 'bitter', label: '苦い' },
+  { id: 'sweet', label: '甘い' },
+  { id: 'sour', label: '酸っぱい' },
+  { id: 'fruity', label: 'フルーティー' },
+  { id: 'toasty', label: '香ばしい' },
+  { id: 'fizzy', label: '炭酸が強い' },
+  { id: 'boozy', label: 'アルコール感' },
+];
+
+/** 香りタグ（data/flavor-tags.json）を記録画面で見せるときのまとまり。載っていないタグは「その他」へ */
+export const FLAVOR_GROUPS = [
+  { label: 'フルーツ', ids: ['citrus', 'tropical', 'stone-fruit', 'berry', 'white-wine', 'banana'] },
+  { label: 'ホップ・草花', ids: ['pine', 'resin', 'herbal', 'floral', 'grassy', 'earthy'] },
+  { label: '麦芽・焦がし', ids: ['malty', 'caramel', 'roasty', 'chocolate', 'coffee'] },
+];
+
+/** 香りタグをグループに分ける（どのグループにも無いものは最後の「その他」） */
+export function groupFlavorTags(flavorTags) {
+  const byId = new Map(flavorTags.map((t) => [t.id, t]));
+  const used = new Set();
+  const groups = FLAVOR_GROUPS.map((g) => ({
+    label: g.label,
+    tags: g.ids.filter((id) => byId.has(id)).map((id) => (used.add(id), byId.get(id))),
+  }));
+  groups.push({ label: 'その他', tags: flavorTags.filter((t) => !used.has(t.id)) });
+  return groups.filter((g) => g.tags.length);
+}
+
+/** 味・香りの表示用ラベル（選んだチップ → 自由入力の順） */
+export function tasteLabels(t) {
+  const label = new Map(TASTE_TAGS.map((x) => [x.id, x.label]));
+  return [...(t?.tasteTags || []).map((id) => label.get(id) || id), ...(t?.tasteCustom || [])];
+}
+export function flavorLabels(t, tagLabels = {}) {
+  const get = tagLabels instanceof Map ? (id) => tagLabels.get(id) : (id) => tagLabels[id];
+  return [...(t?.flavorTags || []).map((id) => get(id) || id), ...(t?.flavorCustom || [])];
+}
+
+const nonEmpty = (a) => Array.isArray(a) && a.length > 0;
+
+/** 5項目のどれか、または味・香りが入っているか */
 export function hasTasting(t) {
   if (!t) return false;
-  return TASTE_AXES.some((a) => typeof t[a.key] === 'number') || (Array.isArray(t.flavorTags) && t.flavorTags.length > 0);
+  return TASTE_AXES.some((a) => typeof t[a.key] === 'number') || hasWords(t);
+}
+
+/** 味・香り（チップか自由入力）が入っているか */
+export function hasWords(t) {
+  return Boolean(t) && [t.flavorTags, t.flavorCustom, t.tasteTags, t.tasteCustom].some(nonEmpty);
 }
 
 /** 5項目のうち数値が入っている項目があるか（レーダーを描くか） */

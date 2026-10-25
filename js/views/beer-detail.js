@@ -2,7 +2,7 @@
 import { h, svg, createThumbLoader, formatDate, formatAbv, formatYen, stars, confirmDialog, showToast, showPhoto, glassIcon } from '../ui.js';
 import { styleLabel, SERVING_LABELS, PLACE_TYPE_LABELS, STATUS_LABELS } from '../models.js';
 import { summarizeRatings } from '../stats.js';
-import { averageTasting, hasScores, tastingRadarSvg } from '../tasting.js';
+import { averageTasting, hasScores, tastingRadarSvg, tasteLabels, flavorLabels } from '../tasting.js';
 import { buildShareText, shareContent } from '../share.js';
 import { resolveBreweryId } from '../breweries.js';
 
@@ -143,13 +143,21 @@ export async function render({ app, outlet, params }) {
   }
 
   function tastingLine(t) {
-    const tags = t?.flavorTags || [];
-    if (!hasScores(t) && !tags.length) return null;
+    const taste = tasteLabels(t);
+    const flavor = flavorLabels(t, tagLabel);
+    if (!hasScores(t) && !taste.length && !flavor.length) return null;
     return h(
       'div',
       { class: 'taste-line' },
       hasScores(t) ? h('div', { class: 'radar-mini' }, svg(tastingRadarSvg(t, { size: 64, compact: true }))) : null,
-      tags.length ? h('p', { class: 'small muted', text: tags.map((id) => tagLabel.get(id) || id).join('・') }) : null,
+      taste.length || flavor.length
+        ? h(
+            'div',
+            {},
+            taste.length ? h('p', { class: 'small muted', text: `味：${taste.join('、')}` }) : null,
+            flavor.length ? h('p', { class: 'small muted', text: `香り：${flavor.join('、')}` }) : null,
+          )
+        : null,
     );
   }
 
