@@ -5,6 +5,8 @@ import {
   PREFS,
   KIND_LABELS,
   VERIFICATION_LABELS,
+  FEATURE_LABELS,
+  AVAILABILITY,
   activeBreweries,
   buildBreweryIndex,
   matchBrewery,
@@ -20,6 +22,7 @@ import {
 
 const data = JSON.parse(readFileSync(new URL('../data/breweries.json', import.meta.url), 'utf8'));
 const list = data.breweries;
+const styleIds = new Set(JSON.parse(readFileSync(new URL('../data/styles.json', import.meta.url), 'utf8')).map((s) => s.id));
 
 const sample = [
   { id: 'a', name: 'ゆかい醸造所', nameKana: 'ゆかいじょうぞうしょ', nameEn: 'Yukai Brewery', aliases: ['ゆかいビール'], prefCode: '04', city: '仙台市', status: 'active' },
@@ -46,6 +49,15 @@ test('データ：必須項目・ID重複・県コード・種別・座標の範
     assert.ok(Array.isArray(b.sources) && b.sources.every((s) => s.label && isSafeUrl(s.url)), `${b.id} 出典`);
     assert.ok(b.sources.length || b.sourceNotes, `${b.id} 確認に使った情報`);
     for (const url of Object.values(b.links || {})) assert.ok(isSafeUrl(url), `${b.id} リンク ${url}`);
+    // 代表銘柄・特徴・買いやすさ（任意。あるときは形式を守る）
+    if (b.flagships) {
+      assert.ok(b.flagships.length <= 3, `${b.id} 代表銘柄は3つまで`);
+      for (const f of b.flagships) assert.ok(f.name && (f.styleId === null || styleIds.has(f.styleId)), `${b.id} 代表銘柄 ${f.name}`);
+    }
+    for (const f of b.features || []) assert.ok(FEATURE_LABELS[f], `${b.id} 特徴 ${f}`);
+    if (b.availability !== undefined) assert.ok(AVAILABILITY[b.availability], `${b.id} 買いやすさ`);
+    if (b.flagships?.length || b.features?.length) assert.ok(b.profileCheckedAt, `${b.id} 確認日`);
+    if (b.profileSource !== undefined) assert.ok(isSafeUrl(b.profileSource), `${b.id} 確認元`);
     if (b.geo) {
       // 東北6県の範囲
       assert.ok(b.geo.lat > 36.7 && b.geo.lat < 41.6 && b.geo.lng > 139.1 && b.geo.lng < 142.1, `${b.id} 座標`);
@@ -136,4 +148,21 @@ test('外部リンク：http/https 以外は開かない', () => {
   assert.equal(isSafeUrl('https://example.com/a'), true);
   assert.equal(isSafeUrl('javascript:alert(1)'), false);
   assert.equal(isSafeUrl(null), false);
+});
+
+test('一覧：特徴で絞り込み、創業順・買いやすい順に並べ替える（不明は後ろ）', () => {
+  const rows = [
+    { id: 'x', name: 'え', prefCode: '02', founded: 2010, availability: 'online', features: ['hoppy'], flagships: [{ name: 'ゆかいIPA' }] },
+    { id: 'y', name: 'い', prefCode: '01', availability: 'national', features: ['european'] },
+    { id: 'z', name: 'あ', prefCode: '03', founded: 1997 },
+  ];
+  assert.deepEqual(filterBreweries(rows, { sort: 'founded' }).map((b) => b.id), ['z', 'x', 'y']);
+  assert.deepEqual(filterBreweries(rows, { sort: 'availability' }).map((b) => b.id), ['y', 'x', 'z']);
+  assert.deepEqual(filterBreweries(rows, { feature: 'hoppy' }).map((b) => b.id), ['x']);
+  assert.deepEqual(filterBreweries(rows, { query: 'ゆかい' }).map((b) => b.id), ['x'], '代表銘柄の名前でも探せる');
+});
+
+test('データ：代表銘柄と特徴が付いた件数（調査済みの範囲）', () => {
+  assert.ok(list.filter((b) => b.flagships?.length).length >= 30);
+  assert.ok(list.filter((b) => b.kind === 'major').every((b) => b.availability === 'national'));
 });

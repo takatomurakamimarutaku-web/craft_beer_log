@@ -1,6 +1,6 @@
 // ブリュワーの一覧（#/breweries）
 import { h, svg } from '../ui.js';
-import { PREFS, KIND_LABELS, PIN_LABELS, activeBreweries, filterBreweries, countByPref, groupBeersByBrewery, pinState } from '../breweries.js';
+import { PREFS, KIND_LABELS, PIN_LABELS, FEATURE_LABELS, AVAILABILITY, SORTS, activeBreweries, filterBreweries, countByPref, groupBeersByBrewery, pinState } from '../breweries.js';
 
 export async function render({ app, outlet, query }) {
   const [data, beers, notes] = await Promise.all([app.loadBreweries(), app.db.listBeers(), app.db.listBreweryNotes()]);
@@ -8,7 +8,7 @@ export async function render({ app, outlet, query }) {
   const tried = groupBeersByBrewery(beers.filter((b) => b.status === 'tried'), data.index);
   const triedIds = new Set(tried.keys());
   const noteMap = new Map(notes.map((n) => [n.breweryId, n]));
-  const state = { pref: PREFS[query.pref] ? query.pref : '', q: query.q || '' };
+  const state = { pref: PREFS[query.pref] ? query.pref : '', q: query.q || '', feature: FEATURE_LABELS[query.feature] ? query.feature : '', sort: SORTS[query.sort] ? query.sort : 'pref' };
 
   if (!all.length) {
     outlet.replaceChildren(h('p', { class: 'empty', text: 'ブリュワー情報を読み込めませんでした。通信できる場所でアプリを開き直してください。' }));
@@ -42,6 +42,25 @@ export async function render({ app, outlet, query }) {
     });
   prefChips.append(chip('', `すべて ${all.length}`), ...countByPref(all).map(([code, n]) => chip(code, `${shortPref(code)} ${n}`)));
 
+  const select = (label, value, options, onchange) =>
+    h(
+      'label',
+      { class: 'brewery-select' },
+      h('span', { class: 'field-label', text: label }),
+      h('select', { onchange: (e) => onchange(e.target.value) }, options.map(([v, t]) => h('option', { value: v, text: t, selected: v === value }))),
+    );
+  const tools = h(
+    'div',
+    { class: 'field-row brewery-tools' },
+    select('特徴', state.feature, [['', 'すべて'], ...Object.entries(FEATURE_LABELS)], (v) => {
+      state.feature = v;
+      update();
+    }),
+    select('並べ替え', state.sort, Object.entries(SORTS), (v) => {
+      state.sort = v;
+      update();
+    }),
+  );
   const meta = h('p', { class: 'list-meta', role: 'status' });
   const list = h('ul', { class: 'card-list' });
 
@@ -54,6 +73,7 @@ export async function render({ app, outlet, query }) {
       search,
     ),
     prefChips,
+    tools,
     meta,
     list,
     creditNote(data.meta),
@@ -82,13 +102,15 @@ export async function render({ app, outlet, query }) {
           'div',
           { class: 'card-body' },
           h('div', { class: 'card-title', text: b.name }),
-          h('div', { class: 'card-meta', text: `${PREFS[b.prefCode]}${b.city}・${KIND_LABELS[b.kind] || ''}` }),
+          h('div', { class: 'card-meta', text: `${PREFS[b.prefCode]}${b.city}・${KIND_LABELS[b.kind] || ''}${b.founded ? `・${b.founded}年創業` : ''}` }),
+          b.flagships?.length ? h('div', { class: 'card-meta', text: `代表：${b.flagships.map((f) => f.name).join('、')}` }) : null,
           h(
             'div',
             { class: 'card-foot' },
             n ? h('span', { class: 'badge badge-tried', text: `飲んだ ${n}銘柄` }) : null,
             note?.visited?.length ? h('span', { class: 'badge badge-visited', text: `行った ${note.visited.length}回` }) : null,
             note?.wantToVisit ? h('span', { class: 'badge badge-warn', text: '行きたい' }) : null,
+            AVAILABILITY[b.availability] ? h('span', { text: AVAILABILITY[b.availability].label }) : null,
             !b.geo ? h('span', { text: '地図なし' }) : null,
           ),
         ),
