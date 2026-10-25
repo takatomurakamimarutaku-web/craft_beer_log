@@ -17,6 +17,7 @@ async function sampleRepo() {
   );
   await repo.saveCheckin(createCheckin({ beerId: beer.id, date: '2026-10-02', photoIds: ['p3'] }), [photo('p3', 3)]);
   await repo.saveBeer(createBeer({ name: '飲みたい', status: 'want' }));
+  await repo.saveBreweryNote('baeren', { breweryId: 'baeren', visited: ['2026-10-03'], wantToVisit: false, memo: '駅から歩ける', updatedAt: '2026-10-03T00:00:00.000Z' });
   return repo;
 }
 
@@ -26,6 +27,7 @@ async function normalized(repo) {
   return {
     beers: sort(d.beers),
     checkins: sort(d.checkins),
+    breweryNotes: d.breweryNotes,
     photos: await Promise.all(
       sort(d.photos).map(async (p) => ({ id: p.id, blob: await blobToBase64(p.blob), blobType: p.blob.type, thumb: await blobToBase64(p.thumb) })),
     ),
@@ -48,7 +50,7 @@ test('エクスポート → 別のDBへ置き換えでインポート：写真�
   const dst = await openDB({ indexedDB: new IDBFactory() });
   await dst.createBeerWithCheckin(createBeer({ name: '消える' }), createCheckin());
   const r = await dst.importData(data, 'replace');
-  assert.deepEqual(r.added, { beers: 2, checkins: 2, photos: 3 });
+  assert.deepEqual(r.added, { beers: 2, checkins: 2, photos: 3, breweryNotes: 1 });
   assert.deepEqual(await normalized(dst), await normalized(src));
   src.close();
   dst.close();
@@ -59,16 +61,16 @@ test('追加インポート：同じIDは重複させず、新しいものだけ
   const data = parseBackup(await (await createBackupBlob(await src.dumpAll())).text());
   // 同じデータを追加しても増えない
   const r1 = await src.importData(data, 'merge');
-  assert.deepEqual(r1.added, { beers: 0, checkins: 0, photos: 0 });
-  assert.deepEqual(r1.skipped, { beers: 2, checkins: 2, photos: 3 });
-  assert.deepEqual(await src.counts(), { beers: 2, checkins: 2, photos: 3 });
+  assert.deepEqual(r1.added, { beers: 0, checkins: 0, photos: 0, breweryNotes: 0 });
+  assert.deepEqual(r1.skipped, { beers: 2, checkins: 2, photos: 3, breweryNotes: 1 });
+  assert.deepEqual(await src.counts(), { beers: 2, checkins: 2, photos: 3, breweryNotes: 1 });
 
   // 別のDBに追加すると、既存のデータは残る
   const dst = await openDB({ indexedDB: new IDBFactory() });
   await dst.createBeerWithCheckin(createBeer({ name: '既存' }), createCheckin());
   const r2 = await dst.importData(data, 'merge');
-  assert.deepEqual(r2.added, { beers: 2, checkins: 2, photos: 3 });
-  assert.deepEqual(await dst.counts(), { beers: 3, checkins: 3, photos: 3 });
+  assert.deepEqual(r2.added, { beers: 2, checkins: 2, photos: 3, breweryNotes: 1 });
+  assert.deepEqual(await dst.counts(), { beers: 3, checkins: 3, photos: 3, breweryNotes: 1 });
   src.close();
   dst.close();
 });
@@ -125,4 +127,16 @@ test('shouldRemindBackup：30日以上で案内する', () => {
   assert.equal(shouldRemindBackup('2026-09-24T00:00:00Z', null, now), true);
   assert.equal(shouldRemindBackup(null, '2026-09-01T00:00:00Z', now), true, '未バックアップで最初の記録から30日以上');
   assert.equal(shouldRemindBackup(null, '2026-10-20T00:00:00Z', now), false);
+});
+
+test('ブリュワーのメモ：無い古いファイルは空として読み、不正な内容は読み込まない', () => {
+  const base = { format: BACKUP_FORMAT, version: BACKUP_VERSION, beers: [], checkins: [], photos: [] };
+  assert.deepEqual(parseBackup(JSON.stringify(base)).breweryNotes, []);
+  const note = { breweryId: 'baeren', visited: ['2026-10-03'], wantToVisit: true, memo: 'x', updatedAt: '2026-10-03T00:00:00.000Z' };
+  assert.deepEqual(parseBackup(JSON.stringify({ ...base, breweryNotes: [note] })).breweryNotes, [note]);
+  const bad = (breweryNotes) => assert.throws(() => parseBackup(JSON.stringify({ ...base, breweryNotes })), BackupError);
+  bad({});
+  bad([{ visited: [] }]);
+  bad([{ breweryId: 'a', visited: ['2026/10/03'] }]);
+  bad([{ breweryId: 'a' }, { breweryId: 'a' }]);
 });

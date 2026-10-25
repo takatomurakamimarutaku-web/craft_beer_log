@@ -4,6 +4,7 @@ import { styleLabel, SERVING_LABELS, PLACE_TYPE_LABELS, STATUS_LABELS } from '..
 import { summarizeRatings } from '../stats.js';
 import { averageTasting, hasScores, tastingRadarSvg } from '../tasting.js';
 import { buildShareText, shareContent } from '../share.js';
+import { resolveBreweryId } from '../breweries.js';
 
 export async function render({ app, outlet, params }) {
   const beer = await app.db.getBeer(params.id);
@@ -13,7 +14,9 @@ export async function render({ app, outlet, params }) {
     return;
   }
   app.setTitle(beer.name);
-  const [checkins, knowledge] = await Promise.all([app.db.listCheckinsByBeer(beer.id), app.loadKnowledge()]);
+  const [checkins, knowledge, breweries] = await Promise.all([app.db.listCheckinsByBeer(beer.id), app.loadKnowledge(), app.loadBreweries()]);
+  // ブリュワー欄の名前がブリュワー情報と一意に一致したら、詳細へのリンクにする
+  const breweryId = resolveBreweryId(beer, breweries.index);
   const tagLabel = new Map(knowledge.flavorTags.map((t) => [t.id, t.label]));
   // スタイルが知識ページにあれば、タップで解説を開く
   const knownStyle = app.styles.find((x) => x.id === beer.styleId);
@@ -29,7 +32,9 @@ export async function render({ app, outlet, params }) {
       'div',
       {},
       h('h2', { class: 'beer-name', text: beer.name }),
-      h('p', { class: 'muted', text: beer.brewery || 'ブリュワー未入力' }),
+      breweryId
+        ? h('p', {}, h('a', { href: `#/brewery/${encodeURIComponent(breweryId)}`, text: `${beer.brewery} ›`, 'aria-label': `${beer.brewery}のブリュワー情報を見る` }))
+        : h('p', { class: 'muted', text: beer.brewery || 'ブリュワー未入力' }),
       h(
         'div',
         { class: 'tags' },

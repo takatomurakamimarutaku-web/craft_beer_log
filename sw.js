@@ -1,6 +1,6 @@
 // Service Worker
 // ファイルを変更したら CACHE_VERSION を上げる（README「キャッシュ更新手順」参照）
-const CACHE_VERSION = 'v17';
+const CACHE_VERSION = 'v18';
 const CACHE_NAME = `craft-beer-log-${CACHE_VERSION}`;
 
 // 事前にキャッシュするファイル（相対パス）。ファイルを追加・削除したらここも更新する
@@ -11,6 +11,7 @@ const PRECACHE_URLS = [
   'css/style.css',
   'js/app.js',
   'js/backup.js',
+  'js/breweries.js',
   'js/charts.js',
   'js/db.js',
   'js/errors.js',
@@ -18,6 +19,7 @@ const PRECACHE_URLS = [
   'js/image.js',
   'js/install.js',
   'js/knowledge.js',
+  'js/map.js',
   'js/models.js',
   'js/router.js',
   'js/search.js',
@@ -31,6 +33,9 @@ const PRECACHE_URLS = [
   'js/views/beer-edit.js',
   'js/views/beer-fields.js',
   'js/views/beers.js',
+  'js/views/breweries.js',
+  'js/views/brewery-detail.js',
+  'js/views/brewery-map.js',
   'js/views/checkin-form.js',
   'js/views/knowledge.js',
   'js/views/more.js',
@@ -40,6 +45,7 @@ const PRECACHE_URLS = [
   'js/views/welcome.js',
   'js/views/wishlist.js',
   'data/basics.json',
+  'data/breweries.json',
   'data/changelog.json',
   'data/flavor-tags.json',
   'data/hops.json',
@@ -63,6 +69,13 @@ const PRECACHE_URLS = [
   'images/styles/sour.webp',
   'images/styles/stout.webp',
   'images/styles/weizen.webp',
+  'vendor/leaflet.markercluster/LICENSE.txt',
+  'vendor/leaflet.markercluster/MarkerCluster.Default.css',
+  'vendor/leaflet.markercluster/MarkerCluster.css',
+  'vendor/leaflet.markercluster/leaflet.markercluster.js',
+  'vendor/leaflet/LICENSE.txt',
+  'vendor/leaflet/leaflet.css',
+  'vendor/leaflet/leaflet.js',
 ];
 
 self.addEventListener('install', (event) => {
