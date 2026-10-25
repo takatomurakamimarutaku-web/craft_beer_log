@@ -157,8 +157,8 @@ const CONE_ROWS = [
   [2, 13],
 ];
 
-/** ホップの毬花（きゅうか）のイラスト */
-export function hopConeSvg({ title = '' } = {}) {
+/** ホップの毬花（きゅうか）の図形（svg 要素の中身） */
+function coneMarkup() {
   const bracts = [];
   for (let r = CONE_ROWS.length - 1; r >= 0; r--) {
     const [n, half] = CONE_ROWS[r];
@@ -174,11 +174,89 @@ export function hopConeSvg({ title = '' } = {}) {
       );
     }
   }
-  return `<svg xmlns="${NS}" viewBox="0 0 100 120" class="hop-art" role="img" aria-label="${escapeAttr(title)}">
-  <path d="M50 4 C50 12 50 18 50 28" stroke="var(--hop-line)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  return `<path d="M50 4 C50 12 50 18 50 28" stroke="var(--hop-line)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
   <path d="M50 14 C60 6 74 6 82 12 C74 20 60 22 50 14 Z" fill="var(--hop-2)" stroke="var(--hop-line)" stroke-width="1.2"/>
   <path d="M52 14 C62 12 70 12 78 12" stroke="var(--hop-line)" stroke-width="1" fill="none"/>
-  ${bracts.join('\n  ')}
+  ${bracts.join('\n  ')}`;
+}
+
+/** ホップの毬花（きゅうか）のイラスト */
+export function hopConeSvg({ title = '' } = {}) {
+  return `<svg xmlns="${NS}" viewBox="0 0 100 120" class="hop-art" role="img" aria-label="${escapeAttr(title)}">
+  ${coneMarkup()}
+</svg>`;
+}
+
+// 香りタグのモチーフ（中心 0,0・半径 10 程度）と背景の色
+const AROMA_MOTIFS = {
+  citrus: {
+    color: '#f2a33a',
+    art: '<circle r="9.5" fill="#f2a33a"/><circle r="7.5" fill="#fcd27a"/><path d="M0 -7.5V7.5M-6.5 -3.75L6.5 3.75M-6.5 3.75L6.5 -3.75" stroke="#f2a33a" stroke-width="1.2"/>',
+  },
+  tropical: {
+    color: '#e8b923',
+    art: '<path d="M0 -4L-4 -11M0 -4L0 -12M0 -4L4 -11" stroke="#4f9a3c" stroke-width="2" stroke-linecap="round"/><ellipse cy="3" rx="6.5" ry="8" fill="#e8b923"/><path d="M-5 -1L5 7M-5 7L5 -1M-6 3L0 9M6 3L0 9" stroke="#b9861a" stroke-width="0.9"/>',
+  },
+  'stone-fruit': {
+    color: '#f19072',
+    art: '<circle cy="1.5" r="8.5" fill="#f19072"/><path d="M0 -6C-2 -1 -2 4 0 9" stroke="#d0644a" stroke-width="1.2" fill="none"/><path d="M1 -7C4 -11 9 -11 10 -8C7 -6 3 -6 1 -7Z" fill="#6aa84f"/>',
+  },
+  berry: {
+    color: '#9a4a8f',
+    art: '<circle cx="-4.5" cy="2" r="4.6" fill="#9a4a8f"/><circle cx="4.5" cy="2" r="4.6" fill="#7d3574"/><circle cy="-5" r="4.6" fill="#b45aa6"/><path d="M0 -9V-12" stroke="#4f9a3c" stroke-width="1.6" stroke-linecap="round"/>',
+  },
+  pine: {
+    color: '#3f7d4a',
+    art: '<path d="M0 -11L7 -2H3L8 5H-8L-3 -2H-7Z" fill="#3f7d4a"/><rect x="-1.5" y="5" width="3" height="5" fill="#7a5233"/>',
+  },
+  resin: {
+    color: '#d08a1e',
+    art: '<path d="M0 -10C4 -3 7 1 7 4A7 7 0 0 1 -7 4C-7 1 -4 -3 0 -10Z" fill="#d08a1e"/><path d="M-3 3A3 3 0 0 0 0 6" stroke="#f6c66b" stroke-width="1.4" fill="none"/>',
+  },
+  herbal: {
+    color: '#5b9b54',
+    art: '<path d="M-8 8C-8 -4 0 -10 9 -10C9 0 2 8 -8 8Z" fill="#5b9b54"/><path d="M-8 8L5 -6" stroke="#2f6a2b" stroke-width="1.2"/>',
+  },
+  floral: {
+    color: '#e48fb4',
+    art: '<g fill="#e48fb4"><circle cy="-5.5" r="4.2"/><circle cx="5.2" cy="-1.7" r="4.2"/><circle cx="3.2" cy="4.5" r="4.2"/><circle cx="-3.2" cy="4.5" r="4.2"/><circle cx="-5.2" cy="-1.7" r="4.2"/></g><circle r="2.8" fill="#f5c542"/>',
+  },
+  spicy: {
+    color: '#d2452f',
+    art: '<path d="M-6 -6C-2 -2 2 4 8 9C1 8 -6 3 -8 -3Z" fill="#d2452f"/><path d="M-7 -5C-8 -8 -6 -10 -4 -10" stroke="#4f9a3c" stroke-width="1.8" fill="none" stroke-linecap="round"/>',
+  },
+  earthy: {
+    color: '#8a6440',
+    art: '<path d="M-10 8C-7 0 7 0 10 8Z" fill="#8a6440"/><path d="M-3 1V-7M0 0V-9M3 1V-6" stroke="#5b9b54" stroke-width="1.6" stroke-linecap="round"/>',
+  },
+  grassy: {
+    color: '#7cb342',
+    art: '<path d="M-6 9C-6 2 -8 -4 -10 -8M0 9C0 1 0 -5 1 -11M6 9C6 2 8 -3 10 -7" stroke="#7cb342" stroke-width="2.4" fill="none" stroke-linecap="round"/>',
+  },
+  wood: {
+    color: '#9b6b3d',
+    art: '<circle r="9" fill="#c4935e"/><circle r="6" fill="none" stroke="#9b6b3d" stroke-width="1.2"/><circle r="3" fill="none" stroke="#9b6b3d" stroke-width="1.2"/>',
+  },
+  'white-wine': {
+    color: '#b6c45a',
+    art: '<g fill="#c3d16b"><circle cx="-4" cy="-4" r="3.4"/><circle cx="3" cy="-4" r="3.4"/><circle cx="-0.5" cy="1.5" r="3.4"/><circle cx="-4.5" cy="2.5" r="3"/><circle cx="3.5" cy="2.5" r="3"/><circle cy="7.5" r="3"/></g><path d="M0 -8V-11" stroke="#7a5233" stroke-width="1.6" stroke-linecap="round"/>',
+  },
+};
+
+/** 品種ごとのホップのイラスト：毬花＋香りの特徴（最大3つ）のモチーフ。背景色は最初の香りの色 */
+export function hopArtSvg({ flavorTags = [], title = '' } = {}) {
+  const tags = flavorTags.filter((t) => AROMA_MOTIFS[t]).slice(0, 3);
+  const tint = tags.length ? AROMA_MOTIFS[tags[0]].color : 'var(--hop-2)';
+  const xs = tags.length === 1 ? [50] : tags.length === 2 ? [32, 68] : [19, 50, 81];
+  const badges = tags.map(
+    (t, i) => `<g transform="translate(${xs[i]} 112)" data-aroma="${t}"><circle r="14.5" fill="var(--surface)" stroke="${AROMA_MOTIFS[t].color}" stroke-width="1.5"/><g transform="scale(1.15)">${AROMA_MOTIFS[t].art}</g></g>`,
+  );
+  return `<svg xmlns="${NS}" viewBox="0 0 100 140" class="hop-art" role="img" aria-label="${escapeAttr(title)}">
+  <rect x="2" y="2" width="96" height="136" rx="12" fill="${tint}" fill-opacity=".22"/>
+  <g transform="translate(19 2) scale(.62)">
+  ${coneMarkup()}
+  </g>
+  ${badges.join('\n  ')}
 </svg>`;
 }
 
