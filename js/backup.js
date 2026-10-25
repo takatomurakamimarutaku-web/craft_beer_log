@@ -35,17 +35,18 @@ const BASE64_RE = /^[A-Za-z0-9+/]*={0,2}$/;
  * バックアップを Blob にする。
  * 巨大な1本の文字列を作らないよう、写真ごとに文字列を分けて Blob に連結する。
  */
-export async function createBackupBlob({ beers, checkins, photos }, exportedAt = new Date()) {
+export async function createBackupBlob({ beers, checkins, photos, breweryNotes = [] }, exportedAt = new Date()) {
   const head = {
     format: BACKUP_FORMAT,
     version: BACKUP_VERSION,
     exportedAt: exportedAt.toISOString(),
-    counts: { beers: beers.length, checkins: checkins.length, photos: photos.length },
+    counts: { beers: beers.length, checkins: checkins.length, photos: photos.length, breweryNotes: breweryNotes.length },
   };
   const parts = [];
   parts.push(JSON.stringify(head).slice(0, -1)); // 末尾の } を外して続ける
   parts.push(',"beers":', JSON.stringify(beers));
   parts.push(',"checkins":', JSON.stringify(checkins));
+  parts.push(',"breweryNotes":', JSON.stringify(breweryNotes));
   parts.push(',"photos":[');
   for (let i = 0; i < photos.length; i++) {
     const p = photos[i];
@@ -89,7 +90,8 @@ const UPGRADES = {
 
 /**
  * テキストを検証してデータに変換する。不正な場合は BackupError を投げる（部分的な取り込みはしない）。
- * @returns {{ beers, checkins, photos, exportedAt }}
+ * breweryNotes（ブリュワーの行ったメモ）は 1.3.0 で追加。無いファイルは空として扱う。
+ * @returns {{ beers, checkins, photos, breweryNotes, exportedAt }}
  */
 export function parseBackup(text) {
   let obj;
@@ -158,6 +160,24 @@ export function parseBackup(text) {
     return createCheckin({ ...c, photoIds: Array.isArray(pids) ? pids : [] });
   });
 
+  if (obj.breweryNotes !== undefined && !Array.isArray(obj.breweryNotes)) errors.push('ブリュワーのメモが不正です');
+  const noteIds = new Set();
+  const breweryNotes = (Array.isArray(obj.breweryNotes) ? obj.breweryNotes : []).map((n, i) => {
+    if (!isObj(n) || !isStr(n.breweryId) || !n.breweryId) return errors.push(`ブリュワーのメモ${i + 1}件目：IDがありません`), null;
+    const visited = n.visited === undefined ? [] : n.visited;
+    if (!Array.isArray(visited) || visited.some((d) => !isValidDateString(d))) errors.push(`ブリュワーのメモ${i + 1}件目：行った日が不正です`);
+    if (n.memo !== undefined && !isStr(n.memo)) errors.push(`ブリュワーのメモ${i + 1}件目：メモが不正です`);
+    if (noteIds.has(n.breweryId)) errors.push(`ブリュワーのメモ${i + 1}件目：IDが重複しています`);
+    noteIds.add(n.breweryId);
+    return {
+      breweryId: n.breweryId,
+      visited: Array.isArray(visited) ? visited : [],
+      wantToVisit: Boolean(n.wantToVisit),
+      memo: isStr(n.memo) ? n.memo : '',
+      updatedAt: isStr(n.updatedAt) ? n.updatedAt : new Date().toISOString(),
+    };
+  });
+
   if (errors.length) {
     const more = errors.length > 5 ? `　ほか${errors.length - 5}件` : '';
     throw new BackupError(`ファイルの内容に問題があるため読み込みませんでした：${errors.slice(0, 5).join('／')}${more}`);
@@ -167,6 +187,7 @@ export function parseBackup(text) {
     exportedAt: obj.exportedAt || null,
     beers,
     checkins,
+    breweryNotes,
     photos: photos.map((p) => ({
       id: p.id,
       blob: base64ToBlob(p.data, p.type || 'image/jpeg'),

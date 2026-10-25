@@ -10,12 +10,12 @@ async function fresh() {
   return openDB({ indexedDB: new IDBFactory() });
 }
 
-test('スキーマ v1：ストアとインデックスが作成される', async () => {
+test('スキーマ：ストアとインデックスが作成される', async () => {
   const repo = await fresh();
   const db = repo.db;
   assert.equal(db.name, DB_NAME);
   assert.equal(db.version, DB_VERSION);
-  assert.deepEqual([...db.objectStoreNames].sort(), ['beers', 'checkins', 'meta', 'photos']);
+  assert.deepEqual([...db.objectStoreNames].sort(), ['beers', 'breweryNotes', 'checkins', 'meta', 'photos']);
   const tx = db.transaction(['beers', 'checkins'], 'readonly');
   assert.deepEqual([...tx.objectStore('beers').indexNames].sort(), ['breweryKey', 'nameKey', 'status', 'styleId']);
   assert.deepEqual([...tx.objectStore('checkins').indexNames].sort(), ['beerId', 'date']);
@@ -150,5 +150,47 @@ test('メタ情報の保存', async () => {
   assert.equal(await repo.getMeta('lastBackupAt'), null);
   await repo.setMeta('lastBackupAt', '2026-10-24T00:00:00.000Z');
   assert.equal(await repo.getMeta('lastBackupAt'), '2026-10-24T00:00:00.000Z');
+  repo.close();
+});
+
+test('v1 のDBから v2 へ：既存のデータを残したまま breweryNotes を追加する', async () => {
+  const factory = new IDBFactory();
+  // v1 のスキーマを作って銘柄を1件入れる
+  await new Promise((resolve, reject) => {
+    const open = factory.open(DB_NAME, 1);
+    open.onupgradeneeded = () => {
+      const db = open.result;
+      const beers = db.createObjectStore('beers', { keyPath: 'id' });
+      for (const i of ['nameKey', 'breweryKey', 'styleId', 'status']) beers.createIndex(i, i);
+      const checkins = db.createObjectStore('checkins', { keyPath: 'id' });
+      checkins.createIndex('beerId', 'beerId');
+      checkins.createIndex('date', 'date');
+      db.createObjectStore('photos', { keyPath: 'id' });
+      db.createObjectStore('meta', { keyPath: 'key' });
+      beers.put(createBeer({ id: 'old', name: '旧データ' }));
+    };
+    open.onsuccess = () => {
+      open.result.close();
+      resolve();
+    };
+    open.onerror = () => reject(open.error);
+  });
+  const repo = await openDB({ indexedDB: factory });
+  assert.equal(repo.db.version, 2);
+  assert.equal((await repo.getBeer('old')).name, '旧データ');
+  assert.deepEqual(await repo.listBreweryNotes(), []);
+  repo.close();
+});
+
+test('ブリュワーのメモ：保存・更新し、null で削除する', async () => {
+  const repo = await fresh();
+  const note = { breweryId: 'x', visited: ['2026-10-01'], wantToVisit: false, memo: '', updatedAt: '2026-10-01T00:00:00.000Z' };
+  await repo.saveBreweryNote('x', note);
+  assert.deepEqual(await repo.getBreweryNote('x'), note);
+  await repo.saveBreweryNote('x', { ...note, wantToVisit: true });
+  assert.equal((await repo.getBreweryNote('x')).wantToVisit, true);
+  assert.equal((await repo.counts()).breweryNotes, 1);
+  await repo.saveBreweryNote('x', null);
+  assert.equal(await repo.getBreweryNote('x'), undefined);
   repo.close();
 });

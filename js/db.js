@@ -3,8 +3,11 @@ import { withBeerKeys, applyIncomplete, compareCheckinsDesc } from './models.js'
 import { normalize } from './search.js';
 
 export const DB_NAME = 'craft-beer-log';
-export const DB_VERSION = 1;
-export const DATA_STORES = ['beers', 'checkins', 'photos'];
+export const DB_VERSION = 2;
+export const DATA_STORES = ['beers', 'checkins', 'photos', 'breweryNotes'];
+// ストアごとのキー（breweryNotes はブリュワーIDがキー）
+const KEY_OF = { breweryNotes: (r) => r.breweryId };
+const keyOf = (name, record) => (KEY_OF[name] ? KEY_OF[name](record) : record.id);
 
 /**
  * スキーマの移行。バージョンを上げるときは `if (oldVersion < N)` のブロックを追加する。
@@ -25,6 +28,10 @@ export function migrate(db, oldVersion, tx) {
     checkins.createIndex('date', 'date');
     db.createObjectStore('photos', { keyPath: 'id' });
     db.createObjectStore('meta', { keyPath: 'key' });
+  }
+  if (oldVersion < 2) {
+    // ブリュワーの「行った・行きたい・メモ」
+    db.createObjectStore('breweryNotes', { keyPath: 'breweryId' });
   }
 }
 
@@ -316,6 +323,26 @@ export class Repository {
     });
   }
 
+  // ---- ブリュワーの行ったメモ ----
+
+  getBreweryNote(breweryId) {
+    return this.run(['breweryNotes'], 'readonly', (tx) => req(tx.objectStore('breweryNotes').get(breweryId)));
+  }
+
+  listBreweryNotes() {
+    return this.run(['breweryNotes'], 'readonly', (tx) => req(tx.objectStore('breweryNotes').getAll()));
+  }
+
+  /** note が null なら削除する（makeBreweryNote が空のメモを null にする） */
+  saveBreweryNote(breweryId, note) {
+    return this.run(['breweryNotes'], 'readwrite', (tx) => {
+      const store = tx.objectStore('breweryNotes');
+      if (note) store.put({ ...note, breweryId });
+      else store.delete(breweryId);
+      return note;
+    });
+  }
+
   // ---- Phase 2: バックアップ ----
 
   async counts() {
@@ -323,6 +350,7 @@ export class Repository {
       beers: await req(tx.objectStore('beers').count()),
       checkins: await req(tx.objectStore('checkins').count()),
       photos: await req(tx.objectStore('photos').count()),
+      breweryNotes: await req(tx.objectStore('breweryNotes').count()),
     }));
   }
 
@@ -332,6 +360,7 @@ export class Repository {
       beers: await req(tx.objectStore('beers').getAll()),
       checkins: await req(tx.objectStore('checkins').getAll()),
       photos: await req(tx.objectStore('photos').getAll()),
+      breweryNotes: await req(tx.objectStore('breweryNotes').getAll()),
     }));
   }
 
@@ -339,24 +368,25 @@ export class Repository {
    * データの取り込み。
    * mode="replace"：既存のデータを消してから登録する
    * mode="merge"：同じIDのデータは既存を残し、無いものだけ追加する
-   * @returns {{added:{beers,checkins,photos}, skipped:{beers,checkins,photos}}}
+   * @returns {{added:{beers,checkins,photos,breweryNotes}, skipped:{beers,checkins,photos,breweryNotes}}}
    */
   importData(data, mode) {
     if (mode !== 'replace' && mode !== 'merge') throw new Error('取り込み方法が不正です');
     return this.run(DATA_STORES, 'readwrite', async (tx) => {
-      const added = { beers: 0, checkins: 0, photos: 0 };
-      const skipped = { beers: 0, checkins: 0, photos: 0 };
+      const added = Object.fromEntries(DATA_STORES.map((n) => [n, 0]));
+      const skipped = Object.fromEntries(DATA_STORES.map((n) => [n, 0]));
       for (const name of DATA_STORES) {
         const store = tx.objectStore(name);
         if (mode === 'replace') await req(store.clear());
         const existing = mode === 'merge' ? new Set(await req(store.getAllKeys())) : new Set();
         for (const record of data[name] || []) {
-          if (existing.has(record.id)) {
+          const key = keyOf(name, record);
+          if (existing.has(key)) {
             skipped[name] += 1;
             continue;
           }
           store.put(name === 'beers' ? withBeerKeys(record) : record);
-          existing.add(record.id);
+          existing.add(key);
           added[name] += 1;
         }
       }

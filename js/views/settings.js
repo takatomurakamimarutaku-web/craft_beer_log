@@ -26,6 +26,7 @@ export async function render({ app, outlet }) {
     row('銘柄', `${counts.beers}件`),
     row('記録', `${counts.checkins}件`),
     row('写真', `${counts.photos}枚`),
+    counts.breweryNotes ? row('ブリュワーのメモ', `${counts.breweryNotes}件`) : null,
     row('使用容量', estimate ? `${formatBytes(estimate.usage)}${estimate.quota ? ` / 上限の目安 ${formatBytes(estimate.quota)}` : ''}` : '取得できません'),
     row('データの永続化', persisted === null ? 'この環境では未対応' : persisted ? '有効' : '未許可（ブラウザが容量不足時に削除する可能性があります）'),
   );
@@ -80,6 +81,7 @@ export async function render({ app, outlet }) {
       ? h('p', { class: 'field-hint warn' }, 'Safari で開いています。記録はホーム画面のアプリとは別に保存されます。', h('button', { type: 'button', class: 'link', text: '追加の手順', onclick: () => showInstallGuide() }))
       : null,
     h('p', { class: 'field-hint', text: 'データはこの端末のブラウザ内にのみ保存され、外部へ送信されません。' }),
+    h('p', { class: 'field-hint', text: 'ブリュワーの地図を開いたときだけ、地図の画像を国土地理院から読み込みます。そのとき、表示している範囲と通信元のIPアドレスが国土地理院のサーバーに伝わります。現在地は「現在地」ボタンを押したときだけ使い、保存・送信しません。' }),
     latest
       ? h(
           'details',
@@ -148,7 +150,7 @@ export async function render({ app, outlet }) {
       await confirmDialog({ title: '読み込めませんでした', message: msg, buttons: [{ label: 'OK', value: true, variant: 'primary' }] });
       return;
     }
-    const summary = `銘柄${data.beers.length}件・記録${data.checkins.length}件・写真${data.photos.length}枚${data.exportedAt ? `（${new Date(data.exportedAt).toLocaleString('ja-JP')} 作成）` : ''}`;
+    const summary = `銘柄${data.beers.length}件・記録${data.checkins.length}件・写真${data.photos.length}枚${data.breweryNotes.length ? `・ブリュワーのメモ${data.breweryNotes.length}件` : ''}${data.exportedAt ? `（${new Date(data.exportedAt).toLocaleString('ja-JP')} 作成）` : ''}`;
     const ok = await confirmDialog(
       mode === 'replace'
         ? {
@@ -172,7 +174,7 @@ export async function render({ app, outlet }) {
     try {
       const r = await app.db.importData(data, mode);
       await app.migrateStyles(); // 古いバックアップの暫定スタイルを現在の一覧に合わせる
-      const skipped = r.skipped.beers + r.skipped.checkins + r.skipped.photos;
+      const skipped = Object.values(r.skipped).reduce((a, b) => a + b, 0);
       showToast(`読み込みました：銘柄${r.added.beers}件・記録${r.added.checkins}件・写真${r.added.photos}枚${skipped ? `（重複${skipped}件はスキップ）` : ''}`, { duration: 6000 });
       app.refresh();
     } catch (e) {

@@ -7,9 +7,11 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 export const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 // キャッシュ対象に含めるべきディレクトリと、対象外とするファイル
-const APP_DIRS = ['js', 'css', 'data', 'icons', 'images'];
-// 外部URLのうち、読み込みではなく名前空間として使うもの
-const ALLOWED_URLS = ['http://www.w3.org/2000/svg'];
+const APP_DIRS = ['js', 'css', 'data', 'icons', 'images', 'vendor'];
+// 外部URLのうち許可するもの：SVG の名前空間と、地図タイル（地理院タイル。js/map.js でだけ使う）とその出典ページ
+const ALLOWED_URLS = ['http://www.w3.org/2000/svg', 'https://cyberjapandata.gsi.go.jp/xyz/', 'https://maps.gsi.go.jp/development/ichiran.html'];
+// 外部のライブラリ（同梱したもの）。キャッシュ対象には含めるが、ソースの検査はしない
+const VENDOR_DIR = 'vendor/';
 
 /** manifest の検証。エラーメッセージの配列を返す */
 export function checkManifest(manifest, root = ROOT) {
@@ -134,8 +136,8 @@ export function findPathProblems(source, file) {
 
 /** 検査対象のソース（HTML・CSS・JS・SVG・manifest） */
 export function listSourceFiles(root = ROOT) {
-  return ['index.html', 'sw.js', 'manifest.webmanifest', ...listAppFiles(root)].filter((f) =>
-    ['.html', '.css', '.js', '.svg', '.webmanifest'].includes(extname(f)),
+  return ['index.html', 'sw.js', 'manifest.webmanifest', ...listAppFiles(root)].filter(
+    (f) => !f.startsWith(VENDOR_DIR) && ['.html', '.css', '.js', '.svg', '.webmanifest'].includes(extname(f)),
   );
 }
 
