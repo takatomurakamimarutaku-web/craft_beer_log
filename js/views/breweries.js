@@ -1,6 +1,6 @@
 // ブリュワーの一覧（#/breweries）
 import { h, svg } from '../ui.js';
-import { PREFS, KIND_LABELS, PIN_LABELS, FEATURE_LABELS, AVAILABILITY, SORTS, activeBreweries, filterBreweries, countByPref, groupBeersByBrewery, pinState } from '../breweries.js';
+import { PREFS, REGIONS, KIND_LABELS, PIN_LABELS, FEATURE_LABELS, AVAILABILITY, SORTS, activeBreweries, filterBreweries, countByPref, countByRegion, regionOf, groupBeersByBrewery, pinState } from '../breweries.js';
 
 export async function render({ app, outlet, query }) {
   const [data, beers, notes] = await Promise.all([app.loadBreweries(), app.db.listBeers(), app.db.listBreweryNotes()]);
@@ -8,7 +8,7 @@ export async function render({ app, outlet, query }) {
   const tried = groupBeersByBrewery(beers.filter((b) => b.status === 'tried'), data.index);
   const triedIds = new Set(tried.keys());
   const noteMap = new Map(notes.map((n) => [n.breweryId, n]));
-  const state = { pref: PREFS[query.pref] ? query.pref : '', q: query.q || '', feature: FEATURE_LABELS[query.feature] ? query.feature : '', sort: SORTS[query.sort] ? query.sort : 'pref' };
+  const state = { region: REGIONS.some((r) => r.id === query.region) ? query.region : '', pref: PREFS[query.pref] ? query.pref : '', q: query.q || '', feature: FEATURE_LABELS[query.feature] ? query.feature : '', sort: SORTS[query.sort] ? query.sort : 'pref' };
 
   if (!all.length) {
     outlet.replaceChildren(h('p', { class: 'empty', text: 'ブリュワー情報を読み込めませんでした。通信できる場所でアプリを開き直してください。' }));
@@ -26,21 +26,33 @@ export async function render({ app, outlet, query }) {
       update();
     },
   });
+  // 地方 → 県の2段階。データのある地方が1つだけのときは地方の行を出さない
+  const regions = countByRegion(all);
+  if (state.pref && !state.region) state.region = regionOf(state.pref)?.id || '';
+  if (regions.length === 1) state.region = regions[0][0].id;
+  const regionChips = h('div', { class: 'chips brewery-prefs', role: 'group', 'aria-label': '地方で絞り込む', hidden: regions.length < 2 });
   const prefChips = h('div', { class: 'chips brewery-prefs', role: 'group', 'aria-label': '県で絞り込む' });
-  const chip = (code, label) =>
-    h('button', {
-      type: 'button',
-      class: 'chip',
-      'aria-pressed': String(state.pref === code),
-      text: label,
-      onclick: () => {
-        state.pref = code;
-        for (const c of prefChips.children) c.setAttribute('aria-pressed', String(c.dataset.pref === code));
-        update();
-      },
-      dataset: { pref: code },
-    });
-  prefChips.append(chip('', `すべて ${all.length}`), ...countByPref(all).map(([code, n]) => chip(code, `${shortPref(code)} ${n}`)));
+  const chip = (pressed, label, onclick) => h('button', { type: 'button', class: 'chip', 'aria-pressed': String(pressed), text: label, onclick });
+  function renderChips() {
+    regionChips.replaceChildren(
+      chip(!state.region, `全国 ${all.length}`, () => pickRegion('')),
+      ...regions.map(([r, n]) => chip(state.region === r.id, `${r.name} ${n}`, () => pickRegion(r.id))),
+    );
+    const inRegion = all.filter((b) => !state.region || regionOf(b.prefCode)?.id === state.region);
+    prefChips.replaceChildren(
+      chip(!state.pref, `すべて ${inRegion.length}`, () => pickPref('')),
+      ...countByPref(inRegion).map(([code, n]) => chip(state.pref === code, `${shortPref(code)} ${n}`, () => pickPref(code))),
+    );
+  }
+  function pickRegion(id) {
+    state.region = id;
+    state.pref = '';
+    update();
+  }
+  function pickPref(code) {
+    state.pref = code;
+    update();
+  }
 
   const select = (label, value, options, onchange) =>
     h(
@@ -72,6 +84,7 @@ export async function render({ app, outlet, query }) {
       h('div', { class: 'actions' }, mapLink),
       search,
     ),
+    regionChips,
     prefChips,
     tools,
     meta,
@@ -82,7 +95,9 @@ export async function render({ app, outlet, query }) {
 
   function update() {
     const rows = filterBreweries(all, state);
-    mapLink.setAttribute('href', `#/breweries/map${state.pref ? `?pref=${state.pref}` : ''}`);
+    renderChips();
+    const q = state.pref ? `?pref=${state.pref}` : state.region && regions.length > 1 ? `?region=${state.region}` : '';
+    mapLink.setAttribute('href', `#/breweries/map${q}`);
     meta.textContent = rows.length ? `${rows.length}件` : '';
     list.replaceChildren(...(rows.length ? rows.map(item) : [h('li', { class: 'empty', text: '条件に合うブリュワーはありません。' })]));
   }

@@ -1,8 +1,8 @@
 {
  "meta": {
-  "version": "pilot-2026-10-25c",
-  "region": "東北6県",
-  "attribution": "一部の情報は仙台国税局「東北酒蔵マップ掲載酒類製造者一覧」を加工して作成",
+  "version": "pilot-2026-10-25d",
+  "region": "東北6県・北関東3県",
+  "attribution": "一部の情報は仙台国税局「東北酒蔵マップ掲載酒類製造者一覧」と関東信越国税局「酒蔵マップ」を加工して作成",
   "note": "verification: official=公式サイトで確認 / official+secondary=公式＋二次情報 / secondary=報道・業界団体・紹介サイトで確認 / nta-only=国税局一覧のみ。geo.precision: block=街区・番地 / area=大字（数百m〜数km ずれ得る）。座標は国土地理院 住所検索APIの結果。status=closed は一覧・地図に出さない。"
  },
  "breweries": [
@@ -3380,6 +3380,1242 @@
    "sourceNotes": "法人登記（合同会社岩沼クラフトビア工房）とYahoo!マップ（岩沼市中央、飲食店）。醸造の実態・開業時期は未確認",
    "sources": [],
    "checkedAt": "2026-10-25"
+  },
+  {
+   "id": "asahi-ibaraki",
+   "name": "アサヒビール茨城工場",
+   "nameKana": "あさひびーるいばらきこうじょう",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "08",
+   "city": "守谷市",
+   "address": null,
+   "geo": null,
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": false,
+   "tour": null,
+   "links": {},
+   "summary": "アサヒビールの工場。国税局の酒蔵マップでは「スーパードライ」の製造場として載っている。",
+   "verification": "nta-only",
+   "sourceNotes": "関東信越国税局 酒蔵マップのみ。住所未確認",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・茨城県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_ibaraki_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "アサヒスーパードライ",
+     "styleId": null
+    }
+   ],
+   "features": [],
+   "availability": "national",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "kiuchi-hitachino",
+   "name": "木内酒造（常陸野ネストビール）",
+   "nameKana": "きうちしゅぞう ひたちのねすとびーる",
+   "nameEn": null,
+   "aliases": [
+    "木内酒造",
+    "常陸野ネストビール",
+    "常陸野ブルーイング",
+    "Hitachino Nest Beer"
+   ],
+   "prefCode": "08",
+   "city": "那珂市",
+   "address": "茨城県那珂市鴻巣1257",
+   "geo": {
+    "lat": 36.468292,
+    "lng": 140.469131,
+    "precision": "block",
+    "matched": "茨城県那珂市鴻巣１２５７番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 1823,
+   "taproom": true,
+   "tour": true,
+   "links": {},
+   "summary": "1823年創業の酒蔵が造る「常陸野ネストビール」。フクロウのラベルで知られ、40か国以上に輸出される。本社敷地では仕込み体験もできる。",
+   "verification": "secondary",
+   "sourceNotes": "るるぶ&more（本社の住所・創業・輸出）。ビールは額田醸造所でも製造（国税局マップ）",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・茨城県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_ibaraki_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "常陸野ネストビール",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "sake",
+    "award"
+   ],
+   "availability": "national",
+   "profileSource": "https://rurubu.jp/andmore/spot/80006308",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "kirin-toride",
+   "name": "キリンビール取手工場",
+   "nameKana": "きりんびーるとりでこうじょう",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "08",
+   "city": "取手市",
+   "address": null,
+   "geo": null,
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": false,
+   "tour": null,
+   "links": {},
+   "summary": "キリンビールの工場。国税局の酒蔵マップでは「一番搾り生ビール」の製造場として載っている。",
+   "verification": "nta-only",
+   "sourceNotes": "関東信越国税局 酒蔵マップのみ。住所未確認",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・茨城県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_ibaraki_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "キリン一番搾り生ビール",
+     "styleId": null
+    }
+   ],
+   "features": [],
+   "availability": "national",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "sakai-kashi-brewery",
+   "name": "さかい河岸ブルワリー",
+   "nameKana": "さかいかしぶるわりー",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "08",
+   "city": "境町",
+   "address": null,
+   "geo": null,
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {},
+   "summary": "道の駅さかいに併設された醸造所。地元・猿島（さしま）のお茶を使ったエールやIPAがある。",
+   "verification": "secondary",
+   "sourceNotes": "Retty口コミ。番地未確認",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・茨城県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_ibaraki_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "さしま茶エール",
+     "styleId": null
+    },
+    {
+     "name": "ゴールデンエール",
+     "styleId": null
+    },
+    {
+     "name": "IPA",
+     "styleId": "ipa"
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "availability": "local",
+   "profileSource": "https://retty.me/restaurant/100001697608/",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "daigo-brewery",
+   "name": "大子ブルワリー",
+   "nameKana": "だいごぶるわりー",
+   "nameEn": null,
+   "aliases": [
+    "やみぞ森林ビール",
+    "やみぞ森林のビール"
+   ],
+   "prefCode": "08",
+   "city": "大子町",
+   "address": "茨城県久慈郡大子町上金沢1653",
+   "geo": {
+    "lat": 36.778538,
+    "lng": 140.271393,
+    "precision": "area",
+    "matched": "茨城県大子町上金沢"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {},
+   "summary": "八溝山系の水とドイツ産麦芽で「やみぞ森林ビール」を造る。併設のレストランで醸造の様子を見ながら、奥久慈しゃもの料理と楽しめる。",
+   "verification": "secondary",
+   "sourceNotes": "るるぶ&more",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・茨城県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_ibaraki_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "やみぞ森林ビール ヴァイツェン",
+     "styleId": "weizen"
+    },
+    {
+     "name": "やみぞ森林ビール ピルスナー",
+     "styleId": "pilsner"
+    },
+    {
+     "name": "やみぞ森林ビール ヘレス",
+     "styleId": "helles"
+    }
+   ],
+   "features": [
+    "european",
+    "food",
+    "local"
+   ],
+   "availability": "local",
+   "profileSource": "https://rurubu.jp/andmore/spot/80006422",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "tsukuba-brewery",
+   "name": "Tsukuba Brewery",
+   "nameKana": "つくばぶるわりー",
+   "nameEn": null,
+   "aliases": [
+    "ツクバブルワリー",
+    "BREWERY TSUKUBA",
+    "つくばブルワリー"
+   ],
+   "prefCode": "08",
+   "city": "つくば市",
+   "address": "茨城県つくば市二宮",
+   "geo": {
+    "lat": 36.069698,
+    "lng": 140.118256,
+    "precision": "area",
+    "matched": "茨城県つくば市二の宮"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2020,
+   "taproom": true,
+   "tour": null,
+   "links": {},
+   "summary": "2020年につくば市で開業。筑波山麓の井戸水と茨城の米や果物を使い、筑波山の伝説にちなんだ名前のビールを造る。",
+   "verification": "secondary",
+   "sourceNotes": "卸売サイトgoooodsの掲載情報（町名まで）",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・茨城県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_ibaraki_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "TSUKUBA Sunrise Lager",
+     "styleId": null
+    },
+    {
+     "name": "Golden Princess IPA",
+     "styleId": "ipa"
+    },
+    {
+     "name": "Hitachi Phoenix Rice Saison",
+     "styleId": "saison"
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "availability": "online",
+   "profileSource": "https://goooods.com/en/brands/423aad8b-39aa-4306-90c4-264b1e9f44e2",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "paradise-beer-factory",
+   "name": "パラダイスビアファクトリー",
+   "nameKana": "ぱらだいすびあふぁくとりー",
+   "nameEn": null,
+   "aliases": [
+    "Paradise beer factory",
+    "弥栄楽園"
+   ],
+   "prefCode": "08",
+   "city": "鹿嶋市",
+   "address": "茨城県鹿嶋市宮中1-5-1",
+   "geo": {
+    "lat": 35.967857,
+    "lng": 140.628876,
+    "precision": "block",
+    "matched": "茨城県鹿嶋市宮中一丁目５番１号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {},
+   "summary": "鹿嶋市のレストラン。イタリアンやカレーと一緒に地ビールを楽しめる。",
+   "verification": "secondary",
+   "sourceNotes": "関東信越国税局の一覧（弥栄楽園）、ぐるなびの店舗情報",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・茨城県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_ibaraki_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "features": [
+    "food"
+   ],
+   "availability": "local",
+   "profileSource": "https://r.gnavi.co.jp/bughck3u0000/",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "yuki-bakushu",
+   "name": "結城麦酒醸造",
+   "nameKana": "ゆうきばくしゅじょうぞう",
+   "nameEn": null,
+   "aliases": [
+    "結城麦酒"
+   ],
+   "prefCode": "08",
+   "city": "結城市",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2019,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": "結城駅南口近くで2019年に醸造を始めた。地元の農産物を使い、結城の桑の実を使ったセゾンなども造る。ナマズのロゴが目印。",
+   "verification": "secondary",
+   "sourceNotes": "Makuakeのプロジェクトページ（2019年）。番地未確認",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・茨城県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_ibaraki_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "ペールエール",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "セゾンエール",
+     "styleId": "saison"
+    }
+   ],
+   "features": [
+    "local",
+    "fruit"
+   ],
+   "profileSource": "https://www.makuake.com/project/yukibeer2019/",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "ushitora-brewery",
+   "name": "うしとらブルワリー",
+   "nameKana": "うしとらぶるわりー",
+   "nameEn": null,
+   "aliases": [
+    "Ushitora Brewery"
+   ],
+   "prefCode": "09",
+   "city": "下野市",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2014,
+   "taproom": false,
+   "tour": null,
+   "links": {
+    "facebook": "https://www.facebook.com/ushitorabrewery/"
+   },
+   "summary": "東京・下北沢のビアバー「うしとら」が2014年に立ち上げた醸造所。個性的なスタイルを幅広く造り、工場開放日に醸造所で飲める。",
+   "verification": "secondary",
+   "sourceNotes": "JR東日本の記事、Retty（工場開放日のみ）。番地未確認",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・栃木県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_tochigi_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "features": [],
+   "availability": "regional",
+   "profileSource": "https://media.jreast.co.jp/articles/6527",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "sapporo-nasu",
+   "name": "サッポロビール那須工場",
+   "nameKana": "さっぽろびーるなすこうじょう",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "09",
+   "city": "那須町",
+   "address": null,
+   "geo": null,
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": false,
+   "tour": null,
+   "links": {},
+   "summary": "サッポロビールの工場。国税局の酒蔵マップでは小麦のビール「白穂乃香」の製造場として載っている。",
+   "verification": "nta-only",
+   "sourceNotes": "関東信越国税局 酒蔵マップのみ。住所・見学は未確認",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・栃木県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_tochigi_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "白穂乃香",
+     "styleId": null
+    }
+   ],
+   "features": [],
+   "availability": "national",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "tochigi-microbrewery",
+   "name": "栃木マイクロブルワリー",
+   "nameKana": "とちぎまいくろぶるわりー",
+   "nameEn": null,
+   "aliases": [
+    "栃木プレミアム"
+   ],
+   "prefCode": "09",
+   "city": "宇都宮市",
+   "address": null,
+   "geo": null,
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {},
+   "summary": "宇都宮で自家醸造のビールを出す店。銘柄の入れ替わりが多く、果物などを使った実験的なビールを10種ほど並べる。",
+   "verification": "secondary",
+   "sourceNotes": "栃ナビ！口コミ。番地未確認",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・栃木県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_tochigi_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "features": [
+    "fruit"
+   ],
+   "availability": "local",
+   "profileSource": "https://tochinavi.net/spot/grapevine/?id=7828",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "nasu-garden-brewery",
+   "name": "那須ガーデンブルワリー NASU de SUNA",
+   "nameKana": "なすがーでんぶるわりー なすですな",
+   "nameEn": null,
+   "aliases": [
+    "那須ガーデンブルワリー",
+    "NASU de SUNA",
+    "なすですな"
+   ],
+   "prefCode": "09",
+   "city": "那須塩原市",
+   "address": "栃木県那須塩原市塩野崎184-7",
+   "geo": {
+    "lat": 36.965893,
+    "lng": 139.991364,
+    "precision": "block",
+    "matched": "栃木県那須塩原市塩野崎１８４番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": 2021,
+   "taproom": true,
+   "tour": null,
+   "links": {},
+   "summary": "2021年に那須ガーデンアウトレット内に開業したブルーパブ。店内の窓から醸造所が見え、ペールエールとIPAを定番に量り売りもする。",
+   "verification": "secondary",
+   "sourceNotes": "るるぶ&more記事（2021年）",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・栃木県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_tochigi_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "なすですな ペールエール",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "なすですな IPA",
+     "styleId": "ipa"
+    }
+   ],
+   "features": [
+    "food"
+   ],
+   "availability": "local",
+   "profileSource": "https://rurubu.jp/andmore/article/15029",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "nasu-kohgen-beer",
+   "name": "那須高原ビール",
+   "nameKana": "なすこうげんびーる",
+   "nameEn": null,
+   "aliases": [
+    "那須高原ビール愛"
+   ],
+   "prefCode": "09",
+   "city": "那須町",
+   "address": "栃木県那須郡那須町大字高久甲3986",
+   "geo": {
+    "lat": 37.005833,
+    "lng": 140.030319,
+    "precision": "block",
+    "matched": "栃木県那須町高久甲３９８６番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "http://www.nasukohgenbeer.co.jp/"
+   },
+   "summary": "那須深山の雪解け水を使い、無ろ過で造る那須の老舗醸造所。ワールドビアカップでの入賞歴があり、毎年数量限定の「ナインテイルドフォックス」で知られる。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所・通販は公式。銘柄・入賞歴はトラベルjp記事",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・栃木県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_tochigi_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "愛",
+     "styleId": null
+    },
+    {
+     "name": "ヴァイツェン",
+     "styleId": "weizen"
+    },
+    {
+     "name": "スタウト",
+     "styleId": "stout"
+    }
+   ],
+   "features": [
+    "award",
+    "food",
+    "european"
+   ],
+   "availability": "online",
+   "profileSource": "https://www.travel.co.jp/guide/article/4992/",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "nikko-brewing",
+   "name": "Nikko Brewing",
+   "nameKana": "にっこーぶるーいんぐ",
+   "nameEn": null,
+   "aliases": [
+    "日光ブルーイング",
+    "ニッコーブルーイング",
+    "ブルーイング・ニッコー",
+    "NIKKO MONKEYS"
+   ],
+   "prefCode": "09",
+   "city": "日光市",
+   "address": "栃木県日光市木和田島1564-4",
+   "geo": {
+    "lat": 36.685349,
+    "lng": 139.745026,
+    "precision": "block",
+    "matched": "栃木県日光市木和田島１５６４番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2018,
+   "taproom": true,
+   "tour": true,
+   "links": {
+    "official": "https://nikko-monkeys.beer"
+   },
+   "summary": "明治4年創業の土産店が2018年に始めた醸造所。奥日光の天然水で仕込み、柚子やいちごなど地元の産物を使ったビールも造る。",
+   "verification": "secondary",
+   "sourceNotes": "BE-PAL記事、るるぶ&more記事",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・栃木県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_tochigi_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "日光モンキーズ プレミアムラガー",
+     "styleId": null
+    },
+    {
+     "name": "日光モンキーズ ペールエール",
+     "styleId": "pale-ale"
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "availability": "regional",
+   "profileSource": "https://www.bepal.net/archives/228814",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "blue-magic",
+   "name": "BLUE MAGIC",
+   "nameKana": "ぶるーまじっく",
+   "nameEn": null,
+   "aliases": [
+    "ブルーマジック",
+    "宇都宮ブルワリー"
+   ],
+   "prefCode": "09",
+   "city": "宇都宮市",
+   "address": "栃木県宇都宮市池上町",
+   "geo": {
+    "lat": 36.561172,
+    "lng": 139.881866,
+    "precision": "area",
+    "matched": "栃木県宇都宮市池上町"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {},
+   "summary": "宇都宮の中心部にある醸造所併設の店。アメリカンスタイルを中心に、とちおとめを使ったフルーツビールなど種類が多い。",
+   "verification": "secondary",
+   "sourceNotes": "宇都宮市の広報資料（町名まで）、All Aboutの記事",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・栃木県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_tochigi_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "エーデルピルス",
+     "styleId": "pilsner"
+    },
+    {
+     "name": "とちぎフルーツプレミアム苺",
+     "styleId": "fruit-beer"
+    },
+    {
+     "name": "ブラウンエール",
+     "styleId": "brown-ale"
+    }
+   ],
+   "features": [
+    "fruit",
+    "local",
+    "hoppy"
+   ],
+   "availability": "local",
+   "profileSource": "https://www.city.utsunomiya.lg.jp/_res/projects/default_project/_page_/001/014/525/43.pdf",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "808-brewery",
+   "name": "808 Brewery",
+   "nameKana": "やおやぶるわりー",
+   "nameEn": null,
+   "aliases": [
+    "ヤオヤブルワリー",
+    "808ブルワリー",
+    "Yaoya brewery"
+   ],
+   "prefCode": "09",
+   "city": "小山市",
+   "address": "栃木県小山市東野田2119-2",
+   "geo": {
+    "lat": 36.258423,
+    "lng": 139.804962,
+    "precision": "block",
+    "matched": "栃木県小山市東野田２１１９番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2021,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://808brewery.jp/",
+    "shop": "https://808brewery.stores.jp/"
+   },
+   "summary": "青果卸の会社が2021年に開いた醸造所。小山産のハトムギやコシヒカリなど地元の作物を使う「Drink Local」を掲げる。",
+   "verification": "secondary",
+   "sourceNotes": "ビール天国の紹介記事、JR東日本の記事",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・栃木県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_tochigi_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "808 ESB",
+     "styleId": null
+    },
+    {
+     "name": "808 IPA",
+     "styleId": "west-coast-ipa"
+    },
+    {
+     "name": "808 Saison",
+     "styleId": "saison"
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "availability": "online",
+   "profileSource": "https://beertengoku.com/2022/06/03/808-brewery-information/",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "romantic-mura-brewery",
+   "name": "ろまんちっく村 クラフトブルワリー",
+   "nameKana": "ろまんちっくむら くらふとぶるわりー",
+   "nameEn": null,
+   "aliases": [
+    "麦太郎",
+    "ろまんちっく村"
+   ],
+   "prefCode": "09",
+   "city": "宇都宮市",
+   "address": "栃木県宇都宮市新里町",
+   "geo": {
+    "lat": 36.633896,
+    "lng": 139.812607,
+    "precision": "area",
+    "matched": "栃木県宇都宮市新里町"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": true,
+   "links": {},
+   "summary": "道の駅うつのみや ろまんちっく村の中の醸造所。宇都宮産のビール麦にこだわり、工場見学もできる。",
+   "verification": "secondary",
+   "sourceNotes": "宇都宮市の広報資料。番地未確認",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・栃木県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_tochigi_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "麦太郎",
+     "styleId": null
+    },
+    {
+     "name": "IPA",
+     "styleId": "ipa"
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "availability": "local",
+   "profileSource": "https://www.city.utsunomiya.lg.jp/_res/projects/default_project/_page_/001/014/525/43.pdf",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "oct-one-brewing",
+   "name": "OCT ONE Brewing",
+   "nameKana": "おくとわんぶるーいんぐ",
+   "nameEn": null,
+   "aliases": [
+    "オクトワンブルーイング",
+    "オクトワン"
+   ],
+   "prefCode": "10",
+   "city": "みなかみ町",
+   "address": "群馬県利根郡みなかみ町湯原702-2",
+   "geo": {
+    "lat": 36.770081,
+    "lng": 138.970108,
+    "precision": "block",
+    "matched": "群馬県みなかみ町湯原７０２番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": 2018,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "https://oct-1.com/"
+   },
+   "summary": "2018年に水上温泉で始まった醸造所。奥利根の山や森をテーマにしたエールを造り、温泉街のタップルームで飲める。シードルも手がける。",
+   "verification": "official",
+   "sourceNotes": "公式サイト、関東信越国税局の一覧",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・群馬県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_gunma_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "OKUTONE ALE",
+     "styleId": null
+    },
+    {
+     "name": "YAMABITO ALE",
+     "styleId": null
+    },
+    {
+     "name": "MORI-NO PORTER",
+     "styleId": "porter"
+    }
+   ],
+   "features": [
+    "local",
+    "cider"
+   ],
+   "availability": "online",
+   "profileSource": "https://oct-1.com/",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "suntory-gunma",
+   "name": "サントリー〈天然水のビール工場〉群馬",
+   "nameKana": "さんとりーてんねんすいのびーるこうじょうぐんま",
+   "nameEn": null,
+   "aliases": [
+    "サントリー利根川ビール工場"
+   ],
+   "prefCode": "10",
+   "city": "千代田町",
+   "address": null,
+   "geo": null,
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": true,
+   "links": {
+    "official": "https://www.suntory.co.jp/area/kansin/d/13021/"
+   },
+   "summary": "ザ・プレミアム・モルツなどを造る大手の工場。見学ツアーがある。",
+   "verification": "official",
+   "sourceNotes": "サントリーの施設案内、関東信越国税局の一覧。番地未確認",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・群馬県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_gunma_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "ザ・プレミアム・モルツ",
+     "styleId": "pilsner"
+    }
+   ],
+   "features": [],
+   "availability": "national",
+   "profileSource": "https://www.suntory.co.jp/area/kansin/d/13021/",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "shima-onsen-ale",
+   "name": "四万温泉エール",
+   "nameKana": "しまおんせんえーる",
+   "nameEn": null,
+   "aliases": [
+    "四万温泉エールファクトリー"
+   ],
+   "prefCode": "10",
+   "city": "中之条町",
+   "address": "群馬県吾妻郡中之条町大字四万3894-1",
+   "geo": {
+    "lat": 36.689247,
+    "lng": 138.764984,
+    "precision": "area",
+    "matched": "群馬県中之条町四万"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": "四万温泉の酒店が手がける小さな醸造所。温泉街の土産としても売られる「四万温泉エール」を造る。",
+   "verification": "secondary",
+   "sourceNotes": "関東信越国税局の一覧、トラベルjp記事",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・群馬県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_gunma_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "四万温泉エール",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "availability": "local",
+   "profileSource": "https://www.travel.co.jp/guide/article/37554/",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "shinkichi-brewery",
+   "name": "シンキチ醸造所",
+   "nameKana": "しんきちじょうぞうしょ",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "10",
+   "city": "高崎市",
+   "address": "群馬県高崎市若松町2-11",
+   "geo": {
+    "lat": 36.319649,
+    "lng": 139.005966,
+    "precision": "block",
+    "matched": "群馬県高崎市若松町２番"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": 2016,
+   "taproom": true,
+   "tour": null,
+   "links": {},
+   "summary": "高崎の三軒長屋を改装した小さなブルーパブ。和食に合う食中酒としてのビールを目指し、瓶で寝かせた熟成ビールも店で飲める。",
+   "verification": "secondary",
+   "sourceNotes": "BE-PAL記事、関東信越国税局の一覧",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・群馬県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_gunma_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "若松町ピルスナー",
+     "styleId": "pilsner"
+    },
+    {
+     "name": "渋皮ブラック",
+     "styleId": "stout"
+    }
+   ],
+   "features": [
+    "food"
+   ],
+   "availability": "local",
+   "profileSource": "https://www.bepal.net/archives/234145",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "joshu-tomioka-brewery",
+   "name": "上州富岡ブリュワリー",
+   "nameKana": "じょうしゅうとみおかぶりゅわりー",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "10",
+   "city": "富岡市",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": null,
+   "verification": "nta-only",
+   "sourceNotes": "関東信越国税局の一覧（令和6年3月）。番地未確認",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・群馬県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_gunma_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "features": []
+  },
+  {
+   "id": "tsumagoi-kogen-brewery",
+   "name": "嬬恋高原ブルワリー",
+   "nameKana": "つまごいこうげんぶるわりー",
+   "nameEn": null,
+   "aliases": [
+    "群馬麦酒",
+    "浅間高原麦酒"
+   ],
+   "prefCode": "10",
+   "city": "嬬恋村",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": "嬬恋村の醸造所。群馬県産の大麦と嬬恋の水で「群馬麦酒」を造る。",
+   "verification": "secondary",
+   "sourceNotes": "関東信越国税局の一覧、ふるさと納税の返礼品ページ。番地未確認",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・群馬県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_gunma_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "嬬恋ペールエール",
+     "styleId": "pale-ale"
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "availability": "online",
+   "profileSource": "https://www.furusato-tax.jp/product/detail/10425/4900022/35",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "kawaba-beer",
+   "name": "田園プラザ川場 ビール工房",
+   "nameKana": "でんえんぷらざかわば びーるこうぼう",
+   "nameEn": null,
+   "aliases": [
+    "川場ビール",
+    "田園プラザ川場"
+   ],
+   "prefCode": "10",
+   "city": "川場村",
+   "address": "群馬県利根郡川場村大字萩室385",
+   "geo": {
+    "lat": 36.689865,
+    "lng": 139.12085,
+    "precision": "area",
+    "matched": "群馬県川場村萩室"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": 1998,
+   "taproom": true,
+   "tour": null,
+   "links": {},
+   "summary": "道の駅「田園プラザ川場」の中にある醸造所。1998年から川場ビールを造り、地元の素材も使う。",
+   "verification": "secondary",
+   "sourceNotes": "群馬県の資料（26126.pdf）、関東信越国税局の一覧。住所は運営会社の所在地",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・群馬県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_gunma_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "川場ビール",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "local",
+    "food"
+   ],
+   "availability": "regional",
+   "profileSource": "https://www.pref.gunma.jp/uploaded/attachment/26126.pdf",
+   "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "beer-smile",
+   "name": "ビアースマイル",
+   "nameKana": "びあーすまいる",
+   "nameEn": null,
+   "aliases": [
+    "SMILE BEER"
+   ],
+   "prefCode": "10",
+   "city": "伊勢崎市",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": null,
+   "verification": "nta-only",
+   "sourceNotes": "関東信越国税局の一覧（令和6年3月）。番地未確認",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・群馬県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_gunma_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "features": []
+  },
+  {
+   "id": "marihana-factory",
+   "name": "マリハナファクトリー",
+   "nameKana": "まりはなふぁくとりー",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "10",
+   "city": "桐生市",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": null,
+   "verification": "nta-only",
+   "sourceNotes": "関東信越国税局の一覧（令和6年3月）。番地未確認",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・群馬県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_gunma_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "features": []
+  },
+  {
+   "id": "yume-bakushu-ota",
+   "name": "夢麦酒太田",
+   "nameKana": "ゆめばくしゅおおた",
+   "nameEn": null,
+   "aliases": [
+    "OTA BEER"
+   ],
+   "prefCode": "10",
+   "city": "太田市",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": null,
+   "verification": "nta-only",
+   "sourceNotes": "関東信越国税局の一覧（令和6年3月）。番地未確認",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・群馬県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_gunma_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "features": []
+  },
+  {
+   "id": "you-kiryu-brewing",
+   "name": "ユー・キリュウ ブルーイング",
+   "nameKana": "ゆーきりゅうぶるーいんぐ",
+   "nameEn": null,
+   "aliases": [
+    "YOU KIRYU BREWING",
+    "ファークライ"
+   ],
+   "prefCode": "10",
+   "city": "桐生市",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": null,
+   "verification": "nta-only",
+   "sourceNotes": "関東信越国税局の一覧（令和6年3月）。番地未確認",
+   "sources": [
+    {
+     "label": "関東信越国税局「酒蔵マップ」ビール等・群馬県（令和6年3月現在）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_gunma_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-25",
+   "features": []
   }
  ]
 }
