@@ -159,10 +159,11 @@ NFKC 正規化 → 小文字化 → ひらがなをカタカナに統一 → 前
 
 `{ styles: { <スタイルID>: 画像 }, hops: { <ホップID>: 画像 } }`。画像が無い項目はイラストを表示します。
 
-画像 = `{ file（images/styles/<id>.webp など）, license（"ai" | "cc-by" | "cc-by-sa" | "cc0" | "own" | "permission"）, author, licenseVersion, sourceUrl, service, generatedAt, prompt }`
+画像 = `{ file（images/styles/<id>.webp など）, license（"ai" | "cc-by" | "cc-by-sa" | "cc0" | "pd" | "own" | "permission"）, author, licenseVersion, sourceUrl, service, generatedAt, prompt }`
 
 - AI生成（license "ai"）は service（生成サービス名）・generatedAt・prompt を必ず記録し、画面に「AI生成のイメージ（仮）」と表示します（文章の指示だけで生成し、ネット上の画像は入力しない）
 - CC BY / BY-SA と提供写真は author と sourceUrl が必須で、画面に作者・ライセンス・出典を表示します
+- Wikimedia Commons の写真は CC0・CC BY・パブリックドメイン（pd）のみ使い、銘柄のラベルやロゴが写ったものは使いません。CC0・pd も author と sourceUrl を記録します
 - 画像は長辺 640px 程度の WebP（1枚 50KB 前後）にし、`sw.js` の PRECACHE_URLS に追加します（`images/` も漏れ検査の対象）
 
 ### flavor-tags.json
