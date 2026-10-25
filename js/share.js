@@ -1,5 +1,6 @@
 // 共有（Web Share。使えないときは文章をコピー）
 import { styleLabel, SERVING_LABELS } from './models.js';
+import { tasteLabels, flavorLabels } from './tasting.js';
 
 /** 共有する文章（純粋関数）。checkin が無ければ銘柄の情報だけ */
 export function buildShareText(beer, checkin, styles, { tagLabels = {} } = {}) {
@@ -13,8 +14,10 @@ export function buildShareText(beer, checkin, styles, { tagLabels = {} } = {}) {
     if (checkin.serving) parts.push(SERVING_LABELS[checkin.serving]);
     if (checkin.place?.name) parts.push(`@${checkin.place.name}`);
     if (parts.length) lines.push(parts.join(' '));
-    const tags = (checkin.tasting?.flavorTags || []).map((t) => tagLabels[t] || t);
-    if (tags.length) lines.push(`香り：${tags.join('・')}`);
+    const taste = tasteLabels(checkin.tasting);
+    if (taste.length) lines.push(`味：${taste.join('、')}`);
+    const flavor = flavorLabels(checkin.tasting, tagLabels);
+    if (flavor.length) lines.push(`香り：${flavor.join('、')}`);
     if (checkin.memo && checkin.memo.trim()) lines.push(checkin.memo.trim());
   }
   lines.push('#ホップ手帖');
