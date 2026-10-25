@@ -121,3 +121,90 @@ test('sw.js：イベント情報だけネット優先で取得する', () => {
   assert.match(sw, /const EVENTS_URL = 'data\/events\.json'/);
   assert.match(sw, /fetch\(req, \{ cache: 'no-cache' \}\)/);
 });
+
+// ---- E2：参加状況・記録との紐付け ----
+import { eventsOnDate, defaultCheckinDate, buildIcs } from '../js/events.js';
+import { IDBFactory } from 'fake-indexeddb';
+import { openDB } from '../js/db.js';
+import { createBeer, createCheckin } from '../js/models.js';
+import { createBackupBlob, parseBackup } from '../js/backup.js';
+import { validateCheckin } from '../js/validate.js';
+import { checkinFromDraft } from '../js/views/checkin-form.js';
+
+test('eventsOnDate：その日に開催中のものを、行く・行った → 行きたい → その他の順に', () => {
+  const list = [
+    ev({ id: 'a', startDate: '2026-11-07', endDate: '2026-11-08' }),
+    ev({ id: 'b', startDate: '2026-11-06', endDate: '2026-11-08' }),
+    ev({ id: 'c', startDate: '2026-11-08', endDate: '2026-11-08' }),
+    ev({ id: 'x', startDate: '2026-11-08', endDate: '2026-11-08', status: 'cancelled' }),
+    ev({ id: 'z', startDate: '2026-11-15', endDate: '2026-11-15' }),
+  ];
+  assert.deepEqual(eventsOnDate(list, '2026-11-08').map((e) => e.id), ['b', 'a', 'c']);
+  const plans = new Map([['c', { status: 'going' }], ['a', { status: 'want' }]]);
+  assert.deepEqual(eventsOnDate(list, '2026-11-08', plans).map((e) => e.id), ['c', 'a', 'b']);
+  assert.deepEqual(eventsOnDate(list, '2026-11-09'), []);
+});
+
+test('defaultCheckinDate：開催中は今日、それ以外は初日', () => {
+  assert.equal(defaultCheckinDate(ev(), '2026-11-08'), '2026-11-08');
+  assert.equal(defaultCheckinDate(ev(), '2026-10-25'), '2026-11-07');
+});
+
+test('buildIcs：終日の予定（終了日の翌日まで）、エスケープと75バイトでの折り返し', () => {
+  const [e] = joinEvents({
+    series: [{ id: 's', name: 'テスト, フェス; 2026', kana: 'て', kind: 'festival', prefecture: 'tokyo' }],
+    events: [ev({ seriesId: 's', prefecture: 'tokyo', city: '江東区', venue: '木場公園', hours: '11:00〜20:00', priceNote: '入場無料', note: '', officialUrl: 'https://example.com/' })],
+  });
+  const ics = buildIcs(e, new Date('2026-10-25T01:02:03.456Z'));
+  assert.match(ics, /^BEGIN:VCALENDAR\r\n/);
+  assert.match(ics, /DTSTART;VALUE=DATE:20261107\r\n/);
+  assert.match(ics, /DTEND;VALUE=DATE:20261109\r\n/);
+  assert.match(ics, /DTSTAMP:20261025T010203Z\r\n/);
+  assert.match(ics, /SUMMARY:テスト\\, フェス\; 2026\r\n/);
+  assert.match(ics, /UID:x@hop-techo/);
+  for (const line of ics.split('\r\n')) assert.ok(new TextEncoder().encode(line).length <= 75, line);
+  // 折り返しを戻すと元の説明文になる
+  const unfolded = ics.replace(/\r\n /g, '');
+  assert.match(unfolded, /DESCRIPTION:11:00〜20:00\\n入場無料\\n公式サイト：https:\/\/example.com\/\\n/);
+});
+
+test('validateCheckin / checkinFromDraft：イベントの紐付け（place.eventId）を保つ', () => {
+  const v = validateCheckin({ date: '2026-11-07', place: { type: 'drank', name: 'フェス', eventId: 'e1' } });
+  assert.deepEqual(v.value.place, { type: 'drank', name: 'フェス', eventId: 'e1' });
+  assert.deepEqual(validateCheckin({ date: '2026-11-07', place: { type: 'drank', name: '店', eventId: null } }).value.place, { type: 'drank', name: '店' });
+  assert.equal(checkinFromDraft({ placeName: 'フェス', eventId: 'e1' }).place.eventId, 'e1');
+  assert.equal(checkinFromDraft({ placeName: '店' }).place.eventId, undefined);
+});
+
+test('eventPlans：保存・空なら削除・最初の記録で「行った」', async () => {
+  const repo = await openDB({ indexedDB: new IDBFactory() });
+  const e = { id: 'e1', name: 'フェス', startDate: '2026-11-07', endDate: '2026-11-08' };
+  await repo.saveEventPlan({ id: 'e1', name: 'フェス', startDate: '2026-11-07', endDate: '2026-11-08', status: 'want', memo: '' });
+  assert.equal((await repo.getEventPlan('e1')).status, 'want');
+  assert.equal((await repo.markEventWent(e)).status, 'went');
+  assert.equal((await repo.getEventPlan('e1')).name, 'フェス');
+  await repo.saveEventPlan({ id: 'e1', status: null, memo: ' ' });
+  assert.equal(await repo.getEventPlan('e1'), undefined);
+  const fresh = await repo.markEventWent({ ...e, id: 'e2' });
+  assert.deepEqual({ ...fresh, updatedAt: null }, { id: 'e2', name: 'フェス', startDate: '2026-11-07', endDate: '2026-11-08', memo: '', status: 'went', updatedAt: null });
+  assert.equal((await repo.listEventPlans()).length, 1);
+});
+
+test('バックアップ：参加状況とイベントの紐付けを書き出し・読み込みできる。古いファイルも読める', async () => {
+  const src = await openDB({ indexedDB: new IDBFactory() });
+  await src.createBeerWithCheckin(createBeer({ name: 'IPA' }), createCheckin({ date: '2026-11-07', place: { type: 'drank', name: 'フェス', eventId: 'e1' } }));
+  await src.markEventWent({ id: 'e1', name: 'フェス', startDate: '2026-11-07', endDate: '2026-11-08' });
+  const data = parseBackup(await (await createBackupBlob(await src.dumpAll())).text());
+  assert.equal(data.checkins[0].place.eventId, 'e1');
+  assert.equal(data.eventPlans[0].status, 'went');
+  const dst = await openDB({ indexedDB: new IDBFactory() });
+  const r = await dst.importData(data, 'replace');
+  assert.equal(r.added.eventPlans, 1);
+  assert.equal((await dst.getEventPlan('e1')).status, 'went');
+
+  const old = JSON.parse(await (await createBackupBlob(await src.dumpAll())).text());
+  delete old.eventPlans;
+  assert.deepEqual(parseBackup(JSON.stringify(old)).eventPlans, []);
+  old.eventPlans = [{ id: 'e1', status: 'maybe' }];
+  assert.throws(() => parseBackup(JSON.stringify(old)), /状態が不正/);
+});

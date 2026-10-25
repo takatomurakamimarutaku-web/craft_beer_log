@@ -407,3 +407,7 @@ a.chip { text-decoration: none; display: inline-block; }
 .event-dates { font-weight: 700; margin: 8px 0 4px; }
 .events-foot { margin: 20px 2px 8px; }
 .event-info .kv span:first-child { flex-shrink: 0; }
+.events-when { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.badge-plan { background: var(--surface-2); color: var(--primary); border: 1px solid var(--primary); }
+.event-memo-label { margin-top: 14px; }
+.event-field .segmented .seg { white-space: normal; text-align: left; min-height: 40px; height: auto; padding: 6px 14px; }

@@ -102,7 +102,7 @@ DB 名 `craft-beer-log`、バージョン 1。ID は `crypto.randomUUID()`。
 |---|---|
 | id, beerId | ID、銘柄ID |
 | date | 日付（`YYYY-MM-DD`、端末のローカル日付） |
-| place | `{ type: "drank" \| "bought", name }` |
+| place | `{ type: "drank" \| "bought", name, eventId? }`。eventId はイベント（`data/events.json`）の回の id。配信からイベントが消えても name は残る |
 | serving | `"draft"`（樽生）/ `"can"` / `"bottle"` / `"other"` / null |
 | volumeMl, price | 容量（ml）、価格（円） |
 | rating | 評価 1〜5（任意） |
@@ -116,6 +116,10 @@ DB 名 `craft-beer-log`、バージョン 1。ID は `crypto.randomUUID()`。
 ### photos
 
 `{ id, blob（JPEG 長辺1280px）, thumb（JPEG 長辺300px） }`
+
+### eventPlans（イベントの参加状況、DB バージョン 2 で追加）
+
+`{ id（イベントの id）, name, startDate, endDate, status: "want" | "going" | "went" | null, memo, updatedAt }`。name と日程は、配信側からイベントが消えても表示できるようにするための写しです。状態もメモも空にすると削除します。イベントで初めて記録したとき、自動で `went` になります。
 
 ### meta
 
@@ -208,11 +212,13 @@ NFKC 正規化 → 小文字化 → ひらがなをカタカナに統一 → 前
   "counts": { "beers": 1, "checkins": 1, "photos": 1 },
   "beers": [ ... ],
   "checkins": [ ... ],
+  "eventPlans": [ ... ],
   "photos": [ { "id": "...", "type": "image/jpeg", "data": "<base64>", "thumbType": "image/jpeg", "thumb": "<base64>" } ]
 }
 ```
 
 - 読み込み時に形式・バージョン・各データ（ID の重複、銘柄・写真の参照、日付・評価の値）を検証し、問題があれば何も取り込みません
+- `eventPlans`（イベントの参加状況）は v1.4.0 で追加した任意の項目です。無いファイル（それ以前のバックアップ）も読み込めます
 - アプリより新しいバージョンのファイルは読み込みません。古い形式は `js/backup.js` の `UPGRADES` で変換します
 - 「既存のデータに追加」では同じ ID のデータは既存を残し、重複させません。「置き換え」は確認のうえ全データを入れ替えます
 

@@ -210,3 +210,80 @@ export function validateEventsData(data) {
   for (const id of seriesIds) if (!used.has(id)) errors.push(`series ${id}: 回（events）が1件もありません`);
   return errors;
 }
+
+// ---- 参加状況・記録との紐付け（E2） ----
+
+export const PLAN_STATUSES = { want: '行きたい', going: '行く', went: '行った' };
+
+/**
+ * その日に開催しているイベント（記録の登録画面の候補）。
+ * 「行く」「行った」にしたものを先に、次に開始日の早い順。中止・延期は除く
+ */
+export function eventsOnDate(events, date, plans = new Map()) {
+  const rank = (e) => ({ going: 0, went: 0, want: 1 })[plans.get(e.id)?.status] ?? 2;
+  return events
+    .filter((e) => e.startDate <= date && date <= e.endDate && e.status !== 'cancelled' && e.status !== 'postponed')
+    .sort((a, b) => rank(a) - rank(b) || a.startDate.localeCompare(b.startDate) || a.id.localeCompare(b.id));
+}
+
+/** 詳細画面から記録するときの日付：開催中なら今日、それ以外は初日 */
+export function defaultCheckinDate(event, today) {
+  return eventPhase(event, today) === 'ongoing' ? today : event.startDate;
+}
+
+/** iCalendar の文字列エスケープ */
+function icsText(s) {
+  return String(s ?? '').replace(/\\/g, '\\\\').replace(/;/g, '\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
+}
+
+/** 75バイトを超える行を折り返す（UTF-8 の文字の途中では切らない） */
+function foldLine(line) {
+  const enc = new TextEncoder();
+  const out = [];
+  let cur = '';
+  let bytes = 0;
+  for (const ch of line) {
+    const n = enc.encode(ch).length;
+    if (bytes + n > (out.length ? 74 : 75)) {
+      out.push(cur);
+      cur = '';
+      bytes = 0;
+    }
+    cur += ch;
+    bytes += n;
+  }
+  out.push(cur);
+  return out.join('\r\n ');
+}
+
+/**
+ * カレンダーに追加するための .ics（終日の予定）。
+ * @param {object} event joinEvents 済みのイベント
+ * @param {Date} now DTSTAMP に使う
+ */
+export function buildIcs(event, now = new Date()) {
+  const d = (s) => s.replaceAll('-', '');
+  const stamp = now.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  const location = [event.venue, event.prefectureLabel, event.city].filter(Boolean).join(' ');
+  const desc = [event.hours, event.priceNote, event.note, `公式サイト：${event.officialUrl}`, '開催情報は変わることがあります。お出かけ前に公式サイトで確認してください。']
+    .filter(Boolean)
+    .join('\n');
+  const lines = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//hop-techo//events//JA',
+    'CALSCALE:GREGORIAN',
+    'BEGIN:VEVENT',
+    `UID:${event.id}@hop-techo`,
+    `DTSTAMP:${stamp}`,
+    `DTSTART;VALUE=DATE:${d(event.startDate)}`,
+    `DTEND;VALUE=DATE:${d(addDays(event.endDate, 1))}`,
+    `SUMMARY:${icsText(event.name)}`,
+    location ? `LOCATION:${icsText(location)}` : null,
+    `DESCRIPTION:${icsText(desc)}`,
+    `URL:${event.officialUrl}`,
+    'END:VEVENT',
+    'END:VCALENDAR',
+  ].filter(Boolean);
+  return lines.map(foldLine).join('\r\n') + '\r\n';
+}

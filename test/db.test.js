@@ -15,7 +15,7 @@ test('スキーマ v1：ストアとインデックスが作成される', async
   const db = repo.db;
   assert.equal(db.name, DB_NAME);
   assert.equal(db.version, DB_VERSION);
-  assert.deepEqual([...db.objectStoreNames].sort(), ['beers', 'checkins', 'meta', 'photos']);
+  assert.deepEqual([...db.objectStoreNames].sort(), ['beers', 'checkins', 'eventPlans', 'meta', 'photos']);
   const tx = db.transaction(['beers', 'checkins'], 'readonly');
   assert.deepEqual([...tx.objectStore('beers').indexNames].sort(), ['breweryKey', 'nameKey', 'status', 'styleId']);
   assert.deepEqual([...tx.objectStore('checkins').indexNames].sort(), ['beerId', 'date']);
@@ -150,5 +150,28 @@ test('メタ情報の保存', async () => {
   assert.equal(await repo.getMeta('lastBackupAt'), null);
   await repo.setMeta('lastBackupAt', '2026-10-24T00:00:00.000Z');
   assert.equal(await repo.getMeta('lastBackupAt'), '2026-10-24T00:00:00.000Z');
+  repo.close();
+});
+
+test('スキーマ v2：バージョン1のDBを開くと、既存のデータを残したまま eventPlans を追加する', async () => {
+  const factory = new IDBFactory();
+  // バージョン1の構成を再現し、記録を1件入れておく
+  await new Promise((resolve, reject) => {
+    const open = factory.open(DB_NAME, 1);
+    open.onupgradeneeded = () => {
+      const db = open.result;
+      db.createObjectStore('beers', { keyPath: 'id' });
+      db.createObjectStore('checkins', { keyPath: 'id' }).createIndex('beerId', 'beerId');
+      db.createObjectStore('photos', { keyPath: 'id' });
+      db.createObjectStore('meta', { keyPath: 'key' });
+      open.transaction.objectStore('checkins').put({ id: 'c1', beerId: 'b1', date: '2026-10-01' });
+    };
+    open.onsuccess = () => (open.result.close(), resolve());
+    open.onerror = () => reject(open.error);
+  });
+  const repo = await openDB({ indexedDB: factory });
+  assert.equal(repo.db.version, 2);
+  assert.ok([...repo.db.objectStoreNames].includes('eventPlans'));
+  assert.equal((await repo.getCheckin('c1')).date, '2026-10-01');
   repo.close();
 });

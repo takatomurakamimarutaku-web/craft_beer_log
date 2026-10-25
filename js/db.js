@@ -3,7 +3,7 @@ import { withBeerKeys, applyIncomplete, compareCheckinsDesc } from './models.js'
 import { normalize } from './search.js';
 
 export const DB_NAME = 'craft-beer-log';
-export const DB_VERSION = 1;
+export const DB_VERSION = 2;
 export const DATA_STORES = ['beers', 'checkins', 'photos'];
 
 /**
@@ -25,6 +25,10 @@ export function migrate(db, oldVersion, tx) {
     checkins.createIndex('date', 'date');
     db.createObjectStore('photos', { keyPath: 'id' });
     db.createObjectStore('meta', { keyPath: 'key' });
+  }
+  if (oldVersion < 2) {
+    // イベントの参加状況（id はイベントの id）。既存のストアには触れない
+    db.createObjectStore('eventPlans', { keyPath: 'id' });
   }
 }
 
@@ -61,6 +65,11 @@ export function openDB({ indexedDB = globalThis.indexedDB, name = DB_NAME } = {}
     open.onerror = () => reject(open.error);
     open.onblocked = () => reject(new Error('ほかのタブでアプリが開かれているため、データベースを更新できません'));
   });
+}
+
+/** 配信側からイベントが消えても表示できるよう、名前と日程の写しを持つ */
+export function planSnapshot(event) {
+  return { id: event.id, name: event.name, startDate: event.startDate, endDate: event.endDate };
 }
 
 function now() {
@@ -316,6 +325,42 @@ export class Repository {
     });
   }
 
+  // ---- イベントの参加状況 ----
+
+  listEventPlans() {
+    return this.run(['eventPlans'], 'readonly', (tx) => req(tx.objectStore('eventPlans').getAll()));
+  }
+
+  getEventPlan(id) {
+    return this.run(['eventPlans'], 'readonly', (tx) => req(tx.objectStore('eventPlans').get(id)));
+  }
+
+  /** 参加状況の保存。status も memo も空なら削除する */
+  saveEventPlan(plan) {
+    return this.run(['eventPlans'], 'readwrite', (tx) => {
+      const store = tx.objectStore('eventPlans');
+      if (!plan.status && !(plan.memo || '').trim()) {
+        store.delete(plan.id);
+        return null;
+      }
+      const record = { ...plan, updatedAt: now() };
+      store.put(record);
+      return record;
+    });
+  }
+
+  /** そのイベントでの最初の記録のとき、参加状況を「行った」にする */
+  markEventWent(event) {
+    return this.run(['eventPlans'], 'readwrite', async (tx) => {
+      const store = tx.objectStore('eventPlans');
+      const old = await req(store.get(event.id));
+      if (old?.status === 'went') return old;
+      const record = { ...planSnapshot(event), memo: '', ...old, status: 'went', updatedAt: now() };
+      store.put(record);
+      return record;
+    });
+  }
+
   // ---- Phase 2: バックアップ ----
 
   async counts() {
@@ -328,10 +373,11 @@ export class Repository {
 
   /** 全データの取得 */
   dumpAll() {
-    return this.run(DATA_STORES, 'readonly', async (tx) => ({
+    return this.run([...DATA_STORES, 'eventPlans'], 'readonly', async (tx) => ({
       beers: await req(tx.objectStore('beers').getAll()),
       checkins: await req(tx.objectStore('checkins').getAll()),
       photos: await req(tx.objectStore('photos').getAll()),
+      eventPlans: await req(tx.objectStore('eventPlans').getAll()),
     }));
   }
 
@@ -343,10 +389,10 @@ export class Repository {
    */
   importData(data, mode) {
     if (mode !== 'replace' && mode !== 'merge') throw new Error('取り込み方法が不正です');
-    return this.run(DATA_STORES, 'readwrite', async (tx) => {
-      const added = { beers: 0, checkins: 0, photos: 0 };
-      const skipped = { beers: 0, checkins: 0, photos: 0 };
-      for (const name of DATA_STORES) {
+    return this.run([...DATA_STORES, 'eventPlans'], 'readwrite', async (tx) => {
+      const added = { beers: 0, checkins: 0, photos: 0, eventPlans: 0 };
+      const skipped = { beers: 0, checkins: 0, photos: 0, eventPlans: 0 };
+      for (const name of [...DATA_STORES, 'eventPlans']) {
         const store = tx.objectStore(name);
         if (mode === 'replace') await req(store.clear());
         const existing = mode === 'merge' ? new Set(await req(store.getAllKeys())) : new Set();

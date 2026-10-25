@@ -35,7 +35,7 @@ const BASE64_RE = /^[A-Za-z0-9+/]*={0,2}$/;
  * バックアップを Blob にする。
  * 巨大な1本の文字列を作らないよう、写真ごとに文字列を分けて Blob に連結する。
  */
-export async function createBackupBlob({ beers, checkins, photos }, exportedAt = new Date()) {
+export async function createBackupBlob({ beers, checkins, photos, eventPlans = [] }, exportedAt = new Date()) {
   const head = {
     format: BACKUP_FORMAT,
     version: BACKUP_VERSION,
@@ -46,6 +46,7 @@ export async function createBackupBlob({ beers, checkins, photos }, exportedAt =
   parts.push(JSON.stringify(head).slice(0, -1)); // 末尾の } を外して続ける
   parts.push(',"beers":', JSON.stringify(beers));
   parts.push(',"checkins":', JSON.stringify(checkins));
+  parts.push(',"eventPlans":', JSON.stringify(eventPlans));
   parts.push(',"photos":[');
   for (let i = 0; i < photos.length; i++) {
     const p = photos[i];
@@ -158,6 +159,16 @@ export function parseBackup(text) {
     return createCheckin({ ...c, photoIds: Array.isArray(pids) ? pids : [] });
   });
 
+  // イベントの参加状況（v1.3.0 で追加。古いファイルには無い）
+  const planIds = new Set();
+  const eventPlans = (obj.eventPlans === undefined ? [] : Array.isArray(obj.eventPlans) ? obj.eventPlans : (errors.push('イベントの参加状況が不正です'), [])).map((p, i) => {
+    if (!isObj(p) || !isStr(p.id) || !p.id) return errors.push(`イベント${i + 1}件目：IDがありません`), null;
+    if (p.status !== null && p.status !== undefined && !['want', 'going', 'went'].includes(p.status)) errors.push(`イベント${i + 1}件目：状態が不正です`);
+    if (planIds.has(p.id)) errors.push(`イベント${i + 1}件目：IDが重複しています`);
+    planIds.add(p.id);
+    return p;
+  });
+
   if (errors.length) {
     const more = errors.length > 5 ? `　ほか${errors.length - 5}件` : '';
     throw new BackupError(`ファイルの内容に問題があるため読み込みませんでした：${errors.slice(0, 5).join('／')}${more}`);
@@ -167,6 +178,7 @@ export function parseBackup(text) {
     exportedAt: obj.exportedAt || null,
     beers,
     checkins,
+    eventPlans,
     photos: photos.map((p) => ({
       id: p.id,
       blob: base64ToBlob(p.data, p.type || 'image/jpeg'),

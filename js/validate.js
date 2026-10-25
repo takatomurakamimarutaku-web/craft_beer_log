@@ -95,7 +95,11 @@ export function validateCheckin(input = {}) {
   if (photoIds.length > 4) errors.photos = '写真は4枚までです';
   const value = {
     date,
-    place: { type: placeType, name: String(input.place?.name ?? '').trim() },
+    place: {
+      type: placeType,
+      name: String(input.place?.name ?? '').trim(),
+      ...(typeof input.place?.eventId === 'string' && input.place.eventId ? { eventId: input.place.eventId } : {}),
+    },
     serving,
     volumeMl: volume.value,
     price: price.value,

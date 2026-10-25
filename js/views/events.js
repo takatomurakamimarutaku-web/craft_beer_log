@@ -1,5 +1,5 @@
 // イベント（#/events 一覧、#/event/:id 詳細）
-import { h, emptyState, segmented, formatDate } from '../ui.js';
+import { h, emptyState, segmented, formatDate, stars, showToast } from '../ui.js';
 import {
   joinEvents,
   filterEvents,
@@ -9,24 +9,30 @@ import {
   formatEventDates,
   otherEditions,
   localDateString,
+  defaultCheckinDate,
+  buildIcs,
   REGIONS,
   EVENT_KINDS,
   EVENT_STATUSES,
+  PLAN_STATUSES,
 } from '../events.js';
+import { planSnapshot } from '../db.js';
+import { compareCheckinsDesc } from '../models.js';
 
 const STORAGE_KEY = 'eventsState';
 const DISCLAIMER = '開催情報は変わることがあります。お出かけ前に公式サイトで確認してください。';
+const INITIAL = { q: '', region: null, past: false, mine: false };
 let state = null; // 画面を移動しても絞り込みを保持する
 
 function loadState() {
   if (state) return state;
   try {
     const raw = sessionStorage.getItem(STORAGE_KEY);
-    if (raw) return (state = { q: '', region: null, past: false, ...JSON.parse(raw) });
+    if (raw) return (state = { ...INITIAL, ...JSON.parse(raw) });
   } catch {
     /* 読めなければ初期値 */
   }
-  return (state = { q: '', region: null, past: false });
+  return (state = { ...INITIAL });
 }
 
 function saveState(s) {
@@ -39,7 +45,7 @@ function saveState(s) {
 }
 
 export async function render(ctx) {
-  const data = await ctx.app.loadEvents();
+  const [data, planList] = await Promise.all([ctx.app.loadEvents(), ctx.app.db.listEventPlans().catch(() => [])]);
   if (ctx.isStale()) return;
   if (!data) {
     ctx.outlet.replaceChildren(
@@ -51,14 +57,15 @@ export async function render(ctx) {
     return;
   }
   const events = joinEvents(data);
+  const plans = new Map(planList.map((p) => [p.id, p]));
   const today = localDateString();
-  if (ctx.params.id) return renderDetail(ctx, events, today);
-  return renderList(ctx, events, data.updatedAt, today);
+  if (ctx.params.id) return renderDetail(ctx, events, plans, today);
+  return renderList(ctx, events, plans, data.updatedAt, today);
 }
 
 // ---- 一覧 ----
 
-function renderList({ outlet, query }, events, updatedAt, today) {
+function renderList({ outlet, query }, events, plans, updatedAt, today) {
   let s = { ...loadState() };
   if (query.past !== undefined) s.past = query.past === '1';
   saveState(s);
@@ -86,6 +93,16 @@ function renderList({ outlet, query }, events, updatedAt, today) {
     value: s.past,
     onChange: (past) => update({ past }),
   });
+  const mine = h('button', {
+    type: 'button',
+    class: 'chip',
+    text: '自分の予定だけ',
+    'aria-pressed': String(s.mine),
+    onclick: () => {
+      update({ mine: !s.mine });
+      mine.setAttribute('aria-pressed', String(s.mine));
+    },
+  });
   const regions = segmented({
     name: '地方',
     options: REGIONS.map((r) => ({ value: r.id, label: r.label })),
@@ -96,7 +113,7 @@ function renderList({ outlet, query }, events, updatedAt, today) {
   const body = h('div', { class: 'events-body', 'aria-live': 'polite' });
   outlet.replaceChildren(
     h('div', { class: 'search-bar' }, input),
-    h('div', { class: 'filter-group' }, when),
+    h('div', { class: 'filter-group events-when' }, when, mine),
     h('div', { class: 'filter-group events-regions' }, regions),
     body,
     h('p', { class: 'small muted events-foot', text: `イベント情報：${formatDate(updatedAt)} 更新。${DISCLAIMER}` }),
@@ -104,22 +121,29 @@ function renderList({ outlet, query }, events, updatedAt, today) {
   renderBody();
 
   function renderBody() {
-    const list = filterEvents(events, s, today);
+    let list = filterEvents(events, s, today);
+    if (s.mine) list = list.filter((e) => plans.get(e.id)?.status);
     if (!list.length) {
-      const msg = s.q || s.region ? '条件に合うイベントはありません。' : s.past ? '終了したイベントはまだありません。' : '予定されているイベントはまだありません。';
+      const msg = s.mine
+        ? 'イベントの詳細で「行きたい」「行く」「行った」を選ぶと、ここに出ます。'
+        : s.q || s.region
+          ? '条件に合うイベントはありません。'
+          : s.past
+            ? '終了したイベントはまだありません。'
+            : '予定されているイベントはまだありません。';
       return body.replaceChildren(emptyState(msg));
     }
     if (s.past) {
-      return body.replaceChildren(h('p', { class: 'list-meta', text: `${list.length}件` }), cardList(list, today));
+      return body.replaceChildren(h('p', { class: 'list-meta', text: `${list.length}件` }), cardList(list, plans, today));
     }
     body.replaceChildren(
       h('p', { class: 'list-meta', text: `${list.length}件` }),
-      ...groupUpcoming(list, today).flatMap((g) => [h('h2', { class: 'section-title', text: g.label }), cardList(g.events, today)]),
+      ...groupUpcoming(list, today).flatMap((g) => [h('h2', { class: 'section-title', text: g.label }), cardList(g.events, plans, today)]),
     );
   }
 }
 
-function cardList(list, today) {
+function cardList(list, plans, today) {
   return h(
     'ul',
     { class: 'card-list' },
@@ -136,7 +160,7 @@ function cardList(list, today) {
             h('div', { class: `card-title${e.status === 'cancelled' ? ' event-cancelled' : ''}`, text: e.name }),
             h('div', { class: 'card-meta', text: formatEventDates(e.startDate, e.endDate) }),
             h('div', { class: 'card-meta', text: [e.prefectureLabel, e.city, e.venue].filter(Boolean).join(' ') }),
-            badges(e, today, 'card-foot'),
+            badges(e, plans.get(e.id), today, 'card-foot'),
           ),
         ),
       ),
@@ -144,9 +168,10 @@ function cardList(list, today) {
   );
 }
 
-/** 状態のバッジ（開催中・中止・延期・予告・情報が古い可能性） */
-function badges(e, today, className) {
+/** 状態のバッジ（参加状況・開催中・中止・延期・予告・情報が古い可能性） */
+function badges(e, plan, today, className) {
   const items = [];
+  if (plan?.status) items.push(h('span', { class: 'badge badge-plan', text: PLAN_STATUSES[plan.status] }));
   if (e.status !== 'scheduled') items.push(h('span', { class: 'badge badge-warn', text: EVENT_STATUSES[e.status] }));
   else if (eventPhase(e, today) === 'ongoing') items.push(h('span', { class: 'badge badge-live', text: '開催中' }));
   if (isStale(e, today)) items.push(h('span', { class: 'badge badge-warn', text: '情報が古い可能性' }));
@@ -157,16 +182,39 @@ function badges(e, today, className) {
 
 // ---- 詳細 ----
 
-function renderDetail({ app, outlet, params }, events, today) {
+async function renderDetail({ app, outlet, params, isStale: stale }, events, plans, today) {
   const e = events.find((x) => x.id === params.id);
   if (!e) {
     outlet.replaceChildren(emptyState('イベントが見つかりません。', h('a', { class: 'btn', href: '#/events', text: 'イベント一覧へ' })));
     return;
   }
+  const [checkins, beers] = await Promise.all([app.db.listCheckins(), app.db.listBeers()]);
+  if (stale()) return;
+  const mine = checkins.filter((c) => c.place?.eventId === e.id).sort(compareCheckinsDesc);
+  const beerById = new Map(beers.map((b) => [b.id, b]));
+
   app.setTitle(e.name);
+  let plan = plans.get(e.id) || { ...planSnapshot(e), status: null, memo: '' };
+  const savePlan = async (patch) => {
+    plan = { ...plan, ...planSnapshot(e), ...patch };
+    try {
+      await app.db.saveEventPlan(plan);
+    } catch (err) {
+      console.error(err);
+      showToast('保存できませんでした');
+    }
+  };
+
   const row = (label, value) => (value ? h('div', { class: 'kv' }, h('span', { class: 'muted', text: label }), h('span', { text: value })) : null);
   const ext = (href, text, cls) => h('a', { class: cls, href, target: '_blank', rel: 'noopener noreferrer', text });
   const others = otherEditions(events, e);
+  const memo = h('textarea', {
+    id: 'event-memo',
+    rows: 2,
+    value: plan.memo || '',
+    placeholder: '待ち合わせ・飲みたいブルワリーなど',
+    onchange: () => savePlan({ memo: memo.value }),
+  });
 
   // replaceChildren は null を文字列にするので、出さない部分は除いて渡す
   const sections = [
@@ -174,11 +222,59 @@ function renderDetail({ app, outlet, params }, events, today) {
       'section',
       { class: 'panel event-head' },
       h('h2', { class: `event-name${e.status === 'cancelled' ? ' event-cancelled' : ''}`, text: e.name }),
-      badges(e, today, 'card-foot'),
+      badges(e, null, today, 'card-foot'),
       h('p', { class: 'event-dates', text: formatEventDates(e.startDate, e.endDate) }),
       e.note ? h('p', { class: 'small', text: e.note }) : null,
       ext(e.officialUrl, '公式サイトを開く', 'btn btn-primary btn-block'),
       e.ticketUrl ? ext(e.ticketUrl, 'チケット販売ページ', 'btn btn-block') : null,
+    ),
+    h(
+      'section',
+      { class: 'panel' },
+      h('h3', { class: 'section-title', text: '自分の予定' }),
+      segmented({
+        name: '参加状況',
+        options: Object.entries(PLAN_STATUSES).map(([value, label]) => ({ value, label })),
+        value: plan.status,
+        allowEmpty: true,
+        onChange: (status) => savePlan({ status }),
+      }),
+      h('label', { class: 'field-label event-memo-label', for: 'event-memo', text: 'メモ' }),
+      memo,
+      eventPhase(e, today) !== 'past'
+        ? h('button', { type: 'button', class: 'btn btn-block', text: 'カレンダーに追加', onclick: () => downloadIcs(e) })
+        : null,
+    ),
+    h(
+      'section',
+      { class: 'panel' },
+      h('h3', { class: 'section-title', text: mine.length ? `このイベントで飲んだ記録（${mine.length}杯）` : 'このイベントで飲んだ記録' }),
+      mine.length
+        ? h(
+            'ul',
+            { class: 'history' },
+            mine.map((c) => {
+              const beer = beerById.get(c.beerId);
+              return h(
+                'li',
+                {},
+                h(
+                  'a',
+                  { class: 'menu-item', href: `#/beer/${encodeURIComponent(c.beerId)}` },
+                  h('span', { text: beer?.name || '（削除された銘柄）' }),
+                  h('span', { class: 'muted small' }, typeof c.rating === 'number' ? h('span', { class: 'stars', text: stars(c.rating) }) : null, ` ${formatDate(c.date)}`),
+                ),
+              );
+            }),
+          )
+        : h('p', { class: 'small muted', text: '記録の登録画面で、このイベントを選ぶとここに並びます。' }),
+      e.status !== 'cancelled'
+        ? h('a', {
+            class: 'btn btn-block',
+            href: `#/checkin/new?eventId=${encodeURIComponent(e.id)}&date=${defaultCheckinDate(e, today)}`,
+            text: '＋ このイベントで飲んだビールを記録',
+          })
+        : null,
     ),
     h(
       'section',
@@ -225,4 +321,15 @@ function renderDetail({ app, outlet, params }, events, today) {
     ),
   ];
   outlet.replaceChildren(...sections.filter(Boolean));
+}
+
+/** .ics を書き出す。iPhone では開くとカレンダーへの追加画面になる */
+function downloadIcs(event) {
+  const blob = new Blob([buildIcs(event)], { type: 'text/calendar;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = h('a', { href: url, download: `${event.id}.ics` });
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
 }
