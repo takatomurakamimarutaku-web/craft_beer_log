@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ff8a3d">
+  <title>ホップ手帖を試してね</title>
+  <link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --bg: #faf6f0; --surface: #fff; --surface-2: #f3ece2; --text: #2a1f17; --muted: #73635a;
+      --border: #e6dccf; --primary: #b05f12; --on-primary: #fff; --beer: #f2a93b; --foam: #fff8ec;
+      --line: #06c755; --radius: 16px;
+      color-scheme: light dark;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #1b1512; --surface: #261e19; --surface-2: #31271f; --text: #f3e9dd; --muted: #c2b2a3; --border: #3d3129; --primary: #f2a93b; --on-primary: #2a1f17; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+    main { max-width: 560px; margin: 0 auto; padding: 0 16px calc(32px + env(safe-area-inset-bottom)); }
+    h1 { font-size: 24px; line-height: 1.4; margin: 8px 0 4px; }
+    h2 { font-size: 19px; margin: 36px 0 12px; display: flex; align-items: center; gap: 8px; }
+    h2 .num { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: var(--on-primary); font-size: 15px; }
+    p { margin: 0 0 8px; }
+    .muted { color: var(--muted); font-size: 14px; }
+    .hero { margin: 0 -16px; padding: calc(24px + env(safe-area-inset-top)) 16px 20px; background: linear-gradient(135deg, #ffc24d, #ff8a3d 55%, #e8513a); color: #2a1f17; text-align: center; }
+    .back { display: block; text-align: left; color: #2a1f17; font-size: 14px; text-decoration: none; margin: -8px 0 8px; }
+    .hero img { width: 88px; height: 88px; border-radius: 22px; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+    .hero p { font-size: 15px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .step { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 6px 12px; text-align: center; font-size: 13px; line-height: 1.5; }
+    .step svg { width: 100%; max-width: 110px; height: auto; display: block; margin: 0 auto 6px; }
+    .step b { display: block; font-size: 13px; word-break: keep-all; overflow-wrap: anywhere; }
+    .note { display: flex; gap: 12px; align-items: center; background: var(--surface-2); border-radius: var(--radius); padding: 12px 14px; margin-top: 12px; font-size: 14px; }
+    .note svg { flex: none; width: 44px; height: 44px; }
+    .tries { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .try { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; display: flex; gap: 10px; align-items: center; font-size: 14px; line-height: 1.45; }
+    .try svg { flex: none; width: 40px; height: 40px; }
+    .progress { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: 10px; padding: 10px 0; background: var(--bg); font-size: 13px; color: var(--muted); }
+    .bar { flex: 1; height: 8px; border-radius: 4px; background: var(--surface-2); overflow: hidden; }
+    .bar-fill { height: 100%; width: 0; background: linear-gradient(90deg, #ffc24d, #ff8a3d); transition: width .2s; }
+    .q { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 10px; }
+    .q.sub { margin-left: 16px; border-left: 4px solid var(--beer); }
+    .q-label { font-weight: 600; margin-bottom: 10px; display: flex; gap: 8px; align-items: baseline; }
+    .opt { font-size: 12px; font-weight: 400; color: var(--muted); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { font: inherit; font-size: 15px; min-height: 44px; padding: 8px 14px; border-radius: 22px; border: 1.5px solid var(--border); background: var(--surface-2); color: var(--text); cursor: pointer; }
+    .chip.on { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+    .faces { display: flex; justify-content: space-between; gap: 6px; }
+    .face { flex: 1; font-size: 28px; min-height: 52px; border-radius: 14px; border: 1.5px solid var(--border); background: var(--surface-2); cursor: pointer; filter: grayscale(.7); opacity: .75; }
+    .face.on { filter: none; opacity: 1; border-color: var(--primary); background: var(--foam); transform: scale(1.06); }
+    .scale-ends { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 4px; }
+    input, textarea { width: 100%; font: inherit; font-size: 16px; padding: 10px 12px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--bg); color: var(--text); }
+    textarea { resize: vertical; }
+    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }
+    .btn { font: inherit; font-weight: 600; min-height: 48px; border-radius: 14px; border: none; background: var(--primary); color: var(--on-primary); cursor: pointer; }
+    .btn.line { grid-column: 1 / -1; background: var(--line); color: #fff; font-size: 17px; min-height: 54px; }
+    .btn.ghost { background: transparent; color: var(--primary); border: 1.5px solid var(--border); }
+    .status { min-height: 1.7em; text-align: center; font-size: 14px; color: var(--primary); margin-top: 10px; }
+    .preview { white-space: pre-wrap; background: var(--surface-2); border-radius: 12px; padding: 12px; font-size: 13px; line-height: 1.6; user-select: all; -webkit-user-select: all; }
+    .open { display: block; text-align: center; margin: 16px 0 0; padding: 14px; border-radius: 14px; background: var(--primary); color: var(--on-primary); font-weight: 700; text-decoration: none; }
+    .thanks { text-align: center; margin-top: 28px; }
+    .thanks svg { width: 120px; height: auto; }
+  </style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <a class="back" href="../">‹ アプリに戻る</a>
+    <img src="../icons/icon.svg" alt="" width="88" height="88">
+    <h1>ホップ手帖を<br>試してみてね🍺</h1>
+    <p>飲んだクラフトビールを記録・検索できるアプリです。<br>5分くらい触って、感想を教えてもらえると嬉しいです。</p>
+  </header>
+
+  <h2><span class="num">1</span>アプリを入れる</h2>
+  <div class="steps">
+    <div class="step">
+      <svg viewBox="0 0 100 120" aria-hidden="true">
+        <rect style="fill:var(--surface-2);stroke:var(--muted)" x="18" y="4" width="64" height="112" rx="12" stroke-width="2.5"/>
+        <rect style="fill:var(--border)" x="26" y="16" width="48" height="8" rx="4"/>
+        <text style="fill:var(--muted)" x="50" y="23" font-size="6" text-anchor="middle">Safari</text>
+        <rect style="fill:var(--surface)" x="26" y="32" width="48" height="56" rx="4"/>
+        <rect style="fill:var(--border)" x="18" y="94" width="64" height="22" opacity=".6"/>
+        <circle cx="50" cy="105" r="11" fill="#ff8a3d" opacity=".25"/>
+        <path d="M44 103 v8 h12 v-8 M50 98 v10 M46 101 l4-4 4 4" fill="none" stroke="#e8513a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <b>Safariで開く</b>下の共有ボタンをタップ
+    </div>
+    <div class="step">
+      <svg viewBox="0 0 100 120" aria-hidden="true">
+        <rect style="fill:var(--surface-2);stroke:var(--muted)" x="18" y="4" width="64" height="112" rx="12" stroke-width="2.5"/>
+        <rect style="fill:var(--surface)" x="24" y="40" width="52" height="70" rx="6"/>
+        <rect style="fill:var(--border)" x="28" y="48" width="44" height="7" rx="3"/>
+        <rect x="28" y="62" width="44" height="16" rx="4" fill="#ff8a3d" opacity=".25" stroke="#e8513a" stroke-width="2"/>
+        <rect x="32" y="66" width="8" height="8" rx="2" fill="none" stroke="#e8513a" stroke-width="1.8"/>
+        <path d="M36 68 v4 M34 70 h4" stroke="#e8513a" stroke-width="1.6"/>
+        <rect x="44" y="68" width="24" height="4" rx="2" fill="#e8513a"/>
+        <rect style="fill:var(--border)" x="28" y="85" width="44" height="7" rx="3"/>
+        <rect style="fill:var(--border)" x="28" y="97" width="44" height="7" rx="3"/>
+      </svg>
+      <b>ホーム画面に追加</b>メニューを少し下にスクロール
+    </div>
+    <div class="step">
+      <svg viewBox="0 0 100 120" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffc24d"/><stop offset="1" stop-color="#e8513a"/></linearGradient></defs>
+        <rect style="fill:var(--surface-2);stroke:var(--muted)" x="18" y="4" width="64" height="112" rx="12" stroke-width="2.5"/>
+        <g style="fill:var(--border)"><rect x="26" y="18" width="12" height="12" rx="3"/><rect x="44" y="18" width="12" height="12" rx="3"/><rect x="62" y="18" width="12" height="12" rx="3"/><rect x="26" y="38" width="12" height="12" rx="3"/></g>
+        <rect x="41" y="35" width="18" height="18" rx="4.5" fill="url(#g)" stroke="#fff" stroke-width="1.5"/>
+        <path d="M46 40 h8 l-1 9 h-6z" fill="#fff"/>
+        <circle cx="62" cy="58" r="7" fill="none" stroke="#e8513a" stroke-width="2" opacity=".7"/>
+        <path style="fill:var(--text)" d="M58 62 l6 10 2-4 4 1z"/>
+      </svg>
+      <b>アイコンから起動</b>次からはここを開く
+    </div>
+  </div>
+  <a class="open" href="../">アプリを開く（Safariで）</a>
+  <div class="note">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><rect style="fill:var(--beer)" x="8" y="20" width="32" height="24" rx="6"/><path style="stroke:var(--muted)" d="M15 20 v-6 a9 9 0 0 1 18 0 v6" fill="none" stroke-width="4"/><circle style="fill:var(--text)" cx="24" cy="31" r="3.5"/><rect style="fill:var(--text)" x="22.5" y="32" width="3" height="7" rx="1.5"/></svg>
+    <div><b>データはスマホの中だけ</b><br>記録や写真は外部に送られません。ログインも不要です。</div>
+  </div>
+  <p class="muted" style="margin-top:8px">※ Safariで開いたままだとデータが別扱いになるので、ホーム画面のアイコンから使ってね。</p>
+
+  <h2><span class="num">2</span>こんなことを試してみて</h2>
+  <div class="tries">
+    <div class="try">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#ff8a3d"/><path d="M20 11 v18 M11 20 h18" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>
+      <span>下の「＋」で1杯記録</span>
+    </div>
+    <div class="try">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle style="fill:var(--surface-2)" cx="20" cy="20" r="18"/><circle style="stroke:var(--primary)" cx="18" cy="18" r="7" fill="none" stroke-width="3.5"/><path style="stroke:var(--primary)" d="M23 23 l6 6" stroke-width="3.5" stroke-linecap="round"/></svg>
+      <span>検索で絞り込み</span>
+    </div>
+    <div class="try">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle style="fill:var(--surface-2)" cx="20" cy="20" r="18"/><rect x="11" y="22" width="4" height="8" rx="1" fill="#ffc24d"/><rect x="18" y="15" width="4" height="15" rx="1" fill="#ff8a3d"/><rect x="25" y="11" width="4" height="19" rx="1" fill="#e8513a"/></svg>
+      <span>統計でグラフを見る</span>
+    </div>
+    <div class="try">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle style="fill:var(--surface-2)" cx="20" cy="20" r="18"/><path style="fill:var(--beer);stroke:var(--primary)" d="M10 13 q5-2 10 1 v15 q-5-3-10-1z M30 13 q-5-2-10 1 v15 q5-3 10-1z" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <span>知識でスタイルや<br>ホップを読む</span>
+    </div>
+  </div>
+
+  <h2><span class="num">3</span>感想を教えて</h2>
+  <p class="muted">タップで選ぶだけでOK。書くのは任意です。途中で閉じても入力内容は残ります。</p>
+  <div id="form"></div>
+
+  <div class="thanks">
+    <svg viewBox="0 0 140 90" aria-hidden="true">
+      <g transform="rotate(-12 45 50)"><path style="fill:var(--beer)" d="M28 30 h34 l-4 52 h-26z"/><path style="fill:var(--foam);stroke:var(--border)" d="M26 30 c-4-12 10-18 18-12 c6-10 22-8 22 4 c4 2 2 10-4 8 h-36z"/></g>
+      <g transform="rotate(12 95 50)"><path style="fill:var(--beer)" d="M78 30 h34 l-4 52 h-26z"/><path style="fill:var(--foam);stroke:var(--border)" d="M76 30 c-4-12 10-18 18-12 c6-10 22-8 22 4 c4 2 2 10-4 8 h-36z"/></g>
+      <path d="M62 12 l4 6 M70 8 v8 M78 12 l-4 6" stroke="#ff8a3d" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <p>ありがとう！乾杯🍻</p>
+  </div>
+</main>
+<script type="module">
+  import { mount } from './feedback.js';
+  mount(document.getElementById('form'));
+</script>
+</body>
+</html>

@@ -15,6 +15,12 @@ test('500銘柄・2000記録：集計と入力ごとの絞り込みが十分に�
 
   // 1文字ずつ入力した場合を想定し、各入力で絞り込み＋並べ替えを実行
   const typed = ['ほ', 'ほっ', 'ほっぴ', 'ほっぴー', 'h', 'ha', 'haz', 'hazy'];
+  const run = (keyword) => {
+    searchBeers(summaries, { keyword, styleIds: ['ipa', 'hazy-ipa', 'pale-ale'], abvMin: 4, ratingMin: 3, sort: 'rating' });
+    suggest(beers, keyword, (b) => b.nameKey, 8);
+  };
+  // 初回は JIT コンパイルで遅くなり CI で揺れるため、1巡空回ししてから計測する
+  typed.forEach(run);
   const times = [];
   for (const keyword of typed) {
     t = performance.now();

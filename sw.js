@@ -1,6 +1,6 @@
 // Service Worker
 // ファイルを変更したら CACHE_VERSION を上げる（README「キャッシュ更新手順」参照）
-const CACHE_VERSION = 'v16';
+const CACHE_VERSION = 'v17';
 const CACHE_NAME = `craft-beer-log-${CACHE_VERSION}`;
 
 // 事前にキャッシュするファイル（相対パス）。ファイルを追加・削除したらここも更新する
@@ -88,6 +88,8 @@ self.addEventListener('fetch', (event) => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
+  // 感想フォーム（feedback/）はアプリ外のページなので、そのままネットワークから読む
+  if (new URL('feedback/', self.registration.scope).pathname === url.pathname.replace(/[^/]*$/, '')) return;
   event.respondWith(
     (async () => {
       const cache = await caches.open(CACHE_NAME);
