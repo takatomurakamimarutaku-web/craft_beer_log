@@ -1,6 +1,7 @@
 // 記録一覧（#/beers）
-import { h, createThumbLoader, thumbView, formatDate, formatAbv, stars, emptyState } from '../ui.js';
+import { h, createThumbLoader, thumbView, formatDate, formatAbv, starsView, emptyState } from '../ui.js';
 import { styleLabel } from '../models.js';
+import { beerColor } from '../knowledge.js';
 import { backupReminder, backupReminderText } from '../backup.js';
 import { currentInstallState } from '../install.js';
 import { showInstallGuide } from './welcome.js';
@@ -82,7 +83,7 @@ function checkinCard(c, beer, app, loader) {
     h(
       'a',
       { class: 'card', href: `#/beer/${encodeURIComponent(beer.id)}` },
-      thumbView(c.photoIds?.[0], loader),
+      thumbView(c.photoIds?.[0], loader, 'thumb', beerColor(beer, app.styles)),
       h(
         'div',
         { class: 'card-body' },
@@ -92,7 +93,7 @@ function checkinCard(c, beer, app, loader) {
           'div',
           { class: 'card-foot' },
           h('span', { text: formatDate(c.date) }),
-          typeof c.rating === 'number' ? h('span', { class: 'stars', text: stars(c.rating) }) : null,
+          typeof c.rating === 'number' ? starsView(c.rating) : null,
           c.incomplete ? h('span', { class: 'badge badge-warn', text: '未入力あり' }) : null,
         ),
       ),

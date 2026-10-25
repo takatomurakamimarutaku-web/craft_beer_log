@@ -34,8 +34,8 @@ export function svg(markup) {
   return document.importNode(doc.documentElement, true);
 }
 
-/** ビールグラスのイラスト（写真が無いときのサムネイル・空状態） */
-export function glassIcon(className = 'glass-icon') {
+/** ビールグラスのイラスト（写真が無いときのサムネイル・空状態）。color を渡すとその色のビールにする */
+export function glassIcon(className = 'glass-icon', color = null) {
   const el = svg(`<svg xmlns="${SVG_NS}" viewBox="0 0 64 64" aria-hidden="true">
     <path d="M18 18h28l-3.4 36.2a3 3 0 0 1-3 2.8H24.4a3 3 0 0 1-3-2.8z" fill="var(--beer)"/>
     <path d="M23 26l2.2 25" stroke="var(--beer-hi)" stroke-width="2.4" stroke-linecap="round" opacity=".8"/>
@@ -43,6 +43,10 @@ export function glassIcon(className = 'glass-icon') {
     <path d="M16.5 19.5c-1.6-4.6 2.2-8 6-6.8 1.4-3.4 6.4-4.4 9-1.6 2.6-2.6 7.6-1.8 8.8 1.6 3.8-1 7.4 2.4 5.4 6.8-.6 1.4-2 2-3.4 2H20c-1.6 0-3-.8-3.5-2z" fill="var(--foam)"/>
   </svg>`);
   el.setAttribute('class', className);
+  if (color) {
+    el.classList.add('beer-tint');
+    el.style.setProperty('--beer', color);
+  }
   return el;
 }
 
@@ -64,6 +68,17 @@ export function stars(rating) {
   if (typeof rating !== 'number') return '';
   const r = Math.round(rating);
   return '★'.repeat(r) + '☆'.repeat(5 - r);
+}
+
+/** 星の表示（塗りと空きで色を分ける）。読み上げは「評価 3 / 5」 */
+export function starsView(rating) {
+  const r = Math.round(rating);
+  return h(
+    'span',
+    { class: 'stars', role: 'img', 'aria-label': `評価 ${r} / 5` },
+    h('span', { 'aria-hidden': 'true', text: '★'.repeat(r) }),
+    h('span', { class: 'star-off', 'aria-hidden': 'true', text: '★'.repeat(5 - r) }),
+  );
 }
 
 export function formatBytes(n) {
@@ -366,15 +381,16 @@ export function createThumbLoader(getThumb) {
   };
 }
 
-/** サムネイル（写真が無ければグラスのイラスト） */
-export function thumbView(photoId, loader, className = 'thumb') {
+/** サムネイル（写真が無ければ、color で塗ったグラスのイラスト） */
+export function thumbView(photoId, loader, className = 'thumb', color = null) {
   const wrap = h('div', { class: className });
+  if (color) wrap.style.setProperty('--beer', color);
   if (photoId) {
     const img = h('img', { alt: '', decoding: 'async' });
     wrap.append(img);
     loader.observe(img, photoId);
   } else {
-    wrap.append(glassIcon());
+    wrap.append(glassIcon('glass-icon', color));
   }
   return wrap;
 }

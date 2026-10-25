@@ -2,6 +2,7 @@
 import { h, chipGroup, segmented, createThumbLoader, thumbView, formatDate, formatAbv, emptyState } from '../ui.js';
 import { buildBeerSummaries, searchBeers, defaultCriteria, countActiveFilters } from '../search.js';
 import { styleLabel, SERVING_LABELS, PLACE_TYPE_LABELS } from '../models.js';
+import { beerColor } from '../knowledge.js';
 import { parseAbv } from '../validate.js';
 
 const PAGE = 50;
@@ -49,7 +50,7 @@ export async function render({ app, outlet }) {
   const keyword = h('input', {
     type: 'search',
     class: 'search-input',
-    placeholder: '名前・ブリュワーで検索',
+    placeholder: '銘柄名・ブリュワー',
     value: criteria.keyword,
     'aria-label': 'キーワード',
     enterkeyhint: 'search',
@@ -128,7 +129,7 @@ export async function render({ app, outlet }) {
       h(
         'a',
         { class: 'card', href: `#/beer/${encodeURIComponent(b.id)}` },
-        thumbView(s.photoId, loader),
+        thumbView(s.photoId, loader, 'thumb', beerColor(b, app.styles)),
         h(
           'div',
           { class: 'card-body' },

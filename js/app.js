@@ -50,6 +50,7 @@ const routes = [
 const outlet = document.getElementById('view');
 const titleEl = document.getElementById('title');
 const backBtn = document.getElementById('back');
+const headerEl = document.querySelector('.app-header');
 
 async function loadJson(path, fallback) {
   try {
@@ -129,14 +130,21 @@ async function start() {
       app.leaveGuard = null; // スワイプで戻った場合など、確認を経ずに移動したとき
       app.setTitle(route.title);
       backBtn.hidden = !route.back;
+      headerEl.classList.toggle('is-root', !route.back);
       for (const a of document.querySelectorAll('.tabbar a')) {
         a.toggleAttribute('aria-current', a.dataset.tab === route.tab);
         if (a.dataset.tab === route.tab) a.setAttribute('aria-current', 'page');
       }
       outlet.replaceChildren(h('p', { class: 'loading', text: '読み込み中…' }));
       window.scrollTo(0, 0);
+      outlet.classList.remove('view-enter');
       try {
-        return await route.view.render({ app, outlet, params, query, route, isStale });
+        const result = await route.view.render({ app, outlet, params, query, route, isStale });
+        if (!isStale()) {
+          void outlet.offsetWidth; // アニメーションを最初からやり直す
+          outlet.classList.add('view-enter');
+        }
+        return result;
       } catch (e) {
         console.error(e);
         if (!isStale()) outlet.replaceChildren(errorView(friendlyError(e, '画面を表示')));
@@ -144,6 +152,10 @@ async function start() {
       }
     },
   });
+
+  // スクロールしたらヘッダーに区切り線を出す
+  const onScroll = () => headerEl.classList.toggle('is-scrolled', window.scrollY > 4);
+  window.addEventListener('scroll', onScroll, { passive: true });
 
   backBtn.addEventListener('click', () => leaveIfAllowed(() => router.goBack(current?.back)));
   // 入力途中の画面から、タブ・リンクで離れるときに確認する
