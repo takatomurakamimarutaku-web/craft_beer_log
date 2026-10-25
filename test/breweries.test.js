@@ -3,6 +3,9 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   PREFS,
+  REGIONS,
+  regionOf,
+  countByRegion,
   KIND_LABELS,
   VERIFICATION_LABELS,
   FEATURE_LABELS,
@@ -24,6 +27,19 @@ const data = JSON.parse(readFileSync(new URL('../data/breweries.json', import.me
 const list = data.breweries;
 const styleIds = new Set(JSON.parse(readFileSync(new URL('../data/styles.json', import.meta.url), 'utf8')).map((s) => s.id));
 
+// 県ごとの緯度・経度のおおよその範囲 [南, 北, 西, 東]。データの地域を増やしたら追加する
+const PREF_BOXES = {
+  '02': [40.2, 41.6, 139.4, 141.7],
+  '03': [38.7, 40.5, 140.6, 142.1],
+  '04': [37.7, 39.0, 140.2, 141.7],
+  '05': [38.8, 40.6, 139.6, 141.0],
+  '06': [37.7, 39.2, 139.5, 140.7],
+  '07': [36.7, 38.0, 139.1, 141.1],
+  '08': [35.7, 36.95, 139.65, 140.9],
+  '09': [36.2, 37.2, 139.3, 140.3],
+  '10': [35.95, 37.1, 138.35, 139.7],
+};
+
 const sample = [
   { id: 'a', name: 'ゆかい醸造所', nameKana: 'ゆかいじょうぞうしょ', nameEn: 'Yukai Brewery', aliases: ['ゆかいビール'], prefCode: '04', city: '仙台市', status: 'active' },
   { id: 'b', name: 'みなと Brewing', nameKana: 'みなとぶるーいんぐ', aliases: [], prefCode: '02', city: '八戸市', status: 'active' },
@@ -32,8 +48,8 @@ const sample = [
 ];
 
 test('データ：必須項目・ID重複・県コード・種別・座標の範囲', () => {
-  assert.ok(data.meta.attribution.includes('仙台国税局'), '出典の表示文がある');
-  assert.ok(list.length >= 70);
+  assert.ok(data.meta.attribution.includes('仙台国税局') && data.meta.attribution.includes('関東信越国税局'), '出典の表示文がある');
+  assert.ok(list.length >= 100);
   const ids = new Set();
   for (const b of list) {
     assert.match(b.id, /^[a-z0-9-]+$/, b.id);
@@ -59,8 +75,10 @@ test('データ：必須項目・ID重複・県コード・種別・座標の範
     if (b.flagships?.length || b.features?.length) assert.ok(b.profileCheckedAt, `${b.id} 確認日`);
     if (b.profileSource !== undefined) assert.ok(isSafeUrl(b.profileSource), `${b.id} 確認元`);
     if (b.geo) {
-      // 東北6県の範囲
-      assert.ok(b.geo.lat > 36.7 && b.geo.lat < 41.6 && b.geo.lng > 139.1 && b.geo.lng < 142.1, `${b.id} 座標`);
+      // 県ごとのおおよその範囲（住所と座標の取り違えを防ぐ）
+      const box = PREF_BOXES[b.prefCode];
+      assert.ok(box, `${b.id} 座標の確認範囲がない県`);
+      assert.ok(b.geo.lat > box[0] && b.geo.lat < box[1] && b.geo.lng > box[2] && b.geo.lng < box[3], `${b.id} 座標`);
       assert.ok(['block', 'area'].includes(b.geo.precision), `${b.id} 精度`);
     }
   }
@@ -165,4 +183,18 @@ test('一覧：特徴で絞り込み、創業順・買いやすい順に並べ�
 test('データ：代表銘柄と特徴が付いた件数（調査済みの範囲）', () => {
   assert.ok(list.filter((b) => b.flagships?.length).length >= 30);
   assert.ok(list.filter((b) => b.kind === 'major').every((b) => b.availability === 'national'));
+});
+
+test('地方：47都道府県がちょうど1つの地方に入り、地方で絞り込める', () => {
+  const codes = REGIONS.flatMap((r) => r.prefs);
+  assert.equal(codes.length, 47);
+  assert.deepEqual([...new Set(codes)].sort(), Object.keys(PREFS).sort());
+  assert.equal(regionOf('15').name, '北陸・甲信越');
+  assert.equal(regionOf('23').name, '東海');
+  const rows = [
+    { id: 'a', name: 'a', prefCode: '04' },
+    { id: 'b', name: 'b', prefCode: '13' },
+  ];
+  assert.deepEqual(filterBreweries(rows, { region: 'kanto' }).map((b) => b.id), ['b']);
+  assert.deepEqual(countByRegion(rows).map(([r, n]) => [r.id, n]), [['tohoku', 1], ['kanto', 1]]);
 });

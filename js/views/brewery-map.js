@@ -1,7 +1,7 @@
 // ブリュワーの地図（#/breweries/map）
 import { h, showToast } from '../ui.js';
-import { PREFS, PIN_LABELS, activeBreweries, groupBeersByBrewery, pinState } from '../breweries.js';
-import { loadLeaflet, TILE_URL, TILE_ATTRIBUTION_URL, TILE_MAX_ZOOM, TILE_MIN_ZOOM, TOHOKU_BOUNDS } from '../map.js';
+import { PREFS, REGIONS, PIN_LABELS, activeBreweries, groupBeersByBrewery, pinState } from '../breweries.js';
+import { loadLeaflet, TILE_URL, TILE_ATTRIBUTION_URL, TILE_MAX_ZOOM, TILE_MIN_ZOOM, JAPAN_BOUNDS } from '../map.js';
 
 export async function render({ app, outlet, query, isStale }) {
   const [data, beers, notes] = await Promise.all([app.loadBreweries(), app.db.listBeers(), app.db.listBreweryNotes()]);
@@ -23,8 +23,12 @@ export async function render({ app, outlet, query, isStale }) {
   const triedIds = new Set(groupBeersByBrewery(beers.filter((b) => b.status === 'tried'), data.index).keys());
   const noteMap = new Map(notes.map((n) => [n.breweryId, n]));
   const pref = PREFS[query.pref] ? query.pref : '';
-  const shown = all.filter((b) => b.geo && (!pref || b.prefCode === pref));
-  const hidden = all.filter((b) => !b.geo && (!pref || b.prefCode === pref)).length;
+  const region = pref ? null : REGIONS.find((r) => r.id === query.region) || null;
+  const inArea = (b) => (pref ? b.prefCode === pref : !region || region.prefs.includes(b.prefCode));
+  const shown = all.filter((b) => b.geo && inArea(b));
+  const hidden = all.filter((b) => !b.geo && inArea(b)).length;
+  const areaName = pref ? PREFS[pref] : region ? region.name : data.meta.region || '';
+  const listQuery = pref ? `?pref=${pref}` : region ? `?region=${region.id}` : '';
 
   const mapEl = h('div', { class: 'brewery-map', role: 'region', 'aria-label': 'ブリュワーの地図' });
   const offline = h('p', { class: 'field-hint warn', role: 'status', hidden: true, text: '地図の画像を読み込めません（オフラインの可能性があります）。ピンは表示しています。' });
@@ -36,7 +40,7 @@ export async function render({ app, outlet, query, isStale }) {
   );
   const locateBtn = h('button', { type: 'button', class: 'btn btn-small', text: '現在地', onclick: () => locate() });
   outlet.replaceChildren(
-    h('div', { class: 'row map-tools' }, h('a', { class: 'btn btn-small', href: `#/breweries${pref ? `?pref=${pref}` : ''}`, text: '一覧で見る' }), locateBtn, h('span', { class: 'muted small', text: `${pref ? PREFS[pref] : data.meta.region || ''} ${shown.length}件` })),
+    h('div', { class: 'row map-tools' }, h('a', { class: 'btn btn-small', href: `#/breweries${listQuery}`, text: '一覧で見る' }), locateBtn, h('span', { class: 'muted small', text: `${areaName} ${shown.length}件` })),
     mapEl,
     offline,
     legend,
@@ -81,10 +85,11 @@ export async function render({ app, outlet, query, isStale }) {
   if (target) {
     map.setView(target.getLatLng(), 15);
     cluster.zoomToShowLayer(target, () => target.openPopup());
-  } else if (pref && shown.length) {
+  } else if (shown.length) {
+    // 表示するピンがすべて入る範囲（データの地域が増えても初期表示が合う）
     map.fitBounds(L.latLngBounds(shown.map((b) => [b.geo.lat, b.geo.lng])), { padding: [24, 24], maxZoom: 13 });
   } else {
-    map.fitBounds(TOHOKU_BOUNDS);
+    map.fitBounds(JAPAN_BOUNDS);
   }
 
   let here = null;
