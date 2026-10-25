@@ -33,6 +33,29 @@ export const LINK_LABELS = {
   crowdfunding: 'クラウドファンディング',
 };
 
+/** 特徴タグ（公式サイトや紹介記事で確認できたものだけ付ける） */
+export const FEATURE_LABELS = {
+  hoppy: 'ホップの効いたIPA系',
+  european: 'ヨーロッパの伝統スタイル',
+  local: '地元の素材',
+  fruit: '果物のビール',
+  organic: 'オーガニック',
+  sake: '酒蔵のビール',
+  cider: 'シードルも',
+  award: '受賞歴あり',
+  food: '料理と楽しめる',
+};
+
+/** 買いやすさ（知名度の目安。数字が大きいほど手に入りやすい） */
+export const AVAILABILITY = {
+  local: { rank: 1, label: '現地で飲める・買える' },
+  regional: { rank: 2, label: '地元の店でも買える' },
+  online: { rank: 3, label: '通販で買える' },
+  national: { rank: 4, label: '全国の店で買える' },
+};
+
+export const SORTS = { pref: '県ごと', founded: '創業が古い順', availability: '買いやすい順' };
+
 /** 一覧・地図に出すもの（ビール製造をやめたものは除く） */
 export function activeBreweries(list) {
   return (list || []).filter((b) => b.status !== 'closed');
@@ -110,15 +133,26 @@ export function groupBeersByBrewery(beers, index) {
 }
 
 /**
- * 一覧の絞り込みと並べ替え（都道府県コード順 → よみがな順）。
- * @param {{ pref?: string, query?: string }} filter
+ * 一覧の絞り込みと並べ替え。キーワードは名前・住所・代表銘柄に一致させる。
+ * sort：pref（県コード順）／founded（創業が古い順、不明は後ろ）／availability（買いやすい順、不明は後ろ）。
+ * 同じ順位はよみがな順。
+ * @param {{ pref?: string, query?: string, feature?: string, sort?: string }} filter
  */
-export function filterBreweries(list, { pref = '', query = '' } = {}) {
+export function filterBreweries(list, { pref = '', query = '', feature = '', sort = 'pref' } = {}) {
   const q = normalize(query);
+  const kana = (a, b) => (a.nameKana || a.name).localeCompare(b.nameKana || b.name, 'ja');
+  const year = (b) => b.founded ?? 9999;
+  const avail = (b) => AVAILABILITY[b.availability]?.rank ?? 0;
+  const cmp = {
+    pref: (a, b) => a.prefCode.localeCompare(b.prefCode),
+    founded: (a, b) => year(a) - year(b),
+    availability: (a, b) => avail(b) - avail(a),
+  }[sort] || (() => 0);
   return list
     .filter((b) => !pref || b.prefCode === pref)
-    .filter((b) => !q || [...namesOf(b), b.city, b.address].some((s) => normalize(s).includes(q)))
-    .sort((a, b) => a.prefCode.localeCompare(b.prefCode) || (a.nameKana || a.name).localeCompare(b.nameKana || b.name, 'ja'));
+    .filter((b) => !feature || (b.features || []).includes(feature))
+    .filter((b) => !q || [...namesOf(b), b.city, b.address, ...(b.flagships || []).map((f) => f.name)].some((s) => normalize(s).includes(q)))
+    .sort((a, b) => cmp(a, b) || kana(a, b));
 }
 
 /** 都道府県ごとの件数（コード順） */

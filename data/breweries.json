@@ -1,6 +1,6 @@
 {
  "meta": {
-  "version": "pilot-2026-10-25b",
+  "version": "pilot-2026-10-25c",
   "region": "東北6県",
   "attribution": "一部の情報は仙台国税局「東北酒蔵マップ掲載酒類製造者一覧」を加工して作成",
   "note": "verification: official=公式サイトで確認 / official+secondary=公式＋二次情報 / secondary=報道・業界団体・紹介サイトで確認 / nta-only=国税局一覧のみ。geo.precision: block=街区・番地 / area=大字（数百m〜数km ずれ得る）。座標は国土地理院 住所検索APIの結果。status=closed は一覧・地図に出さない。"
@@ -38,7 +38,24 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "青森エール",
+     "styleId": null
+    },
+    {
+     "name": "レイズミルクスタウト",
+     "styleId": "stout"
+    }
+   ],
+   "features": [
+    "award",
+    "local",
+    "cider"
+   ],
+   "profileSource": "https://www.bepal.net/archives/225741",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "aomori-brew-pub",
@@ -72,7 +89,22 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "青森エール",
+     "styleId": null
+    },
+    {
+     "name": "レイズミルクスタウト",
+     "styleId": "stout"
+    }
+   ],
+   "features": [
+    "food"
+   ],
+   "profileSource": "https://www.bepal.net/archives/225741",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "keika-brewing",
@@ -107,7 +139,27 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "蛍火",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "残光",
+     "styleId": null
+    },
+    {
+     "name": "千輪",
+     "styleId": "west-coast-ipa"
+    }
+   ],
+   "features": [
+    "hoppy"
+   ],
+   "availability": "online",
+   "profileSource": "https://www.keika-brewing.com/beer/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "kinboshi-brewing",
@@ -136,7 +188,18 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "金星IPA",
+     "styleId": "ipa"
+    }
+   ],
+   "features": [
+    "fruit"
+   ],
+   "profileSource": "https://liquorstore-nakai.com/beer",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "hachinohe-bakushu",
@@ -170,7 +233,27 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "Hazy IPA",
+     "styleId": "hazy-ipa"
+    },
+    {
+     "name": "Golden Lite Ale",
+     "styleId": null
+    },
+    {
+     "name": "Weizen",
+     "styleId": "weizen"
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "availability": "online",
+   "profileSource": "https://kanekujyozo.com/beer",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "oirase-brewery",
@@ -206,7 +289,27 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "ピルスナー",
+     "styleId": "pilsner"
+    },
+    {
+     "name": "ダークラガー",
+     "styleId": null
+    },
+    {
+     "name": "アンバーラガー",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "european",
+    "food"
+   ],
+   "profileSource": "https://weekly.ascii.jp/elem/000/004/110/4110136/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "nork-brewery",
@@ -277,7 +380,18 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "卍・麦雫",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://bikou.yukimizake.net/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "tsugaru-brewing",
@@ -306,7 +420,26 @@
    "verification": "official+secondary",
    "sourceNotes": "国税局一覧（2025年11月）には未掲載。開業年は秋田魁新報2026年7月記事から推定",
    "sources": [],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "つがるラガー",
+     "styleId": null
+    },
+    {
+     "name": "つがるIPA",
+     "styleId": "ipa"
+    },
+    {
+     "name": "つがるヴァイツェン",
+     "styleId": "weizen"
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://tsugarubrewing.com/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "baeren-kitayama",
@@ -342,7 +475,26 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "クラシック",
+     "styleId": null
+    },
+    {
+     "name": "シュバルツ",
+     "styleId": null
+    },
+    {
+     "name": "TGピルスナー",
+     "styleId": "pilsner"
+    }
+   ],
+   "features": [
+    "european"
+   ],
+   "profileSource": "https://www.baerenbier.co.jp/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "baeren-shizukuishi",
@@ -371,7 +523,27 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "クラシック",
+     "styleId": null
+    },
+    {
+     "name": "シュバルツ",
+     "styleId": null
+    },
+    {
+     "name": "TGピルスナー",
+     "styleId": "pilsner"
+    }
+   ],
+   "features": [
+    "european"
+   ],
+   "availability": "online",
+   "profileSource": "https://www.baerenbier.co.jp/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "saien-microbrewery",
@@ -405,7 +577,13 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [],
+   "features": [
+    "food"
+   ],
+   "profileSource": "http://saien-microbrewery.com/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "nanbu-craft",
@@ -442,7 +620,27 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "Pale Ale",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "Stout",
+     "styleId": "stout"
+    },
+    {
+     "name": "IPA",
+     "styleId": "ipa"
+    }
+   ],
+   "features": [
+    "local",
+    "food"
+   ],
+   "profileSource": "https://nanbucraft.com/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "asabiraki-beer",
@@ -530,7 +728,28 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "ドラゴンアイ［スカイ］オーガニックピルスナー",
+     "styleId": "pilsner"
+    },
+    {
+     "name": "ドラゴンアイ［スノー］オーガニックペールエール",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "さくら凛",
+     "styleId": "pilsner"
+    }
+   ],
+   "features": [
+    "organic",
+    "local"
+   ],
+   "availability": "online",
+   "profileSource": "https://akatsuki-brewery.com/beer",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "315beer",
@@ -564,7 +783,12 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [],
+   "features": [],
+   "availability": "local",
+   "profileSource": "https://www.jreast.co.jp/morioka/iwatebeer/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "brewbeast",
@@ -601,7 +825,11 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [],
+   "features": [],
+   "profileSource": "https://www.jreast.co.jp/morioka/iwatebeer/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "sakura-brewery",
@@ -635,7 +863,14 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [],
+   "features": [
+    "local",
+    "european"
+   ],
+   "profileSource": "https://www.jreast.co.jp/morioka/iwatebeer/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "yukinochikara",
@@ -669,7 +904,18 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "ユキノチカラ白ビール",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://www.furusato-tax.jp/product/detail/03366/6444319",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "iwate-kura-beer",
@@ -703,7 +949,33 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "三陸牡蠣のスタウト",
+     "styleId": "stout"
+    },
+    {
+     "name": "金色堂ゴールデンエール",
+     "styleId": null
+    },
+    {
+     "name": "ヴァイツェン",
+     "styleId": "weizen"
+    }
+   ],
+   "features": [
+    "sake",
+    "award",
+    "local"
+   ],
+   "awards": [
+    "2006 ジャパンビアカップ 金賞（三陸牡蠣のスタウト）",
+    "2008 ワールドビアカップ 銀賞（三陸牡蠣のスタウト）",
+    "2014 インターナショナルビアコンペティション 金賞（金色堂ゴールデンエール）"
+   ],
+   "profileSource": "https://sekinoichi.co.jp/beer/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "noymond-brewing",
@@ -771,7 +1043,20 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "りんごエール 陸前高田",
+     "styleId": "fruit-beer"
+    }
+   ],
+   "features": [
+    "fruit",
+    "local"
+   ],
+   "availability": "online",
+   "profileSource": "https://camocy.jp/shop/392/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "good-hops",
@@ -805,7 +1090,27 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "The Classic Hops",
+     "styleId": null
+    },
+    {
+     "name": "ソラチエース リスペクト",
+     "styleId": "ipa"
+    },
+    {
+     "name": "ザーツ",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "local",
+    "hoppy"
+   ],
+   "profileSource": "https://goodhops.jp/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "tono-brewing",
@@ -839,7 +1144,28 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "PALE ALE",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "IPA",
+     "styleId": "ipa"
+    },
+    {
+     "name": "COFFEE STOUT",
+     "styleId": "stout"
+    }
+   ],
+   "features": [
+    "local",
+    "food"
+   ],
+   "availability": "online",
+   "profileSource": "https://tonobrewing.store/collections/beer",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "zumona",
@@ -876,7 +1202,27 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "ZUMONA ヴァイツェン",
+     "styleId": "weizen"
+    },
+    {
+     "name": "ZUMONA ヘイジーIPA",
+     "styleId": "hazy-ipa"
+    },
+    {
+     "name": "ZUMONA ゴールデンピルスナー",
+     "styleId": "pilsner"
+    }
+   ],
+   "features": [
+    "sake",
+    "local"
+   ],
+   "profileSource": "https://kamihei-shuzo.jp/beer",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "ryusendo-beer",
@@ -913,7 +1259,14 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [],
+   "features": [
+    "sake",
+    "local"
+   ],
+   "profileSource": "https://ryusendo-wakka.com/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "sanriku-brewing",
@@ -942,7 +1295,28 @@
    "verification": "secondary",
    "sourceNotes": "beertengoku.com。国税局一覧には未掲載（マップ非掲載の可能性）",
    "sources": [],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "みちのく潮風トレイル ハイカーズIPA",
+     "styleId": "west-coast-ipa"
+    },
+    {
+     "name": "白ひつじのエール",
+     "styleId": null
+    },
+    {
+     "name": "黒ひつじのエール",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "local",
+    "food",
+    "hoppy"
+   ],
+   "profileSource": "https://sanrikubeer.com/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "kirin-sendai",
@@ -976,7 +1350,17 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "キリン一番搾り生ビール",
+     "styleId": null
+    }
+   ],
+   "features": [],
+   "availability": "national",
+   "profileSource": "https://www.kirin.co.jp/experience/factory/sendai/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "sapporo-sendai",
@@ -998,7 +1382,8 @@
    "verification": "secondary",
    "sourceNotes": "約半世紀ビールを造ったが、ビール製造をやめ2023年10月から缶チューハイなどRTDの製造に転換（khb東日本放送、サッポロビールのニュースリリース2023年10月16日）。ビール醸造所としては収録対象外",
    "sources": [],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "availability": "national"
   },
   {
    "id": "batsuji-brewing",
@@ -1032,7 +1417,25 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "Session Hazy IPA",
+     "styleId": "hazy-ipa"
+    },
+    {
+     "name": "Zunda Hazy IPA",
+     "styleId": "hazy-ipa"
+    }
+   ],
+   "features": [
+    "hoppy",
+    "local",
+    "food"
+   ],
+   "availability": "local",
+   "profileSource": "https://batsuji-brewing.com/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "kokucho-beer",
@@ -1066,7 +1469,34 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "東松島「の・ビール」",
+     "styleId": null
+    },
+    {
+     "name": "穀町エール緑ラベル",
+     "styleId": "tripel"
+    },
+    {
+     "name": "穀町エール⑩",
+     "styleId": "barleywine"
+    }
+   ],
+   "features": [
+    "local",
+    "award",
+    "european"
+   ],
+   "availability": "regional",
+   "awards": [
+    "2021 インターナショナルビアカップ 金賞（穀町エール⑩）",
+    "2024 ジャパン・グレートビア・アワーズ 銀賞（穀町完熟梅エール）",
+    "2026 ジャパン・グレートビア・アワーズ 銀賞（穀町エール緑ラベル）"
+   ],
+   "profileSource": "https://graintownbrewery.com",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "great-dane-akiu",
@@ -1100,7 +1530,14 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [],
+   "features": [
+    "local",
+    "food"
+   ],
+   "profileSource": "https://www.city.sendai.jp/invest/topics/greatdanebrewing.html",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "miyagi-yuriage",
@@ -1127,7 +1564,26 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "ヴァイツェン",
+     "styleId": "weizen"
+    },
+    {
+     "name": "閖上ホワイト",
+     "styleId": null
+    },
+    {
+     "name": "ピルスナー",
+     "styleId": "pilsner"
+    }
+   ],
+   "features": [
+    "european"
+   ],
+   "profileSource": "https://www.furusato-tax.jp/product/detail/04207/7173317",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "kibounooka-iwanuma",
@@ -1282,7 +1738,26 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "巻風エール",
+     "styleId": null
+    },
+    {
+     "name": "巻風IPA",
+     "styleId": "ipa"
+    },
+    {
+     "name": "巻風WEIZEN",
+     "styleId": "weizen"
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://www.furusato-tax.jp/product/detail/04202/6684492",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "garuya-beer",
@@ -1316,7 +1791,17 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "おながわほっぷぴーる",
+     "styleId": "pale-ale"
+    }
+   ],
+   "features": [],
+   "availability": "online",
+   "profileSource": "https://garuyabeer.base.shop/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "black-tide-brewing",
@@ -1350,7 +1835,27 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "KESENNUMA PRIDE",
+     "styleId": "ipa"
+    },
+    {
+     "name": "DAYS OVER",
+     "styleId": null
+    },
+    {
+     "name": "FROM THE DEEP",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "hoppy"
+   ],
+   "availability": "online",
+   "profileSource": "https://blacktidebrewing.com",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "campanella-brewing",
@@ -1418,7 +1923,13 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://news.allabout.co.jp/articles/o/104089/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "yakurai-beer",
@@ -1486,7 +1997,28 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "木こりのピルスナー",
+     "styleId": "pilsner"
+    },
+    {
+     "name": "夕陽のIPA",
+     "styleId": "ipa"
+    },
+    {
+     "name": "焚火のデュンケル",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "european",
+    "hoppy"
+   ],
+   "availability": "online",
+   "profileSource": "https://forestbrewing.jp/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "brewccoly",
@@ -1521,7 +2053,11 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [],
+   "features": [],
+   "profileSource": "https://craftbeer-akita.com/member/brewccoly/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "aqula-akita",
@@ -1559,7 +2095,29 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "秋田美人のビール",
+     "styleId": "helles"
+    },
+    {
+     "name": "なまはげIPA",
+     "styleId": "ipa"
+    },
+    {
+     "name": "あきたこまちIPL",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "local",
+    "award",
+    "food"
+   ],
+   "availability": "online",
+   "profileSource": "http://www.aqula.co.jp/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "hopdog-brewing",
@@ -1594,7 +2152,14 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [],
+   "features": [
+    "local",
+    "cider"
+   ],
+   "profileSource": "https://hopdogbrewing.jp",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "brasserie-ogresse-quete",
@@ -1655,7 +2220,12 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [],
+   "features": [],
+   "availability": "online",
+   "profileSource": "https://sunao-brewery.square.site/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "ugo-bakushu",
@@ -1690,7 +2260,13 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://ugobakushu.jp/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "kohan-no-mori-beer",
@@ -1728,7 +2304,29 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "あきたこまちラガー",
+     "styleId": null
+    },
+    {
+     "name": "天涯",
+     "styleId": null
+    },
+    {
+     "name": "天空",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "local",
+    "award",
+    "food"
+   ],
+   "availability": "online",
+   "profileSource": "http://www.orae.net/beer.html",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "tazawako-beer",
@@ -1763,7 +2361,14 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [],
+   "features": [
+    "european"
+   ],
+   "availability": "online",
+   "profileSource": "https://craftbeer-akita.com/member/tazawakobeer/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "akita-brewing-company",
@@ -1798,7 +2403,13 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [],
+   "features": [
+    "hoppy"
+   ],
+   "profileSource": "https://craftbeer-akita.com/member/akitabrewingcompany/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "zao-brewery",
@@ -1832,7 +2443,29 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "SNOW MONSTER",
+     "styleId": "belgian-white"
+    },
+    {
+     "name": "YAMAGATA さくらんぼ ALE",
+     "styleId": "fruit-beer"
+    },
+    {
+     "name": "ZAO CLASSIC IPA",
+     "styleId": "ipa"
+    }
+   ],
+   "features": [
+    "local",
+    "fruit",
+    "food"
+   ],
+   "availability": "online",
+   "profileSource": "https://www.zao-brewery.jp/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "tendo-brewery",
@@ -1866,7 +2499,24 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "蕎麦ドライ",
+     "styleId": "pilsner"
+    },
+    {
+     "name": "天使のさくらんぼ",
+     "styleId": "fruit-beer"
+    }
+   ],
+   "features": [
+    "local",
+    "fruit"
+   ],
+   "availability": "online",
+   "profileSource": "https://tendo-brewery.itiraku.com/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "brewlab-108",
@@ -1927,7 +2577,27 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "月山ビール ピルスナー",
+     "styleId": "pilsner"
+    },
+    {
+     "name": "月山ビール ミュンヒナー",
+     "styleId": null
+    },
+    {
+     "name": "月山ビール ラオホ",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "european"
+   ],
+   "availability": "online",
+   "profileSource": "https://www.gassan-shop.com/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "hakuto-brewing",
@@ -1991,7 +2661,27 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "ゴールデンエール",
+     "styleId": null
+    },
+    {
+     "name": "ペールエール",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "IPA",
+     "styleId": "ipa"
+    }
+   ],
+   "features": [
+    "hoppy"
+   ],
+   "availability": "online",
+   "profileSource": "http://jacks-beer.com/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "nagai-brewery-craftsman",
@@ -2054,7 +2744,31 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "Pale Ale",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "IPA",
+     "styleId": "ipa"
+    },
+    {
+     "name": "White Ale",
+     "styleId": "belgian-white"
+    }
+   ],
+   "features": [
+    "local",
+    "award"
+   ],
+   "availability": "online",
+   "awards": [
+    "2026 ジャパン・グレートビア・アワーズ 銀賞（IPA、White Ale）"
+   ],
+   "profileSource": "https://www.pipe-line.co.jp/beer/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "michinoku-fukushimaji-beer",
@@ -2088,7 +2802,24 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "桃のラガー",
+     "styleId": "fruit-beer"
+    }
+   ],
+   "features": [
+    "fruit",
+    "local",
+    "award"
+   ],
+   "availability": "online",
+   "awards": [
+    "2025 ジャパン・グレートビア・アワーズ 銀賞（桃のラガー）"
+   ],
+   "profileSource": "http://www.f-beer.com/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "yellow-beer-works",
@@ -2122,7 +2853,24 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "HAZY IPA",
+     "styleId": "hazy-ipa"
+    },
+    {
+     "name": "パンダと僕のsession IPA",
+     "styleId": "session-ipa"
+    }
+   ],
+   "features": [
+    "local",
+    "hoppy"
+   ],
+   "availability": "online",
+   "profileSource": "https://yellowbeerworks.com/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "handa-ginzan-brewery",
@@ -2159,7 +2907,16 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [],
+   "features": [
+    "fruit",
+    "local",
+    "food"
+   ],
+   "availability": "online",
+   "profileSource": "https://www.uwamachi-cheers.com/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "pirono-beer",
@@ -2232,7 +2989,24 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "HOPJAPAN WHITE",
+     "styleId": null
+    },
+    {
+     "name": "HOPJAPAN IPA",
+     "styleId": "ipa"
+    }
+   ],
+   "features": [
+    "local",
+    "food"
+   ],
+   "availability": "online",
+   "profileSource": "https://hopjapan.com/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "highlandport-brewery",
@@ -2266,7 +3040,31 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "大平エール",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "三本槍岳IPA",
+     "styleId": "ipa"
+    },
+    {
+     "name": "黒川スタウト",
+     "styleId": "stout"
+    }
+   ],
+   "features": [
+    "award",
+    "food"
+   ],
+   "availability": "online",
+   "awards": [
+    "2026 ジャパン・グレートビア・アワーズ 銀賞（黒川スタウト、とまとエール）"
+   ],
+   "profileSource": "https://www.cafeof.com/index.html",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "nanakusa-nano-brewery",
@@ -2336,7 +3134,11 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [],
+   "features": [],
+   "availability": "national",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "abukuma-riverside-brewery",
@@ -2399,7 +3201,18 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "カワマエ―ル",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://iwaki-megumi-navi.com/producer/article.html?id=121",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "inawashiro-ji-beer",
@@ -2469,7 +3282,25 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-25",
+   "flagships": [
+    {
+     "name": "銅べこ Classic Pale Ale",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "黄べこ YUZU SAISON",
+     "styleId": "saison"
+    }
+   ],
+   "features": [
+    "cider",
+    "fruit",
+    "local"
+   ],
+   "availability": "online",
+   "profileSource": "https://rec-cb.work/",
+   "profileCheckedAt": "2026-10-25"
   },
   {
    "id": "minamiaizu-mountain-brewing",

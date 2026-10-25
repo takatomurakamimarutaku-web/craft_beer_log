@@ -458,3 +458,10 @@ a.chip { text-decoration: none; display: inline-block; }
 /* クラスタはピンの色（行った＝緑など）と紛れないよう、無彩色にする */
 .brewery-map .marker-cluster { background: color-mix(in srgb, var(--pin-none) 35%, transparent); }
 .brewery-map .marker-cluster div { background: var(--pin-none); color: #fff; font-weight: 700; }
+.brewery-features { margin-top: 8px; }
+.brewery-tools { margin: 4px 0 2px; }
+.brewery-select { display: block; }
+.flagship-list { list-style: none; padding: 0; display: grid; gap: 6px; margin-bottom: 8px; }
+.flagship { justify-content: space-between; flex-wrap: nowrap; }
+.flagship-name { min-width: 0; }
+.tag-feature { background: transparent; border: 1px solid var(--border); }
