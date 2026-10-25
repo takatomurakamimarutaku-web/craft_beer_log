@@ -111,9 +111,24 @@ export function validateCheckin(input = {}) {
   return { ok: Object.keys(errors).length === 0, errors, value };
 }
 
+export const CUSTOM_WORD_MAX = 10;
+export const CUSTOM_WORD_LEN = 20;
+
+/** 「その他」の自由入力を語の配列にする（読点・カンマ・改行で区切り、重複と空を除く） */
+export function parseCustomWords(input) {
+  const list = Array.isArray(input) ? input : String(input ?? '').split(/[、,，\n]+/);
+  const out = [];
+  for (const w of list) {
+    if (typeof w !== 'string') continue;
+    const v = w.trim().slice(0, CUSTOM_WORD_LEN);
+    if (v && !out.includes(v)) out.push(v);
+  }
+  return out.slice(0, CUSTOM_WORD_MAX);
+}
+
 const TASTE_KEYS = ['bitter', 'sweet', 'sour', 'body', 'aroma'];
 
-/** テイスティング：5項目は 1〜5 の整数か未入力、香りタグは重複を除いた文字列の配列 */
+/** テイスティング：5項目は 1〜5 の整数か未入力、味・香りのタグは重複を除いた文字列の配列、自由入力は語の配列 */
 export function parseTasting(input = {}, errors = {}) {
   const t = input || {};
   const out = {};
@@ -126,8 +141,11 @@ export function parseTasting(input = {}, errors = {}) {
       errors.tasting = 'テイスティングは1〜5で入力してください';
     }
   }
-  const tags = Array.isArray(t.flavorTags) ? t.flavorTags : [];
-  out.flavorTags = [...new Set(tags.filter((x) => typeof x === 'string' && x))];
+  const ids = (a) => [...new Set((Array.isArray(a) ? a : []).filter((x) => typeof x === 'string' && x))];
+  out.flavorTags = ids(t.flavorTags);
+  out.flavorCustom = parseCustomWords(t.flavorCustom ?? []);
+  out.tasteTags = ids(t.tasteTags);
+  out.tasteCustom = parseCustomWords(t.tasteCustom ?? []);
   return out;
 }
 

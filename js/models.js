@@ -62,6 +62,9 @@ export function createCheckin(fields = {}, now = new Date()) {
       body: null,
       aroma: null,
       flavorTags: [],
+      flavorCustom: [],
+      tasteTags: [],
+      tasteCustom: [],
       ...(fields.tasting || {}),
     },
   };
