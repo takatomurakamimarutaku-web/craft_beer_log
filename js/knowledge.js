@@ -130,7 +130,7 @@ export function formatRange(range, unit = '') {
 // ---- 画像（data/images.json） ----
 
 export const IMAGE_KINDS = ['styles', 'hops'];
-export const IMAGE_LICENSES = ['ai', 'cc-by', 'cc-by-sa', 'cc0', 'own', 'permission'];
+export const IMAGE_LICENSES = ['ai', 'cc-by', 'cc-by-sa', 'cc0', 'pd', 'own', 'permission'];
 
 /** スタイル・ホップの画像情報。無ければ null（イラストを表示する） */
 export function imageEntry(images, kind, id) {
@@ -149,6 +149,8 @@ export function imageCaption(e) {
       return `写真：${e.author}（${e.license === 'cc-by' ? 'CC BY' : 'CC BY-SA'} ${e.licenseVersion || ''}`.trimEnd() + '）';
     case 'cc0':
       return e.author ? `写真：${e.author}（CC0）` : '写真（CC0）';
+    case 'pd':
+      return e.author ? `写真：${e.author}（パブリックドメイン）` : '写真（パブリックドメイン）';
     case 'own':
       return e.author ? `写真：${e.author}` : '';
     case 'permission':

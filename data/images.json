@@ -1,4 +1,213 @@
 {
-  "styles": {},
-  "hops": {}
+  "styles": {
+    "pale-ale": {
+      "file": "images/styles/pale-ale.webp",
+      "license": "cc-by",
+      "author": "Scottb211",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Knotty_Pine_Pale_Ale_(29495025664).jpg",
+      "licenseVersion": "2.0"
+    },
+    "hazy-ipa": {
+      "file": "images/styles/hazy-ipa.webp",
+      "license": "cc-by",
+      "author": "Sarah Stierch (Missvain)",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Crooked_Goat_Brewing_Petaluma_-_December_2023_-_Sarah_Stierch_02.jpg",
+      "licenseVersion": "4.0"
+    },
+    "porter": {
+      "file": "images/styles/porter.webp",
+      "license": "cc0",
+      "author": "55belgianbeerfan",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_glass_of_English_Porter.jpg"
+    },
+    "stout": {
+      "file": "images/styles/stout.webp",
+      "license": "pd",
+      "author": "Jon Sullivan",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stout.jpg"
+    },
+    "imperial-stout": {
+      "file": "images/styles/imperial-stout.webp",
+      "license": "cc-by",
+      "author": "Just a Man",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Imperial_Cream_Stout_servida_en_vaso.jpg",
+      "licenseVersion": "4.0"
+    },
+    "weizen": {
+      "file": "images/styles/weizen.webp",
+      "license": "cc-by",
+      "author": "Erik Cleves Kristensen",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Agave_Wheat_beer_(6174644721).jpg",
+      "licenseVersion": "2.0"
+    },
+    "sour": {
+      "file": "images/styles/sour.webp",
+      "license": "cc-by",
+      "author": "Bernt Rostad",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Norwegian_sour_beer.jpg",
+      "licenseVersion": "2.0"
+    },
+    "fruit-beer": {
+      "file": "images/styles/fruit-beer.webp",
+      "license": "cc-by",
+      "author": "Ruth and Dave",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:How_beautiful_is_this_plum_sour%3F.jpg",
+      "licenseVersion": "2.0"
+    },
+    "berliner-weisse": {
+      "file": "images/styles/berliner-weisse.webp",
+      "license": "pd",
+      "author": "Franz Skarbina",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Franz_Skarbina_-_Wei%C3%9Fbierausschank_im_Hinterhofgarten_-_Garten_der_Berliner_Wei%C3%9Fbierbrauerei_Gabriel_%26_J%C3%A4ger_-_BG-M_12086%5E14_-_Berlinische_Galerie.jpg"
+    },
+    "barleywine": {
+      "file": "images/styles/barleywine.webp",
+      "license": "cc-by",
+      "author": "Publicola（英語版ウィキペディア）",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Barley_wines.png",
+      "licenseVersion": "2.0"
+    },
+    "brown-ale": {
+      "file": "images/styles/brown-ale.webp",
+      "license": "cc-by",
+      "author": "Ruth Hartnup",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nut_brown_ale_(8647186610).jpg",
+      "licenseVersion": "2.0"
+    }
+  },
+  "hops": {
+    "citra": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "mosaic": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "simcoe": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "cascade": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "centennial": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "amarillo": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "chinook": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "columbus": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "el-dorado": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "galaxy": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "nelson-sauvin": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "motueka": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "saaz": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "hallertauer-mittelfrueh": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "tettnanger": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "east-kent-goldings": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "fuggle": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "magnum": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    },
+    "sorachi-ace": {
+      "file": "images/hops/hop-cones.webp",
+      "license": "cc-by",
+      "author": "Robert Flogaus-Faust",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humulus_lupulus_female_RF.jpg",
+      "licenseVersion": "4.0"
+    }
+  }
 }

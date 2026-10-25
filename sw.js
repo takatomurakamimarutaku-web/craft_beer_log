@@ -1,6 +1,6 @@
 // Service Worker
 // ファイルを変更したら CACHE_VERSION を上げる（README「キャッシュ更新手順」参照）
-const CACHE_VERSION = 'v14';
+const CACHE_VERSION = 'v15';
 const CACHE_NAME = `craft-beer-log-${CACHE_VERSION}`;
 
 // 事前にキャッシュするファイル（相対パス）。ファイルを追加・削除したらここも更新する
@@ -52,6 +52,18 @@ const PRECACHE_URLS = [
   'icons/icon-maskable-512.png',
   'icons/icon-maskable.svg',
   'icons/icon.svg',
+  'images/hops/hop-cones.webp',
+  'images/styles/barleywine.webp',
+  'images/styles/berliner-weisse.webp',
+  'images/styles/brown-ale.webp',
+  'images/styles/fruit-beer.webp',
+  'images/styles/hazy-ipa.webp',
+  'images/styles/imperial-stout.webp',
+  'images/styles/pale-ale.webp',
+  'images/styles/porter.webp',
+  'images/styles/sour.webp',
+  'images/styles/stout.webp',
+  'images/styles/weizen.webp',
 ];
 
 self.addEventListener('install', (event) => {
