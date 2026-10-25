@@ -168,7 +168,8 @@ function renderDetail({ app, outlet, params }, events, today) {
   const ext = (href, text, cls) => h('a', { class: cls, href, target: '_blank', rel: 'noopener noreferrer', text });
   const others = otherEditions(events, e);
 
-  outlet.replaceChildren(
+  // replaceChildren は null を文字列にするので、出さない部分は除いて渡す
+  const sections = [
     h(
       'section',
       { class: 'panel event-head' },
@@ -222,5 +223,6 @@ function renderDetail({ app, outlet, params }, events, today) {
       ),
       h('p', { class: 'small muted', text: `日程・会場などの事実を上記で確認して記載しています。リンク先は外部サイトです。${DISCLAIMER}` }),
     ),
-  );
+  ];
+  outlet.replaceChildren(...sections.filter(Boolean));
 }
