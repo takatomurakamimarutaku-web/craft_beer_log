@@ -1,12 +1,13 @@
 {
   "name": "craft-beer-log",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "private": true,
   "description": "ホップ手帖：iPhone向けクラフトビール記録・検索PWA",
   "type": "module",
   "scripts": {
     "test": "node --test",
-    "check": "node scripts/check-pwa.js"
+    "check": "node scripts/check-pwa.js",
+    "check:events": "node scripts/check-events.js"
   },
   "devDependencies": {
     "fake-indexeddb": "^6.2.6"

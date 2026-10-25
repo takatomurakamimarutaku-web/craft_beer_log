@@ -396,3 +396,14 @@ a.chip { text-decoration: none; display: inline-block; }
 .changelog { margin-top: 10px; }
 .changelog summary { cursor: pointer; color: var(--primary-strong); font-weight: 700; padding: 6px 0; }
 .changelog-entry { margin-top: 8px; }
+
+/* ---- イベント ---- */
+.events-regions .segmented { flex-wrap: wrap; }
+.events-regions .seg { min-height: 36px; padding: 0 12px; font-size: 0.85rem; }
+.event-card .card-meta { white-space: normal; }
+.event-cancelled { text-decoration: line-through; }
+.badge-live { background: var(--primary); color: var(--on-primary); }
+.event-name { font-size: 1.15rem; margin-bottom: 6px; word-break: break-word; }
+.event-dates { font-weight: 700; margin: 8px 0 4px; }
+.events-foot { margin: 20px 2px 8px; }
+.event-info .kv span:first-child { flex-shrink: 0; }

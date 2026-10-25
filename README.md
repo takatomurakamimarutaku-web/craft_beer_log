@@ -37,6 +37,8 @@ HTML / CSS / JavaScript（ES Modules）だけで作られており、ビルド�
 | `#/knowledge/style/:id` | スタイルの解説（グラスと色のイラスト、数値の目安、参考リンク） |
 | `#/knowledge/term/:id` | 用語の解説（IBU・SRM はスケール図付き） |
 | `#/knowledge/hop/:id` | ホップの解説（香りタグ、α酸、よく使われるスタイル）。一覧は `?tab=hops&tag=citrus,pine` で香りタグを指定して開ける |
+| `#/events`（`?past=1` で終了したもの） | イベント一覧（開催中・今週末・月ごと。地方とキーワードで絞り込み） |
+| `#/event/:id` | イベントの詳細（日程・会場・料金・公式サイト・最終確認日・情報源） |
 | `#/stats` | 統計（スタイル別・度数分布・ブリュワーTOP10・月別・提供形態と平均価格・好きな香り）。棒をタップすると検索へ |
 
 ## ファイル構成
@@ -50,6 +52,7 @@ js/app.js               起動処理・ルート定義・SW 登録
 js/router.js            ハッシュルーティング
 js/db.js                IndexedDB 操作
 js/models.js            データの生成・定数
+js/events.js            イベント情報の判定・絞り込み・検証（純粋関数）
 js/validate.js          入力値の検証（純粋関数）
 js/search.js            正規化・検索・絞り込み（純粋関数）
 js/stats.js             集計（純粋関数。統計画面の各グラフの元データ）
@@ -66,8 +69,10 @@ data/styles.json        スタイル（25件。登録画面の選択肢と知識
 data/flavor-tags.json   香りタグの語彙
 data/terms.json, data/hops.json  知識データ（Phase 4 で作成）
 data/basics.json        入門記事（知識タブの「はじめに」）
+data/events.json        全国のビールイベント（アプリ本体と別にネット優先で取得）
 icons/                  アイコン（SVG と PNG）
 scripts/check-pwa.js    PWA 構成の検証
+scripts/check-events.js イベントデータの検証
 scripts/dummy-data.js   性能確認用のダミーデータ生成
 tools/icon-export.html  SVG アイコンから PNG を書き出すページ
 test/*.test.js          テスト
@@ -169,6 +174,23 @@ NFKC 正規化 → 小文字化 → ひらがなをカタカナに統一 → 前
 ### flavor-tags.json
 
 香りタグの語彙 `{ id, label }`。ホップの香り（Phase 4-3）とテイスティング入力（Phase 5）で共用します。
+
+### events.json（イベント情報）
+
+毎年続くイベントを `series`、各年の開催を `events` に分けて持ちます。説明文や画像は持たず、日程・会場・料金などの事実だけを、主催者の公式ページ（無ければ自治体・観光協会のページ）で確認して自分の言葉で書きます。まとめサイトの内容は転載しません。
+
+- series: `id` `name` `kana` `kind`（festival / beergarden / tasting / other）`prefecture`（都道府県コード。`js/events.js` の `PREFECTURES`）`officialUrl` `usualPeriod`（出典に「例年」とある場合のみ。無ければ null）
+- events: `id`（変えない）`seriesId` `edition` `status`（scheduled / tentative / cancelled / postponed）`startDate` `endDate` `hours` `prefecture` `city` `venue` `priceNote` `officialUrl` `ticketUrl` `note` `lastVerified` `sources[]`
+- 中止になった回も消さずに `status: "cancelled"` にします
+- 開催予定で `lastVerified` から60日を過ぎたものは、画面に「情報が古い可能性」と出ます
+
+更新の手順（月1回と、開催2週間前の直前確認）：
+
+1. 公式ページで新しい回・日程の変更・中止を確認し、`data/events.json` を直して `updatedAt` と各回の `lastVerified` を更新する
+2. `node scripts/check-events.js` と `npm test` を通す
+3. プルリクエストで差分と公式リンクを確認してマージする
+
+`sw.js` はこのファイルだけネット優先で読むため、**イベント情報だけの更新では `CACHE_VERSION` を上げる必要はありません**（次にイベント画面を開いたときに反映されます）。
 
 ### スタイルの移行
 
