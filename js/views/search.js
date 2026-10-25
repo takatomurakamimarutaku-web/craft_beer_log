@@ -83,7 +83,7 @@ export async function render({ app, outlet }) {
     const n = countActiveFilters(criteria);
     toggle.textContent = n ? `絞り込み（${n}）` : '絞り込み・並べ替え';
     count.textContent = `${results.length}件 / ${summaries.length}銘柄`;
-    // 月の条件は統計画面からだけ指定するため、ここで外せるようにする
+    // 月・イベントの条件は統計画面からだけ指定するため、ここで外せるようにする
     monthChip.replaceChildren(
       criteria.month
         ? h('button', {
@@ -93,6 +93,16 @@ export async function render({ app, outlet }) {
             'aria-label': `${criteria.month.replace('-', '年')}月の条件を外す`,
             text: `${Number(criteria.month.slice(0, 4))}年${Number(criteria.month.slice(5))}月に飲んだ ×`,
             onclick: () => update({ month: null }),
+          })
+        : '',
+      criteria.eventId
+        ? h('button', {
+            type: 'button',
+            class: 'chip',
+            'aria-pressed': 'true',
+            'aria-label': `${criteria.eventLabel || 'イベント'}の条件を外す`,
+            text: `${criteria.eventLabel || 'イベント'}で飲んだ ×`,
+            onclick: () => update({ eventId: null, eventLabel: '' }),
           })
         : '',
     );

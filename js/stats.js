@@ -153,3 +153,25 @@ export function hopsForFavoriteTags(hops, favorites, n = 5) {
     .sort((a, b) => b.score - a.score || b.matched.length - a.matched.length || (a.hop.name < b.hop.name ? -1 : 1))
     .slice(0, n);
 }
+
+/**
+ * イベント別の杯数（多い順）。名前は配信データ → 参加状況の写し → 記録のお店の名前の順に探す
+ * @param {Map<string,string>} names イベントの id → 名前
+ */
+export function eventStats(checkins, names = new Map()) {
+  const groups = new Map();
+  for (const c of checkins) {
+    const id = c.place?.eventId;
+    if (!id) continue;
+    let g = groups.get(id);
+    if (!g) groups.set(id, (g = { key: id, label: names.get(id) || c.place.name || 'イベント', count: 0, sum: 0, rated: 0 }));
+    g.count++;
+    if (typeof c.rating === 'number') {
+      g.sum += c.rating;
+      g.rated++;
+    }
+  }
+  return [...groups.values()]
+    .map(({ sum, rated, ...g }) => ({ ...g, avgRating: rated ? Math.round((sum / rated) * 10) / 10 : null }))
+    .sort(byCountDesc);
+}

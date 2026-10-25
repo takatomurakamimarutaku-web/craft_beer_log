@@ -208,3 +208,35 @@ test('バックアップ：参加状況とイベントの紐付けを書き出�
   old.eventPlans = [{ id: 'e1', status: 'maybe' }];
   assert.throws(() => parseBackup(JSON.stringify(old)), /状態が不正/);
 });
+
+// ---- E3：集計・検索 ----
+import { eventStats } from '../js/stats.js';
+import { buildBeerSummaries, searchBeers, countActiveFilters } from '../js/search.js';
+import { withBeerKeys } from '../js/models.js';
+
+test('eventStats：イベント別の杯数と平均評価。名前は渡した対応表 → お店の名前', () => {
+  const cs = [
+    { place: { eventId: 'a', name: '店A' }, rating: 4 },
+    { place: { eventId: 'a', name: '店A' }, rating: 5 },
+    { place: { eventId: 'a', name: '店A' }, rating: null },
+    { place: { eventId: 'b', name: 'お店の名前' }, rating: null },
+    { place: { name: '普通の店' }, rating: 3 },
+  ];
+  assert.deepEqual(eventStats(cs, new Map([['a', 'フェスA']])), [
+    { key: 'a', label: 'フェスA', count: 3, avgRating: 4.5 },
+    { key: 'b', label: 'お店の名前', count: 1, avgRating: null },
+  ]);
+  assert.deepEqual(eventStats([]), []);
+});
+
+test('検索：イベントで飲んだ銘柄だけに絞り込める', () => {
+  const beers = [withBeerKeys(createBeer({ name: 'A' })), withBeerKeys(createBeer({ name: 'B' }))];
+  const cs = [
+    createCheckin({ beerId: beers[0].id, place: { type: 'drank', name: 'フェス', eventId: 'e1' } }),
+    createCheckin({ beerId: beers[1].id, place: { type: 'drank', name: '店' } }),
+  ];
+  const s = buildBeerSummaries(beers, cs);
+  assert.deepEqual(searchBeers(s, { eventId: 'e1' }).map((x) => x.beer.name), ['A']);
+  assert.equal(searchBeers(s, {}).length, 2);
+  assert.equal(countActiveFilters({ eventId: 'e1' }), 1);
+});
