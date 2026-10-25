@@ -316,7 +316,7 @@ a.chip { text-decoration: none; display: inline-block; }
 :root { --hop-1: #9fcf5a; --hop-2: #7fb648; --hop-line: #4e7a2a; }
 @media (prefers-color-scheme: dark) { :root { --hop-1: #8bbd4c; --hop-2: #6c9f3c; --hop-line: #c9e8a4; } }
 .hop-art { width: 100%; height: 100%; }
-.knowledge-thumb .hop-art { width: 50px; height: 60px; }
+.knowledge-thumb .hop-art { width: 46px; height: 64px; }
 .knowledge-art .hop-art { width: 80px; height: 100px; }
 .tag-filter { margin: 0 0 10px; }
 .hop-tags { margin-top: 4px; }

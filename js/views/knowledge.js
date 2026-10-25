@@ -3,7 +3,7 @@ import { h, svg, emptyState, chipGroup, formatDate, stars } from '../ui.js';
 import { searchKnowledge, basicTexts, styleTexts, termTexts, hopTexts, filterByTags, HOP_USE_LABELS, srmToHex, styleDisplaySrm, formatRange, GLASS_LABELS, imageEntry, imageCaption } from '../knowledge.js';
 import { buildBeerSummaries, sortSummaries } from '../search.js';
 import { matchByFlavorTags } from '../tasting.js';
-import { glassSvg, rangeBarSvg, ibuScaleSvg, srmScaleSvg, hopConeSvg } from '../illust.js';
+import { glassSvg, rangeBarSvg, ibuScaleSvg, srmScaleSvg, hopArtSvg } from '../illust.js';
 
 const TABS = [
   { value: 'basics', label: 'はじめに' },
@@ -232,7 +232,7 @@ function hopList({ hops, flavorTags, images }, s, onTags) {
               h(
                 'a',
                 { class: 'card', href: `#/knowledge/hop/${encodeURIComponent(x.id)}` },
-                h('div', { class: 'thumb knowledge-thumb' }, artwork(imageEntry(images, 'hops', x.id), () => svg(hopConeSvg({ title: x.name })), '')),
+                h('div', { class: 'thumb knowledge-thumb' }, artwork(imageEntry(images, 'hops', x.id), () => svg(hopArtSvg({ flavorTags: x.flavorTags, title: x.name })), '')),
                 h(
                   'div',
                   { class: 'card-body' },
@@ -444,7 +444,7 @@ async function renderHop({ app, outlet, params, isStale }, { hops, flavorTags, i
     h(
       'div',
       { class: 'knowledge-hero' },
-      h('div', { class: `knowledge-art${photo ? ' has-photo' : ''}` }, artwork(photo, () => svg(hopConeSvg({ title: `${x.name}のイメージ` })), `${x.name}のイメージ`)),
+      h('div', { class: `knowledge-art${photo ? ' has-photo' : ''}` }, artwork(photo, () => svg(hopArtSvg({ flavorTags: x.flavorTags, title: `${x.name}のイメージ` })), `${x.name}のイメージ`)),
       h(
         'div',
         {},

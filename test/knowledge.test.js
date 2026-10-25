@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { srmToHex, styleDisplaySrm, searchKnowledge, styleTexts, formatRange, filterByTags, hopTexts, basicTexts } from '../js/knowledge.js';
-import { glassSvg, rangeBarSvg, ibuScaleSvg, srmScaleSvg, hopConeSvg, GLASS_TYPES } from '../js/illust.js';
+import { glassSvg, rangeBarSvg, ibuScaleSvg, srmScaleSvg, hopConeSvg, hopArtSvg, GLASS_TYPES } from '../js/illust.js';
 
 test('srmToHex：端・中間・不正値', () => {
   assert.equal(srmToHex(0), '#ffe699');
@@ -98,6 +98,20 @@ test('hopConeSvg：苞の数と title のエスケープ', () => {
   const s = hopConeSvg({ title: '<x>' });
   assert.equal((s.match(/stroke-width="1.2"/g) || []).length, 20 + 1, '苞20枚＋葉1枚');
   assert.match(s, /aria-label="&lt;x&gt;"/);
+});
+
+test('hopArtSvg：香りタグのモチーフ（最大3つ・未知のタグは無視）と背景色', async () => {
+  const { readFileSync } = await import('node:fs');
+  const s = hopArtSvg({ flavorTags: ['citrus', 'malty', 'pine', 'herbal', 'floral'], title: '<x>' });
+  assert.deepEqual([...s.matchAll(/data-aroma="([^"]+)"/g)].map((m) => m[1]), ['citrus', 'pine', 'herbal']);
+  assert.match(s, /fill="#f2a33a" fill-opacity=".22"/, '背景は最初の香りの色');
+  assert.match(s, /aria-label="&lt;x&gt;"/);
+  assert.doesNotMatch(hopArtSvg({ flavorTags: [] }), /data-aroma/);
+  // 全品種で少なくとも1つモチーフが出る。上位3つの組み合わせが同じ品種はない
+  const hops = JSON.parse(readFileSync(new URL('../data/hops.json', import.meta.url), 'utf8'));
+  const keys = hops.map((x) => [...hopArtSvg({ flavorTags: x.flavorTags }).matchAll(/data-aroma="([^"]+)"/g)].map((m) => m[1]).join(','));
+  for (const [i, k] of keys.entries()) assert.ok(k, `${hops[i].id}: モチーフが無い`);
+  assert.equal(new Set(keys).size, keys.length, '絵柄が重複する品種がある');
 });
 
 test('basicTexts：入門記事を本文・工程名でも検索できる', async () => {
