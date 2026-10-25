@@ -462,6 +462,49 @@ a.chip { text-decoration: none; display: inline-block; }
 .fav-hops { margin-top: 10px; }
 .hop-suggest { display: grid; gap: 4px; }
 
+/* ---- UI刷新 第2弾：画面ごとの作り込み ---- */
+/* 記録一覧の「今月のまとめ」 */
+.summary-card {
+  position: relative; display: grid; grid-template-columns: 1fr auto;
+  grid-template-areas: "month count" "facts count" "total total";
+  gap: 2px 12px; align-items: center; margin-bottom: var(--sp-4); padding: var(--sp-4) 18px;
+  border-radius: var(--radius-lg); border: 1px solid var(--card-border); box-shadow: var(--shadow);
+  background: linear-gradient(135deg, color-mix(in srgb, #ffc24d 24%, var(--surface)) 0%, var(--surface) 65%);
+  color: inherit; text-decoration: none; transition: transform 0.12s var(--ease);
+}
+a.summary-card:active { transform: scale(0.985); }
+.summary-month { grid-area: month; font-size: var(--fs-footnote); font-weight: 700; color: var(--muted); }
+.summary-count { grid-area: count; font-feature-settings: "palt" 1; }
+.summary-count b { font-size: 2.5rem; font-weight: 800; line-height: 1; color: var(--primary-strong); font-variant-numeric: tabular-nums; }
+.summary-count small { margin-left: 2px; font-weight: 700; color: var(--muted); }
+.summary-facts { grid-area: facts; display: flex; flex-wrap: wrap; gap: 0 10px; font-size: var(--fs-sub); font-weight: 700; }
+.summary-facts span { white-space: nowrap; }
+.summary-total { grid-area: total; margin-top: var(--sp-2); padding-top: var(--sp-2); border-top: 1px solid var(--separator); font-size: var(--fs-footnote); font-weight: 600; color: var(--primary-strong); }
+/* 記録一覧の月の見出し */
+.list-month { margin: var(--sp-3) 4px 0; font-size: var(--fs-footnote); font-weight: 800; color: var(--muted); }
+.list-month:first-child { margin-top: 0; }
+/* 銘柄の詳細：スタイルの色を敷いた見出し */
+.panel.beer-head {
+  grid-template-columns: 76px 1fr; gap: 16px; padding: 20px 18px;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--beer) 30%, var(--surface)) 0%, var(--surface) 72%);
+}
+.beer-head-icon .glass-icon { width: 76px; height: 76px; padding: 6px; border-radius: 20px; background: color-mix(in srgb, var(--surface) 65%, transparent); }
+.beer-head .beer-name { font-size: var(--fs-title2); font-weight: 800; }
+/* 入力フォームは、まとまりごとにパネルで囲む */
+.form > .form-section { padding: var(--sp-4); margin-bottom: var(--sp-3); border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--card-border); box-shadow: var(--shadow); }
+.form > .form-section > .section-title:first-child { margin-top: 0; }
+.form > .form-section > summary.section-title { margin: 0; padding: 2px 0; }
+.form > .form-section .field:last-child { margin-bottom: 0; }
+/* 初回案内の進み具合 */
+.welcome-steps { display: flex; justify-content: center; gap: 6px; margin: 16px 0 6px; }
+.welcome-steps span { width: 6px; height: 6px; border-radius: 3px; background: var(--border); transition: width 0.2s var(--ease); }
+.welcome-steps span.is-current { width: 20px; background: var(--primary); }
+.welcome-list li { padding: var(--sp-3) 14px; border-radius: var(--radius); background: var(--surface-2); }
+/* 空の状態の見出し */
+.empty-title + p { margin-top: -8px; }
+.empty-title { font-size: var(--fs-title3); font-weight: 800; color: var(--text); }
+.empty p { max-width: 22em; }
+
 /* ---- 製品化：操作の見やすさ・初回の案内 ---- */
 :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }

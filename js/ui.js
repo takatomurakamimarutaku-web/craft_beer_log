@@ -425,9 +425,16 @@ export async function showPhoto(getPhoto, id) {
   closeBtn.focus();
 }
 
-/** 空の状態の表示 */
-export function emptyState(message, action) {
-  return h('div', { class: 'empty' }, glassIcon('empty-glass'), h('p', { text: message }), action || null);
+/** 空の状態の表示。title を渡すと見出しを付ける */
+export function emptyState(message, action, { title } = {}) {
+  return h(
+    'div',
+    { class: 'empty' },
+    glassIcon('empty-glass'),
+    title ? h('h2', { class: 'empty-title', text: title }) : null,
+    h('p', { text: message }),
+    action || null,
+  );
 }
 
 /** フォーム項目（ラベル＋入力＋エラー表示） */

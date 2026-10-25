@@ -43,7 +43,7 @@ export async function render({ app, outlet }) {
   let shown = 0;
 
   if (!beers.length) {
-    outlet.replaceChildren(emptyState('検索できる銘柄がまだありません。', h('a', { class: 'btn btn-primary', href: '#/checkin/new', text: '＋ 記録する' })));
+    outlet.replaceChildren(emptyState('記録した銘柄を、名前・スタイル・評価などで探せます。', h('a', { class: 'btn btn-primary', href: '#/checkin/new', text: '＋ 記録する' }), { title: 'まだ銘柄がありません' }));
     return () => loader.destroy();
   }
 

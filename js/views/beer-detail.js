@@ -24,11 +24,13 @@ export async function render({ app, outlet, params }) {
   const summary = summarizeRatings(checkins);
   const loader = createThumbLoader((id) => app.db.getThumb(id));
   const style = styleLabel(beer, app.styles);
+  const color = beerColor(beer, app.styles);
 
+  // 上部はスタイルの色をうっすら敷いた見出しにする
   const info = h(
     'section',
-    { class: 'panel beer-head' },
-    h('div', { class: 'beer-head-icon' }, glassIcon('glass-icon', beerColor(beer, app.styles))),
+    { class: 'panel beer-head', style: color ? `--beer:${color}` : null },
+    h('div', { class: 'beer-head-icon' }, glassIcon('glass-icon', color)),
     h(
       'div',
       {},
