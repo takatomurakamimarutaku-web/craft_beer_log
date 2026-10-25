@@ -1,0 +1,439 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-25",
+  "series": [
+    {
+      "id": "american-craft-beer-experience",
+      "name": "アメリカン クラフトビア エクスペリエンス",
+      "kana": "あめりかんくらふとびあえくすぺりえんす",
+      "kind": "festival",
+      "prefecture": "tokyo",
+      "officialUrl": "https://uscraftbeer.jp/",
+      "usualPeriod": null
+    },
+    {
+      "id": "japan-hop-fest-svb",
+      "name": "クラフトビール ジャパンホップ フェスト in SVB東京",
+      "kana": "くらふとびーるじゃぱんほっぷふぇすと",
+      "kind": "festival",
+      "prefecture": "tokyo",
+      "officialUrl": "https://japanhop.jp/cjhf2026/",
+      "usualPeriod": null
+    },
+    {
+      "id": "odawara-hakone-craft-beer-fes",
+      "name": "小田原・箱根 クラフトビールフェス",
+      "kana": "おだわらはこねくらふとびーるふぇす",
+      "kind": "festival",
+      "prefecture": "kanagawa",
+      "officialUrl": "https://kamaboko.com/events/craftbeer_festival/",
+      "usualPeriod": null
+    },
+    {
+      "id": "omotesando-craft-beer-festa",
+      "name": "表参道クラフトビアフェスタ",
+      "kana": "おもてさんどうくらふとびあふぇすた",
+      "kind": "festival",
+      "prefecture": "tokyo",
+      "officialUrl": "https://allcraftjapan.com/events/omotesando-craft-beer-fest/",
+      "usualPeriod": null
+    },
+    {
+      "id": "a-round-b-side",
+      "name": "A-ROUND B-SIDE",
+      "kana": "あらうんどびーさいど",
+      "kind": "festival",
+      "prefecture": "hyogo",
+      "officialUrl": "https://mitsui-shopping-park.com/mop/kobe/event/3556739.html",
+      "usualPeriod": null
+    },
+    {
+      "id": "japan-brewers-cup",
+      "name": "JAPAN BREWERS CUP",
+      "kana": "じゃぱんぶるわーずかっぷ",
+      "kind": "festival",
+      "prefecture": "kanagawa",
+      "officialUrl": "https://www.japanbrewerscup.jp/index.html",
+      "usualPeriod": null
+    },
+    {
+      "id": "keyaki-beer-festival",
+      "name": "けやきひろば ビール祭り",
+      "kana": "けやきひろばびーるまつり",
+      "kind": "festival",
+      "prefecture": "saitama",
+      "officialUrl": "https://www.beerkeyaki.jp/",
+      "usualPeriod": "春・秋の年2回"
+    },
+    {
+      "id": "sapporo-craft-beer-forest",
+      "name": "SAPPORO CRAFT BEER FOREST",
+      "kana": "さっぽろくらふとびあふぉれすと",
+      "kind": "festival",
+      "prefecture": "hokkaido",
+      "officialUrl": "https://www.sapporo-craft-beer-forest.com/",
+      "usualPeriod": null
+    },
+    {
+      "id": "tsuyama-jibeer-festa",
+      "name": "全国地ビールフェスタ in 津山",
+      "kana": "ぜんこくじびーるふぇすたいんつやま",
+      "kind": "festival",
+      "prefecture": "okayama",
+      "officialUrl": "https://www.okayama-kanko.jp/event/detail_100295.html",
+      "usualPeriod": null
+    },
+    {
+      "id": "oedo-beer-festival",
+      "name": "大江戸ビール祭り",
+      "kana": "おおえどびーるまつり",
+      "kind": "festival",
+      "prefecture": "tokyo",
+      "officialUrl": "http://oedo-beer-festival.jp/",
+      "usualPeriod": null
+    },
+    {
+      "id": "japan-craftbeer-weekend",
+      "name": "JAPAN CRAFT BEER WEEKEND",
+      "kana": "じゃぱんくらふとびあうぃーくえんど",
+      "kind": "festival",
+      "prefecture": "fukuoka",
+      "officialUrl": "https://www.instagram.com/japan_craftbeer_weekend/",
+      "usualPeriod": null
+    }
+  ],
+  "events": [
+    {
+      "id": "american-craft-beer-experience-2026",
+      "seriesId": "american-craft-beer-experience",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-11-06",
+      "endDate": "2026-11-08",
+      "hours": "6日 16:00〜20:00、7日 11:00〜20:00、8日 11:00〜16:00",
+      "prefecture": "tokyo",
+      "city": "江東区",
+      "venue": "木場公園 イベント広場",
+      "priceNote": "入場無料",
+      "officialUrl": "https://uscraftbeer.jp/",
+      "ticketUrl": null,
+      "note": "時間は暫定。天候などで変わることがあります",
+      "lastVerified": "2026-10-25",
+      "sources": [
+        {
+          "title": "主催者のプレスリリース（PR TIMES）",
+          "url": "https://prtimes.jp/main/html/rd/p/000000074.000022130.html",
+          "accessedAt": "2026-10-25"
+        },
+        {
+          "title": "公式サイト",
+          "url": "https://uscraftbeer.jp/",
+          "accessedAt": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "id": "japan-hop-fest-svb-2026",
+      "seriesId": "japan-hop-fest-svb",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-11-07",
+      "endDate": "2026-11-08",
+      "hours": "各日 11:00〜、14:30〜、18:00〜 の3回入替制",
+      "prefecture": "tokyo",
+      "city": "渋谷区",
+      "venue": "スプリングバレーブルワリー東京",
+      "priceNote": "事前予約 3,800円・当日 2,500円（飲食券込み）",
+      "officialUrl": "https://japanhop.jp/cjhf2026/",
+      "ticketUrl": "https://eplus.jp/sf/detail/4595300001-P0030001",
+      "note": "各回の定員は事前予約で約130名",
+      "lastVerified": "2026-10-25",
+      "sources": [
+        {
+          "title": "主催者のプレスリリース（PR TIMES）",
+          "url": "https://prtimes.jp/main/html/rd/p/000000024.000128728.html",
+          "accessedAt": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "id": "odawara-hakone-craft-beer-fes-2026",
+      "seriesId": "odawara-hakone-craft-beer-fes",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-11-07",
+      "endDate": "2026-11-08",
+      "hours": "10:00〜16:00",
+      "prefecture": "kanagawa",
+      "city": "小田原市",
+      "venue": "鈴廣かまぼこの里",
+      "priceNote": "一般 4,000円（5杯分とリユースカップ込み）",
+      "officialUrl": "https://kamaboko.com/events/craftbeer_festival/",
+      "ticketUrl": null,
+      "note": "",
+      "lastVerified": "2026-10-25",
+      "sources": [
+        {
+          "title": "鈴廣かまぼこの里 イベントページ",
+          "url": "https://kamaboko.com/events/craftbeer_festival/",
+          "accessedAt": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "id": "omotesando-craft-beer-festa-2026-11",
+      "seriesId": "omotesando-craft-beer-festa",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-11-15",
+      "endDate": "2026-11-15",
+      "hours": "11:30〜19:00",
+      "prefecture": "tokyo",
+      "city": "渋谷区",
+      "venue": "東急プラザ表参道 オモカド 6階 屋上",
+      "priceNote": "1,500円（入場と1ドリンク）",
+      "officialUrl": "https://allcraftjapan.com/events/omotesando-craft-beer-fest/",
+      "ticketUrl": null,
+      "note": "",
+      "lastVerified": "2026-10-25",
+      "sources": [
+        {
+          "title": "主催者のプレスリリース（PR TIMES）",
+          "url": "https://prtimes.jp/main/html/rd/p/000000006.000168611.html",
+          "accessedAt": "2026-10-25"
+        },
+        {
+          "title": "主催者のイベントページ",
+          "url": "https://allcraftjapan.com/events/omotesando-craft-beer-fest/",
+          "accessedAt": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "id": "a-round-b-side-2026",
+      "seriesId": "a-round-b-side",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-10-31",
+      "endDate": "2026-11-01",
+      "hours": "12:00〜20:00（L.O. 19:30）",
+      "prefecture": "hyogo",
+      "city": "神戸市",
+      "venue": "三井アウトレットパーク マリンピア神戸",
+      "priceNote": "入場無料。ビールはチケット制（5枚つづり 3,500円ほか）",
+      "officialUrl": "https://mitsui-shopping-park.com/mop/kobe/event/3556739.html",
+      "ticketUrl": null,
+      "note": "専用グラスかプラカップが必要（当日購入可）",
+      "lastVerified": "2026-10-25",
+      "sources": [
+        {
+          "title": "会場のイベントページ",
+          "url": "https://mitsui-shopping-park.com/mop/kobe/event/3556739.html",
+          "accessedAt": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "id": "japan-brewers-cup-2026",
+      "seriesId": "japan-brewers-cup",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-02-06",
+      "endDate": "2026-02-08",
+      "hours": null,
+      "prefecture": "kanagawa",
+      "city": "横浜市",
+      "venue": "横浜ハンマーヘッド",
+      "priceNote": "",
+      "officialUrl": "https://www.japanbrewerscup.jp/index.html",
+      "ticketUrl": null,
+      "note": "",
+      "lastVerified": "2026-10-25",
+      "sources": [
+        {
+          "title": "Metropolis イベント情報",
+          "url": "https://metropolisjapan.com/events/japan-brewers-cup-2026/",
+          "accessedAt": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "id": "japan-brewers-cup-2027",
+      "seriesId": "japan-brewers-cup",
+      "edition": "2027",
+      "status": "scheduled",
+      "startDate": "2027-02-12",
+      "endDate": "2027-02-14",
+      "hours": "12日 16:00〜22:00、13日 11:00〜21:00、14日 11:00〜19:00",
+      "prefecture": "kanagawa",
+      "city": "横浜市",
+      "venue": "横浜大さん橋ホール",
+      "priceNote": "料金は未定（公式サイトで発表予定）",
+      "officialUrl": "https://www.japanbrewerscup.jp/index.html",
+      "ticketUrl": null,
+      "note": "",
+      "lastVerified": "2026-10-25",
+      "sources": [
+        {
+          "title": "JAPAN BREWERS CUP 公式サイト",
+          "url": "https://www.japanbrewerscup.jp/index.html",
+          "accessedAt": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "id": "keyaki-beer-festival-2026-autumn",
+      "seriesId": "keyaki-beer-festival",
+      "edition": "2026 秋",
+      "status": "scheduled",
+      "startDate": "2026-09-17",
+      "endDate": "2026-09-21",
+      "hours": null,
+      "prefecture": "saitama",
+      "city": "さいたま市",
+      "venue": "さいたま新都心 けやきひろば",
+      "priceNote": "入場無料（一部有料の予約テーブルあり）",
+      "officialUrl": "https://www.beerkeyaki.jp/",
+      "ticketUrl": null,
+      "note": "",
+      "lastVerified": "2026-10-25",
+      "sources": [
+        {
+          "title": "さいたま市 イベントカレンダー",
+          "url": "https://www.pref.saitama.lg.jp/a1101/library-info/20260917.html",
+          "accessedAt": "2026-10-25"
+        },
+        {
+          "title": "主催者のプレスリリース（財経新聞）",
+          "url": "https://zaikei.co.jp/releases/3549648/",
+          "accessedAt": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "id": "sapporo-craft-beer-forest-2026",
+      "seriesId": "sapporo-craft-beer-forest",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-07-11",
+      "endDate": "2026-07-12",
+      "hours": null,
+      "prefecture": "hokkaido",
+      "city": "札幌市",
+      "venue": "さっぽろばんけいスキー場",
+      "priceNote": "1日券 4,500円（ビール券5枚付き）ほか",
+      "officialUrl": "https://www.sapporo-craft-beer-forest.com/",
+      "ticketUrl": null,
+      "note": "",
+      "lastVerified": "2026-10-25",
+      "sources": [
+        {
+          "title": "札幌観光協会 お知らせ",
+          "url": "https://www.sapporo.travel/news/sapporocraftbeerforest2026/",
+          "accessedAt": "2026-10-25"
+        },
+        {
+          "title": "公式サイト",
+          "url": "https://www.sapporo-craft-beer-forest.com/",
+          "accessedAt": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "id": "tsuyama-jibeer-festa-2026",
+      "seriesId": "tsuyama-jibeer-festa",
+      "edition": "第29回",
+      "status": "scheduled",
+      "startDate": "2026-07-18",
+      "endDate": "2026-08-01",
+      "hours": null,
+      "prefecture": "okayama",
+      "city": "津山市",
+      "venue": "ソシオ一番街商店街",
+      "priceNote": "1セット 2,500円（500円券×5枚）",
+      "officialUrl": "https://www.okayama-kanko.jp/event/detail_100295.html",
+      "ticketUrl": null,
+      "note": "7月18日・25日・8月1日の土曜のみ",
+      "lastVerified": "2026-10-25",
+      "sources": [
+        {
+          "title": "岡山観光WEB",
+          "url": "https://www.okayama-kanko.jp/event/detail_100295.html",
+          "accessedAt": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "id": "oedo-beer-festival-2026-summer",
+      "seriesId": "oedo-beer-festival",
+      "edition": "2026 夏",
+      "status": "scheduled",
+      "startDate": "2026-07-29",
+      "endDate": "2026-08-11",
+      "hours": null,
+      "prefecture": "tokyo",
+      "city": "町田市",
+      "venue": "町田シバヒロ",
+      "priceNote": "入場無料",
+      "officialUrl": "http://oedo-beer-festival.jp/",
+      "ticketUrl": null,
+      "note": "8月3日〜6日は休み",
+      "lastVerified": "2026-10-25",
+      "sources": [
+        {
+          "title": "主催者のプレスリリース（財経新聞）",
+          "url": "https://zaikei.co.jp/releases/3481244/",
+          "accessedAt": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "id": "oedo-beer-festival-2026-autumn",
+      "seriesId": "oedo-beer-festival",
+      "edition": "2026 秋",
+      "status": "scheduled",
+      "startDate": "2026-09-01",
+      "endDate": "2026-09-12",
+      "hours": "平日 17:00〜22:00、土曜 12:00〜18:00",
+      "prefecture": "tokyo",
+      "city": "港区",
+      "venue": "品川インターシティ S＆R棟前広場",
+      "priceNote": "",
+      "officialUrl": "http://oedo-beer-festival.jp/",
+      "ticketUrl": null,
+      "note": "9月1日〜5日と8日〜12日の2期",
+      "lastVerified": "2026-10-25",
+      "sources": [
+        {
+          "title": "大江戸ビール祭り 公式サイト",
+          "url": "http://oedo-beer-festival.jp/",
+          "accessedAt": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "id": "japan-craftbeer-weekend-2026",
+      "seriesId": "japan-craftbeer-weekend",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-09-11",
+      "endDate": "2026-09-13",
+      "hours": null,
+      "prefecture": "fukuoka",
+      "city": "北九州市",
+      "venue": "勝山公園 大芝生広場",
+      "priceNote": "入場無料",
+      "officialUrl": "https://www.instagram.com/japan_craftbeer_weekend/",
+      "ticketUrl": null,
+      "note": "",
+      "lastVerified": "2026-10-25",
+      "sources": [
+        {
+          "title": "北九州市観光情報サイト",
+          "url": "https://www.crossroadfukuoka.jp/en/event/16378",
+          "accessedAt": "2026-10-25"
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,8 @@
 // Service Worker
 // ファイルを変更したら CACHE_VERSION を上げる（README「キャッシュ更新手順」参照）
-const CACHE_VERSION = 'v18';
+const CACHE_VERSION = 'v21';
 const CACHE_NAME = `craft-beer-log-${CACHE_VERSION}`;
+const EVENTS_URL = 'data/events.json';
 
 // 事前にキャッシュするファイル（相対パス）。ファイルを追加・削除したらここも更新する
 const PRECACHE_URLS = [
@@ -15,6 +16,7 @@ const PRECACHE_URLS = [
   'js/charts.js',
   'js/db.js',
   'js/errors.js',
+  'js/events.js',
   'js/illust.js',
   'js/image.js',
   'js/install.js',
@@ -37,6 +39,7 @@ const PRECACHE_URLS = [
   'js/views/brewery-detail.js',
   'js/views/brewery-map.js',
   'js/views/checkin-form.js',
+  'js/views/events.js',
   'js/views/knowledge.js',
   'js/views/more.js',
   'js/views/search.js',
@@ -47,6 +50,7 @@ const PRECACHE_URLS = [
   'data/basics.json',
   'data/breweries.json',
   'data/changelog.json',
+  'data/events.json',
   'data/flavor-tags.json',
   'data/hops.json',
   'data/images.json',
@@ -103,6 +107,24 @@ self.addEventListener('fetch', (event) => {
   if (url.origin !== self.location.origin) return;
   // 感想フォーム（feedback/）はアプリ外のページなので、そのままネットワークから読む
   if (new URL('feedback/', self.registration.scope).pathname === url.pathname.replace(/[^/]*$/, '')) return;
+  // イベント情報はアプリ本体と別に更新するので、ネット優先で取り、失敗したら前回の内容を返す
+  if (url.pathname === new URL(EVENTS_URL, self.registration.scope).pathname) {
+    event.respondWith(
+      (async () => {
+        const cache = await caches.open(CACHE_NAME);
+        try {
+          const res = await fetch(req, { cache: 'no-cache' });
+          if (res.ok) await cache.put(EVENTS_URL, res.clone());
+          return res;
+        } catch (e) {
+          const hit = await cache.match(EVENTS_URL);
+          if (hit) return hit;
+          throw e;
+        }
+      })(),
+    );
+    return;
+  }
   event.respondWith(
     (async () => {
       const cache = await caches.open(CACHE_NAME);

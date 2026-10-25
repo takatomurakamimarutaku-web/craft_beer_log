@@ -3,8 +3,8 @@ import { withBeerKeys, applyIncomplete, compareCheckinsDesc } from './models.js'
 import { normalize } from './search.js';
 
 export const DB_NAME = 'craft-beer-log';
-export const DB_VERSION = 2;
-export const DATA_STORES = ['beers', 'checkins', 'photos', 'breweryNotes'];
+export const DB_VERSION = 3;
+export const DATA_STORES = ['beers', 'checkins', 'photos', 'breweryNotes', 'eventPlans'];
 // ストアごとのキー（breweryNotes はブリュワーIDがキー）
 const KEY_OF = { breweryNotes: (r) => r.breweryId };
 const keyOf = (name, record) => (KEY_OF[name] ? KEY_OF[name](record) : record.id);
@@ -32,6 +32,10 @@ export function migrate(db, oldVersion, tx) {
   if (oldVersion < 2) {
     // ブリュワーの「行った・行きたい・メモ」
     db.createObjectStore('breweryNotes', { keyPath: 'breweryId' });
+  }
+  if (oldVersion < 3) {
+    // イベントの参加状況（id はイベントの id）。既存のストアには触れない
+    db.createObjectStore('eventPlans', { keyPath: 'id' });
   }
 }
 
@@ -68,6 +72,11 @@ export function openDB({ indexedDB = globalThis.indexedDB, name = DB_NAME } = {}
     open.onerror = () => reject(open.error);
     open.onblocked = () => reject(new Error('ほかのタブでアプリが開かれているため、データベースを更新できません'));
   });
+}
+
+/** 配信側からイベントが消えても表示できるよう、名前と日程の写しを持つ */
+export function planSnapshot(event) {
+  return { id: event.id, name: event.name, startDate: event.startDate, endDate: event.endDate };
 }
 
 function now() {
@@ -343,6 +352,42 @@ export class Repository {
     });
   }
 
+  // ---- イベントの参加状況 ----
+
+  listEventPlans() {
+    return this.run(['eventPlans'], 'readonly', (tx) => req(tx.objectStore('eventPlans').getAll()));
+  }
+
+  getEventPlan(id) {
+    return this.run(['eventPlans'], 'readonly', (tx) => req(tx.objectStore('eventPlans').get(id)));
+  }
+
+  /** 参加状況の保存。status も memo も空なら削除する */
+  saveEventPlan(plan) {
+    return this.run(['eventPlans'], 'readwrite', (tx) => {
+      const store = tx.objectStore('eventPlans');
+      if (!plan.status && !(plan.memo || '').trim()) {
+        store.delete(plan.id);
+        return null;
+      }
+      const record = { ...plan, updatedAt: now() };
+      store.put(record);
+      return record;
+    });
+  }
+
+  /** そのイベントでの最初の記録のとき、参加状況を「行った」にする */
+  markEventWent(event) {
+    return this.run(['eventPlans'], 'readwrite', async (tx) => {
+      const store = tx.objectStore('eventPlans');
+      const old = await req(store.get(event.id));
+      if (old?.status === 'went') return old;
+      const record = { ...planSnapshot(event), memo: '', ...old, status: 'went', updatedAt: now() };
+      store.put(record);
+      return record;
+    });
+  }
+
   // ---- Phase 2: バックアップ ----
 
   async counts() {
@@ -351,6 +396,7 @@ export class Repository {
       checkins: await req(tx.objectStore('checkins').count()),
       photos: await req(tx.objectStore('photos').count()),
       breweryNotes: await req(tx.objectStore('breweryNotes').count()),
+      eventPlans: await req(tx.objectStore('eventPlans').count()),
     }));
   }
 
@@ -361,6 +407,7 @@ export class Repository {
       checkins: await req(tx.objectStore('checkins').getAll()),
       photos: await req(tx.objectStore('photos').getAll()),
       breweryNotes: await req(tx.objectStore('breweryNotes').getAll()),
+      eventPlans: await req(tx.objectStore('eventPlans').getAll()),
     }));
   }
 

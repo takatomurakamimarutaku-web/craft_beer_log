@@ -50,7 +50,7 @@ test('エクスポート → 別のDBへ置き換えでインポート：写真�
   const dst = await openDB({ indexedDB: new IDBFactory() });
   await dst.createBeerWithCheckin(createBeer({ name: '消える' }), createCheckin());
   const r = await dst.importData(data, 'replace');
-  assert.deepEqual(r.added, { beers: 2, checkins: 2, photos: 3, breweryNotes: 1 });
+  assert.deepEqual(r.added, { beers: 2, checkins: 2, photos: 3, breweryNotes: 1, eventPlans: 0 });
   assert.deepEqual(await normalized(dst), await normalized(src));
   src.close();
   dst.close();
@@ -61,16 +61,16 @@ test('追加インポート：同じIDは重複させず、新しいものだけ
   const data = parseBackup(await (await createBackupBlob(await src.dumpAll())).text());
   // 同じデータを追加しても増えない
   const r1 = await src.importData(data, 'merge');
-  assert.deepEqual(r1.added, { beers: 0, checkins: 0, photos: 0, breweryNotes: 0 });
-  assert.deepEqual(r1.skipped, { beers: 2, checkins: 2, photos: 3, breweryNotes: 1 });
-  assert.deepEqual(await src.counts(), { beers: 2, checkins: 2, photos: 3, breweryNotes: 1 });
+  assert.deepEqual(r1.added, { beers: 0, checkins: 0, photos: 0, breweryNotes: 0, eventPlans: 0 });
+  assert.deepEqual(r1.skipped, { beers: 2, checkins: 2, photos: 3, breweryNotes: 1, eventPlans: 0 });
+  assert.deepEqual(await src.counts(), { beers: 2, checkins: 2, photos: 3, breweryNotes: 1, eventPlans: 0 });
 
   // 別のDBに追加すると、既存のデータは残る
   const dst = await openDB({ indexedDB: new IDBFactory() });
   await dst.createBeerWithCheckin(createBeer({ name: '既存' }), createCheckin());
   const r2 = await dst.importData(data, 'merge');
-  assert.deepEqual(r2.added, { beers: 2, checkins: 2, photos: 3, breweryNotes: 1 });
-  assert.deepEqual(await dst.counts(), { beers: 3, checkins: 3, photos: 3, breweryNotes: 1 });
+  assert.deepEqual(r2.added, { beers: 2, checkins: 2, photos: 3, breweryNotes: 1, eventPlans: 0 });
+  assert.deepEqual(await dst.counts(), { beers: 3, checkins: 3, photos: 3, breweryNotes: 1, eventPlans: 0 });
   src.close();
   dst.close();
 });

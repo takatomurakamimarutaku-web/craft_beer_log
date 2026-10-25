@@ -1,14 +1,21 @@
 // 統計（#/stats）
 import { h, svg, emptyState, formatYen } from '../ui.js';
 import { SERVING_LABELS } from '../models.js';
-import { summarizeRatings, countByStyle, abvHistogram, topBreweries, monthlyCounts, servingStats, favoriteFlavorTags, hopsForFavoriteTags } from '../stats.js';
+import { summarizeRatings, countByStyle, abvHistogram, topBreweries, monthlyCounts, servingStats, favoriteFlavorTags, hopsForFavoriteTags, eventStats } from '../stats.js';
+import { joinEvents } from '../events.js';
 import { hBarChart, vBarChart } from '../charts.js';
 import { setCriteria } from './search.js';
 
 const STYLE_LIMIT = 12;
 
 export async function render({ app, outlet, isStale }) {
-  const [beers, checkins, knowledge] = await Promise.all([app.db.listBeers(), app.db.listCheckins(), app.loadKnowledge()]);
+  const [beers, checkins, knowledge, eventData, plans] = await Promise.all([
+    app.db.listBeers(),
+    app.db.listCheckins(),
+    app.loadKnowledge(),
+    app.loadEvents().catch(() => null),
+    app.db.listEventPlans().catch(() => []),
+  ]);
   if (isStale()) return;
   const tried = new Set(checkins.map((c) => c.beerId));
 
@@ -130,6 +137,21 @@ export async function render({ app, outlet, isStale }) {
     favSec = emptySection('好きな香り', '評価4以上の記録に香りタグを付けると、好みの香りと合うホップが表示されます（記録画面の「テイスティング」）。');
   }
 
+  // 7. イベント別（イベントで記録したことがある場合だけ）
+  const eventNames = new Map([...plans.map((p) => [p.id, p.name]), ...joinEvents(eventData).map((e) => [e.id, e.edition && !/^\d{4}$/.test(e.edition) ? `${e.name}（${e.edition}）` : e.name])]);
+  const byEvent = eventStats(checkins, eventNames);
+  const eventRows = byEvent.slice(0, 10).map((r) => ({ ...r, sub: r.avgRating !== null ? `平均★${r.avgRating.toFixed(1)}` : '' }));
+  const eventSec = byEvent.length
+    ? chartSection({
+        title: 'イベント別の杯数',
+        rows: eventRows,
+        chart: hBarChart(eventRows, { unit: '杯', title: 'イベント別の杯数' }),
+        onTap: (r) => openSearch({ eventId: r.key, eventLabel: r.label }),
+        note: `${byEvent.length}か所のイベントで${byEvent.reduce((n, r) => n + r.count, 0)}杯。${byEvent.length > 10 ? '上位10件。' : ''}`,
+        table: [['イベント', '杯数', '平均評価'], ...byEvent.map((r) => [r.label, `${r.count}`, r.avgRating !== null ? r.avgRating.toFixed(1) : '—'])],
+      })
+    : null;
+
   outlet.replaceChildren(
     tiles,
     h('p', { class: 'small muted stat-hint', text: 'グラフの棒をタップすると、その条件で検索できます。' }),
@@ -139,6 +161,7 @@ export async function render({ app, outlet, isStale }) {
     monthSec,
     servingSec,
     favSec,
+    ...(eventSec ? [eventSec] : []),
   );
 }
 

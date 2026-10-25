@@ -7,6 +7,7 @@ import { processImage } from '../image.js';
 import { beerFields } from './beer-fields.js';
 import { TASTE_AXES, TASTE_MAX, hasTasting } from '../tasting.js';
 import { errorText } from '../errors.js';
+import { joinEvents, eventsOnDate } from '../events.js';
 
 export const DRAFT_KEY = 'checkinDraft';
 
@@ -14,7 +15,7 @@ export const DRAFT_KEY = 'checkinDraft';
 export function checkinFromDraft(d) {
   return createCheckin({
     ...(d.date ? { date: d.date } : {}),
-    place: { type: d.placeType || 'drank', name: d.placeName || '' },
+    place: { type: d.placeType || 'drank', name: d.placeName || '', ...(d.eventId ? { eventId: d.eventId } : {}) },
     serving: d.serving ?? null,
     volumeMl: d.volume ?? null,
     price: d.price ?? null,
@@ -27,12 +28,16 @@ export function checkinFromDraft(d) {
 
 export async function render({ app, outlet, params, query }) {
   const editing = Boolean(params.id);
-  const [beers, breweries, places, knowledge] = await Promise.all([
+  const [beers, breweries, places, knowledge, eventData, planList] = await Promise.all([
     app.db.listBeers(),
     app.db.listDistinctValues('brewery'),
     app.db.listDistinctValues('place'),
     app.loadKnowledge(),
+    app.loadEvents().catch(() => null),
+    app.db.listEventPlans().catch(() => []),
   ]);
+  const events = joinEvents(eventData);
+  const plans = new Map(planList.map((p) => [p.id, p]));
   let checkin;
   if (editing) {
     checkin = await app.db.getCheckin(params.id);
@@ -48,6 +53,12 @@ export async function render({ app, outlet, params, query }) {
   const draft = editing ? null : await app.db.getMeta(DRAFT_KEY).catch(() => null);
   const restoring = Boolean(draft && query.restore === '1');
   if (restoring) checkin = checkinFromDraft(draft);
+  // イベントの詳細・「続けて記録」から開いたときは、イベントと日付を入れておく
+  const fromEvent = !editing && !restoring ? events.find((e) => e.id === query.eventId) : null;
+  if (fromEvent) {
+    const day = /^\d{4}-\d{2}-\d{2}$/.test(query.date || '') ? query.date : checkin.date;
+    checkin = createCheckin({ date: day, place: { type: 'drank', name: fromEvent.name, eventId: fromEvent.id } });
+  }
   let selected = beers.find((b) => b.id === (editing ? checkin.beerId : restoring ? draft.beerId : query.beerId)) || null;
 
   // ---- 写真の状態 ----
@@ -141,6 +152,7 @@ export async function render({ app, outlet, params, query }) {
   const recSection = h('section', { class: 'form-section' }, h('h3', { class: 'section-title', text: '記録' }));
   const date = h('input', { id: 'f-date', type: 'date', value: checkin.date });
   let placeType = checkin.place?.type || 'drank';
+  let eventId = checkin.place?.eventId || null;
   const placeName = h('input', { id: 'f-place', type: 'text', value: checkin.place?.name || '', placeholder: 'お店の名前' });
   let serving = checkin.serving;
   const volume = h('input', { id: 'f-volume', type: 'text', inputmode: 'numeric', value: checkin.volumeMl ?? '', placeholder: '例：350' });
@@ -157,8 +169,39 @@ export async function render({ app, outlet, params, query }) {
   const photoStatus = h('p', { class: 'field-hint' });
   photoInput.addEventListener('change', addPhotos);
 
+  // ---- その日に開催しているイベント（選ぶと記録に紐付く） ----
+  const eventField = h('div', { class: 'field event-field', dataset: { field: 'event' } });
+  const renderEventField = () => {
+    const list = eventsOnDate(events, date.value, plans);
+    const options = list.map((e) => ({ value: e.id, label: e.name }));
+    // 日付を変えた・配信から消えたなどで候補に無い紐付けも、外せるように表示する
+    if (eventId && !options.some((o) => o.value === eventId)) options.unshift({ value: eventId, label: events.find((e) => e.id === eventId)?.name || checkin.place?.name || 'イベント' });
+    eventField.hidden = !options.length;
+    eventField.replaceChildren(
+      h('span', { class: 'field-label', text: 'イベントで飲んだ？' }),
+      segmented({
+        name: 'イベント',
+        options,
+        value: eventId,
+        allowEmpty: true,
+        onChange: (v) => {
+          const prevName = events.find((e) => e.id === eventId)?.name;
+          const next = events.find((e) => e.id === v);
+          eventId = v;
+          // お店の欄が空か、前に選んだイベント名のままなら置き換える
+          if (!placeName.value.trim() || placeName.value === prevName) placeName.value = next?.name || '';
+        },
+      }),
+      h('p', { class: 'field-hint', text: '選ぶと、イベントの画面にこの記録が並びます。' }),
+      h('p', { class: 'field-error', role: 'alert' }), // showErrors が .field ごとに参照する
+    );
+  };
+  date.addEventListener('change', renderEventField);
+  renderEventField();
+
   recSection.append(
     field('日付', date, { name: 'date' }),
+    eventField,
     field(
       '飲んだ／買った',
       segmented({
@@ -279,6 +322,7 @@ export async function render({ app, outlet, params, query }) {
     date: date.value,
     placeType,
     placeName: placeName.value,
+    eventId,
     serving,
     volume: volume.value,
     price: price.value,
@@ -381,7 +425,7 @@ export async function render({ app, outlet, params, query }) {
     }
     const c = validateCheckin({
       date: date.value,
-      place: { type: placeType, name: placeName.value },
+      place: { type: placeType, name: placeName.value, eventId },
       serving,
       volumeMl: volume.value,
       price: price.value,
@@ -428,7 +472,15 @@ export async function render({ app, outlet, params, query }) {
       saved = true;
       app.leaveGuard = null;
       if (!editing) await app.db.setMeta(DRAFT_KEY, null).catch(() => {});
-      showToast(editing ? '保存しました' : '記録しました');
+      const event = events.find((e) => e.id === record.place?.eventId);
+      if (event && !editing) {
+        await app.db.markEventWent(event).catch((e) => console.warn('参加状況を更新できませんでした', e));
+        // イベントでは何杯も続けて飲むので、同じイベント・日付ですぐ次を記録できるようにする
+        const next = `#/checkin/new?eventId=${encodeURIComponent(event.id)}&date=${record.date}`;
+        showToast('記録しました', { actionLabel: '同じイベントで続けて記録', onAction: () => app.navigate(next), duration: 8000 });
+      } else {
+        showToast(editing ? '保存しました' : '記録しました');
+      }
       // 編集は元の画面へ戻る。新規は銘柄詳細へ置き換えて遷移（戻る操作でフォームに戻らないように）
       if (editing) app.goBack(`#/beer/${encodeURIComponent(beerId)}`);
       else app.navigate(`#/beer/${encodeURIComponent(beerId)}`, { replace: true });

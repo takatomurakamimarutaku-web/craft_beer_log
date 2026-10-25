@@ -37,7 +37,9 @@ HTML / CSS / JavaScript（ES Modules）だけで作られており、ビルド�
 | `#/knowledge/style/:id` | スタイルの解説（グラスと色のイラスト、数値の目安、参考リンク） |
 | `#/knowledge/term/:id` | 用語の解説（IBU・SRM はスケール図付き） |
 | `#/knowledge/hop/:id` | ホップの解説（香りタグ、α酸、よく使われるスタイル）。一覧は `?tab=hops&tag=citrus,pine` で香りタグを指定して開ける |
-| `#/stats` | 統計（スタイル別・度数分布・ブリュワーTOP10・月別・提供形態と平均価格・好きな香り）。棒をタップすると検索へ |
+| `#/events`（`?past=1` で終了したもの） | イベント一覧（開催中・今週末・月ごと。地方とキーワードで絞り込み） |
+| `#/event/:id` | イベントの詳細（日程・会場・料金・公式サイト・最終確認日・情報源） |
+| `#/stats` | 統計（スタイル別・度数分布・ブリュワーTOP10・月別・提供形態と平均価格・好きな香り・イベント別）。棒をタップすると検索へ |
 
 ## ファイル構成
 
@@ -50,6 +52,7 @@ js/app.js               起動処理・ルート定義・SW 登録
 js/router.js            ハッシュルーティング
 js/db.js                IndexedDB 操作
 js/models.js            データの生成・定数
+js/events.js            イベント情報の判定・絞り込み・検証（純粋関数）
 js/validate.js          入力値の検証（純粋関数）
 js/search.js            正規化・検索・絞り込み（純粋関数）
 js/stats.js             集計（純粋関数。統計画面の各グラフの元データ）
@@ -66,8 +69,10 @@ data/styles.json        スタイル（25件。登録画面の選択肢と知識
 data/flavor-tags.json   香りタグの語彙
 data/terms.json, data/hops.json  知識データ（Phase 4 で作成）
 data/basics.json        入門記事（知識タブの「はじめに」）
+data/events.json        全国のビールイベント（アプリ本体と別にネット優先で取得）
 icons/                  アイコン（SVG と PNG）
 scripts/check-pwa.js    PWA 構成の検証
+scripts/check-events.js イベントデータの検証
 scripts/dummy-data.js   性能確認用のダミーデータ生成
 tools/icon-export.html  SVG アイコンから PNG を書き出すページ
 test/*.test.js          テスト
@@ -97,7 +102,7 @@ DB 名 `craft-beer-log`、バージョン 1。ID は `crypto.randomUUID()`。
 |---|---|
 | id, beerId | ID、銘柄ID |
 | date | 日付（`YYYY-MM-DD`、端末のローカル日付） |
-| place | `{ type: "drank" \| "bought", name }` |
+| place | `{ type: "drank" \| "bought", name, eventId? }`。eventId はイベント（`data/events.json`）の回の id。配信からイベントが消えても name は残る |
 | serving | `"draft"`（樽生）/ `"can"` / `"bottle"` / `"other"` / null |
 | volumeMl, price | 容量（ml）、価格（円） |
 | rating | 評価 1〜5（任意） |
@@ -111,6 +116,10 @@ DB 名 `craft-beer-log`、バージョン 1。ID は `crypto.randomUUID()`。
 ### photos
 
 `{ id, blob（JPEG 長辺1280px）, thumb（JPEG 長辺300px） }`
+
+### eventPlans（イベントの参加状況、DB バージョン 3 で追加）
+
+`{ id（イベントの id）, name, startDate, endDate, status: "want" | "going" | "went" | null, memo, updatedAt }`。name と日程は、配信側からイベントが消えても表示できるようにするための写しです。状態もメモも空にすると削除します。イベントで初めて記録したとき、自動で `went` になります。
 
 ### meta
 
@@ -170,6 +179,23 @@ NFKC 正規化 → 小文字化 → ひらがなをカタカナに統一 → 前
 
 香りタグの語彙 `{ id, label }`。ホップの香り（Phase 4-3）とテイスティング入力（Phase 5）で共用します。
 
+### events.json（イベント情報）
+
+毎年続くイベントを `series`、各年の開催を `events` に分けて持ちます。説明文や画像は持たず、日程・会場・料金などの事実だけを、主催者の公式ページ（無ければ自治体・観光協会のページ）で確認して自分の言葉で書きます。まとめサイトの内容は転載しません。
+
+- series: `id` `name` `kana` `kind`（festival / beergarden / tasting / other）`prefecture`（都道府県コード。`js/events.js` の `PREFECTURES`）`officialUrl` `usualPeriod`（出典に「例年」とある場合のみ。無ければ null）
+- events: `id`（変えない）`seriesId` `edition` `status`（scheduled / tentative / cancelled / postponed）`startDate` `endDate` `hours` `prefecture` `city` `venue` `priceNote` `officialUrl` `ticketUrl` `note` `lastVerified` `sources[]`
+- 中止になった回も消さずに `status: "cancelled"` にします
+- 開催予定で `lastVerified` から60日を過ぎたものは、画面に「情報が古い可能性」と出ます
+
+更新の手順（月1回と、開催2週間前の直前確認）：
+
+1. 公式ページで新しい回・日程の変更・中止を確認し、`data/events.json` を直して `updatedAt` と各回の `lastVerified` を更新する
+2. `node scripts/check-events.js` と `npm test` を通す
+3. プルリクエストで差分と公式リンクを確認してマージする
+
+`sw.js` はこのファイルだけネット優先で読むため、**イベント情報だけの更新では `CACHE_VERSION` を上げる必要はありません**（次にイベント画面を開いたときに反映されます）。
+
 ### スタイルの移行
 
 起動時とバックアップの読み込み後に、`styles.json` に無い `styleId` を持つ銘柄を「その他」に移し、元の名前を自由入力欄に残します（`js/knowledge.js` の `migrateBeerStyle`）。銘柄ストアの構造は変わらないため DB のバージョンは上げず、実施した版を meta の `stylesVersion` に記録します。スタイルを削除・統合するときは `LEGACY_STYLE_NAMES` に旧名を追加し、`STYLES_VERSION` を上げてください。
@@ -186,11 +212,13 @@ NFKC 正規化 → 小文字化 → ひらがなをカタカナに統一 → 前
   "counts": { "beers": 1, "checkins": 1, "photos": 1 },
   "beers": [ ... ],
   "checkins": [ ... ],
+  "eventPlans": [ ... ],
   "photos": [ { "id": "...", "type": "image/jpeg", "data": "<base64>", "thumbType": "image/jpeg", "thumb": "<base64>" } ]
 }
 ```
 
 - 読み込み時に形式・バージョン・各データ（ID の重複、銘柄・写真の参照、日付・評価の値）を検証し、問題があれば何も取り込みません
+- `eventPlans`（イベントの参加状況）は v1.5.0 で追加した任意の項目です。無いファイル（それ以前のバックアップ）も読み込めます
 - アプリより新しいバージョンのファイルは読み込みません。古い形式は `js/backup.js` の `UPGRADES` で変換します
 - 「既存のデータに追加」では同じ ID のデータは既存を残し、重複させません。「置き換え」は確認のうえ全データを入れ替えます
 

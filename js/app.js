@@ -12,6 +12,7 @@ import * as settingsView from './views/settings.js';
 import * as moreView from './views/more.js';
 import * as knowledgeView from './views/knowledge.js';
 import * as statsView from './views/stats.js';
+import * as eventsView from './views/events.js';
 import * as breweriesView from './views/breweries.js';
 import * as breweryDetailView from './views/brewery-detail.js';
 import * as breweryMapView from './views/brewery-map.js';
@@ -37,6 +38,8 @@ const routes = [
   { path: '/more', view: moreView, title: 'その他', tab: 'more' },
   { path: '/wishlist', view: wishlistView, title: '飲みたいリスト', tab: 'more', back: '#/more' },
   { path: '/wishlist/new', view: beerEditView, title: '飲みたい銘柄を追加', tab: 'more', back: '#/wishlist' },
+  { path: '/events', view: eventsView, title: 'イベント', tab: 'more', back: '#/more' },
+  { path: '/event/:id', view: eventsView, title: 'イベント', tab: 'more', back: '#/events' },
   { path: '/stats', view: statsView, title: '統計', tab: 'more', back: '#/more' },
   { path: '/settings', view: settingsView, title: '設定', tab: 'more', back: '#/more' },
   { path: '/breweries', view: breweriesView, title: 'ブリュワー', tab: 'more', back: '#/more' },
@@ -70,6 +73,7 @@ async function start() {
   const styles = await loadJson('data/styles.json', []);
   let current = null;
   let knowledge = null;
+  let events = null;
   let breweries = null;
   const validStyleIds = new Set(styles.map((s) => s.id));
   const migrateStyles = async () => {
@@ -99,6 +103,12 @@ async function start() {
         loadJson('data/flavor-tags.json', []),
         loadJson('data/images.json', {}),
       ]).then(([basics, terms, hops, flavorTags, images]) => ({ basics, terms, hops, flavorTags, images }))),
+    /** イベント情報。読めなかったときは null を返し、次に開いたとき読み直す */
+    loadEvents: () =>
+      (events ??= loadJson('data/events.json', null).then((d) => {
+        if (!d || !Array.isArray(d.events)) events = null;
+        return d && Array.isArray(d.events) ? d : null;
+      })),
     /** ブリュワー情報（data/breweries.json）を初回だけ読み込み、名前照合の索引を作る */
     loadBreweries: () =>
       (breweries ??= loadJson('data/breweries.json', { meta: {}, breweries: [] }).then((d) => {

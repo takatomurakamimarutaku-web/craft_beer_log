@@ -15,7 +15,7 @@ test('スキーマ：ストアとインデックスが作成される', async ()
   const db = repo.db;
   assert.equal(db.name, DB_NAME);
   assert.equal(db.version, DB_VERSION);
-  assert.deepEqual([...db.objectStoreNames].sort(), ['beers', 'breweryNotes', 'checkins', 'meta', 'photos']);
+  assert.deepEqual([...db.objectStoreNames].sort(), ['beers', 'breweryNotes', 'checkins', 'eventPlans', 'meta', 'photos']);
   const tx = db.transaction(['beers', 'checkins'], 'readonly');
   assert.deepEqual([...tx.objectStore('beers').indexNames].sort(), ['breweryKey', 'nameKey', 'status', 'styleId']);
   assert.deepEqual([...tx.objectStore('checkins').indexNames].sort(), ['beerId', 'date']);
@@ -153,7 +153,7 @@ test('メタ情報の保存', async () => {
   repo.close();
 });
 
-test('v1 のDBから v2 へ：既存のデータを残したまま breweryNotes を追加する', async () => {
+test('v1 のDBから最新へ：既存のデータを残したまま breweryNotes・eventPlans を追加する', async () => {
   const factory = new IDBFactory();
   // v1 のスキーマを作って銘柄を1件入れる
   await new Promise((resolve, reject) => {
@@ -176,9 +176,39 @@ test('v1 のDBから v2 へ：既存のデータを残したまま breweryNotes 
     open.onerror = () => reject(open.error);
   });
   const repo = await openDB({ indexedDB: factory });
-  assert.equal(repo.db.version, 2);
+  assert.equal(repo.db.version, DB_VERSION);
   assert.equal((await repo.getBeer('old')).name, '旧データ');
   assert.deepEqual(await repo.listBreweryNotes(), []);
+  assert.deepEqual(await repo.listEventPlans(), []);
+  repo.close();
+});
+
+test('v2 のDBから v3 へ：ブリュワーのメモを残したまま eventPlans を追加する', async () => {
+  const factory = new IDBFactory();
+  // v2（ブリュワー情報の追加後）のスキーマを作り、メモを1件入れる
+  await new Promise((resolve, reject) => {
+    const open = factory.open(DB_NAME, 2);
+    open.onupgradeneeded = () => {
+      const db = open.result;
+      const beers = db.createObjectStore('beers', { keyPath: 'id' });
+      for (const i of ['nameKey', 'breweryKey', 'styleId', 'status']) beers.createIndex(i, i);
+      const checkins = db.createObjectStore('checkins', { keyPath: 'id' });
+      checkins.createIndex('beerId', 'beerId');
+      checkins.createIndex('date', 'date');
+      db.createObjectStore('photos', { keyPath: 'id' });
+      db.createObjectStore('meta', { keyPath: 'key' });
+      db.createObjectStore('breweryNotes', { keyPath: 'breweryId' }).put({ breweryId: 'br1', visited: [], wantToVisit: true, memo: 'メモ' });
+    };
+    open.onsuccess = () => {
+      open.result.close();
+      resolve();
+    };
+    open.onerror = () => reject(open.error);
+  });
+  const repo = await openDB({ indexedDB: factory });
+  assert.equal(repo.db.version, 3);
+  assert.equal((await repo.listBreweryNotes())[0].memo, 'メモ');
+  assert.deepEqual(await repo.listEventPlans(), []);
   repo.close();
 });
 
