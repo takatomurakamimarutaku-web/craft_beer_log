@@ -128,11 +128,13 @@ test('月の条件：その月に記録がある銘柄だけ', () => {
 
 test('buildShareText：銘柄と最新の記録、未入力の項目は出さない', () => {
   const t = buildShareText(beers[0], checkins[0], styles, { tagLabels: { citrus: '柑橘', pine: '松' } });
-  assert.equal(t, '🍺 A（ヤッホー）\nIPA / 6.5%\n★★★★★ 樽生\n香り：柑橘・松\n#ホップ手帖');
+  assert.equal(t, '🍺 A（ヤッホー）\nIPA / 6.5%\n★★★★★ 樽生\n香り：柑橘、松\n#ホップ手帖');
   const t2 = buildShareText(beers[2], null, styles);
   assert.equal(t2, '🍺 C（コエド）\n#ホップ手帖');
   const t3 = buildShareText(beers[3], createCheckin({ memo: '  燻製の香り ', place: { name: '駅前' } }), styles);
   assert.match(t3, /ラオホ \/ 10\.0%/);
   assert.match(t3, /@駅前/);
   assert.match(t3, /燻製の香り\n#ホップ手帖$/);
+  const t4 = buildShareText(beers[2], createCheckin({ tasting: { tasteTags: ['crisp'], tasteCustom: ['塩気'], flavorTags: ['citrus'], flavorCustom: ['ライチ'] } }), styles, { tagLabels: { citrus: '柑橘' } });
+  assert.match(t4, /味：すっきり、塩気\n香り：柑橘、ライチ\n/);
 });

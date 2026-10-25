@@ -359,6 +359,14 @@ a.chip { text-decoration: none; display: inline-block; }
 .taste-line { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
 .taste-summary .chips { margin-top: 8px; justify-content: center; }
 .chip-static { cursor: default; }
+/* 記録画面の味・香り：グループ見出し＋チップ、「＋その他」で自由入力 */
+.tag-picker { display: grid; gap: 10px; }
+.tag-group { display: grid; gap: 4px; }
+.tag-group-label { font-size: 0.8rem; color: var(--muted); }
+.chip.chip-other { border-style: dashed; }
+.chip.chip-other[aria-pressed="true"] { background: var(--surface-2); border-color: var(--primary); color: var(--text); }
+.tag-other input { width: 100%; }
+.tag-other .field-hint { margin-top: 4px; }
 .tag-link { text-decoration: none; color: var(--primary-strong); border: 1px solid currentColor; background: transparent; }
 .my-records { display: grid; gap: 8px; }
 .month-chip { margin: 0 0 4px; }

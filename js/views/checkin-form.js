@@ -1,15 +1,59 @@
 // 記録の登録・編集（#/checkin/new, #/checkin/:id/edit）
 import { h, field, attachSuggest, segmented, chipGroup, starInput, showErrors, showToast, confirmDialog, formatAbv } from '../ui.js';
 import { createBeer, createCheckin, styleLabel, SERVING_LABELS, PLACE_TYPE_LABELS, MAX_PHOTOS } from '../models.js';
-import { validateBeer, validateCheckin } from '../validate.js';
+import { validateBeer, validateCheckin, parseCustomWords } from '../validate.js';
 import { normalize } from '../search.js';
 import { processImage } from '../image.js';
 import { beerFields } from './beer-fields.js';
-import { TASTE_AXES, TASTE_MAX, hasTasting } from '../tasting.js';
+import { TASTE_AXES, TASTE_MAX, TASTE_TAGS, groupFlavorTags, hasScores } from '../tasting.js';
 import { errorText } from '../errors.js';
 import { joinEvents, eventsOnDate } from '../events.js';
 
 export const DRAFT_KEY = 'checkinDraft';
+
+/**
+ * 大まかな選択肢のチップ＋「＋その他」で自由入力（味・香りで共用）。
+ * groups: [{ label?, options: [{value,label}] }]。選んだ値と入力した語はそれぞれ onChange で返す。
+ */
+function tagPicker({ label, groups, values, custom, placeholder, onChange, onCustomChange }) {
+  let selected = [...values];
+  const input = h('input', { type: 'text', value: custom.join('、'), placeholder, enterkeyhint: 'done', 'aria-label': `${label}（その他）` });
+  const otherBox = h('div', { class: 'tag-other', hidden: !custom.length }, input, h('p', { class: 'field-hint', text: '「、」で区切ると複数入れられます' }));
+  const otherChip = h('button', {
+    type: 'button',
+    class: 'chip chip-other',
+    text: '＋その他',
+    'aria-pressed': String(custom.length > 0),
+    'aria-expanded': String(custom.length > 0),
+    onclick: () => {
+      const open = otherBox.hidden;
+      otherBox.hidden = !open;
+      otherChip.setAttribute('aria-pressed', String(open));
+      otherChip.setAttribute('aria-expanded', String(open));
+      // 閉じたら入力した語は保存しない（文字は残すので、開き直せば戻る）
+      onCustomChange(open ? parseCustomWords(input.value) : []);
+      if (open) input.focus();
+    },
+  });
+  input.addEventListener('input', () => onCustomChange(parseCustomWords(input.value)));
+  // Enter で送信（保存）されないようにする
+  input.addEventListener('keydown', (e) => e.key === 'Enter' && (e.preventDefault(), input.blur()));
+  const rows = groups.map((g, i) => {
+    const chips = chipGroup({
+      label: g.label ? `${label}：${g.label}` : label,
+      options: g.options,
+      values: selected.filter((v) => g.options.some((o) => o.value === v)),
+      onChange: (vals) => {
+        const mine = new Set(g.options.map((o) => o.value));
+        selected = [...selected.filter((v) => !mine.has(v)), ...vals];
+        onChange(selected);
+      },
+    });
+    if (i === groups.length - 1) chips.append(otherChip);
+    return g.label ? h('div', { class: 'tag-group' }, h('span', { class: 'tag-group-label', text: g.label }), chips) : chips;
+  });
+  return h('div', { class: 'tag-picker' }, ...rows, otherBox);
+}
 
 /** 下書きから記録の初期値を作る（純粋関数。写真は下書きに含めない） */
 export function checkinFromDraft(d) {
@@ -148,6 +192,16 @@ export async function render({ app, outlet, params, query }) {
   }
   if (!editing) selectBeer(selected);
 
+  // 味・香り（記録セクション）と5段階の点数（テイスティング）が共有する入力中の値
+  const t0 = checkin.tasting || {};
+  const tasting = {
+    ...t0,
+    flavorTags: [...(t0.flavorTags || [])],
+    flavorCustom: [...(t0.flavorCustom || [])],
+    tasteTags: [...(t0.tasteTags || [])],
+    tasteCustom: [...(t0.tasteCustom || [])],
+  };
+
   // ---- 記録 ----
   const recSection = h('section', { class: 'form-section' }, h('h3', { class: 'section-title', text: '記録' }));
   const date = h('input', { id: 'f-date', type: 'date', value: checkin.date });
@@ -231,6 +285,32 @@ export async function render({ app, outlet, params, query }) {
       field('価格', h('div', { class: 'input-suffix' }, price, h('span', { text: '円' })), { name: 'price' }),
     ),
     field('評価', starInput(rating, (v) => (rating = v)), { name: 'rating' }),
+    field(
+      '味（複数選択可）',
+      tagPicker({
+        label: '味',
+        groups: [{ options: TASTE_TAGS.map((t) => ({ value: t.id, label: t.label })) }],
+        values: tasting.tasteTags,
+        custom: tasting.tasteCustom,
+        placeholder: '例：塩気、渋い',
+        onChange: (v) => (tasting.tasteTags = v),
+        onCustomChange: (v) => (tasting.tasteCustom = v),
+      }),
+      { name: 'taste' },
+    ),
+    field(
+      '香り（複数選択可）',
+      tagPicker({
+        label: '香り',
+        groups: groupFlavorTags(knowledge.flavorTags).map((g) => ({ label: g.label, options: g.tags.map((t) => ({ value: t.id, label: t.label })) })),
+        values: tasting.flavorTags,
+        custom: tasting.flavorCustom,
+        placeholder: '例：ライチ、ハチミツ',
+        onChange: (v) => (tasting.flavorTags = v),
+        onCustomChange: (v) => (tasting.flavorCustom = v),
+      }),
+      { name: 'flavor' },
+    ),
     field('メモ', memo, { name: 'memo' }),
     h(
       'div',
@@ -246,13 +326,12 @@ export async function render({ app, outlet, params, query }) {
   recSection.querySelector('[data-field="volumeMl"] label').setAttribute('for', volume.id);
   recSection.querySelector('[data-field="price"] label').setAttribute('for', price.id);
 
-  // ---- テイスティング（折りたたみ。入力済みなら開いておく） ----
-  const tasting = { ...checkin.tasting, flavorTags: [...(checkin.tasting?.flavorTags || [])] };
+  // ---- テイスティングの点数（折りたたみ。入力済みなら開いておく） ----
   const tasteSection = h(
     'details',
-    { class: 'form-section tasting-section', open: hasTasting(checkin.tasting) },
-    h('summary', { class: 'section-title' }, 'テイスティング', h('span', { class: 'muted small', text: '（任意）' })),
-    h('p', { class: 'field-hint', text: '1＝弱い 〜 5＝強い。もう一度タップすると未入力に戻せます。' }),
+    { class: 'form-section tasting-section', open: hasScores(checkin.tasting) },
+    h('summary', { class: 'section-title' }, 'テイスティングの点数', h('span', { class: 'muted small', text: '（任意）' })),
+    h('p', { class: 'field-hint', text: '1＝弱い 〜 5＝強い。銘柄の画面のレーダーチャートになります。もう一度タップすると未入力に戻せます。' }),
     ...TASTE_AXES.map(({ key, label }) =>
       field(
         label,
@@ -266,16 +345,8 @@ export async function render({ app, outlet, params, query }) {
         { name: `taste-${key}` },
       ),
     ),
-    field(
-      '香りタグ（複数選択可）',
-      chipGroup({
-        label: '香りタグ',
-        options: knowledge.flavorTags.map((t) => ({ value: t.id, label: t.label })),
-        values: tasting.flavorTags,
-        onChange: (v) => (tasting.flavorTags = v),
-      }),
-      { name: 'tasting' },
-    ),
+    // 点数の範囲エラー（validateCheckin の errors.tasting）の表示先
+    h('div', { class: 'field', dataset: { field: 'tasting' } }, h('p', { class: 'field-error', role: 'alert' })),
   );
 
   const saveBtn = h('button', { type: 'submit', class: 'btn btn-primary btn-block', text: editing ? '保存する' : '記録する' });
