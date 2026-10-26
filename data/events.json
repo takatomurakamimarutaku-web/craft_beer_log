@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-25",
+  "updatedAt": "2026-10-26",
   "series": [
     {
       "id": "american-craft-beer-experience",
@@ -450,7 +450,10 @@
       "name": "奥入瀬ビール オクトーバーフェスト",
       "kana": "おいらせびーるおくとーばーふぇすと",
       "prefecture": "aomori",
-      "officialUrl": "https://oirase.beer/oktober-fest/"
+      "officialUrl": "https://oirase.beer/oktober-fest/",
+      "breweryIds": [
+        "oirase-brewery"
+      ]
     },
     {
       "kind": "beergarden",
@@ -486,7 +489,10 @@
       "name": "ゆっこ×ベアレン ととのいフェスト",
       "kana": "ゆっこべあれんととのいふぇすと",
       "prefecture": "iwate",
-      "officialUrl": "https://baeren-yukko2026.peatix.com"
+      "officialUrl": "https://baeren-yukko2026.peatix.com",
+      "breweryIds": [
+        "baeren-kitayama"
+      ]
     },
     {
       "kind": "festival",
@@ -522,7 +528,10 @@
       "name": "ZAO BREWERY 秋のビール祭り",
       "kana": "ざおうぶるわりーあきのびーるまつり",
       "prefecture": "yamagata",
-      "officialUrl": "https://www.zao-brewery.jp/"
+      "officialUrl": "https://www.zao-brewery.jp/",
+      "breweryIds": [
+        "zao-brewery"
+      ]
     },
     {
       "kind": "festival",
@@ -532,6 +541,68 @@
       "kana": "さまーふぇすたいんこおりやま",
       "prefecture": "fukushima",
       "officialUrl": "https://www.ko-cci.or.jp/event/summer/"
+    },
+    {
+      "usualPeriod": "月1〜2回の土曜の夜",
+      "id": "oirase-saturday-night",
+      "name": "奥入瀬サタデーナイト",
+      "kana": "おいらせさたでーないと",
+      "kind": "brewery",
+      "prefecture": "aomori",
+      "officialUrl": "https://oirase.beer/saturday-night/",
+      "breweryIds": [
+        "oirase-brewery"
+      ]
+    },
+    {
+      "usualPeriod": null,
+      "id": "tendo-brewery-oktoberfest",
+      "name": "天童ブルワリー オクトーバーフェスト",
+      "kana": "てんどうぶるわりーおくとーばーふぇすと",
+      "kind": "brewery",
+      "prefecture": "yamagata",
+      "officialUrl": "https://tendo-brewery.itiraku.com/",
+      "breweryIds": [
+        "tendo-brewery"
+      ]
+    },
+    {
+      "usualPeriod": null,
+      "id": "jacks-tendo-hop-planting",
+      "name": "ホップ植栽イベント（米沢ジャックスブルワリー×天童ブルワリー）",
+      "kana": "ほっぷしょくさいいべんと",
+      "kind": "brewery",
+      "prefecture": "yamagata",
+      "officialUrl": "https://tendo-brewery.itiraku.com/",
+      "breweryIds": [
+        "yonezawa-jacks-brewery",
+        "tendo-brewery"
+      ]
+    },
+    {
+      "usualPeriod": null,
+      "id": "highlandport-beer-party",
+      "name": "ハイランドポートブルワリー ビールの会",
+      "kana": "はいらんどぽーとぶるわりーびーるのかい",
+      "kind": "brewery",
+      "prefecture": "fukushima",
+      "officialUrl": "https://www.cafeof.com/index.html",
+      "breweryIds": [
+        "highlandport-brewery"
+      ]
+    },
+    {
+      "usualPeriod": null,
+      "id": "beer-or-beer-nihonbashi",
+      "name": "Beer or Beer?",
+      "kana": "びあおあびあ",
+      "kind": "festival",
+      "prefecture": "tokyo",
+      "officialUrl": "https://www.instagram.com/beer_or_beer_nihonbashi/",
+      "breweryIds": [
+        "good-hops",
+        "black-tide-brewing"
+      ]
     }
   ],
   "events": [
@@ -2104,6 +2175,318 @@
           "title": "郡山商工会議所のプレスリリース（PR TIMES）",
           "url": "https://prtimes.jp/main/html/rd/p/000000040.000163573.html",
           "accessedAt": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "id": "oirase-saturday-night-2026-11-28",
+      "seriesId": "oirase-saturday-night",
+      "edition": null,
+      "status": "scheduled",
+      "startDate": "2026-11-28",
+      "endDate": "2026-11-28",
+      "hours": "18:00〜20:30",
+      "prefecture": "aomori",
+      "city": "十和田市",
+      "venue": "OIRASE BEER（Brewery & Restaurant）",
+      "priceNote": "夜限定の特別価格（金額は公式で確認）",
+      "officialUrl": "https://oirase.beer/saturday-night/",
+      "ticketUrl": null,
+      "note": "十和田市内から無料シャトルバスあり",
+      "lastVerified": "2026-10-26",
+      "sources": [
+        {
+          "title": "奥入瀬ビール 公式サイト",
+          "url": "https://oirase.beer/saturday-night/",
+          "accessedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "oirase-saturday-night-2026-12-12",
+      "seriesId": "oirase-saturday-night",
+      "edition": null,
+      "status": "scheduled",
+      "startDate": "2026-12-12",
+      "endDate": "2026-12-12",
+      "hours": "18:00〜20:30",
+      "prefecture": "aomori",
+      "city": "十和田市",
+      "venue": "OIRASE BEER（Brewery & Restaurant）",
+      "priceNote": "夜限定の特別価格（金額は公式で確認）",
+      "officialUrl": "https://oirase.beer/saturday-night/",
+      "ticketUrl": null,
+      "note": "十和田市内から無料シャトルバスあり",
+      "lastVerified": "2026-10-26",
+      "sources": [
+        {
+          "title": "奥入瀬ビール 公式サイト",
+          "url": "https://oirase.beer/saturday-night/",
+          "accessedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "oirase-saturday-night-2026-12-26",
+      "seriesId": "oirase-saturday-night",
+      "edition": null,
+      "status": "scheduled",
+      "startDate": "2026-12-26",
+      "endDate": "2026-12-26",
+      "hours": "18:00〜20:30",
+      "prefecture": "aomori",
+      "city": "十和田市",
+      "venue": "OIRASE BEER（Brewery & Restaurant）",
+      "priceNote": "夜限定の特別価格（金額は公式で確認）",
+      "officialUrl": "https://oirase.beer/saturday-night/",
+      "ticketUrl": null,
+      "note": "十和田市内から無料シャトルバスあり",
+      "lastVerified": "2026-10-26",
+      "sources": [
+        {
+          "title": "奥入瀬ビール 公式サイト",
+          "url": "https://oirase.beer/saturday-night/",
+          "accessedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "oirase-saturday-night-2027-01-09",
+      "seriesId": "oirase-saturday-night",
+      "edition": null,
+      "status": "scheduled",
+      "startDate": "2027-01-09",
+      "endDate": "2027-01-09",
+      "hours": "18:00〜20:30",
+      "prefecture": "aomori",
+      "city": "十和田市",
+      "venue": "OIRASE BEER（Brewery & Restaurant）",
+      "priceNote": "夜限定の特別価格（金額は公式で確認）",
+      "officialUrl": "https://oirase.beer/saturday-night/",
+      "ticketUrl": null,
+      "note": "十和田市内から無料シャトルバスあり",
+      "lastVerified": "2026-10-26",
+      "sources": [
+        {
+          "title": "奥入瀬ビール 公式サイト",
+          "url": "https://oirase.beer/saturday-night/",
+          "accessedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "oirase-saturday-night-2027-01-23",
+      "seriesId": "oirase-saturday-night",
+      "edition": null,
+      "status": "scheduled",
+      "startDate": "2027-01-23",
+      "endDate": "2027-01-23",
+      "hours": "18:00〜20:30",
+      "prefecture": "aomori",
+      "city": "十和田市",
+      "venue": "OIRASE BEER（Brewery & Restaurant）",
+      "priceNote": "夜限定の特別価格（金額は公式で確認）",
+      "officialUrl": "https://oirase.beer/saturday-night/",
+      "ticketUrl": null,
+      "note": "十和田市内から無料シャトルバスあり",
+      "lastVerified": "2026-10-26",
+      "sources": [
+        {
+          "title": "奥入瀬ビール 公式サイト",
+          "url": "https://oirase.beer/saturday-night/",
+          "accessedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "oirase-saturday-night-2027-02-13",
+      "seriesId": "oirase-saturday-night",
+      "edition": null,
+      "status": "scheduled",
+      "startDate": "2027-02-13",
+      "endDate": "2027-02-13",
+      "hours": "18:00〜20:30",
+      "prefecture": "aomori",
+      "city": "十和田市",
+      "venue": "OIRASE BEER（Brewery & Restaurant）",
+      "priceNote": "夜限定の特別価格（金額は公式で確認）",
+      "officialUrl": "https://oirase.beer/saturday-night/",
+      "ticketUrl": null,
+      "note": "十和田市内から無料シャトルバスあり",
+      "lastVerified": "2026-10-26",
+      "sources": [
+        {
+          "title": "奥入瀬ビール 公式サイト",
+          "url": "https://oirase.beer/saturday-night/",
+          "accessedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "oirase-saturday-night-2027-02-27",
+      "seriesId": "oirase-saturday-night",
+      "edition": null,
+      "status": "scheduled",
+      "startDate": "2027-02-27",
+      "endDate": "2027-02-27",
+      "hours": "18:00〜20:30",
+      "prefecture": "aomori",
+      "city": "十和田市",
+      "venue": "OIRASE BEER（Brewery & Restaurant）",
+      "priceNote": "夜限定の特別価格（金額は公式で確認）",
+      "officialUrl": "https://oirase.beer/saturday-night/",
+      "ticketUrl": null,
+      "note": "十和田市内から無料シャトルバスあり",
+      "lastVerified": "2026-10-26",
+      "sources": [
+        {
+          "title": "奥入瀬ビール 公式サイト",
+          "url": "https://oirase.beer/saturday-night/",
+          "accessedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "oirase-saturday-night-2027-03-13",
+      "seriesId": "oirase-saturday-night",
+      "edition": null,
+      "status": "scheduled",
+      "startDate": "2027-03-13",
+      "endDate": "2027-03-13",
+      "hours": "18:00〜20:30",
+      "prefecture": "aomori",
+      "city": "十和田市",
+      "venue": "OIRASE BEER（Brewery & Restaurant）",
+      "priceNote": "夜限定の特別価格（金額は公式で確認）",
+      "officialUrl": "https://oirase.beer/saturday-night/",
+      "ticketUrl": null,
+      "note": "十和田市内から無料シャトルバスあり",
+      "lastVerified": "2026-10-26",
+      "sources": [
+        {
+          "title": "奥入瀬ビール 公式サイト",
+          "url": "https://oirase.beer/saturday-night/",
+          "accessedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "oirase-saturday-night-2027-03-27",
+      "seriesId": "oirase-saturday-night",
+      "edition": null,
+      "status": "scheduled",
+      "startDate": "2027-03-27",
+      "endDate": "2027-03-27",
+      "hours": "18:00〜20:30",
+      "prefecture": "aomori",
+      "city": "十和田市",
+      "venue": "OIRASE BEER（Brewery & Restaurant）",
+      "priceNote": "夜限定の特別価格（金額は公式で確認）",
+      "officialUrl": "https://oirase.beer/saturday-night/",
+      "ticketUrl": null,
+      "note": "十和田市内から無料シャトルバスあり",
+      "lastVerified": "2026-10-26",
+      "sources": [
+        {
+          "title": "奥入瀬ビール 公式サイト",
+          "url": "https://oirase.beer/saturday-night/",
+          "accessedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "tendo-brewery-oktoberfest-2026",
+      "seriesId": "tendo-brewery-oktoberfest",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-09-24",
+      "endDate": "2026-10-31",
+      "hours": null,
+      "prefecture": "yamagata",
+      "city": "天童市",
+      "venue": "湯坊いちらく",
+      "priceNote": null,
+      "officialUrl": "https://tendo-brewery.itiraku.com/",
+      "ticketUrl": null,
+      "note": "宿泊プランのイベント。予約・料金は公式で確認",
+      "lastVerified": "2026-10-26",
+      "sources": [
+        {
+          "title": "天童ブルワリー 公式サイト（掲載のお知らせ）",
+          "url": "https://tendo-brewery.itiraku.com/",
+          "accessedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "jacks-tendo-hop-planting-2026",
+      "seriesId": "jacks-tendo-hop-planting",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-11-04",
+      "endDate": "2026-11-04",
+      "hours": "10:00〜15:00（予定）",
+      "prefecture": "yamagata",
+      "city": "米沢市",
+      "venue": "米沢ジャックスブルワリー",
+      "priceNote": "6,000円（先着10名）",
+      "officialUrl": "https://tendo-brewery.itiraku.com/",
+      "ticketUrl": null,
+      "note": "雨天決行",
+      "lastVerified": "2026-10-26",
+      "sources": [
+        {
+          "title": "天童ブルワリー 公式サイト（掲載のお知らせ）",
+          "url": "https://tendo-brewery.itiraku.com/",
+          "accessedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "highlandport-beer-party-2026-11",
+      "seriesId": "highlandport-beer-party",
+      "edition": "2026年11月",
+      "status": "scheduled",
+      "startDate": "2026-11-21",
+      "endDate": "2026-11-21",
+      "hours": "15:30〜18:30",
+      "prefecture": "fukushima",
+      "city": "西白河郡西郷村",
+      "venue": "カフェ お家パン オブ",
+      "priceNote": null,
+      "officialUrl": "https://www.cafeof.com/index.html",
+      "ticketUrl": null,
+      "note": "",
+      "lastVerified": "2026-10-26",
+      "sources": [
+        {
+          "title": "カフェ お家パン オブ 公式サイト",
+          "url": "https://www.cafeof.com/index.html",
+          "accessedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "beer-or-beer-nihonbashi-2026",
+      "seriesId": "beer-or-beer-nihonbashi",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-10-30",
+      "endDate": "2026-11-03",
+      "hours": null,
+      "prefecture": "tokyo",
+      "city": "中央区",
+      "venue": "日本橋三越本店 屋上「日本橋庭園」",
+      "priceNote": null,
+      "officialUrl": "https://www.instagram.com/beer_or_beer_nihonbashi/",
+      "ticketUrl": null,
+      "note": "出店ブルワリーは日替わり。GOOD HOPS・BLACK TIDE BREWING は11月1日〜3日",
+      "lastVerified": "2026-10-26",
+      "sources": [
+        {
+          "title": "GOOD HOPS 公式サイトのお知らせ",
+          "url": "https://goodhops.jp/news/611/",
+          "accessedAt": "2026-10-26"
         }
       ]
     }

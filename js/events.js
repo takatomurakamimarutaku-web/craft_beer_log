@@ -5,7 +5,17 @@ export const EVENTS_FORMAT_VERSION = 1;
 /** 最終確認からこの日数を過ぎた開催予定のイベントは「情報が古い可能性」を出す */
 export const STALE_DAYS = 60;
 
-export const EVENT_KINDS = { festival: 'ビアフェス', beergarden: 'ビアガーデン', tasting: '試飲会・セミナー', other: 'その他' };
+export const EVENT_KINDS = {
+  festival: 'ビアフェス',
+  beergarden: 'ビアガーデン',
+  tasting: '試飲会・セミナー',
+  tto: 'タップテイクオーバー',
+  brewery: '醸造所のイベント',
+  other: 'その他',
+};
+/** 一覧の切り替え。お店・醸造所のイベント（TTO・周年会・開放デーなど）は件数が多いのでフェスと分けて出す */
+export const EVENT_SCOPES = { fes: 'フェス', shop: 'お店・醸造所' };
+const SHOP_KINDS = new Set(['tto', 'brewery']);
 export const EVENT_STATUSES = { scheduled: '開催予定', tentative: '予告', cancelled: '中止', postponed: '延期' };
 
 export const REGIONS = [
@@ -92,6 +102,11 @@ export function formatEventDates(startDate, endDate) {
   return `${start}〜${end}（${wd(endDate)}）`;
 }
 
+/** 'shop'（お店・醸造所のイベント）か 'fes'（それ以外） */
+export function eventScope(event) {
+  return SHOP_KINDS.has(event.kind) ? 'shop' : 'fes';
+}
+
 /** シリーズとイベントを結びつけ、表示に使う項目を足す */
 export function joinEvents(data) {
   const series = new Map((data?.series || []).map((s) => [s.id, s]));
@@ -104,6 +119,7 @@ export function joinEvents(data) {
       kana: s.kana || '',
       kind: s.kind || 'other',
       usualPeriod: s.usualPeriod || null,
+      breweryIds: Array.isArray(s.breweryIds) ? s.breweryIds : [],
       prefectureLabel: pref?.label || '',
       region: pref?.region || null,
     };
@@ -112,12 +128,14 @@ export function joinEvents(data) {
 
 /**
  * 一覧の絞り込みと並べ替え。
- * criteria: { q, region, past }。past=false は終了していないもの（日付の早い順）、true は終了したもの（新しい順）
+ * criteria: { q, region, past, scope }。past=false は終了していないもの（日付の早い順）、true は終了したもの（新しい順）。
+ * scope は 'fes' / 'shop'（null ならすべて）
  */
-export function filterEvents(events, { q = '', region = null, past = false } = {}, today) {
+export function filterEvents(events, { q = '', region = null, past = false, scope = null } = {}, today) {
   const key = normalize(q);
   const list = events.filter((e) => {
     if ((eventPhase(e, today) === 'past') !== past) return false;
+    if (scope && eventScope(e) !== scope) return false;
     if (region && e.region !== region) return false;
     if (key) {
       const texts = [e.name, e.kana, e.venue, e.city, e.prefectureLabel, e.edition];
@@ -155,6 +173,32 @@ export function otherEditions(events, event) {
   return events.filter((e) => e.seriesId === event.seriesId && e.id !== event.id).sort((a, b) => b.startDate.localeCompare(a.startDate));
 }
 
+/**
+ * 同じシリーズの回を、並びの最初の1件にまとめる（毎月の開放デーなどで一覧が埋まらないように）。
+ * まとめた件数を moreCount に入れて返す
+ */
+export function collapseSeries(list) {
+  const first = new Map();
+  for (const e of list) {
+    const f = first.get(e.seriesId);
+    if (f) f.moreCount += 1;
+    else first.set(e.seriesId, { ...e, moreCount: 0 });
+  }
+  return [...first.values()];
+}
+
+/**
+ * ブリュワーに関係するイベント（シリーズの breweryIds で紐付け）。
+ * upcoming は開催中・これから（日付の早い順）、past は終了したもの（新しい順、pastLimit 件まで）
+ */
+export function eventsForBrewery(events, breweryId, today, pastLimit = 3) {
+  const mine = events.filter((e) => e.breweryIds?.includes(breweryId) && e.status !== 'cancelled');
+  return {
+    upcoming: mine.filter((e) => eventPhase(e, today) !== 'past').sort((a, b) => a.startDate.localeCompare(b.startDate)),
+    past: mine.filter((e) => eventPhase(e, today) === 'past').sort((a, b) => b.startDate.localeCompare(a.startDate)).slice(0, pastLimit),
+  };
+}
+
 /** data/events.json の検証。エラーメッセージの配列を返す（空なら正常） */
 export function validateEventsData(data) {
   const errors = [];
@@ -178,6 +222,11 @@ export function validateEventsData(data) {
     if (!(s.prefecture in PREFECTURES)) errors.push(`${where}: prefecture が不正 (${s.prefecture})`);
     if (!URL_RE.test(s.officialUrl || '')) errors.push(`${where}: officialUrl が必要`);
     if (s.usualPeriod !== null && typeof s.usualPeriod !== 'string') errors.push(`${where}: usualPeriod は文字列か null`);
+    if (s.breweryIds !== undefined) {
+      if (!Array.isArray(s.breweryIds) || s.breweryIds.some((id) => !ID_RE.test(id || ''))) errors.push(`${where}: breweryIds はスラッグの配列`);
+      else if (new Set(s.breweryIds).size !== s.breweryIds.length) errors.push(`${where}: breweryIds が重複`);
+    }
+    if (SHOP_KINDS.has(s.kind) && !s.breweryIds?.length) errors.push(`${where}: お店・醸造所のイベントは breweryIds が必要`);
   }
 
   const eventIds = new Set();
