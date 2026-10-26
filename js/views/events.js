@@ -13,6 +13,9 @@ import {
   buildIcs,
   REGIONS,
   EVENT_KINDS,
+  EVENT_SCOPES,
+  eventScope,
+  collapseSeries,
   EVENT_STATUSES,
   PLAN_STATUSES,
 } from '../events.js';
@@ -21,7 +24,7 @@ import { compareCheckinsDesc } from '../models.js';
 
 const STORAGE_KEY = 'eventsState';
 const DISCLAIMER = '開催情報は変わることがあります。お出かけ前に公式サイトで確認してください。';
-const INITIAL = { q: '', region: null, past: false, mine: false };
+const INITIAL = { q: '', region: null, past: false, mine: false, scope: 'fes' };
 let state = null; // 画面を移動しても絞り込みを保持する
 
 function loadState() {
@@ -93,6 +96,12 @@ function renderList({ outlet, query }, events, plans, updatedAt, today) {
     value: s.past,
     onChange: (past) => update({ past }),
   });
+  const scope = segmented({
+    name: '種類',
+    options: Object.entries(EVENT_SCOPES).map(([value, label]) => ({ value, label })),
+    value: s.scope,
+    onChange: (v) => update({ scope: v }),
+  });
   const mine = h('button', {
     type: 'button',
     class: 'chip',
@@ -113,6 +122,7 @@ function renderList({ outlet, query }, events, plans, updatedAt, today) {
   const body = h('div', { class: 'events-body', 'aria-live': 'polite' });
   outlet.replaceChildren(
     h('div', { class: 'search-bar' }, input),
+    h('div', { class: 'filter-group events-scope' }, scope),
     h('div', { class: 'filter-group events-when' }, when, mine),
     h('div', { class: 'filter-group events-regions' }, regions),
     body,
@@ -123,14 +133,18 @@ function renderList({ outlet, query }, events, plans, updatedAt, today) {
   function renderBody() {
     let list = filterEvents(events, s, today);
     if (s.mine) list = list.filter((e) => plans.get(e.id)?.status);
+    // お店・醸造所のこれからは、毎月の開催などを次の1回にまとめる
+    if (s.scope === 'shop' && !s.past && !s.mine) list = collapseSeries(list);
     if (!list.length) {
       const msg = s.mine
         ? 'イベントの詳細で「行きたい」「行く」「行った」を選ぶと、ここに出ます。'
         : s.q || s.region
           ? '条件に合うイベントはありません。'
-          : s.past
-            ? '終了したイベントはまだありません。'
-            : '予定されているイベントはまだありません。';
+          : s.scope === 'shop'
+            ? 'お店・醸造所のイベントは、ブリュワー情報に載っている醸造所が公式サイトで告知したものを週1回まとめて載せます。'
+            : s.past
+              ? '終了したイベントはまだありません。'
+              : '予定されているイベントはまだありません。';
       return body.replaceChildren(emptyState(msg));
     }
     if (s.past) {
@@ -175,8 +189,10 @@ function badges(e, plan, today, className) {
   if (e.status !== 'scheduled') items.push(h('span', { class: 'badge badge-warn', text: EVENT_STATUSES[e.status] }));
   else if (eventPhase(e, today) === 'ongoing') items.push(h('span', { class: 'badge badge-live', text: '開催中' }));
   if (isStale(e, today)) items.push(h('span', { class: 'badge badge-warn', text: '情報が古い可能性' }));
+  if (eventScope(e) === 'shop') items.push(h('span', { text: EVENT_KINDS[e.kind] }));
   // 年だけの回（"2026"）は日程と重なるので出さない
   if (e.edition && !/^\d{4}$/.test(e.edition)) items.push(h('span', { text: e.edition }));
+  if (e.moreCount) items.push(h('span', { text: `ほか${e.moreCount}回` }));
   return items.length ? h('div', { class: className }, items) : null;
 }
 
@@ -188,8 +204,13 @@ async function renderDetail({ app, outlet, params, isStale: stale }, events, pla
     outlet.replaceChildren(emptyState('イベントが見つかりません。', h('a', { class: 'btn', href: '#/events', text: 'イベント一覧へ' })));
     return;
   }
-  const [checkins, beers] = await Promise.all([app.db.listCheckins(), app.db.listBeers()]);
+  const [checkins, beers, breweries] = await Promise.all([
+    app.db.listCheckins(),
+    app.db.listBeers(),
+    e.breweryIds.length ? app.loadBreweries().catch(() => null) : null,
+  ]);
   if (stale()) return;
+  const relatedBreweries = e.breweryIds.map((id) => breweries?.index.byId.get(id)).filter(Boolean);
   const mine = checkins.filter((c) => c.place?.eventId === e.id).sort(compareCheckinsDesc);
   const beerById = new Map(beers.map((b) => [b.id, b]));
 
@@ -288,6 +309,18 @@ async function renderDetail({ app, outlet, params, isStale: stale }, events, pla
       row('例年', e.usualPeriod),
       row('最終確認', formatDate(e.lastVerified)),
     ),
+    relatedBreweries.length
+      ? h(
+          'section',
+          { class: 'panel' },
+          h('h3', { class: 'section-title', text: '関係するブリュワー' }),
+          h(
+            'ul',
+            { class: 'card-list' },
+            relatedBreweries.map((b) => h('li', {}, h('a', { class: 'menu-item', href: `#/brewery/${encodeURIComponent(b.id)}` }, h('span', { text: b.name }), h('span', { class: 'muted small', text: b.city || '' })))),
+          ),
+        )
+      : null,
     others.length
       ? h(
           'section',

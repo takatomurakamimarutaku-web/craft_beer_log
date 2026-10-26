@@ -5,9 +5,15 @@ import { normalize } from '../search.js';
 import { errorText } from '../errors.js';
 import { PREFS, KIND_LABELS, FEATURE_LABELS, AVAILABILITY, VERIFICATION_LABELS, LINK_LABELS, addressText, isSafeUrl, groupBeersByBrewery, makeBreweryNote } from '../breweries.js';
 import { creditNote } from './breweries.js';
+import { joinEvents, eventsForBrewery, collapseSeries, formatEventDates, localDateString, EVENT_KINDS } from '../events.js';
 
 export async function render({ app, outlet, params }) {
-  const [data, beers, saved] = await Promise.all([app.loadBreweries(), app.db.listBeers(), app.db.getBreweryNote(params.id)]);
+  const [data, beers, saved, eventData] = await Promise.all([
+    app.loadBreweries(),
+    app.db.listBeers(),
+    app.db.getBreweryNote(params.id),
+    app.loadEvents().catch(() => null),
+  ]);
   const b = data.index.byId.get(params.id);
   if (!b) {
     outlet.replaceChildren(h('p', { class: 'empty', text: 'このブリュワーは見つかりませんでした。' }));
@@ -79,6 +85,35 @@ export async function render({ app, outlet, params }) {
   const mine = h('section', { class: 'panel' });
   renderMine();
 
+  // ---- イベント（events.json のシリーズの breweryIds で紐付け） ----
+  const related = eventData ? eventsForBrewery(joinEvents(eventData), b.id, localDateString()) : { upcoming: [], past: [] };
+  const eventItem = (e) =>
+    h(
+      'li',
+      {},
+      h(
+        'a',
+        { class: 'menu-item brewery-event', href: `#/event/${encodeURIComponent(e.id)}` },
+        h(
+          'span',
+          { class: 'brewery-event-text' },
+          h('span', { text: e.name }),
+          h('span', { class: 'muted small', text: [formatEventDates(e.startDate, e.endDate), EVENT_KINDS[e.kind], e.moreCount ? `ほか${e.moreCount}回` : ''].filter(Boolean).join('・') }),
+        ),
+      ),
+    );
+  const eventsSection =
+    related.upcoming.length || related.past.length
+      ? h(
+          'section',
+          { class: 'panel' },
+          h('h3', { class: 'section-title', text: 'イベント' }),
+          related.upcoming.length ? h('ul', { class: 'card-list' }, collapseSeries(related.upcoming).map(eventItem)) : h('p', { class: 'muted small', text: 'これからのイベントは載っていません。' }),
+          related.past.length ? h('p', { class: 'small muted', text: '終了したイベント' }) : null,
+          related.past.length ? h('ul', { class: 'card-list' }, related.past.map(eventItem)) : null,
+        )
+      : null;
+
   // ---- 行った・行きたい・メモ ----
   const visitList = h('ul', { class: 'plain-list visit-list' });
   const dateInput = h('input', { type: 'date', value: todayString(), max: todayString(), 'aria-label': '行った日' });
@@ -114,7 +149,7 @@ export async function render({ app, outlet, params }) {
     h('p', { class: 'small' }, '誤りに気づいたら ', h('a', { href: 'feedback/', text: '感想フォーム' }), ' から教えてください。'),
   );
 
-  outlet.replaceChildren(...[head, profile, mine, visits, place, linkSection, provenance].filter(Boolean));
+  outlet.replaceChildren(...[head, profile, eventsSection, mine, visits, place, linkSection, provenance].filter(Boolean));
 
   function renderMine() {
     mine.replaceChildren(

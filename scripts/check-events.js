@@ -18,6 +18,15 @@ if (errors.length) {
   for (const e of errors) console.error(`  - ${e}`);
   process.exit(1);
 }
+// breweryIds は data/breweries.json に載っている id であること
+const breweries = JSON.parse(readFileSync(join(dirname(path), 'breweries.json'), 'utf8'));
+const breweryIds = new Set(breweries.breweries.map((b) => b.id));
+const unknown = data.series.flatMap((s) => (s.breweryIds || []).filter((id) => !breweryIds.has(id)).map((id) => `series ${s.id}: breweryIds の ${id} がブリュワー情報にありません`));
+if (unknown.length) {
+  console.error(`NG: ${unknown.length}件の問題があります`);
+  for (const e of unknown) console.error(`  - ${e}`);
+  process.exit(1);
+}
 const today = localDateString();
 const events = joinEvents(data);
 const upcoming = events.filter((e) => eventPhase(e, today) !== 'past');
