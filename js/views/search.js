@@ -2,6 +2,7 @@
 import { h, chipGroup, segmented, createThumbLoader, thumbView, formatDate, formatAbv, emptyState } from '../ui.js';
 import { buildBeerSummaries, searchBeers, defaultCriteria, countActiveFilters } from '../search.js';
 import { styleLabel, SERVING_LABELS, PLACE_TYPE_LABELS } from '../models.js';
+import { beerColor } from '../knowledge.js';
 import { parseAbv } from '../validate.js';
 
 const PAGE = 50;
@@ -42,14 +43,14 @@ export async function render({ app, outlet }) {
   let shown = 0;
 
   if (!beers.length) {
-    outlet.replaceChildren(emptyState('検索できる銘柄がまだありません。', h('a', { class: 'btn btn-primary', href: '#/checkin/new', text: '＋ 記録する' })));
+    outlet.replaceChildren(emptyState('記録した銘柄を、名前・スタイル・評価などで探せます。', h('a', { class: 'btn btn-primary', href: '#/checkin/new', text: '＋ 記録する' }), { title: 'まだ銘柄がありません' }));
     return () => loader.destroy();
   }
 
   const keyword = h('input', {
     type: 'search',
     class: 'search-input',
-    placeholder: '名前・ブリュワーで検索',
+    placeholder: '銘柄名・ブリュワー',
     value: criteria.keyword,
     'aria-label': 'キーワード',
     enterkeyhint: 'search',
@@ -128,7 +129,7 @@ export async function render({ app, outlet }) {
       h(
         'a',
         { class: 'card', href: `#/beer/${encodeURIComponent(b.id)}` },
-        thumbView(s.photoId, loader),
+        thumbView(s.photoId, loader, 'thumb', beerColor(b, app.styles)),
         h(
           'div',
           { class: 'card-body' },

@@ -1,5 +1,5 @@
 // イベント（#/events 一覧、#/event/:id 詳細）
-import { h, emptyState, segmented, formatDate, stars, showToast } from '../ui.js';
+import { h, emptyState, segmented, formatDate, starsView, showToast } from '../ui.js';
 import {
   joinEvents,
   filterEvents,
@@ -262,7 +262,7 @@ async function renderDetail({ app, outlet, params, isStale: stale }, events, pla
                   'a',
                   { class: 'menu-item', href: `#/beer/${encodeURIComponent(c.beerId)}` },
                   h('span', { text: beer?.name || '（削除された銘柄）' }),
-                  h('span', { class: 'muted small' }, typeof c.rating === 'number' ? h('span', { class: 'stars', text: stars(c.rating) }) : null, ` ${formatDate(c.date)}`),
+                  h('span', { class: 'muted small' }, typeof c.rating === 'number' ? starsView(c.rating) : null, ` ${formatDate(c.date)}`),
                 ),
               );
             }),

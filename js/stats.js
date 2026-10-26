@@ -175,3 +175,22 @@ export function eventStats(checkins, names = new Map()) {
     .map(({ sum, rated, ...g }) => ({ ...g, avgRating: rated ? Math.round((sum / rated) * 10) / 10 : null }))
     .sort(byCountDesc);
 }
+
+/**
+ * 今月のまとめ（記録一覧の上に出す）。month は 'YYYY-MM'（省略時は now の月）。
+ * topStyle は今月いちばん多いスタイル（未入力は除く。同数なら countByStyle と同じ順）、無ければ null。
+ * @returns {{ month, count, beerCount, avg, topStyle }}
+ */
+export function monthSummary(beers, checkins, styles, { now = new Date() } = {}) {
+  const month = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+  const inMonth = checkins.filter((c) => typeof c.date === 'string' && c.date.startsWith(month));
+  const joined = joinBeers(beers, inMonth);
+  const top = countByStyle(beers, inMonth, styles).find((s) => s.key !== null);
+  return {
+    month,
+    count: joined.length,
+    beerCount: new Set(joined.map(({ beer }) => beer.id)).size,
+    avg: summarizeRatings(joined.map(({ c }) => c)).avg,
+    topStyle: top ? top.label : null,
+  };
+}

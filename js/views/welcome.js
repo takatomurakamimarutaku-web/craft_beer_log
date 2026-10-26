@@ -22,10 +22,14 @@ export function showWelcome(db) {
       (body.querySelector('h2') || body).focus();
     };
     const title = (text) => h('h2', { id: 'welcome-title', tabindex: '-1', text });
+    // 何ステップ目か（3つの点）。読み上げは見出しで足りるので隠す
+    const steps = (n) =>
+      h('div', { class: 'welcome-steps', 'aria-hidden': 'true' }, ...[1, 2, 3].map((i) => h('span', { class: i === n ? 'is-current' : '' })));
 
     function ageStep() {
       show(
         h('div', { class: 'welcome-art' }, glassIcon('welcome-glass')),
+        steps(1),
         title('ホップ手帖へようこそ'),
         h('p', { text: '飲んだクラフトビールを記録して、あとから探したり振り返ったりできるアプリです。' }),
         h('p', { class: 'welcome-strong', text: 'お酒に関する内容を含むため、20歳以上の方を対象としています。' }),
@@ -48,6 +52,7 @@ export function showWelcome(db) {
 
     function guideStep() {
       show(
+        steps(2),
         title('できること'),
         h(
           'ul',
@@ -64,6 +69,7 @@ export function showWelcome(db) {
     function dataStep() {
       const ios = currentInstallState() === 'ios-browser';
       show(
+        steps(3),
         title('記録はこの端末だけに保存されます'),
         h('p', { text: '記録や写真は外部に送信されず、この端末の中だけに保存されます。機種変更や故障に備えて、ときどき「その他 → 設定・バックアップ」からバックアップを作成してください。' }),
         ios ? installSteps() : null,
