@@ -6,7 +6,7 @@ export async function render({ app, outlet }) {
   const beers = (await app.db.listBeersByStatus('want')).sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
   const add = h('a', { class: 'btn btn-primary btn-block', href: '#/wishlist/new', text: '＋ 飲みたい銘柄を追加' });
   if (!beers.length) {
-    outlet.replaceChildren(emptyState('飲みたい銘柄を登録しておくと、お店で見つけたときにすぐ確認できます。', add));
+    outlet.replaceChildren(emptyState('飲みたい銘柄を登録しておくと、お店で見つけたときにすぐ確認できます。', add, { title: '飲みたいリストは空です' }));
     return;
   }
   const list = h(

@@ -1,10 +1,11 @@
 // 銘柄の詳細（#/beer/:id）
-import { h, svg, createThumbLoader, formatDate, formatAbv, formatYen, stars, confirmDialog, showToast, showPhoto, glassIcon } from '../ui.js';
+import { h, svg, createThumbLoader, formatDate, formatAbv, formatYen, starsView, confirmDialog, showToast, showPhoto, glassIcon } from '../ui.js';
 import { styleLabel, SERVING_LABELS, PLACE_TYPE_LABELS, STATUS_LABELS } from '../models.js';
 import { summarizeRatings } from '../stats.js';
 import { averageTasting, hasScores, tastingRadarSvg, tasteLabels, flavorLabels } from '../tasting.js';
 import { buildShareText, shareContent } from '../share.js';
 import { resolveBreweryId } from '../breweries.js';
+import { beerColor } from '../knowledge.js';
 
 export async function render({ app, outlet, params }) {
   const beer = await app.db.getBeer(params.id);
@@ -23,11 +24,13 @@ export async function render({ app, outlet, params }) {
   const summary = summarizeRatings(checkins);
   const loader = createThumbLoader((id) => app.db.getThumb(id));
   const style = styleLabel(beer, app.styles);
+  const color = beerColor(beer, app.styles);
 
+  // 上部はスタイルの色をうっすら敷いた見出しにする
   const info = h(
     'section',
-    { class: 'panel beer-head' },
-    h('div', { class: 'beer-head-icon' }, glassIcon()),
+    { class: 'panel beer-head', style: color ? `--beer:${color}` : null },
+    h('div', { class: 'beer-head-icon' }, glassIcon('glass-icon', color)),
     h(
       'div',
       {},
@@ -54,7 +57,7 @@ export async function render({ app, outlet, params }) {
     'section',
     { class: 'panel rating-summary' },
     h('div', {}, h('div', { class: 'muted small', text: '平均' }), h('div', { class: 'big', text: summary.avg !== null ? summary.avg.toFixed(1) : '—' })),
-    h('div', {}, h('div', { class: 'muted small', text: '最新' }), h('div', { class: 'big', text: summary.latest !== null ? stars(summary.latest) : '—' })),
+    h('div', {}, h('div', { class: 'muted small', text: '最新' }), summary.latest !== null ? h('div', { class: 'big' }, starsView(summary.latest)) : h('div', { class: 'big', text: '—' })),
     h('div', {}, h('div', { class: 'muted small', text: '飲んだ回数' }), h('div', { class: 'big', text: `${checkins.length}` })),
   );
 
@@ -115,7 +118,7 @@ export async function render({ app, outlet, params }) {
         'div',
         { class: 'history-head' },
         h('strong', { text: formatDate(c.date) }),
-        typeof c.rating === 'number' ? h('span', { class: 'stars', text: stars(c.rating) }) : h('span', { class: 'muted', text: '未評価' }),
+        typeof c.rating === 'number' ? starsView(c.rating) : h('span', { class: 'muted', text: '未評価' }),
         c.incomplete ? h('span', { class: 'badge badge-warn', text: '未入力あり' }) : null,
       ),
       place ? h('p', { class: 'small', text: place }) : null,

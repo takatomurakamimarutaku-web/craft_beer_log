@@ -169,3 +169,9 @@ export const GLASS_LABELS = {
   goblet: 'ゴブレット',
   stange: 'シュタンゲ',
 };
+
+/** 銘柄のスタイルから、グラスのイラストに使うビールの色を返す（スタイル未設定・その他は null） */
+export function beerColor(beer, styles) {
+  const style = beer?.styleId && styles.find((s) => s.id === beer.styleId);
+  return style ? srmToHex(styleDisplaySrm(style)) : null;
+}

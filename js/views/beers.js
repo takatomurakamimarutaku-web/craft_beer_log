@@ -1,6 +1,8 @@
 // 記録一覧（#/beers）
-import { h, createThumbLoader, thumbView, formatDate, formatAbv, stars, emptyState } from '../ui.js';
+import { h, createThumbLoader, thumbView, formatDate, formatAbv, starsView, emptyState } from '../ui.js';
 import { styleLabel } from '../models.js';
+import { beerColor } from '../knowledge.js';
+import { monthSummary } from '../stats.js';
 import { backupReminder, backupReminderText } from '../backup.js';
 import { currentInstallState } from '../install.js';
 import { showInstallGuide } from './welcome.js';
@@ -23,8 +25,9 @@ export async function render({ app, outlet }) {
   if (!checkins.length) {
     outlet.append(
       emptyState(
-        'まだ記録がありません。最初の1杯を記録しましょう。',
+        '飲んだビールを記録すると、ここに並びます。名前だけでも記録できます。',
         h('a', { class: 'btn btn-primary', href: '#/checkin/new', text: '＋ 最初の1杯を記録する' }),
+        { title: '最初の1杯を記録しましょう' },
       ),
     );
     return () => loader.destroy();
@@ -52,17 +55,24 @@ export async function render({ app, outlet }) {
     outlet.append(note);
   }
 
-  outlet.append(h('p', { class: 'list-meta', text: `${checkins.length}件の記録` }));
+  outlet.append(summaryCard(monthSummary(beers, checkins, app.styles), checkins.length));
   const list = h('ul', { class: 'card-list' });
   outlet.append(list);
 
   let shown = 0;
+  let lastMonth = '';
   const more = h('button', { type: 'button', class: 'btn btn-block', text: 'さらに表示', onclick: () => appendPage() });
   function appendPage() {
     const slice = checkins.slice(shown, shown + PAGE);
     for (const c of slice) {
       const beer = beerMap.get(c.beerId);
       if (!beer) continue;
+      // 月が変わるところに見出しを入れる
+      const month = typeof c.date === 'string' ? c.date.slice(0, 7) : '';
+      if (month && month !== lastMonth) {
+        list.append(h('li', { class: 'list-month', 'aria-hidden': 'true', text: `${Number(month.slice(0, 4))}年${Number(month.slice(5))}月` }));
+        lastMonth = month;
+      }
       list.append(checkinCard(c, beer, app, loader));
     }
     shown += slice.length;
@@ -74,6 +84,23 @@ export async function render({ app, outlet }) {
   return () => loader.destroy();
 }
 
+/** 記録一覧の上の「今月のまとめ」。タップで統計へ */
+function summaryCard(s, total) {
+  const monthLabel = `${Number(s.month.slice(5))}月`;
+  const factList = s.count
+    ? [`${s.beerCount}銘柄`, s.avg !== null ? `平均 ★${s.avg.toFixed(1)}` : null, s.topStyle ? `よく飲む：${s.topStyle}` : null].filter(Boolean)
+    : ['まだ記録がありません'];
+  const facts = factList.join('、');
+  return h(
+    'a',
+    { class: 'summary-card', href: '#/stats', 'aria-label': `${monthLabel}は${s.count}杯。${facts}。これまでの記録は${total}件。統計を見る` },
+    h('span', { class: 'summary-month', text: `${monthLabel}のビール` }),
+    h('span', { class: 'summary-count' }, h('b', { text: String(s.count) }), h('small', { text: '杯' })),
+    h('span', { class: 'summary-facts' }, ...factList.map((t) => h('span', { text: t }))),
+    h('span', { class: 'summary-total', text: `これまで ${total}件の記録 · 統計を見る ›` }),
+  );
+}
+
 function checkinCard(c, beer, app, loader) {
   const meta = [beer.brewery, styleLabel(beer, app.styles), formatAbv(beer.abv)].filter(Boolean).join(' · ');
   return h(
@@ -82,7 +109,7 @@ function checkinCard(c, beer, app, loader) {
     h(
       'a',
       { class: 'card', href: `#/beer/${encodeURIComponent(beer.id)}` },
-      thumbView(c.photoIds?.[0], loader),
+      thumbView(c.photoIds?.[0], loader, 'thumb', beerColor(beer, app.styles)),
       h(
         'div',
         { class: 'card-body' },
@@ -92,7 +119,7 @@ function checkinCard(c, beer, app, loader) {
           'div',
           { class: 'card-foot' },
           h('span', { text: formatDate(c.date) }),
-          typeof c.rating === 'number' ? h('span', { class: 'stars', text: stars(c.rating) }) : null,
+          typeof c.rating === 'number' ? starsView(c.rating) : null,
           c.incomplete ? h('span', { class: 'badge badge-warn', text: '未入力あり' }) : null,
         ),
       ),
