@@ -538,6 +538,9 @@ a.summary-card:active { transform: scale(0.985); }
 .changelog-entry { margin-top: 8px; }
 
 /* ---- イベント ---- */
+.events-scope .segmented { width: 100%; }
+.events-scope .seg { flex: 1; }
+.brewery-event-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .events-regions .segmented { flex-wrap: wrap; }
 .events-regions .seg { min-height: 36px; padding: 0 12px; font-size: 0.85rem; }
 .event-card .card-meta { white-space: normal; }

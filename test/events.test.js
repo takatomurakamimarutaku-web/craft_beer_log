@@ -12,6 +12,9 @@ import {
   filterEvents,
   groupUpcoming,
   otherEditions,
+  eventScope,
+  eventsForBrewery,
+  collapseSeries,
   PREFECTURES,
   REGIONS,
 } from '../js/events.js';
@@ -239,4 +242,51 @@ test('検索：イベントで飲んだ銘柄だけに絞り込める', () => {
   assert.deepEqual(searchBeers(s, { eventId: 'e1' }).map((x) => x.beer.name), ['A']);
   assert.equal(searchBeers(s, {}).length, 2);
   assert.equal(countActiveFilters({ eventId: 'e1' }), 1);
+});
+
+test('お店・醸造所のイベント：フェスと切り替えられ、ブリュワーに紐付く', () => {
+  const events = joinEvents({
+    series: [
+      { id: 'f', name: 'フェス', kana: 'ふぇす', kind: 'festival', prefecture: 'aomori', breweryIds: ['b1'] },
+      { id: 't', name: 'TTO', kana: 'てぃーてぃーおー', kind: 'tto', prefecture: 'aomori', breweryIds: ['b1', 'b2'] },
+      { id: 'o', name: '開放デー', kana: 'かいほうでー', kind: 'brewery', prefecture: 'aomori', breweryIds: ['b2'] },
+    ],
+    events: [
+      ev({ id: 'f1', seriesId: 'f', prefecture: 'aomori', city: '十和田市', venue: 'A', startDate: '2026-09-19', endDate: '2026-09-20' }),
+      ev({ id: 't1', seriesId: 't', prefecture: 'aomori', city: '弘前市', venue: 'B', startDate: '2026-11-07', endDate: '2026-11-07' }),
+      ev({ id: 'o1', seriesId: 'o', prefecture: 'aomori', city: '弘前市', venue: 'C', startDate: '2026-11-01', endDate: '2026-11-01' }),
+      ev({ id: 'o2', seriesId: 'o', prefecture: 'aomori', city: '弘前市', venue: 'C', startDate: '2026-12-01', endDate: '2026-12-01', status: 'cancelled' }),
+    ],
+  });
+  const today = '2026-10-26';
+  assert.deepEqual(events.map(eventScope), ['fes', 'shop', 'shop', 'shop']);
+  assert.deepEqual(filterEvents(events, { scope: 'shop' }, today).map((e) => e.id), ['o1', 't1', 'o2']);
+  assert.deepEqual(filterEvents(events, { scope: 'fes', past: true }, today).map((e) => e.id), ['f1']);
+  assert.equal(filterEvents(events, {}, today).length, 3); // scope 未指定ならすべて
+  const b1 = eventsForBrewery(events, 'b1', today);
+  assert.deepEqual(b1.upcoming.map((e) => e.id), ['t1']);
+  assert.deepEqual(b1.past.map((e) => e.id), ['f1']);
+  assert.deepEqual(eventsForBrewery(events, 'b2', today).upcoming.map((e) => e.id), ['o1', 't1']); // 中止は出さない
+  assert.deepEqual(eventsForBrewery(events, 'none', today), { upcoming: [], past: [] });
+});
+
+test('validateEventsData：お店・醸造所のイベントは breweryIds が必要', () => {
+  const base = JSON.parse(JSON.stringify(data));
+  base.series[0] = { ...base.series[0], kind: 'tto', breweryIds: undefined };
+  assert.ok(validateEventsData(base).some((m) => m.includes('breweryIds が必要')));
+  base.series[0].breweryIds = ['Bad Id'];
+  assert.ok(validateEventsData(base).some((m) => m.includes('スラッグの配列')));
+  base.series[0].breweryIds = ['a', 'a'];
+  assert.ok(validateEventsData(base).some((m) => m.includes('breweryIds が重複')));
+});
+
+test('events.json：breweryIds はブリュワー情報にある id', () => {
+  const breweries = JSON.parse(readFileSync(new URL('../data/breweries.json', import.meta.url), 'utf8'));
+  const ids = new Set(breweries.breweries.map((b) => b.id));
+  for (const s of data.series) for (const id of s.breweryIds || []) assert.ok(ids.has(id), `${s.id}: ${id}`);
+});
+
+test('collapseSeries：同じシリーズは最初の1回にまとめ、残りの回数を数える', () => {
+  const list = [ev({ id: 'a1', seriesId: 'a' }), ev({ id: 'b1', seriesId: 'b' }), ev({ id: 'a2', seriesId: 'a' }), ev({ id: 'a3', seriesId: 'a' })];
+  assert.deepEqual(collapseSeries(list).map((e) => [e.id, e.moreCount]), [['a1', 2], ['b1', 0]]);
 });

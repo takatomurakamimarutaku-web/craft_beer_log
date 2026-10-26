@@ -183,12 +183,13 @@ NFKC 正規化 → 小文字化 → ひらがなをカタカナに統一 → 前
 
 毎年続くイベントを `series`、各年の開催を `events` に分けて持ちます。説明文や画像は持たず、日程・会場・料金などの事実だけを、主催者の公式ページ（無ければ自治体・観光協会のページ）で確認して自分の言葉で書きます。まとめサイトの内容は転載しません。
 
-- series: `id` `name` `kana` `kind`（festival / beergarden / tasting / other）`prefecture`（都道府県コード。`js/events.js` の `PREFECTURES`）`officialUrl` `usualPeriod`（出典に「例年」とある場合のみ。無ければ null）
+- series: `id` `name` `kana` `kind`（festival / beergarden / tasting / tto / brewery / other）`prefecture`（都道府県コード。`js/events.js` の `PREFECTURES`）`officialUrl` `usualPeriod`（出典に「例年」とある場合のみ。無ければ null）`breweryIds`（任意。関係する醸造所の `data/breweries.json` の id。tto・brewery では必須）
+- 一覧は「フェス」と「お店・醸造所」（kind が tto / brewery）を切り替えて出します。お店・醸造所のイベントは、ブリュワー情報に載っている醸造所が**公式サイトで告知したもの**だけを載せます（Instagram だけの告知は確認できないので載せません）
 - events: `id`（変えない）`seriesId` `edition` `status`（scheduled / tentative / cancelled / postponed）`startDate` `endDate` `hours` `prefecture` `city` `venue` `priceNote` `officialUrl` `ticketUrl` `note` `lastVerified` `sources[]`
 - 中止になった回も消さずに `status: "cancelled"` にします
 - 開催予定で `lastVerified` から60日を過ぎたものは、画面に「情報が古い可能性」と出ます
 
-更新の手順（月1回と、開催2週間前の直前確認）：
+更新の手順（フェスは月1回と開催2週間前の直前確認、お店・醸造所のイベントは週1回）：
 
 1. 公式ページで新しい回・日程の変更・中止を確認し、`data/events.json` を直して `updatedAt` と各回の `lastVerified` を更新する
 2. `node scripts/check-events.js` と `npm test` を通す
