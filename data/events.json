@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-26",
+  "updatedAt": "2026-10-28",
   "series": [
     {
       "id": "american-craft-beer-experience",
@@ -602,6 +602,174 @@
       "breweryIds": [
         "good-hops",
         "black-tide-brewing"
+      ]
+    },
+    {
+      "id": "tachikawa-oktoberfest",
+      "name": "立川オクトーバーフェスト",
+      "kana": "たちかわおくとーばーふぇすと",
+      "kind": "festival",
+      "prefecture": "tokyo",
+      "officialUrl": "https://beer-fest.jp/tachikawa/",
+      "usualPeriod": "9月"
+    },
+    {
+      "id": "koganei-beer-festival",
+      "name": "小金井ビールフェスティバル",
+      "kana": "こがねいびーるふぇすてぃばる",
+      "kind": "festival",
+      "prefecture": "tokyo",
+      "officialUrl": "https://prtimes.jp/main/html/rd/p/000000201.000005566.html",
+      "usualPeriod": "9月"
+    },
+    {
+      "id": "okutama-beer-fest",
+      "name": "OKUTAMA BEER FEST",
+      "kana": "おくたまびあふぇすと",
+      "kind": "festival",
+      "prefecture": "tokyo",
+      "officialUrl": "https://verterebrew.com/3108/",
+      "usualPeriod": "秋",
+      "breweryIds": [
+        "zakkoku-kobo"
+      ]
+    },
+    {
+      "id": "sorachi-birthday-fest",
+      "name": "SORACHI BIRTHDAY FEST.",
+      "kana": "そらちばーすでーふぇすと",
+      "kind": "festival",
+      "prefecture": "tokyo",
+      "officialUrl": "https://hotel-chinzanso-tokyo.jp/event/plan/sorachi/",
+      "usualPeriod": "9月"
+    },
+    {
+      "id": "nippon-craft-beer-festival",
+      "name": "ニッポンクラフトビアフェスティバル",
+      "kana": "にっぽんくらふとびあふぇすてぃばる",
+      "kind": "festival",
+      "prefecture": "tokyo",
+      "officialUrl": "https://craftbeerfestival.org/",
+      "usualPeriod": null
+    },
+    {
+      "id": "oktoberfest-odaiba",
+      "name": "オクトーバーフェスト in お台場",
+      "kana": "おくとーばーふぇすといんおだいば",
+      "kind": "festival",
+      "prefecture": "tokyo",
+      "officialUrl": "https://www.oktober-fest.jp/",
+      "usualPeriod": "4月下旬〜5月上旬"
+    },
+    {
+      "id": "yokosuka-oktoberfest",
+      "name": "横須賀オクトーバーフェスト",
+      "kana": "よこすかおくとーばーふぇすと",
+      "kind": "festival",
+      "prefecture": "kanagawa",
+      "officialUrl": "https://okt-fest.com/event/yokosuka/",
+      "usualPeriod": "4月"
+    },
+    {
+      "id": "atsugi-oktoberfest",
+      "name": "厚木オクトーバーフェスト",
+      "kana": "あつぎおくとーばーふぇすと",
+      "kind": "festival",
+      "prefecture": "kanagawa",
+      "officialUrl": "https://okt-fest.com/event/atsugi/",
+      "usualPeriod": "9月"
+    },
+    {
+      "id": "ebina-booze-fest",
+      "name": "EBINA BOOZE FEST",
+      "kana": "えびなぶーずふぇすと",
+      "kind": "festival",
+      "prefecture": "kanagawa",
+      "officialUrl": "https://www.kanagawa-kankou.or.jp/event/7055",
+      "usualPeriod": "6月"
+    },
+    {
+      "id": "minamiota-beer-fest",
+      "name": "南太田ビール祭",
+      "kana": "みなみおおたびーるまつり",
+      "kind": "festival",
+      "prefecture": "kanagawa",
+      "officialUrl": "https://newcal.jp/feature/beerfes_autumn_minamiota",
+      "usualPeriod": null,
+      "breweryIds": [
+        "roto-brewery"
+      ]
+    },
+    {
+      "id": "chiba-beer-fest",
+      "name": "チバビアフェスト",
+      "kana": "ちばびあふぇすと",
+      "kind": "festival",
+      "prefecture": "chiba",
+      "officialUrl": "https://prtimes.jp/main/html/rd/p/000000002.000178675.html",
+      "usualPeriod": "9月"
+    },
+    {
+      "id": "matsudo-craft-beer-fes",
+      "name": "松戸クラフトビールフェス",
+      "kana": "まつどくらふとびーるふぇす",
+      "kind": "festival",
+      "prefecture": "chiba",
+      "officialUrl": "https://prtimes.jp/main/html/rd/p/000000585.000015010.html",
+      "usualPeriod": "春・秋ほか不定期"
+    },
+    {
+      "id": "musashino-beer-fes-sakuratown",
+      "name": "埼玉・武蔵野ビールフェス in サクラタウン",
+      "kana": "さいたまむさしのびーるふぇすいんさくらたうん",
+      "kind": "festival",
+      "prefecture": "saitama",
+      "officialUrl": "https://eplus.jp/beerfes_sakura/",
+      "usualPeriod": "秋"
+    },
+    {
+      "id": "craft-beer-house-takasaki",
+      "name": "CRAFT BEER HOUSE takasaki",
+      "kana": "くらふとびあはうすたかさき",
+      "kind": "festival",
+      "prefecture": "gunma",
+      "officialUrl": "https://www.craftbeerhouse.jp/",
+      "usualPeriod": "5月"
+    },
+    {
+      "id": "kumazawa-oktoberfest",
+      "name": "熊澤酒造オクトーバーフェスト",
+      "kana": "くまざわしゅぞうおくとーばーふぇすと",
+      "kind": "brewery",
+      "prefecture": "kanagawa",
+      "officialUrl": "https://kumazawa.jp/",
+      "usualPeriod": "10月",
+      "breweryIds": [
+        "shonan-beer"
+      ]
+    },
+    {
+      "id": "kumazawa-kura-fest",
+      "name": "酒蔵フェスト（熊澤酒造）",
+      "kana": "さかぐらふぇすとくまざわしゅぞう",
+      "kind": "brewery",
+      "prefecture": "kanagawa",
+      "officialUrl": "https://kumazawa.jp/",
+      "usualPeriod": "4月",
+      "breweryIds": [
+        "shonan-beer"
+      ]
+    },
+    {
+      "id": "sankt-gallen-park-brewery",
+      "name": "サンクトガーレン「パーク ブリュワリー」（パーク ハイアット 東京）",
+      "kana": "さんくとがーれんぱーくぶりゅわりー",
+      "kind": "tto",
+      "prefecture": "tokyo",
+      "officialUrl": "https://www.sanktgallenbrewery.com/event/20260803.html",
+      "usualPeriod": null,
+      "breweryIds": [
+        "sankt-gallen"
       ]
     }
   ],
@@ -2487,6 +2655,429 @@
           "title": "GOOD HOPS 公式サイトのお知らせ",
           "url": "https://goodhops.jp/news/611/",
           "accessedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "tachikawa-oktoberfest-2026",
+      "seriesId": "tachikawa-oktoberfest",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-09-11",
+      "endDate": "2026-09-23",
+      "hours": "平日 15:00〜21:00、土日祝 11:00〜21:00（L.O. 20:30）",
+      "prefecture": "tokyo",
+      "city": "立川市",
+      "venue": "国営昭和記念公園 花みどり文化センター ゆめひろば",
+      "priceNote": "入場無料（飲食は有料）",
+      "officialUrl": "https://beer-fest.jp/tachikawa/",
+      "ticketUrl": null,
+      "note": "9月20日・21日は台風のため中止",
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "公式サイト",
+          "url": "https://beer-fest.jp/tachikawa/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "title": "主催者のプレスリリース（PR TIMES）",
+          "url": "https://prtimes.jp/main/html/rd/p/000000003.000185019.html",
+          "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "koganei-beer-festival-2026",
+      "seriesId": "koganei-beer-festival",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-09-11",
+      "endDate": "2026-09-13",
+      "hours": "11日 16:00〜20:00、12日 11:00〜20:00、13日 11:00〜19:00",
+      "prefecture": "tokyo",
+      "city": "小金井市",
+      "venue": "フェスティバルコート（武蔵小金井駅南口）",
+      "priceNote": "入場無料（飲食は有料）",
+      "officialUrl": "https://prtimes.jp/main/html/rd/p/000000201.000005566.html",
+      "ticketUrl": null,
+      "note": "第2回",
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "主催者（JR中央線コミュニティデザイン）のプレスリリース（PR TIMES）",
+          "url": "https://prtimes.jp/main/html/rd/p/000000201.000005566.html",
+          "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "okutama-beer-fest-2026",
+      "seriesId": "okutama-beer-fest",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-10-31",
+      "endDate": "2026-11-01",
+      "hours": "11:00〜17:00",
+      "prefecture": "tokyo",
+      "city": "西多摩郡奥多摩町",
+      "venue": "VERTERE 醸造所敷地内",
+      "priceNote": "入場無料（各ブースで支払い）",
+      "officialUrl": "https://verterebrew.com/3108/",
+      "ticketUrl": null,
+      "note": "VERTERE 主催、6醸造所が出店",
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "主催（VERTERE）の告知",
+          "url": "https://verterebrew.com/3108/",
+          "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "sorachi-birthday-fest-2026",
+      "seriesId": "sorachi-birthday-fest",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-09-05",
+      "endDate": "2026-09-05",
+      "hours": "18:30〜21:00",
+      "prefecture": "tokyo",
+      "city": "文京区",
+      "venue": "ホテル椿山荘東京 宴会棟 グランドホール椿",
+      "priceNote": "14,000円（料理・SORACHI 1984 飲み放題、事前申込制）",
+      "officialUrl": "https://hotel-chinzanso-tokyo.jp/event/plan/sorachi/",
+      "ticketUrl": null,
+      "note": "定員約250名・20歳以上",
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "主催（サッポロビール）のプレスリリース（PR TIMES）",
+          "url": "https://prtimes.jp/main/html/rd/p/000003215.000012361.html",
+          "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "nippon-craft-beer-festival-2026-itabashi",
+      "seriesId": "nippon-craft-beer-festival",
+      "edition": "2026-itabashi",
+      "status": "scheduled",
+      "startDate": "2026-08-15",
+      "endDate": "2026-08-16",
+      "hours": "15日 11:30〜16:00、16日 11:00〜16:00",
+      "prefecture": "tokyo",
+      "city": "板橋区",
+      "venue": "ハイライフプラザいたばし",
+      "priceNote": "前売 4,300円（試飲券10枚）",
+      "officialUrl": "https://craftbeerfestival.org/",
+      "ticketUrl": null,
+      "note": null,
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "公式サイト",
+          "url": "https://craftbeerfestival.org/",
+          "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "oktoberfest-odaiba-2026-spring",
+      "seriesId": "oktoberfest-odaiba",
+      "edition": "2026-spring",
+      "status": "scheduled",
+      "startDate": "2026-04-24",
+      "endDate": "2026-05-06",
+      "hours": null,
+      "prefecture": "tokyo",
+      "city": "江東区",
+      "venue": "シンボルプロムナード公園 センタープロムナード",
+      "priceNote": "入場無料（飲食は有料）",
+      "officialUrl": "https://www.oktober-fest.jp/",
+      "ticketUrl": null,
+      "note": null,
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "公式サイト",
+          "url": "https://www.oktober-fest.jp/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "title": "東京都の観光公式サイト GO TOKYO",
+          "url": "https://www.gotokyo.org/jp/spot/ev220/index.html",
+          "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "yokosuka-oktoberfest-2026-spring",
+      "seriesId": "yokosuka-oktoberfest",
+      "edition": "2026-spring",
+      "status": "scheduled",
+      "startDate": "2026-04-17",
+      "endDate": "2026-04-26",
+      "hours": "平日 15:00〜21:00、土日 11:00〜21:00（最終日は20:00まで）",
+      "prefecture": "kanagawa",
+      "city": "横須賀市",
+      "venue": "ヴェルニー公園",
+      "priceNote": "入場無料（飲食は有料）",
+      "officialUrl": "https://okt-fest.com/event/yokosuka/",
+      "ticketUrl": null,
+      "note": null,
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "公式サイト",
+          "url": "https://okt-fest.com/event/yokosuka/",
+          "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "atsugi-oktoberfest-2026",
+      "seriesId": "atsugi-oktoberfest",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-09-18",
+      "endDate": "2026-09-27",
+      "hours": "平日 15:00〜21:00、土日祝 11:00〜21:00（最終日は20:00まで）",
+      "prefecture": "kanagawa",
+      "city": "厚木市",
+      "venue": "厚木中央公園",
+      "priceNote": "入場無料（飲食は有料）",
+      "officialUrl": "https://okt-fest.com/event/atsugi/",
+      "ticketUrl": null,
+      "note": "9月20日・21日は台風のため中止",
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "公式サイト",
+          "url": "https://okt-fest.com/event/atsugi/",
+          "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "ebina-booze-fest-2026",
+      "seriesId": "ebina-booze-fest",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-06-06",
+      "endDate": "2026-06-07",
+      "hours": "11:00〜19:00",
+      "prefecture": "kanagawa",
+      "city": "海老名市",
+      "venue": "海老名中央公園・ビナウォーク",
+      "priceNote": "入場無料（初回にリユースカップ300円）",
+      "officialUrl": "https://www.kanagawa-kankou.or.jp/event/7055",
+      "ticketUrl": null,
+      "note": "クラフトビールと地酒のイベント（第3回）",
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "神奈川県観光協会の公式観光サイト",
+          "url": "https://www.kanagawa-kankou.or.jp/event/7055",
+          "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "minamiota-beer-fest-2026-11",
+      "seriesId": "minamiota-beer-fest",
+      "edition": "2026-11",
+      "status": "scheduled",
+      "startDate": "2026-11-08",
+      "endDate": "2026-11-08",
+      "hours": "11:00〜19:00",
+      "prefecture": "kanagawa",
+      "city": "横浜市南区",
+      "venue": "京急南太田駅前 ひといきスペース DONDON",
+      "priceNote": "入場無料（飲食は有料）",
+      "officialUrl": "https://newcal.jp/feature/beerfes_autumn_minamiota",
+      "ticketUrl": null,
+      "note": "第2回。浦島ブルワリー・Roto Brewery・横濱金沢ブリュワリーが出店",
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "主催（京浜急行電鉄ほか）のプレスリリース",
+          "url": "https://digitalpr.jp/r/146481",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "title": "告知ページ",
+          "url": "https://newcal.jp/feature/beerfes_autumn_minamiota",
+          "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "chiba-beer-fest-2026",
+      "seriesId": "chiba-beer-fest",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-09-20",
+      "endDate": "2026-09-22",
+      "hours": "11:00〜19:00（22日は20:30まで）",
+      "prefecture": "chiba",
+      "city": "木更津市",
+      "venue": "三井アウトレットパーク 木更津 ピアストリート特設エリア",
+      "priceNote": "入場無料",
+      "officialUrl": "https://prtimes.jp/main/html/rd/p/000000002.000178675.html",
+      "ticketUrl": null,
+      "note": null,
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "主催者のプレスリリース（PR TIMES）",
+          "url": "https://prtimes.jp/main/html/rd/p/000000002.000178675.html",
+          "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "matsudo-craft-beer-fes-2026-spring",
+      "seriesId": "matsudo-craft-beer-fes",
+      "edition": "2026-spring",
+      "status": "scheduled",
+      "startDate": "2026-04-30",
+      "endDate": "2026-05-06",
+      "hours": null,
+      "prefecture": "chiba",
+      "city": "松戸市",
+      "venue": "松戸駅周辺",
+      "priceNote": null,
+      "officialUrl": "https://prtimes.jp/main/html/rd/p/000000585.000015010.html",
+      "ticketUrl": null,
+      "note": "時間・会場の詳細は松戸市の公式SNSで告知",
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "松戸市のプレスリリース（PR TIMES）",
+          "url": "https://prtimes.jp/main/html/rd/p/000000585.000015010.html",
+          "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "musashino-beer-fes-sakuratown-2026-autumn",
+      "seriesId": "musashino-beer-fes-sakuratown",
+      "edition": "2026-autumn",
+      "status": "scheduled",
+      "startDate": "2026-10-02",
+      "endDate": "2026-10-12",
+      "hours": "11:00〜18:00（2日は15:00〜21:00、4日・12日は17:00まで）",
+      "prefecture": "saitama",
+      "city": "所沢市",
+      "venue": "ところざわサクラタウン 2階中央広場",
+      "priceNote": null,
+      "officialUrl": "https://eplus.jp/beerfes_sakura/",
+      "ticketUrl": "https://eplus.jp/beerfes_sakura/",
+      "note": "10月2〜4日と10〜12日の2週末開催。予約席あり",
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "公式チケットページ（イープラス）",
+          "url": "https://eplus.jp/beerfes_sakura/",
+          "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "craft-beer-house-takasaki-2026-spring",
+      "seriesId": "craft-beer-house-takasaki",
+      "edition": "2026-spring",
+      "status": "scheduled",
+      "startDate": "2026-05-23",
+      "endDate": "2026-05-24",
+      "hours": "23日 12:00〜18:00、24日 11:00〜17:00",
+      "prefecture": "gunma",
+      "city": "高崎市",
+      "venue": "高崎市役所前広場（城址公園）",
+      "priceNote": "入場無料（リユースカップ500円〜）",
+      "officialUrl": "https://www.craftbeerhouse.jp/",
+      "ticketUrl": null,
+      "note": "県内外の約20醸造所が出店",
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "公式サイト",
+          "url": "https://www.craftbeerhouse.jp/",
+          "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "kumazawa-oktoberfest-2026",
+      "seriesId": "kumazawa-oktoberfest",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-10-10",
+      "endDate": "2026-10-12",
+      "hours": "10・11日 11:00〜20:00、12日 11:00〜19:00",
+      "prefecture": "kanagawa",
+      "city": "茅ヶ崎市",
+      "venue": "熊澤酒造（茅ヶ崎市香川7-10-7）",
+      "priceNote": "チケット制（昼の部・夜の部）",
+      "officialUrl": "https://kumazawa.jp/",
+      "ticketUrl": "https://eplus.jp/sf/detail/4580380001-P0030001",
+      "note": null,
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "熊澤酒造の公式サイト",
+          "url": "https://kumazawa.jp/",
+          "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "kumazawa-kura-fest-2026",
+      "seriesId": "kumazawa-kura-fest",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-04-11",
+      "endDate": "2026-04-12",
+      "hours": "11日 10:30〜20:00、12日 10:00〜19:00",
+      "prefecture": "kanagawa",
+      "city": "茅ヶ崎市",
+      "venue": "熊澤酒造（茅ヶ崎市香川7-10-7）",
+      "priceNote": null,
+      "officialUrl": "https://kumazawa.jp/",
+      "ticketUrl": null,
+      "note": null,
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "熊澤酒造の公式サイト",
+          "url": "https://kumazawa.jp/",
+          "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "sankt-gallen-park-brewery-2026",
+      "seriesId": "sankt-gallen-park-brewery",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-08-03",
+      "endDate": "2026-10-30",
+      "hours": null,
+      "prefecture": "tokyo",
+      "city": "新宿区",
+      "venue": "パーク ハイアット 東京「デリカテッセン」",
+      "priceNote": null,
+      "officialUrl": "https://www.sanktgallenbrewery.com/event/20260803.html",
+      "ticketUrl": null,
+      "note": "平日のみ。サンクトガーレンのビールとワイン・軽食のフリーフロー",
+      "lastVerified": "2026-10-28",
+      "sources": [
+        {
+          "title": "サンクトガーレンの公式サイト（イベント）",
+          "url": "https://www.sanktgallenbrewery.com/event/20260803.html",
+          "accessedAt": "2026-10-28"
         }
       ]
     }
