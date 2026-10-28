@@ -38,7 +38,9 @@ const PREF_BOXES = {
   '08': [35.7, 36.95, 139.65, 140.9],
   '09': [36.2, 37.2, 139.3, 140.3],
   '10': [35.95, 37.1, 138.35, 139.7],
+  '11': [35.75, 36.3, 138.7, 139.95],
   '12': [34.85, 36.15, 139.7, 140.95],
+  '13': [35.5, 35.9, 138.9, 139.95],
   '14': [35.1, 35.7, 138.9, 139.8],
 };
 
@@ -51,7 +53,7 @@ const sample = [
 
 test('データ：必須項目・ID重複・県コード・種別・座標の範囲', () => {
   assert.ok(data.meta.attribution.includes('仙台国税局') && data.meta.attribution.includes('関東信越国税局') && data.meta.attribution.includes('東京国税局'), '出典の表示文がある');
-  assert.ok(list.length >= 140);
+  assert.ok(list.length >= 180);
   const ids = new Set();
   for (const b of list) {
     assert.match(b.id, /^[a-z0-9-]+$/, b.id);
