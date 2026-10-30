@@ -13,6 +13,7 @@ import * as moreView from './views/more.js';
 import * as knowledgeView from './views/knowledge.js';
 import * as statsView from './views/stats.js';
 import * as collectionView from './views/collection.js';
+import * as recapView from './views/recap.js';
 import * as eventsView from './views/events.js';
 import * as breweriesView from './views/breweries.js';
 import * as breweryDetailView from './views/brewery-detail.js';
@@ -42,6 +43,7 @@ const routes = [
   { path: '/events', view: eventsView, title: 'イベント', tab: 'more', back: '#/more' },
   { path: '/event/:id', view: eventsView, title: 'イベント', tab: 'more', back: '#/events' },
   { path: '/stats', view: statsView, title: '統計', tab: 'more', back: '#/more' },
+  { path: '/recap', view: recapView, title: '振り返り', tab: 'more', back: '#/stats' },
   { path: '/collection', view: collectionView, title: 'コレクション', tab: 'more', back: '#/more' },
   { path: '/settings', view: settingsView, title: '設定', tab: 'more', back: '#/more' },
   { path: '/breweries', view: breweriesView, title: 'ブリュワー', tab: 'more', back: '#/more' },

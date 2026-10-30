@@ -42,6 +42,7 @@ const PRECACHE_URLS = [
   'js/views/brewery-map.js',
   'js/views/checkin-form.js',
   'js/views/collection.js',
+  'js/views/recap.js',
   'js/views/events.js',
   'js/views/knowledge.js',
   'js/views/more.js',

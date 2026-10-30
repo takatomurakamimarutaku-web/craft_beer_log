@@ -152,7 +152,17 @@ export async function render({ app, outlet, isStale }) {
       })
     : null;
 
+  // 振り返り（年・月のまとめ）への入口
+  const latestYear = checkins.map((c) => c.date || '').sort().pop().slice(0, 4);
+  const recapLink = h(
+    'a',
+    { class: 'recap-link', href: `#/recap?p=${latestYear}` },
+    h('span', { class: 'recap-link-title', text: `${latestYear}年の振り返り` }),
+    h('span', { class: 'recap-link-sub', text: 'いちばん飲んだ銘柄・はじめてのスタイルなど' }),
+  );
+
   outlet.replaceChildren(
+    recapLink,
     tiles,
     h('p', { class: 'small muted stat-hint', text: 'グラフの棒をタップすると、その条件で検索できます。' }),
     styleSec,

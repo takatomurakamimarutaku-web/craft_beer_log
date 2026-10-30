@@ -56,3 +56,40 @@ test('monthSummary: 今月の記録が無い', async () => {
   const r = monthSummary([{ id: 'a', styleId: 'ipa' }], [{ beerId: 'a', date: '2026-01-01' }], [], { now: new Date(2026, 9, 1) });
   assert.deepEqual(r, { month: '2026-10', count: 0, beerCount: 0, avg: null, topStyle: null });
 });
+
+test('buildRecap: 年の振り返り（はじめての銘柄・スタイル、よく飲んだ・最高評価、多かった月）', async () => {
+  const { buildRecap, recapPeriods } = await import('../js/stats.js');
+  const styles = [
+    { id: 'ipa', name: 'IPA' },
+    { id: 'stout', name: 'スタウト' },
+  ];
+  const beers = [
+    { id: 'a', name: 'A', styleId: 'ipa', brewery: 'X', breweryKey: 'x' },
+    { id: 'b', name: 'B', styleId: 'stout', brewery: 'Y', breweryKey: 'y' },
+  ];
+  const checkins = [
+    { beerId: 'a', date: '2025-12-01', rating: 3 },
+    { beerId: 'a', date: '2026-03-01', rating: 4, tasting: { flavorTags: ['citrus', 'pine'] } },
+    { beerId: 'a', date: '2026-03-05', rating: 3, tasting: { flavorTags: ['citrus'] } },
+    { beerId: 'b', date: '2026-07-01', rating: 5 },
+  ];
+  const r = buildRecap(beers, checkins, styles, '2026');
+  assert.equal(r.count, 3);
+  assert.equal(r.beerCount, 2);
+  assert.equal(r.newBeers, 1, 'A は前年に飲んでいる');
+  assert.deepEqual(r.newStyles, ['スタウト']);
+  assert.equal(r.topBeer.beer.id, 'a');
+  assert.equal(r.topBeer.count, 2);
+  assert.equal(r.bestBeer.beer.id, 'b');
+  assert.equal(r.topStyle.label, 'IPA');
+  assert.equal(r.topBrewery.label, 'X');
+  assert.deepEqual(r.busiest, { key: '2026-03', count: 2 });
+  assert.deepEqual(r.flavorTop, [{ key: 'citrus', count: 2 }, { key: 'pine', count: 1 }]);
+  assert.deepEqual(recapPeriods(checkins), [
+    { year: '2026', months: ['2026-07', '2026-03'] },
+    { year: '2025', months: ['2025-12'] },
+  ]);
+  const m = buildRecap(beers, checkins, styles, '2026-03');
+  assert.deepEqual(m.busiest, { key: '2026-03-01', count: 1 }, '月は日ごと。同数なら早い日');
+  assert.equal(buildRecap(beers, checkins, styles, '2026-07').topBeer, null, '1杯だけなら「よく飲んだ」は出さない');
+});
