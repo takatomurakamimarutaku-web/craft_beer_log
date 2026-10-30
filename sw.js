@@ -1,6 +1,6 @@
 // Service Worker
 // ファイルを変更したら CACHE_VERSION を上げる（README「キャッシュ更新手順」参照）
-const CACHE_VERSION = 'v30';
+const CACHE_VERSION = 'v31';
 const CACHE_NAME = `craft-beer-log-${CACHE_VERSION}`;
 const EVENTS_URL = 'data/events.json';
 
@@ -14,6 +14,7 @@ const PRECACHE_URLS = [
   'js/backup.js',
   'js/breweries.js',
   'js/charts.js',
+  'js/collection.js',
   'js/db.js',
   'js/errors.js',
   'js/events.js',
@@ -39,6 +40,7 @@ const PRECACHE_URLS = [
   'js/views/brewery-detail.js',
   'js/views/brewery-map.js',
   'js/views/checkin-form.js',
+  'js/views/collection.js',
   'js/views/events.js',
   'js/views/knowledge.js',
   'js/views/more.js',

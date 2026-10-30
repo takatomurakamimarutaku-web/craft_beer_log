@@ -8,6 +8,7 @@ import { beerFields } from './beer-fields.js';
 import { TASTE_AXES, TASTE_MAX, TASTE_TAGS, groupFlavorTags, hasScores } from '../tasting.js';
 import { errorText } from '../errors.js';
 import { joinEvents, eventsOnDate } from '../events.js';
+import { announceNewBadges } from './collection.js';
 
 export const DRAFT_KEY = 'checkinDraft';
 
@@ -555,6 +556,8 @@ export async function render({ app, outlet, params, query }) {
       // 編集は元の画面へ戻る。新規は銘柄詳細へ置き換えて遷移（戻る操作でフォームに戻らないように）
       if (editing) app.goBack(`#/beer/${encodeURIComponent(beerId)}`);
       else app.navigate(`#/beer/${encodeURIComponent(beerId)}`, { replace: true });
+      // 新しいバッジがあれば、保存のトーストの後に知らせる（イベントで続けて記録するときは、その案内を消さないよう次回に回す）
+      if (!editing && !event) setTimeout(() => announceNewBadges(app), 2500);
     } catch (e) {
       console.error(e);
       showToast(errorText(e, '保存'), { duration: 8000 });

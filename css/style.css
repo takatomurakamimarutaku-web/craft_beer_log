@@ -513,6 +513,40 @@ a.summary-card:active { transform: scale(0.985); }
 .empty-title { font-size: var(--fs-title3); font-weight: 800; color: var(--text); }
 .empty p { max-width: 22em; }
 
+/* ---- コレクション（スタイル図鑑・バッジ） ---- */
+.progress { display: block; height: 6px; border-radius: 3px; background: var(--surface-2); overflow: hidden; }
+.progress i { display: block; height: 100%; border-radius: inherit; background: var(--primary); }
+.collection-head { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3); margin-bottom: var(--sp-2); }
+.collection-meter { display: grid; gap: 4px; padding: 14px 16px; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--card-border); box-shadow: var(--shadow); }
+.meter-label { font-size: var(--fs-footnote); font-weight: 700; color: var(--muted); }
+.meter-value b { font-size: 1.75rem; font-weight: 800; color: var(--primary-strong); font-variant-numeric: tabular-nums; }
+.meter-value small { color: var(--muted); font-weight: 700; }
+.dex-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(98px, 1fr)); gap: 8px; }
+.dex-item { display: grid; justify-items: center; gap: 4px; padding: 12px 6px 10px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--card-border); box-shadow: var(--shadow); color: inherit; text-decoration: none; text-align: center; transition: transform 0.12s var(--ease); }
+.dex-item:active { transform: scale(0.96); }
+.dex-art { display: grid; place-items: center; width: 52px; height: 72px; color: var(--text); }
+.dex-art .glass-art { width: 100%; height: 100%; }
+.dex-name { font-size: var(--fs-footnote); font-weight: 700; line-height: 1.3; min-height: 2.6em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.dex-count { font-size: var(--fs-caption); font-weight: 800; color: var(--primary-strong); }
+.dex-item.is-locked { background: transparent; box-shadow: none; border: 1px dashed var(--border); }
+.dex-item.is-locked .dex-art { opacity: 0.45; }
+.dex-item.is-locked .dex-name, .dex-item.is-locked .dex-count { color: var(--muted); }
+.badge-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.badge-card { display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: center; padding: 12px 14px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--card-border); box-shadow: var(--shadow); }
+.badge-card.is-locked { background: transparent; box-shadow: none; border: 1px dashed var(--border); }
+.badge-card.is-locked .medal { filter: grayscale(1); opacity: 0.4; }
+.badge-title { font-weight: 800; font-feature-settings: "palt" 1; }
+.badge-desc { font-size: var(--fs-footnote); color: var(--muted); }
+.badge-done { font-size: var(--fs-caption); font-weight: 800; color: var(--pin-visited); margin-top: 2px; }
+.badge-progress { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; margin-top: 6px; }
+.badge-count { font-size: var(--fs-caption); font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; }
+.medal { position: relative; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.45), 0 2px 6px rgba(0, 0, 0, 0.15); }
+.medal::after { content: ""; position: absolute; inset: 6px; border-radius: 50%; border: 1.5px dashed rgba(255, 255, 255, 0.55); }
+.medal-bronze { background: linear-gradient(140deg, #e7a56a, #a8622c); }
+.medal-silver { background: linear-gradient(140deg, #eef1f4, #9aa4ae); }
+.medal-gold { background: linear-gradient(140deg, #ffe08a, #d39a12); }
+.medal-glyph { position: relative; z-index: 1; font-weight: 900; font-size: 1rem; color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35); font-feature-settings: "palt" 1; }
+
 /* ---- 製品化：操作の見やすさ・初回の案内 ---- */
 :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
