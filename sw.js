@@ -27,6 +27,7 @@ const PRECACHE_URLS = [
   'js/router.js',
   'js/search.js',
   'js/share.js',
+  'js/share-card.js',
   'js/stats.js',
   'js/tasting.js',
   'js/ui.js',

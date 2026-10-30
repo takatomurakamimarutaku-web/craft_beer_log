@@ -451,6 +451,7 @@ a.chip { text-decoration: none; display: inline-block; }
 .tag-link { text-decoration: none; color: var(--primary-strong); border: 1px solid currentColor; background: transparent; }
 .my-records { display: grid; gap: 8px; }
 .month-chip { margin: 0 0 4px; }
+.card-preview img { display: block; max-width: 100%; max-height: 55dvh; width: auto; height: auto; margin-inline: auto; margin-block: 8px; border-radius: 12px; box-shadow: var(--shadow-sm); }
 .share-text { width: 100%; font: inherit; font-size: 0.9rem; margin: 8px 0; }
 
 /* ---- Phase 6: 統計 ---- */
