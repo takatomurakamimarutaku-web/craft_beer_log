@@ -1,10 +1,12 @@
 // 統計（#/stats）
 import { h, svg, emptyState, formatYen } from '../ui.js';
 import { SERVING_LABELS } from '../models.js';
-import { summarizeRatings, countByStyle, abvHistogram, topBreweries, monthlyCounts, servingStats, favoriteFlavorTags, hopsForFavoriteTags, eventStats } from '../stats.js';
+import { tastePicks, summarizeRatings, countByStyle, abvHistogram, topBreweries, monthlyCounts, servingStats, favoriteFlavorTags, hopsForFavoriteTags, eventStats } from '../stats.js';
 import { joinEvents } from '../events.js';
 import { hBarChart, vBarChart } from '../charts.js';
 import { setCriteria } from './search.js';
+import { glassSvg } from '../illust.js';
+import { srmToHex, styleDisplaySrm } from '../knowledge.js';
 
 const STYLE_LIMIT = 12;
 
@@ -152,6 +154,41 @@ export async function render({ app, outlet, isStale }) {
       })
     : null;
 
+  // あなたの好み：評価の高いスタイルと、まだ飲んでいないおすすめのスタイル
+  const taste = tastePicks(beers, checkins, app.styles);
+  const tasteSec = taste.liked.length
+    ? h(
+        'section',
+        { class: 'panel taste-picks' },
+        h('h3', { class: 'section-title', text: 'あなたの好み' }),
+        h(
+          'p',
+          { class: 'taste-liked' },
+          ...taste.liked.map((l) => h('a', { class: 'chip tag-link', href: `#/knowledge/style/${encodeURIComponent(l.style.id)}`, text: `${l.style.name} ★${l.avg.toFixed(1)}` })),
+        ),
+        taste.picks.length ? h('h4', { class: 'field-label', text: 'まだ飲んでいないおすすめのスタイル' }) : null,
+        taste.picks.length
+          ? h(
+              'ul',
+              { class: 'pick-list' },
+              ...taste.picks.map((p) =>
+                h(
+                  'li',
+                  {},
+                  h(
+                    'a',
+                    { class: 'pick', href: `#/knowledge/style/${encodeURIComponent(p.style.id)}` },
+                    h('span', { class: 'pick-art' }, svg(glassSvg(p.style.glass, srmToHex(styleDisplaySrm(p.style))))),
+                    h('span', { class: 'pick-name', text: p.style.name }),
+                    h('span', { class: 'pick-why', text: `「${p.because.name}」が好きなら` }),
+                  ),
+                ),
+              ),
+            )
+          : null,
+      )
+    : emptySection('あなたの好み', '記録に評価（★）を付けると、好きなスタイルと、まだ飲んでいないおすすめのスタイルが表示されます。');
+
   // 振り返り（年・月のまとめ）への入口
   const latestYear = checkins.map((c) => c.date || '').sort().pop().slice(0, 4);
   const recapLink = h(
@@ -164,6 +201,7 @@ export async function render({ app, outlet, isStale }) {
   outlet.replaceChildren(
     recapLink,
     tiles,
+    tasteSec,
     h('p', { class: 'small muted stat-hint', text: 'グラフの棒をタップすると、その条件で検索できます。' }),
     styleSec,
     abvSec,

@@ -93,3 +93,28 @@ test('buildRecap: 年の振り返り（はじめての銘柄・スタイル、�
   assert.deepEqual(m.busiest, { key: '2026-03-01', count: 1 }, '月は日ごと。同数なら早い日');
   assert.equal(buildRecap(beers, checkins, styles, '2026-07').topBeer, null, '1杯だけなら「よく飲んだ」は出さない');
 });
+
+test('tastePicks: 評価の高いスタイルと、同じ系統・近い苦味のまだ飲んでいないスタイル', async () => {
+  const { tastePicks } = await import('../js/stats.js');
+  const styles = [
+    { id: 'ipa', name: 'IPA', category: 'P', ibu: [40, 70], srm: [6, 14] },
+    { id: 'dipa', name: 'ダブルIPA', category: 'P', ibu: [60, 100], srm: [6, 14] },
+    { id: 'pils', name: 'ピルスナー', category: 'L', ibu: [25, 45], srm: [2, 5] },
+    { id: 'stout', name: 'スタウト', category: 'D', ibu: [25, 45], srm: [30, 40] },
+  ];
+  const beers = [
+    { id: 'a', styleId: 'ipa' },
+    { id: 'b', styleId: 'pils' },
+  ];
+  const checkins = [
+    { beerId: 'a', rating: 5 },
+    { beerId: 'a', rating: 4 },
+    { beerId: 'b', rating: 2 },
+  ];
+  const r = tastePicks(beers, checkins, styles);
+  assert.deepEqual(r.liked.map((l) => [l.style.id, l.avg, l.count]), [['ipa', 4.5, 2]], '平均3.5未満は好みに入れない');
+  assert.equal(r.picks[0].style.id, 'dipa');
+  assert.equal(r.picks[0].because.id, 'ipa');
+  assert.ok(!r.picks.some((p) => p.style.id === 'pils'), '飲んだスタイルはおすすめしない');
+  assert.deepEqual(tastePicks(beers, [{ beerId: 'b', rating: 2 }], styles).picks, [], '好きなスタイルが無ければおすすめも無し');
+});

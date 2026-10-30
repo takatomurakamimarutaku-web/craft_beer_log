@@ -259,3 +259,53 @@ export function recapPeriods(checkins) {
   const years = [...new Set([...months].map((m) => m.slice(0, 4)))].sort().reverse();
   return years.map((year) => ({ year, months: [...months].filter((m) => m.startsWith(year)).sort().reverse() }));
 }
+
+/**
+ * あなたの好みのスタイル（平均評価が高い順。評価のある杯が minCount 以上のもの）と、
+ * まだ飲んでいないスタイルのおすすめ。
+ * おすすめの点数：好きなスタイルと同じ系統 +3、苦味（IBU）の範囲の重なり ×2、色（SRM）の近さ ×1 を、好きなスタイルごとに計算して最大のもの。
+ * @returns {{ liked: Array<{ style, avg, count }>, picks: Array<{ style, because }> }}
+ */
+export function tastePicks(beers, checkins, styles, { minCount = 1, n = 3 } = {}) {
+  const styleById = new Map(styles.map((s) => [s.id, s]));
+  const sums = new Map();
+  const tried = new Set();
+  for (const { c, beer } of joinBeers(beers, checkins)) {
+    if (!styleById.has(beer.styleId)) continue;
+    tried.add(beer.styleId);
+    if (typeof c.rating !== 'number') continue;
+    const s = sums.get(beer.styleId) || { sum: 0, count: 0 };
+    s.sum += c.rating;
+    s.count++;
+    sums.set(beer.styleId, s);
+  }
+  const liked = [...sums.entries()]
+    .filter(([, s]) => s.count >= minCount && s.sum / s.count >= 3.5)
+    .map(([id, s]) => ({ style: styleById.get(id), avg: Math.round((s.sum / s.count) * 10) / 10, count: s.count }))
+    .sort((a, b) => b.avg - a.avg || b.count - a.count || a.style.name.localeCompare(b.style.name, 'ja'))
+    .slice(0, 3);
+  const overlap = (a, b) => {
+    if (!Array.isArray(a) || !Array.isArray(b)) return 0;
+    const inter = Math.min(a[1], b[1]) - Math.max(a[0], b[0]);
+    const span = Math.max(a[1], b[1]) - Math.min(a[0], b[0]);
+    return inter > 0 && span > 0 ? inter / span : 0;
+  };
+  const mid = (r) => (Array.isArray(r) ? (r[0] + r[1]) / 2 : null);
+  const picks = styles
+    .filter((s) => !tried.has(s.id))
+    .map((s) => {
+      let best = { score: 0, because: null };
+      for (const l of liked) {
+        const L = l.style;
+        const srm = mid(s.srm) !== null && mid(L.srm) !== null ? Math.max(0, 1 - Math.abs(mid(s.srm) - mid(L.srm)) / 20) : 0;
+        const score = (s.category === L.category ? 3 : 0) + overlap(s.ibu, L.ibu) * 2 + srm;
+        if (score > best.score) best = { score, because: L };
+      }
+      return { style: s, because: best.because, score: best.score };
+    })
+    .filter((p) => p.score > 0)
+    .sort((a, b) => b.score - a.score || a.style.name.localeCompare(b.style.name, 'ja'))
+    .slice(0, n)
+    .map(({ style, because }) => ({ style, because }));
+  return { liked, picks };
+}
