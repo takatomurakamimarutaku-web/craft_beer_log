@@ -79,3 +79,16 @@ test('newlyEarned: 見たことのない獲得済みバッジだけ', () => {
   assert.deepEqual(newlyEarned(badges, ['a']).map((b) => b.id), ['b']);
   assert.deepEqual(newlyEarned(badges, null).map((b) => b.id), ['a', 'b']);
 });
+
+test('quickBeers: 最近飲んだ銘柄（重複なし・新しい順）→ 飲みたいリスト', async () => {
+  const { quickBeers } = await import('../js/views/checkin-form.js');
+  const bs = [
+    { id: 'a', status: 'tried' },
+    { id: 'b', status: 'tried' },
+    { id: 'w1', status: 'want' },
+    { id: 'w2', status: 'want' },
+  ];
+  const cs = [{ beerId: 'b' }, { beerId: 'a' }, { beerId: 'b' }, { beerId: 'gone' }];
+  const r = quickBeers(bs, cs, { recent: 6, want: 1 });
+  assert.deepEqual(r.map((x) => [x.beer.id, x.want]), [['b', false], ['a', false], ['w1', true]]);
+});

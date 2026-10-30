@@ -9,6 +9,23 @@ import { TASTE_AXES, TASTE_MAX, TASTE_TAGS, groupFlavorTags, hasScores } from '.
 import { errorText } from '../errors.js';
 import { joinEvents, eventsOnDate } from '../events.js';
 import { announceNewBadges } from './collection.js';
+import { beerColor } from '../knowledge.js';
+
+/** 記録画面の「すばやく選ぶ」：最近飲んだ銘柄（新しい順・重複なし）を6件、続けて飲みたいリストを3件 */
+export function quickBeers(beers, checkins, { recent = 6, want = 3 } = {}) {
+  const byId = new Map(beers.map((b) => [b.id, b]));
+  const out = [];
+  const seen = new Set();
+  for (const c of checkins) {
+    if (out.length >= recent) break;
+    const b = byId.get(c.beerId);
+    if (!b || seen.has(b.id)) continue;
+    seen.add(b.id);
+    out.push({ beer: b, want: false });
+  }
+  const wants = beers.filter((b) => b.status === 'want' && !seen.has(b.id)).slice(0, want);
+  return [...out, ...wants.map((b) => ({ beer: b, want: true }))];
+}
 
 export const DRAFT_KEY = 'checkinDraft';
 
@@ -73,13 +90,14 @@ export function checkinFromDraft(d) {
 
 export async function render({ app, outlet, params, query }) {
   const editing = Boolean(params.id);
-  const [beers, breweries, places, knowledge, eventData, planList] = await Promise.all([
+  const [beers, breweries, places, knowledge, eventData, planList, recentCheckins] = await Promise.all([
     app.db.listBeers(),
     app.db.listDistinctValues('brewery'),
     app.db.listDistinctValues('place'),
     app.loadKnowledge(),
     app.loadEvents().catch(() => null),
     app.db.listEventPlans().catch(() => []),
+    editing ? [] : app.db.listCheckins(),
   ]);
   const events = joinEvents(eventData);
   const plans = new Map(planList.map((p) => [p.id, p]));
@@ -127,11 +145,31 @@ export async function render({ app, outlet, params, query }) {
   if (restoring) name.value = draft.name || '';
   const newBeer = beerFields({ beer: restoring ? draft.beer || {} : {}, styles: app.styles, breweries, idPrefix: 'f' });
   const newBeerBox = h('div', { class: 'new-beer' }, h('p', { class: 'field-hint', text: '新しい銘柄として登録します' }), newBeer.el);
+  // 最近飲んだ銘柄・飲みたいリストから1タップで選べるようにする
+  const quick = quickBeers(beers, recentCheckins);
+  const quickPicks = h(
+    'div',
+    { class: 'quick-picks', hidden: !quick.length },
+    h('p', { class: 'field-label', text: 'すばやく選ぶ' }),
+    h(
+      'div',
+      { class: 'quick-row' },
+      ...quick.map(({ beer, want }) =>
+        h(
+          'button',
+          { type: 'button', class: 'quick-beer', onclick: () => selectBeer(beer) },
+          h('span', { class: 'quick-dot', style: beerColor(beer, app.styles) ? `--beer:${beerColor(beer, app.styles)}` : null, 'aria-hidden': 'true' }),
+          h('span', { class: 'quick-name', text: beer.name }),
+          h('span', { class: 'quick-sub', text: want ? '飲みたい' : beer.brewery || ' ' }),
+        ),
+      ),
+    ),
+  );
 
   if (editing) {
     beerSection.append(h('p', { class: 'selected-beer-name', text: selected ? selected.name : '' }), h('p', { class: 'field-hint', text: '銘柄の情報は銘柄の画面から編集できます' }));
   } else {
-    beerSection.append(nameField, matchNotice, selectedView, newBeerBox);
+    beerSection.append(nameField, quickPicks, matchNotice, selectedView, newBeerBox);
     attachSuggest(name, {
       limit: 8,
       items: () =>
@@ -167,6 +205,7 @@ export async function render({ app, outlet, params, query }) {
     if (selected) name.value = selected.name;
     nameField.hidden = Boolean(selected);
     newBeerBox.hidden = Boolean(selected);
+    quickPicks.hidden = Boolean(selected) || !quick.length;
     selectedView.hidden = !selected;
     if (selected) {
       const meta = [selected.brewery, styleLabel(selected, app.styles), formatAbv(selected.abv)].filter(Boolean).join(' · ');
