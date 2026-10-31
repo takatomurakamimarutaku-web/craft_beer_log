@@ -1,6 +1,6 @@
 // Service Worker
 // ファイルを変更したら CACHE_VERSION を上げる（README「キャッシュ更新手順」参照）
-const CACHE_VERSION = 'v50';
+const CACHE_VERSION = 'v51';
 const CACHE_NAME = `craft-beer-log-${CACHE_VERSION}`;
 const EVENTS_URL = 'data/events.json';
 
@@ -85,6 +85,7 @@ const PRECACHE_URLS = [
   'images/breweries/aqula-akita.webp',
   'images/breweries/aratae-beer.webp',
   'images/breweries/arch-brewery.webp',
+  'images/breweries/asahi.webp',
   'images/breweries/atsumi-peninsula-brewing.webp',
   'images/breweries/aura-brewing.webp',
   'images/breweries/awa-mugishu.webp',
@@ -255,6 +256,7 @@ const PRECACHE_URLS = [
   'images/breweries/onuma-beer.webp',
   'images/breweries/open-air-brewing.webp',
   'images/breweries/oriental-brewing.webp',
+  'images/breweries/orion.webp',
   'images/breweries/oryzae-brewing.webp',
   'images/breweries/otaki-bakushu.webp',
   'images/breweries/otama-brewing.webp',
@@ -279,6 +281,7 @@ const PRECACHE_URLS = [
   'images/breweries/sakata-traditional-beer.webp',
   'images/breweries/sankt-gallen.webp',
   'images/breweries/sanriku-brewing.webp',
+  'images/breweries/sapporo.webp',
   'images/breweries/semba-beer.webp',
   'images/breweries/setouchi-beer.webp',
   'images/breweries/shima-onsen-ale.webp',
@@ -434,6 +437,7 @@ const PRECACHE_URLS = [
   'images/styles/barleywine.webp',
   'images/styles/barrel-aged.webp',
   'images/styles/belgian-blonde.webp',
+  'images/styles/belgian-pale-ale.webp',
   'images/styles/belgian-strong.webp',
   'images/styles/belgian-white.webp',
   'images/styles/berliner-weisse.webp',
@@ -447,6 +451,8 @@ const PRECACHE_URLS = [
   'images/styles/doppelbock.webp',
   'images/styles/double-ipa.webp',
   'images/styles/dubbel.webp',
+  'images/styles/dunkel.webp',
+  'images/styles/dunkelweizen.webp',
   'images/styles/english-ipa.webp',
   'images/styles/flanders-red.webp',
   'images/styles/fruit-beer.webp',
@@ -469,6 +475,7 @@ const PRECACHE_URLS = [
   'images/styles/rauchbier.webp',
   'images/styles/saison.webp',
   'images/styles/schwarzbier.webp',
+  'images/styles/scotch-ale.webp',
   'images/styles/session-ipa.webp',
   'images/styles/sour.webp',
   'images/styles/stout.webp',

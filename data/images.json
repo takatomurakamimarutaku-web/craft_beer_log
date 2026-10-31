@@ -337,6 +337,34 @@
       "author": "Bernt Rostad from Oslo, Norway",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:13th_Century_Grut_Bier.jpg",
       "licenseVersion": "2.0"
+    },
+    "dunkel": {
+      "file": "images/styles/dunkel.webp",
+      "license": "cc-by-sa",
+      "author": "Usien",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hofbraeu_dunkel.JPG",
+      "licenseVersion": "3.0"
+    },
+    "scotch-ale": {
+      "file": "images/styles/scotch-ale.webp",
+      "license": "cc-by",
+      "author": "TravelingOtter from Houston, Texas, USA",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Templeton%27s_Wee_Heavy_-_Bicycle_Craft_Brewery,_Ottawa_(26427973327).jpg",
+      "licenseVersion": "2.0"
+    },
+    "dunkelweizen": {
+      "file": "images/styles/dunkelweizen.webp",
+      "license": "cc-by-sa",
+      "author": "Ghega",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Weihenstephaner_Dunkles_Weissbier.jpg",
+      "licenseVersion": "3.0"
+    },
+    "belgian-pale-ale": {
+      "file": "images/styles/belgian-pale-ale.webp",
+      "license": "cc-by",
+      "author": "Mitsjol",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:De_Koninck_Bolleke.jpg",
+      "licenseVersion": "4.0"
     }
   },
   "hops": {
@@ -567,6 +595,42 @@
       "license": "unverified",
       "author": "アーチブルワリー",
       "sourceUrl": "https://arch-brewery.com/wp-content/themes/archbrewery/assets/img/common/logo.svg"
+    },
+    "asahi-fukushima": {
+      "file": "images/breweries/asahi.webp",
+      "license": "unverified",
+      "author": "アサヒビール",
+      "sourceUrl": "https://www.asahibeer.co.jp/assets/images/common/ogp.jpg"
+    },
+    "asahi-hakata": {
+      "file": "images/breweries/asahi.webp",
+      "license": "unverified",
+      "author": "アサヒビール",
+      "sourceUrl": "https://www.asahibeer.co.jp/assets/images/common/ogp.jpg"
+    },
+    "asahi-hokkaido": {
+      "file": "images/breweries/asahi.webp",
+      "license": "unverified",
+      "author": "アサヒビール",
+      "sourceUrl": "https://www.asahibeer.co.jp/assets/images/common/ogp.jpg"
+    },
+    "asahi-ibaraki": {
+      "file": "images/breweries/asahi.webp",
+      "license": "unverified",
+      "author": "アサヒビール",
+      "sourceUrl": "https://www.asahibeer.co.jp/assets/images/common/ogp.jpg"
+    },
+    "asahi-nagoya": {
+      "file": "images/breweries/asahi.webp",
+      "license": "unverified",
+      "author": "アサヒビール",
+      "sourceUrl": "https://www.asahibeer.co.jp/assets/images/common/ogp.jpg"
+    },
+    "asahi-suita": {
+      "file": "images/breweries/asahi.webp",
+      "license": "unverified",
+      "author": "アサヒビール",
+      "sourceUrl": "https://www.asahibeer.co.jp/assets/images/common/ogp.jpg"
     },
     "atsumi-peninsula-brewing": {
       "file": "images/breweries/atsumi-peninsula-brewing.webp",
@@ -1192,10 +1256,52 @@
       "author": "金しゃちビール",
       "sourceUrl": "https://image.jimcdn.com/app/cms/image/transf/dimension=1920x1024:format=png/path/sb5a6ab7ec85d11a8/image/idea01776884880fa/version/1617243134/image.png"
     },
+    "kirin-chitose": {
+      "file": "images/breweries/kirin-sendai.webp",
+      "license": "unverified",
+      "author": "キリンビール",
+      "sourceUrl": "https://www.kirin.co.jp/assets/images/logo.svg"
+    },
+    "kirin-fukuoka": {
+      "file": "images/breweries/kirin-sendai.webp",
+      "license": "unverified",
+      "author": "キリンビール",
+      "sourceUrl": "https://www.kirin.co.jp/assets/images/logo.svg"
+    },
+    "kirin-kobe": {
+      "file": "images/breweries/kirin-sendai.webp",
+      "license": "unverified",
+      "author": "キリンビール",
+      "sourceUrl": "https://www.kirin.co.jp/assets/images/logo.svg"
+    },
+    "kirin-nagoya": {
+      "file": "images/breweries/kirin-sendai.webp",
+      "license": "unverified",
+      "author": "キリンビール",
+      "sourceUrl": "https://www.kirin.co.jp/assets/images/logo.svg"
+    },
+    "kirin-okayama": {
+      "file": "images/breweries/kirin-sendai.webp",
+      "license": "unverified",
+      "author": "キリンビール",
+      "sourceUrl": "https://www.kirin.co.jp/assets/images/logo.svg"
+    },
     "kirin-sendai": {
       "file": "images/breweries/kirin-sendai.webp",
       "license": "unverified",
       "author": "キリンビール仙台工場",
+      "sourceUrl": "https://www.kirin.co.jp/assets/images/logo.svg"
+    },
+    "kirin-shiga": {
+      "file": "images/breweries/kirin-sendai.webp",
+      "license": "unverified",
+      "author": "キリンビール",
+      "sourceUrl": "https://www.kirin.co.jp/assets/images/logo.svg"
+    },
+    "kirin-toride": {
+      "file": "images/breweries/kirin-sendai.webp",
+      "license": "unverified",
+      "author": "キリンビール",
       "sourceUrl": "https://www.kirin.co.jp/assets/images/logo.svg"
     },
     "kirin-yokohama": {
@@ -1588,6 +1694,12 @@
       "author": "オリエンタルブルーイング",
       "sourceUrl": "https://orientalbrewing.com/wp/wp-content/uploads/2016/10/logo3.png"
     },
+    "orion-nago": {
+      "file": "images/breweries/orion.webp",
+      "license": "unverified",
+      "author": "オリオンビール",
+      "sourceUrl": "https://www.orionbeer.co.jp/img/top/orion-logo2.svg"
+    },
     "oryzae-brewing": {
       "file": "images/breweries/oryzae-brewing.webp",
       "license": "unverified",
@@ -1731,6 +1843,36 @@
       "license": "unverified",
       "author": "三陸ビール",
       "sourceUrl": "https://sanrikubeer.com/cdn/shop/files/top1_2.jpg?v=1719975739"
+    },
+    "sapporo-chiba": {
+      "file": "images/breweries/sapporo.webp",
+      "license": "unverified",
+      "author": "サッポロビール",
+      "sourceUrl": "https://www.sapporobeer.jp/icon/icon.png"
+    },
+    "sapporo-hokkaido": {
+      "file": "images/breweries/sapporo.webp",
+      "license": "unverified",
+      "author": "サッポロビール",
+      "sourceUrl": "https://www.sapporobeer.jp/icon/icon.png"
+    },
+    "sapporo-kyushu-hita": {
+      "file": "images/breweries/sapporo.webp",
+      "license": "unverified",
+      "author": "サッポロビール",
+      "sourceUrl": "https://www.sapporobeer.jp/icon/icon.png"
+    },
+    "sapporo-nasu": {
+      "file": "images/breweries/sapporo.webp",
+      "license": "unverified",
+      "author": "サッポロビール",
+      "sourceUrl": "https://www.sapporobeer.jp/icon/icon.png"
+    },
+    "sapporo-sendai": {
+      "file": "images/breweries/sapporo.webp",
+      "license": "unverified",
+      "author": "サッポロビール",
+      "sourceUrl": "https://www.sapporobeer.jp/icon/icon.png"
     },
     "semba-beer": {
       "file": "images/breweries/semba-beer.webp",
