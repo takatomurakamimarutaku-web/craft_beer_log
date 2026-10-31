@@ -166,6 +166,177 @@
       "author": "Bernt Rostad",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Super_Bock_Preta_glass.jpg",
       "licenseVersion": "2.0"
+    },
+    "american-lager": {
+      "file": "images/styles/american-lager.webp",
+      "license": "cc-by",
+      "author": "Tony Webster from Minneapolis, Minnesota, United States",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pabst_Blue_Ribbon_(PBR)_Beer_Can_in_the_Water_(30765817277).jpg",
+      "licenseVersion": "2.0"
+    },
+    "vienna-lager": {
+      "file": "images/styles/vienna-lager.webp",
+      "license": "cc-by",
+      "author": "Bernt Rostad",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saku_P%C3%BCssirohu_Punane.jpg",
+      "licenseVersion": "2.0"
+    },
+    "marzen": {
+      "file": "images/styles/marzen.webp",
+      "license": "cc-by",
+      "author": "Scott A. Miller",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Paulaner_Oktoberfest_Marzen_11.2oz_bottle_and_beer_mug.jpg",
+      "licenseVersion": "3.0"
+    },
+    "schwarzbier": {
+      "file": "images/styles/schwarzbier.webp",
+      "license": "cc0",
+      "author": "LeeKeoma",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eibauer_Schwarzbier.JPG"
+    },
+    "doppelbock": {
+      "file": "images/styles/doppelbock.webp",
+      "license": "cc0",
+      "author": "LeeKeoma",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Paulaner.Salvator.JPG"
+    },
+    "maibock": {
+      "file": "images/styles/maibock.webp",
+      "license": "cc0",
+      "author": "Boonekamp",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Torgauer-maibock.jpg"
+    },
+    "rauchbier": {
+      "file": "images/styles/rauchbier.webp",
+      "license": "cc-by",
+      "author": "Tom Harpel from Seattle, Washington, United States",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Smoked_Beer.jpg",
+      "licenseVersion": "2.0"
+    },
+    "blonde-ale": {
+      "file": "images/styles/blonde-ale.webp",
+      "license": "cc-by",
+      "author": "cogdogblog",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Perfectly_Blond_Ale_(5876027918).jpg",
+      "licenseVersion": "2.0"
+    },
+    "cream-ale": {
+      "file": "images/styles/cream-ale.webp",
+      "license": "pd",
+      "author": "Louis F Neuweiler & Sons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Neuweiler_Brewery_-_Cream_Ale_Poster-_Allentown_PA.jpg"
+    },
+    "altbier": {
+      "file": "images/styles/altbier.webp",
+      "license": "cc-by",
+      "author": "Ray eye",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:D%C3%BCsseldorfer_Altbier.jpg",
+      "licenseVersion": "3.0"
+    },
+    "california-common": {
+      "file": "images/styles/california-common.webp",
+      "license": "cc-by",
+      "author": "Picardin",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anchor_Steam_stained_glass_logo.JPG",
+      "licenseVersion": "4.0"
+    },
+    "bitter": {
+      "file": "images/styles/bitter.webp",
+      "license": "cc0",
+      "author": "Matiasl",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fuller%27s_bottles.jpg"
+    },
+    "english-ipa": {
+      "file": "images/styles/english-ipa.webp",
+      "license": "cc0",
+      "author": "Zerind",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Soproni_%C3%93vatos_Duhaj_IPA_s%C3%B6r.jpg"
+    },
+    "black-ipa": {
+      "file": "images/styles/black-ipa.webp",
+      "license": "cc0",
+      "author": "Аимаина хикари",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bierwelle_Black_IPA.jpg"
+    },
+    "irish-red": {
+      "file": "images/styles/irish-red.webp",
+      "license": "cc-by",
+      "author": "Erik Cleves Kristensen",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Independent_Connemara_Red_Ale_(27422919395).jpg",
+      "licenseVersion": "2.0"
+    },
+    "milk-stout": {
+      "file": "images/styles/milk-stout.webp",
+      "license": "cc0",
+      "author": "Аимаина хикари",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bierwelle_Milk_Stout_1.jpg"
+    },
+    "oatmeal-stout": {
+      "file": "images/styles/oatmeal-stout.webp",
+      "license": "pd",
+      "author": "Jon Sullivan",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stout.jpg"
+    },
+    "baltic-porter": {
+      "file": "images/styles/baltic-porter.webp",
+      "license": "pd",
+      "author": "Skitof",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ciechan_Porter.jpg"
+    },
+    "american-wheat": {
+      "file": "images/styles/american-wheat.webp",
+      "license": "cc0",
+      "author": "Pansebert",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Crafty_Brewing_Co._American_Style_Pale_Wheat_Ale_(Rye_River_Brewing_Company).jpg"
+    },
+    "weizenbock": {
+      "file": "images/styles/weizenbock.webp",
+      "license": "cc-by",
+      "author": "Derzno",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2016_Leinburger_Weizenbock.jpg",
+      "licenseVersion": "3.0"
+    },
+    "dubbel": {
+      "file": "images/styles/dubbel.webp",
+      "license": "cc-by",
+      "author": "Bernt Rostad from Oslo, Norway",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:New_Belgium_Wild%C2%B2_Dubbel_(14908763238).jpg",
+      "licenseVersion": "2.0"
+    },
+    "belgian-blonde": {
+      "file": "images/styles/belgian-blonde.webp",
+      "license": "cc-by",
+      "author": "josef.stuefer",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Leffe_Blond_-_Flickr_-_josef.stuefer.jpg",
+      "licenseVersion": "2.0"
+    },
+    "lambic": {
+      "file": "images/styles/lambic.webp",
+      "license": "cc-by",
+      "author": "Bernt Rostad from Oslo, Norway",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mort_Subite_Gueuze_Lambic.jpg",
+      "licenseVersion": "2.0"
+    },
+    "flanders-red": {
+      "file": "images/styles/flanders-red.webp",
+      "license": "cc-by",
+      "author": "Gordito1869",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rodenbach_-_belgisches_Bier_der_Brauerei_Palm.jpg",
+      "licenseVersion": "3.0"
+    },
+    "barrel-aged": {
+      "file": "images/styles/barrel-aged.webp",
+      "license": "cc-by",
+      "author": "Bernt Rostad from Oslo, Norway",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Beavertown_Heavy_Water_(Longmorn_1992_BA).jpg",
+      "licenseVersion": "2.0"
+    },
+    "herb-spice": {
+      "file": "images/styles/herb-spice.webp",
+      "license": "cc-by",
+      "author": "Bernt Rostad from Oslo, Norway",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:13th_Century_Grut_Bier.jpg",
+      "licenseVersion": "2.0"
     }
   },
   "hops": {
