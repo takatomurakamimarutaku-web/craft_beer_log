@@ -284,7 +284,40 @@
       "sourceUrl": "https://charlesfaram.com/hop-oracle/sorachi-ace-hop/"
     }
   },
-  "basics": {},
+  "basics": {
+    "craft-beer": {
+      "file": "images/basics/craft-beer.webp",
+      "license": "cc-by",
+      "author": "Bernt Rostad",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Taps_@_McGivney%E2%80%99s_(15089278651).jpg",
+      "licenseVersion": "2.0"
+    },
+    "ingredients": {
+      "file": "images/basics/ingredients.webp",
+      "license": "pd",
+      "author": "ArnOlson",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Crystal_Malt_80L.jpg"
+    },
+    "brewing": {
+      "file": "images/basics/brewing.webp",
+      "license": "cc-by",
+      "author": "Benreis",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kommunbr%C3%A4u_Kulmbach_Kupferkessel.JPG",
+      "licenseVersion": "3.0"
+    },
+    "fermentation": {
+      "file": "images/basics/fermentation.webp",
+      "license": "pd",
+      "author": "Friman",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brewery-nogne-o.jpg"
+    },
+    "hops": {
+      "file": "images/basics/hops.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/cascade/"
+    }
+  },
   "breweries": {
     "315beer": {
       "file": "images/breweries/315beer.webp",
