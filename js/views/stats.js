@@ -1,7 +1,7 @@
 // 統計（#/stats）
 import { h, svg, emptyState, formatYen } from '../ui.js';
 import { SERVING_LABELS } from '../models.js';
-import { tastePicks, summarizeRatings, countByStyle, abvHistogram, topBreweries, monthlyCounts, servingStats, favoriteFlavorTags, hopsForFavoriteTags, eventStats } from '../stats.js';
+import { tastePicks, dayCalendar, summarizeRatings, countByStyle, abvHistogram, topBreweries, monthlyCounts, servingStats, favoriteFlavorTags, hopsForFavoriteTags, eventStats } from '../stats.js';
 import { joinEvents } from '../events.js';
 import { hBarChart, vBarChart } from '../charts.js';
 import { setCriteria } from './search.js';
@@ -40,6 +40,8 @@ export async function render({ app, outlet, isStale }) {
     tile('銘柄', `${tried.size}`, '種'),
     tile('平均評価', ratings.avg !== null ? ratings.avg.toFixed(1) : '—', ratings.avg !== null ? '' : ''),
   );
+
+  const calSec = calendarSection(dayCalendar(checkins, { weeks: CAL_WEEKS }));
 
   // 1. スタイル別
   const styles = countByStyle(beers, checkins, app.styles);
@@ -201,6 +203,7 @@ export async function render({ app, outlet, isStale }) {
   outlet.replaceChildren(
     recapLink,
     tiles,
+    calSec,
     tasteSec,
     h('p', { class: 'small muted stat-hint', text: 'グラフの棒をタップすると、その条件で検索できます。' }),
     styleSec,
@@ -210,6 +213,45 @@ export async function render({ app, outlet, isStale }) {
     servingSec,
     favSec,
     ...(eventSec ? [eventSec] : []),
+  );
+}
+
+const CAL_WEEKS = 20;
+const WEEKDAYS = ['月', '', '水', '', '金', '', ''];
+
+/** 飲んだ日カレンダー：1マス1日、色の濃さが杯数（4杯以上は同じ濃さ） */
+function calendarSection(cal) {
+  const cols = cal.weeks.length;
+  const grid = h(
+    'div',
+    { class: 'cal-grid', style: `--cols:${cols}`, role: 'img', 'aria-label': `直近${cols}週で${cal.days}日、${cal.cups}杯を記録` },
+    ...WEEKDAYS.map((w, i) => h('span', { class: 'cal-wd', style: `grid-row:${i + 2}`, text: w })),
+    ...cal.months.map((m) => h('span', { class: 'cal-month', style: `grid-column:${m.col + 2}`, text: m.label })),
+    ...cal.weeks.flatMap((week, c) =>
+      week.map((d, r) =>
+        h('span', {
+          class: `cal-cell${d.future ? ' is-future' : ''}`,
+          'data-level': String(Math.min(d.count, 4)),
+          style: `grid-column:${c + 2};grid-row:${r + 2}`,
+          title: d.future ? null : `${d.date}：${d.count ? `${d.count}杯` : '記録なし'}`,
+        }),
+      ),
+    ),
+  );
+  const legend = h(
+    'div',
+    { class: 'cal-legend', 'aria-hidden': 'true' },
+    h('span', { text: '少ない' }),
+    ...[0, 1, 2, 3, 4].map((l) => h('span', { class: 'cal-cell', 'data-level': String(l) })),
+    h('span', { text: '多い' }),
+  );
+  return h(
+    'section',
+    { class: 'panel cal-sec' },
+    h('h3', { class: 'section-title', text: '飲んだ日' }),
+    h('p', { class: 'small muted', text: `直近${cols}週で ${cal.days}日・${cal.cups}杯` }),
+    grid,
+    legend,
   );
 }
 

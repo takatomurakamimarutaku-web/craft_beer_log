@@ -309,3 +309,42 @@ export function tastePicks(beers, checkins, styles, { minCount = 1, n = 3 } = {}
     .map(({ style, because }) => ({ style, because }));
   return { liked, picks };
 }
+
+/**
+ * 飲んだ日カレンダー（直近 weeks 週、月曜はじまり）。
+ * @returns {{ weeks: Array<Array<{ date: string, count: number, future: boolean }>>, days: number, cups: number, max: number, months: Array<{ col: number, label: string }> }}
+ */
+export function dayCalendar(checkins, { weeks = 26, now = new Date() } = {}) {
+  const ymd = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const start = new Date(today);
+  start.setDate(start.getDate() - ((today.getDay() + 6) % 7) - (weeks - 1) * 7);
+  const counts = new Map();
+  for (const c of checkins) if (typeof c.date === 'string') counts.set(c.date, (counts.get(c.date) || 0) + 1);
+  const todayKey = ymd(today);
+  const cols = [];
+  const months = [];
+  let days = 0;
+  let cups = 0;
+  let max = 0;
+  for (let w = 0; w < weeks; w++) {
+    const col = [];
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + w * 7 + i);
+      const date = ymd(d);
+      const future = date > todayKey;
+      const count = future ? 0 : counts.get(date) || 0;
+      if (count) {
+        days++;
+        cups += count;
+        max = Math.max(max, count);
+      }
+      if (d.getDate() === 1 || (w === 0 && i === 0)) months.push({ col: w, label: `${d.getMonth() + 1}月` });
+      col.push({ date, count, future });
+    }
+    cols.push(col);
+  }
+  // 最初の列の月ラベルが、すぐ次の月ラベルと重なるときは省く
+  if (months.length > 1 && months[1].col - months[0].col < 3) months.shift();
+  return { weeks: cols, days, cups, max, months };
+}

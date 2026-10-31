@@ -107,3 +107,22 @@ export function newlyEarned(badges, seen) {
   const s = new Set(seen || []);
   return badges.filter((b) => b.achieved && !s.has(b.id));
 }
+
+/**
+ * 記録した直後に見せる「ひとこと」。記録は保存済み（checkins に含まれる）として数える。
+ * @returns {{ cupNo: number, firstBeer: boolean, beerCount: number, newStyle: object|null, dexTried: number, dexTotal: number }}
+ */
+export function checkinHighlights(beers, checkins, styles, beerId) {
+  const beer = beers.find((b) => b.id === beerId);
+  const beerCount = checkins.filter((c) => c.beerId === beerId).length;
+  const dex = styleCollection(beers, checkins, styles);
+  const mine = dex.find((d) => d.style.id === beer?.styleId);
+  return {
+    cupNo: checkins.length,
+    firstBeer: beerCount === 1,
+    beerCount,
+    newStyle: mine && mine.count === 1 ? mine.style : null,
+    dexTried: dex.filter((d) => d.count > 0).length,
+    dexTotal: dex.length,
+  };
+}
