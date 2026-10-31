@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-28",
+  "updatedAt": "2026-10-31",
   "series": [
     {
       "id": "american-craft-beer-experience",
@@ -771,6 +771,96 @@
       "breweryIds": [
         "sankt-gallen"
       ]
+    },
+    {
+      "id": "nagoya-oktoberfest",
+      "name": "名古屋オクトーバーフェスト",
+      "kana": "なごやおくとーばーふぇすと",
+      "kind": "festival",
+      "prefecture": "aichi",
+      "officialUrl": "https://www.tokai-tv.com/nagoyaoktoberfest/",
+      "usualPeriod": "7月"
+    },
+    {
+      "id": "nagano-craft-beer-food-fes",
+      "name": "長野CRAFT BEER＆FOOD Fes.",
+      "kana": "ながのくらふとびああんどふーどふぇす",
+      "kind": "festival",
+      "prefecture": "nagano",
+      "officialUrl": "https://shinshu-beer-club.com/",
+      "usualPeriod": "9月"
+    },
+    {
+      "id": "niigata-oktoberfest",
+      "name": "新潟オクトーバーフェスト",
+      "kana": "にいがたおくとーばーふぇすと",
+      "kind": "festival",
+      "prefecture": "niigata",
+      "officialUrl": "https://ngt-october.com/",
+      "usualPeriod": "9月"
+    },
+    {
+      "id": "mitsuke-beer-sake-festival",
+      "name": "ビールと酒の祭典 in みつけ",
+      "kana": "びーるとさけのさいてんいんみつけ",
+      "kind": "festival",
+      "prefecture": "niigata",
+      "officialUrl": "https://niigata-kankou.or.jp/event/45053",
+      "usualPeriod": "9月"
+    },
+    {
+      "id": "jibeer-fest-kofu",
+      "name": "地ビールフェスト甲府",
+      "kana": "じびーるふぇすとこうふ",
+      "kind": "festival",
+      "prefecture": "yamanashi",
+      "officialUrl": "https://sannichiybs.info/beer/",
+      "usualPeriod": "7月下旬〜8月上旬"
+    },
+    {
+      "id": "hamamatsu-craft-beer-fes",
+      "name": "浜松クラフトビールフェス",
+      "kana": "はままつくらふとびーるふぇす",
+      "kind": "festival",
+      "prefecture": "shizuoka",
+      "officialUrl": "https://craftbeerfes.hama-machi.net/",
+      "usualPeriod": "10月"
+    },
+    {
+      "id": "craftbeer-sousenkyo-nagoya",
+      "name": "クラフトビール総選挙 in 名古屋",
+      "kana": "くらふとびーるそうせんきょなごや",
+      "kind": "festival",
+      "prefecture": "aichi",
+      "officialUrl": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
+      "usualPeriod": null
+    },
+    {
+      "id": "craftbeer-sousenkyo-utsunomiya",
+      "name": "クラフトビール総選挙 in 宇都宮",
+      "kana": "くらふとびーるそうせんきょうつのみや",
+      "kind": "festival",
+      "prefecture": "tochigi",
+      "officialUrl": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
+      "usualPeriod": null
+    },
+    {
+      "id": "craftbeer-sousenkyo-futakotamagawa",
+      "name": "クラフトビール総選挙 in 二子玉川",
+      "kana": "くらふとびーるそうせんきょふたこたまがわ",
+      "kind": "festival",
+      "prefecture": "tokyo",
+      "officialUrl": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
+      "usualPeriod": null
+    },
+    {
+      "id": "craftbeer-sousenkyo-umikaze",
+      "name": "クラフトビール総選挙 in うみかぜ公園",
+      "kana": "くらふとびーるそうせんきょうみかぜこうえん",
+      "kind": "festival",
+      "prefecture": "kanagawa",
+      "officialUrl": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
+      "usualPeriod": null
     }
   ],
   "events": [
@@ -3078,6 +3168,304 @@
           "title": "サンクトガーレンの公式サイト（イベント）",
           "url": "https://www.sanktgallenbrewery.com/event/20260803.html",
           "accessedAt": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "nagoya-oktoberfest-2026",
+      "seriesId": "nagoya-oktoberfest",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-07-03",
+      "endDate": "2026-07-20",
+      "hours": "平日 16:00〜21:00、土日 11:00〜21:00（最終日は18:30まで）",
+      "prefecture": "aichi",
+      "city": "名古屋市中区",
+      "venue": "久屋大通公園 エディオン久屋広場・エンゼル広場",
+      "priceNote": "入場無料（飲食は有料）",
+      "officialUrl": "https://www.tokai-tv.com/nagoyaoktoberfest/",
+      "ticketUrl": null,
+      "note": "第13回",
+      "lastVerified": "2026-10-31",
+      "sources": [
+        {
+          "title": "主催（東海テレビほか）のプレスリリース（PR TIMES）",
+          "url": "https://prtimes.jp/main/html/rd/p/000000575.000012860.html",
+          "accessedAt": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "nagano-craft-beer-food-fes-2026",
+      "seriesId": "nagano-craft-beer-food-fes",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-09-04",
+      "endDate": "2026-09-06",
+      "hours": "4日 15:00〜20:30、5日 11:00〜20:30、6日 11:00〜16:00",
+      "prefecture": "nagano",
+      "city": "長野市",
+      "venue": "ながの表参道セントラルスクゥエア",
+      "priceNote": "入場無料（飲食は有料）",
+      "officialUrl": "https://shinshu-beer-club.com/",
+      "ticketUrl": null,
+      "note": "第5回",
+      "lastVerified": "2026-10-31",
+      "sources": [
+        {
+          "title": "主催（アルピコホールディングス）のプレスリリース",
+          "url": "https://dime.jp/company_news/detail/?pr=2658458",
+          "accessedAt": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "niigata-oktoberfest-2026",
+      "seriesId": "niigata-oktoberfest",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-09-18",
+      "endDate": "2026-09-21",
+      "hours": "18日 15:00〜21:00、19〜21日 11:00〜21:00",
+      "prefecture": "niigata",
+      "city": "新潟市中央区",
+      "venue": "古町ルフル広場・ふるまちモール6・7",
+      "priceNote": "入場料 1日600円（カップ・イベント代）",
+      "officialUrl": "https://ngt-october.com/",
+      "ticketUrl": null,
+      "note": null,
+      "lastVerified": "2026-10-31",
+      "sources": [
+        {
+          "title": "公式サイト",
+          "url": "https://ngt-october.com/",
+          "accessedAt": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "mitsuke-beer-sake-festival-2026",
+      "seriesId": "mitsuke-beer-sake-festival",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-09-11",
+      "endDate": "2026-09-13",
+      "hours": "11日 16:00〜20:00、12日 11:00〜20:00、13日 11:00〜16:00",
+      "prefecture": "niigata",
+      "city": "見附市",
+      "venue": "市民交流センター ネーブルみつけ",
+      "priceNote": "入場無料（飲食は有料）",
+      "officialUrl": "https://niigata-kankou.or.jp/event/45053",
+      "ticketUrl": null,
+      "note": "主催は見附市観光物産フェア実行委員会",
+      "lastVerified": "2026-10-31",
+      "sources": [
+        {
+          "title": "新潟県観光協会の公式観光サイト",
+          "url": "https://niigata-kankou.or.jp/event/45053",
+          "accessedAt": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "jibeer-fest-kofu-2026",
+      "seriesId": "jibeer-fest-kofu",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-07-24",
+      "endDate": "2026-08-02",
+      "hours": "平日 16:30〜21:00、土日 11:30〜21:00",
+      "prefecture": "yamanashi",
+      "city": "甲府市",
+      "venue": "甲府駅北口 よっちゃばれ広場",
+      "priceNote": "入場無料（グラス購入・デポジット制）",
+      "officialUrl": "https://sannichiybs.info/beer/",
+      "ticketUrl": null,
+      "note": null,
+      "lastVerified": "2026-10-31",
+      "sources": [
+        {
+          "title": "主催者のプレスリリース（PR TIMES）",
+          "url": "https://prtimes.jp/main/html/rd/p/000000165.000137984.html",
+          "accessedAt": "2026-10-31"
+        },
+        {
+          "title": "公式サイト",
+          "url": "https://sannichiybs.info/beer/",
+          "accessedAt": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "hamamatsu-craft-beer-fes-2026",
+      "seriesId": "hamamatsu-craft-beer-fes",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-10-02",
+      "endDate": "2026-10-04",
+      "hours": "2日 17:30〜21:00、3日 11:00〜21:00、4日 11:00〜17:00",
+      "prefecture": "shizuoka",
+      "city": "浜松市中央区",
+      "venue": "浜松市ギャラリーモール ソラモ",
+      "priceNote": "チケット制（5枚綴り2,000円）",
+      "officialUrl": "https://craftbeerfes.hama-machi.net/",
+      "ticketUrl": null,
+      "note": null,
+      "lastVerified": "2026-10-31",
+      "sources": [
+        {
+          "title": "主催者のプレスリリース（PR TIMES）",
+          "url": "https://prtimes.jp/main/html/rd/p/000000005.000169892.html",
+          "accessedAt": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "craftbeer-sousenkyo-nagoya-2026",
+      "seriesId": "craftbeer-sousenkyo-nagoya",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-11-12",
+      "endDate": "2026-11-16",
+      "hours": "平日 11:00〜20:00、土日月 10:00〜21:00",
+      "prefecture": "aichi",
+      "city": "名古屋市中村区",
+      "venue": "Meieki Parklet（旧名鉄レジャック跡地）",
+      "priceNote": "入場無料",
+      "officialUrl": "https://dreambeer.jp/blog/press/20261029/",
+      "ticketUrl": null,
+      "note": null,
+      "lastVerified": "2026-10-31",
+      "sources": [
+        {
+          "title": "主催（DREAMBEER）のお知らせ",
+          "url": "https://dreambeer.jp/blog/press/20261029/",
+          "accessedAt": "2026-10-31"
+        },
+        {
+          "title": "公式サイト",
+          "url": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
+          "accessedAt": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "craftbeer-sousenkyo-utsunomiya-2026",
+      "seriesId": "craftbeer-sousenkyo-utsunomiya",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-04-03",
+      "endDate": "2026-04-06",
+      "hours": null,
+      "prefecture": "tochigi",
+      "city": "宇都宮市",
+      "venue": "宇都宮市オリオン市民広場",
+      "priceNote": "入場無料",
+      "officialUrl": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
+      "ticketUrl": null,
+      "note": null,
+      "lastVerified": "2026-10-31",
+      "sources": [
+        {
+          "title": "公式サイト",
+          "url": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
+          "accessedAt": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "craftbeer-sousenkyo-futakotamagawa-2026",
+      "seriesId": "craftbeer-sousenkyo-futakotamagawa",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-10-08",
+      "endDate": "2026-10-12",
+      "hours": null,
+      "prefecture": "tokyo",
+      "city": "世田谷区",
+      "venue": "二子玉川ライズ 中央広場・スタジオ",
+      "priceNote": "入場無料",
+      "officialUrl": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
+      "ticketUrl": null,
+      "note": null,
+      "lastVerified": "2026-10-31",
+      "sources": [
+        {
+          "title": "公式サイト",
+          "url": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
+          "accessedAt": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "craftbeer-sousenkyo-umikaze-2026",
+      "seriesId": "craftbeer-sousenkyo-umikaze",
+      "edition": "2026",
+      "status": "scheduled",
+      "startDate": "2026-04-25",
+      "endDate": "2026-05-17",
+      "hours": null,
+      "prefecture": "kanagawa",
+      "city": "横須賀市",
+      "venue": "うみかぜ公園",
+      "priceNote": "入場無料",
+      "officialUrl": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
+      "ticketUrl": null,
+      "note": null,
+      "lastVerified": "2026-10-31",
+      "sources": [
+        {
+          "title": "公式サイト",
+          "url": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
+          "accessedAt": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "craftbeer-sousenkyo-okachimachi-2026-06",
+      "seriesId": "craftbeer-sousenkyo-okachimachi",
+      "edition": "2026-06",
+      "status": "scheduled",
+      "startDate": "2026-06-10",
+      "endDate": "2026-06-14",
+      "hours": null,
+      "prefecture": "tokyo",
+      "city": "台東区",
+      "venue": "おかちまちパンダ広場",
+      "priceNote": "入場無料",
+      "officialUrl": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
+      "ticketUrl": null,
+      "note": null,
+      "lastVerified": "2026-10-31",
+      "sources": [
+        {
+          "title": "公式サイト",
+          "url": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
+          "accessedAt": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "craftbeer-sousenkyo-musashikosugi-2026-05",
+      "seriesId": "craftbeer-sousenkyo-musashikosugi",
+      "edition": "2026-05",
+      "status": "scheduled",
+      "startDate": "2026-05-14",
+      "endDate": "2026-05-17",
+      "hours": null,
+      "prefecture": "kanagawa",
+      "city": "川崎市中原区",
+      "venue": "こすぎコアパーク",
+      "priceNote": "入場無料",
+      "officialUrl": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
+      "ticketUrl": null,
+      "note": null,
+      "lastVerified": "2026-10-31",
+      "sources": [
+        {
+          "title": "公式サイト",
+          "url": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
+          "accessedAt": "2026-10-31"
         }
       ]
     }
