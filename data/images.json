@@ -337,6 +337,34 @@
       "author": "Bernt Rostad from Oslo, Norway",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:13th_Century_Grut_Bier.jpg",
       "licenseVersion": "2.0"
+    },
+    "dunkel": {
+      "file": "images/styles/dunkel.webp",
+      "license": "cc-by-sa",
+      "author": "Usien",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hofbraeu_dunkel.JPG",
+      "licenseVersion": "3.0"
+    },
+    "scotch-ale": {
+      "file": "images/styles/scotch-ale.webp",
+      "license": "cc-by",
+      "author": "TravelingOtter from Houston, Texas, USA",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Templeton%27s_Wee_Heavy_-_Bicycle_Craft_Brewery,_Ottawa_(26427973327).jpg",
+      "licenseVersion": "2.0"
+    },
+    "dunkelweizen": {
+      "file": "images/styles/dunkelweizen.webp",
+      "license": "cc-by-sa",
+      "author": "Ghega",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Weihenstephaner_Dunkles_Weissbier.jpg",
+      "licenseVersion": "3.0"
+    },
+    "belgian-pale-ale": {
+      "file": "images/styles/belgian-pale-ale.webp",
+      "license": "cc-by",
+      "author": "Mitsjol",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:De_Koninck_Bolleke.jpg",
+      "licenseVersion": "4.0"
     }
   },
   "hops": {
