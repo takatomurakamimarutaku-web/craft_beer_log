@@ -139,7 +139,10 @@ test('images.json：対象のID・ファイルの存在・ライセンス表記'
   const ids = {
     styles: new Set(load('styles').map((s) => s.id)),
     hops: new Set(load('hops').map((x) => x.id)),
+    basics: new Set(load('basics').map((a) => a.id)),
     breweries: new Set(load('breweries').breweries.map((b) => b.id)),
+    'brewery-photos': new Set(load('breweries').breweries.map((b) => b.id)),
+    events: new Set(load('events').series.map((s) => s.id)),
   };
   assert.deepEqual(Object.keys(images).sort(), [...IMAGE_KINDS].sort());
   for (const kind of IMAGE_KINDS) {

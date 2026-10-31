@@ -129,10 +129,10 @@ export function formatRange(range, unit = '') {
 
 // ---- 画像（data/images.json） ----
 
-export const IMAGE_KINDS = ['styles', 'hops', 'breweries'];
+export const IMAGE_KINDS = ['styles', 'hops', 'basics', 'breweries', 'brewery-photos', 'events'];
 export const IMAGE_LICENSES = ['ai', 'cc-by', 'cc-by-sa', 'cc0', 'pd', 'own', 'permission', 'unverified'];
 
-/** スタイル・ホップの画像、ブリュワーのロゴの情報。無ければ null（イラスト・ピンを表示する） */
+/** 画像の情報（スタイル・ホップ・入門記事の写真、ブリュワーのロゴと写真、イベントの告知画像）。無ければ null */
 export function imageEntry(images, kind, id) {
   const e = images?.[kind]?.[id];
   return e && typeof e.file === 'string' ? e : null;

@@ -284,6 +284,7 @@
       "sourceUrl": "https://charlesfaram.com/hop-oracle/sorachi-ace-hop/"
     }
   },
+  "basics": {},
   "breweries": {
     "315beer": {
       "file": "images/breweries/315beer.webp",
@@ -572,6 +573,340 @@
       "license": "unverified",
       "author": "遠野麦酒ZUMONA",
       "sourceUrl": "https://kamihei-shuzo.jp/wp-content/themes/kamihei-shuzo/assets/images/common/image_product_logo_zumona.svg"
+    }
+  },
+  "brewery-photos": {
+    "oirase-brewery": {
+      "file": "images/brewery-photos/oirase-brewery.webp",
+      "license": "unverified",
+      "author": "OIRASE Brewery",
+      "sourceUrl": "https://michinoeki-oirase.com/"
+    },
+    "nanbu-craft": {
+      "file": "images/brewery-photos/nanbu-craft.webp",
+      "license": "unverified",
+      "author": "NANBU CRAFT",
+      "sourceUrl": "https://nanbucraft.com/"
+    },
+    "iwate-kura-beer": {
+      "file": "images/brewery-photos/iwate-kura-beer.webp",
+      "license": "unverified",
+      "author": "いわて蔵ビール",
+      "sourceUrl": "https://sekinoichi.co.jp/"
+    },
+    "tono-brewing": {
+      "file": "images/brewery-photos/tono-brewing.webp",
+      "license": "unverified",
+      "author": "遠野醸造",
+      "sourceUrl": "https://tonobrewing.com/"
+    },
+    "sanriku-brewing": {
+      "file": "images/brewery-photos/sanriku-brewing.webp",
+      "license": "unverified",
+      "author": "三陸ビール",
+      "sourceUrl": "https://sanrikubeer.com/"
+    },
+    "kirin-sendai": {
+      "file": "images/brewery-photos/kirin-sendai.webp",
+      "license": "unverified",
+      "author": "キリンビール仙台工場",
+      "sourceUrl": "https://www.kirin.co.jp/experience/factory/sendai/"
+    },
+    "forest-brewing": {
+      "file": "images/brewery-photos/forest-brewing.webp",
+      "license": "unverified",
+      "author": "ForestBrewing",
+      "sourceUrl": "https://forestbrewing.jp/"
+    },
+    "hopdog-brewing": {
+      "file": "images/brewery-photos/hopdog-brewing.webp",
+      "license": "unverified",
+      "author": "HOPDOG BREWING",
+      "sourceUrl": "https://hopdogbrewing.jp"
+    },
+    "ugo-bakushu": {
+      "file": "images/brewery-photos/ugo-bakushu.webp",
+      "license": "unverified",
+      "author": "羽後麦酒",
+      "sourceUrl": "https://ugobakushu.jp/"
+    },
+    "zao-brewery": {
+      "file": "images/brewery-photos/zao-brewery.webp",
+      "license": "unverified",
+      "author": "蔵王ブルワリー",
+      "sourceUrl": "https://www.zao-brewery.jp/"
+    },
+    "michinoku-fukushimaji-beer": {
+      "file": "images/brewery-photos/michinoku-fukushimaji-beer.webp",
+      "license": "unverified",
+      "author": "みちのく福島路ビール",
+      "sourceUrl": "https://www.f-beer.com/"
+    },
+    "nikko-brewing": {
+      "file": "images/brewery-photos/nikko-brewing.webp",
+      "license": "unverified",
+      "author": "Nikko Brewing",
+      "sourceUrl": "https://nikko-monkeys.beer"
+    },
+    "oct-one-brewing": {
+      "file": "images/brewery-photos/oct-one-brewing.webp",
+      "license": "unverified",
+      "author": "OCT ONE Brewing",
+      "sourceUrl": "https://oct-1.com/"
+    },
+    "kankiku-brewery": {
+      "file": "images/brewery-photos/kankiku-brewery.webp",
+      "license": "unverified",
+      "author": "KANKIKU BREWERY（九十九里オーシャンビール）",
+      "sourceUrl": "https://www.kankiku.com/"
+    }
+  },
+  "events": {
+    "american-craft-beer-experience": {
+      "file": "images/events/american-craft-beer-experience.webp",
+      "license": "unverified",
+      "author": "アメリカン クラフトビア エクスペリエンス",
+      "sourceUrl": "https://uscraftbeer.jp/"
+    },
+    "japan-hop-fest-svb": {
+      "file": "images/events/japan-hop-fest-svb.webp",
+      "license": "unverified",
+      "author": "クラフトビール ジャパンホップ フェスト in SVB東京",
+      "sourceUrl": "https://japanhop.jp/cjhf2026/"
+    },
+    "odawara-hakone-craft-beer-fes": {
+      "file": "images/events/odawara-hakone-craft-beer-fes.webp",
+      "license": "unverified",
+      "author": "小田原・箱根 クラフトビールフェス",
+      "sourceUrl": "https://kamaboko.com/events/craftbeer_festival/"
+    },
+    "omotesando-craft-beer-festa": {
+      "file": "images/events/omotesando-craft-beer-festa.webp",
+      "license": "unverified",
+      "author": "表参道クラフトビアフェスタ",
+      "sourceUrl": "https://allcraftjapan.com/events/omotesando-craft-beer-fest/"
+    },
+    "keyaki-beer-festival": {
+      "file": "images/events/keyaki-beer-festival.webp",
+      "license": "unverified",
+      "author": "けやきひろば ビール祭り",
+      "sourceUrl": "https://www.beerkeyaki.jp/"
+    },
+    "tsuyama-jibeer-festa": {
+      "file": "images/events/tsuyama-jibeer-festa.webp",
+      "license": "unverified",
+      "author": "全国地ビールフェスタ in 津山",
+      "sourceUrl": "https://www.okayama-kanko.jp/event/detail_100295.html"
+    },
+    "belgian-beer-weekend-hibiya": {
+      "file": "images/events/belgian-beer-weekend-hibiya.webp",
+      "license": "unverified",
+      "author": "ベルギービールウィークエンド 日比谷",
+      "sourceUrl": "https://belgianbeerweekend.jp/hibiya"
+    },
+    "belgian-beer-weekend-nagoya": {
+      "file": "images/events/belgian-beer-weekend-nagoya.webp",
+      "license": "unverified",
+      "author": "ベルギービールウィークエンド 名古屋",
+      "sourceUrl": "https://belgianbeerweekend.jp/nagoya"
+    },
+    "belgian-beer-weekend-yokohama": {
+      "file": "images/events/belgian-beer-weekend-yokohama.webp",
+      "license": "unverified",
+      "author": "ベルギービールウィークエンド 横浜",
+      "sourceUrl": "https://belgianbeerweekend.jp/yokohama"
+    },
+    "belgian-beer-weekend-osaka": {
+      "file": "images/events/belgian-beer-weekend-osaka.webp",
+      "license": "unverified",
+      "author": "ベルギービールウィークエンド 大阪",
+      "sourceUrl": "https://belgianbeerweekend.jp/osaka"
+    },
+    "belgian-beer-weekend-kyoto": {
+      "file": "images/events/belgian-beer-weekend-kyoto.webp",
+      "license": "unverified",
+      "author": "ベルギービールウィークエンド 京都",
+      "sourceUrl": "https://belgianbeerweekend.jp/kyoto"
+    },
+    "belgian-beer-weekend-shinjuku": {
+      "file": "images/events/belgian-beer-weekend-shinjuku.webp",
+      "license": "unverified",
+      "author": "ベルギービールウィークエンド 新宿",
+      "sourceUrl": "https://belgianbeerweekend.jp/shinjuku"
+    },
+    "beerfes-tokyo": {
+      "file": "images/events/beerfes-tokyo.webp",
+      "license": "unverified",
+      "author": "ビアフェス東京",
+      "sourceUrl": "https://beerfes.jp/tokyo2026/"
+    },
+    "beerfes-yokohama": {
+      "file": "images/events/beerfes-yokohama.webp",
+      "license": "unverified",
+      "author": "ビアフェス横浜",
+      "sourceUrl": "https://beerfes.jp/yokohama2026/"
+    },
+    "beerfes-osaka": {
+      "file": "images/events/beerfes-osaka.webp",
+      "license": "unverified",
+      "author": "ビアフェス大阪",
+      "sourceUrl": "https://beerfes.jp/osaka2026/"
+    },
+    "oktoberfest-skytree": {
+      "file": "images/events/oktoberfest-skytree.webp",
+      "license": "unverified",
+      "author": "オクトーバーフェスト in 東京スカイツリータウン",
+      "sourceUrl": "https://okfes.jp/202609-skytree/"
+    },
+    "oktoberfest-kamiyacho": {
+      "file": "images/events/oktoberfest-kamiyacho.webp",
+      "license": "unverified",
+      "author": "神谷町オクトーバーフェスト",
+      "sourceUrl": "https://www.mori-trust.co.jp/event/oktoberfest2026.html"
+    },
+    "yokohama-oktoberfest": {
+      "file": "images/events/yokohama-oktoberfest.webp",
+      "license": "unverified",
+      "author": "横浜オクトーバーフェスト",
+      "sourceUrl": "https://www.yokohama-akarenga.jp/oktoberfest/"
+    },
+    "kagawa-oktoberfest": {
+      "file": "images/events/kagawa-oktoberfest.webp",
+      "license": "unverified",
+      "author": "KAGAWA オクトーバーフェスト",
+      "sourceUrl": "https://kagawa-oktoberfest.com"
+    },
+    "tama-craft-beer-fes": {
+      "file": "images/events/tama-craft-beer-fes.webp",
+      "license": "unverified",
+      "author": "クラフトビールフェス in たま未来メッセ",
+      "sourceUrl": "https://tama-craftbeerfes.com/"
+    },
+    "tsukuba-craft-beer-fest": {
+      "file": "images/events/tsukuba-craft-beer-fest.webp",
+      "license": "unverified",
+      "author": "つくばクラフトビアフェスト",
+      "sourceUrl": "https://tsukuba-craftbeerfest.com/"
+    },
+    "hama-terrace-craft-beer-fes": {
+      "file": "images/events/hama-terrace-craft-beer-fes.webp",
+      "license": "unverified",
+      "author": "はまテラス クラフトビールフェス",
+      "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000030.000151165.html"
+    },
+    "the-beer-ten-nagaoka": {
+      "file": "images/events/the-beer-ten-nagaoka.webp",
+      "license": "unverified",
+      "author": "ザ・ビール展 in NAGAOKA",
+      "sourceUrl": "https://thebeerfes.com/"
+    },
+    "orion-beerfest": {
+      "file": "images/events/orion-beerfest.webp",
+      "license": "unverified",
+      "author": "オリオンビアフェスト",
+      "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000274.000044607.html"
+    },
+    "women-brewers-okayama": {
+      "file": "images/events/women-brewers-okayama.webp",
+      "license": "unverified",
+      "author": "女性醸造家のビールを楽しむ休日 in おかやま",
+      "sourceUrl": "https://www.okayama-kanko.jp/event/detail_101462.html"
+    },
+    "oirase-beer-oktoberfest": {
+      "file": "images/events/oirase-beer-oktoberfest.webp",
+      "license": "unverified",
+      "author": "奥入瀬ビール オクトーバーフェスト",
+      "sourceUrl": "https://oirase.beer/oktober-fest/"
+    },
+    "yukko-baeren-totonoi-fest": {
+      "file": "images/events/yukko-baeren-totonoi-fest.webp",
+      "license": "unverified",
+      "author": "ゆっこ×ベアレン ととのいフェスト",
+      "sourceUrl": "https://baeren-yukko2026.peatix.com"
+    },
+    "zao-brewery-autumn-beer-festival": {
+      "file": "images/events/zao-brewery-autumn-beer-festival.webp",
+      "license": "unverified",
+      "author": "ZAO BREWERY 秋のビール祭り",
+      "sourceUrl": "https://www.zao-brewery.jp/"
+    },
+    "oirase-saturday-night": {
+      "file": "images/events/oirase-saturday-night.webp",
+      "license": "unverified",
+      "author": "奥入瀬サタデーナイト",
+      "sourceUrl": "https://oirase.beer/saturday-night/"
+    },
+    "tachikawa-oktoberfest": {
+      "file": "images/events/tachikawa-oktoberfest.webp",
+      "license": "unverified",
+      "author": "立川オクトーバーフェスト",
+      "sourceUrl": "https://beer-fest.jp/tachikawa/"
+    },
+    "koganei-beer-festival": {
+      "file": "images/events/koganei-beer-festival.webp",
+      "license": "unverified",
+      "author": "小金井ビールフェスティバル",
+      "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000201.000005566.html"
+    },
+    "okutama-beer-fest": {
+      "file": "images/events/okutama-beer-fest.webp",
+      "license": "unverified",
+      "author": "OKUTAMA BEER FEST",
+      "sourceUrl": "https://verterebrew.com/3108/"
+    },
+    "ebina-booze-fest": {
+      "file": "images/events/ebina-booze-fest.webp",
+      "license": "unverified",
+      "author": "EBINA BOOZE FEST",
+      "sourceUrl": "https://www.kanagawa-kankou.or.jp/event/7055"
+    },
+    "minamiota-beer-fest": {
+      "file": "images/events/minamiota-beer-fest.webp",
+      "license": "unverified",
+      "author": "南太田ビール祭",
+      "sourceUrl": "https://newcal.jp/feature/beerfes_autumn_minamiota"
+    },
+    "chiba-beer-fest": {
+      "file": "images/events/chiba-beer-fest.webp",
+      "license": "unverified",
+      "author": "チバビアフェスト",
+      "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000002.000178675.html"
+    },
+    "matsudo-craft-beer-fes": {
+      "file": "images/events/matsudo-craft-beer-fes.webp",
+      "license": "unverified",
+      "author": "松戸クラフトビールフェス",
+      "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000585.000015010.html"
+    },
+    "craft-beer-house-takasaki": {
+      "file": "images/events/craft-beer-house-takasaki.webp",
+      "license": "unverified",
+      "author": "CRAFT BEER HOUSE takasaki",
+      "sourceUrl": "https://www.craftbeerhouse.jp/"
+    },
+    "kumazawa-oktoberfest": {
+      "file": "images/events/kumazawa-oktoberfest.webp",
+      "license": "unverified",
+      "author": "熊澤酒造オクトーバーフェスト",
+      "sourceUrl": "https://kumazawa.jp/"
+    },
+    "kumazawa-kura-fest": {
+      "file": "images/events/kumazawa-kura-fest.webp",
+      "license": "unverified",
+      "author": "酒蔵フェスト（熊澤酒造）",
+      "sourceUrl": "https://kumazawa.jp/"
+    },
+    "nagoya-oktoberfest": {
+      "file": "images/events/nagoya-oktoberfest.webp",
+      "license": "unverified",
+      "author": "名古屋オクトーバーフェスト",
+      "sourceUrl": "https://www.tokai-tv.com/nagoyaoktoberfest/"
+    },
+    "niigata-oktoberfest": {
+      "file": "images/events/niigata-oktoberfest.webp",
+      "license": "unverified",
+      "author": "新潟オクトーバーフェスト",
+      "sourceUrl": "https://ngt-october.com/"
     }
   }
 }
