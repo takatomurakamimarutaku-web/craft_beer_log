@@ -861,6 +861,30 @@
       "prefecture": "kanagawa",
       "officialUrl": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
       "usualPeriod": null
+    },
+    {
+      "id": "tsugaru-brewing-taproom",
+      "name": "津軽醸造 タップルーム営業日",
+      "kana": "つがるじょうぞうたっぷるーむえいぎょうび",
+      "kind": "brewery",
+      "prefecture": "aomori",
+      "officialUrl": "https://tsugarubrewing.com/pages/taproominfo",
+      "usualPeriod": null,
+      "breweryIds": [
+        "tsugaru-brewing"
+      ]
+    },
+    {
+      "id": "baeren-ariv-kitakami-beer-party",
+      "name": "ベアレン ビール会（アリーブ北上店）",
+      "kana": "べあれんびーるかいありーぶきたかみ",
+      "kind": "brewery",
+      "prefecture": "iwate",
+      "officialUrl": "http://www.ariv.co.jp/event.php",
+      "usualPeriod": null,
+      "breweryIds": [
+        "baeren-kitayama"
+      ]
     }
   ],
   "events": [
@@ -2451,12 +2475,12 @@
       "officialUrl": "https://oirase.beer/saturday-night/",
       "ticketUrl": null,
       "note": "十和田市内から無料シャトルバスあり",
-      "lastVerified": "2026-10-26",
+      "lastVerified": "2026-10-31",
       "sources": [
         {
           "title": "奥入瀬ビール 公式サイト",
           "url": "https://oirase.beer/saturday-night/",
-          "accessedAt": "2026-10-26"
+          "accessedAt": "2026-10-31"
         }
       ]
     },
@@ -2475,12 +2499,12 @@
       "officialUrl": "https://oirase.beer/saturday-night/",
       "ticketUrl": null,
       "note": "十和田市内から無料シャトルバスあり",
-      "lastVerified": "2026-10-26",
+      "lastVerified": "2026-10-31",
       "sources": [
         {
           "title": "奥入瀬ビール 公式サイト",
           "url": "https://oirase.beer/saturday-night/",
-          "accessedAt": "2026-10-26"
+          "accessedAt": "2026-10-31"
         }
       ]
     },
@@ -2499,12 +2523,12 @@
       "officialUrl": "https://oirase.beer/saturday-night/",
       "ticketUrl": null,
       "note": "十和田市内から無料シャトルバスあり",
-      "lastVerified": "2026-10-26",
+      "lastVerified": "2026-10-31",
       "sources": [
         {
           "title": "奥入瀬ビール 公式サイト",
           "url": "https://oirase.beer/saturday-night/",
-          "accessedAt": "2026-10-26"
+          "accessedAt": "2026-10-31"
         }
       ]
     },
@@ -2523,12 +2547,12 @@
       "officialUrl": "https://oirase.beer/saturday-night/",
       "ticketUrl": null,
       "note": "十和田市内から無料シャトルバスあり",
-      "lastVerified": "2026-10-26",
+      "lastVerified": "2026-10-31",
       "sources": [
         {
           "title": "奥入瀬ビール 公式サイト",
           "url": "https://oirase.beer/saturday-night/",
-          "accessedAt": "2026-10-26"
+          "accessedAt": "2026-10-31"
         }
       ]
     },
@@ -2547,12 +2571,12 @@
       "officialUrl": "https://oirase.beer/saturday-night/",
       "ticketUrl": null,
       "note": "十和田市内から無料シャトルバスあり",
-      "lastVerified": "2026-10-26",
+      "lastVerified": "2026-10-31",
       "sources": [
         {
           "title": "奥入瀬ビール 公式サイト",
           "url": "https://oirase.beer/saturday-night/",
-          "accessedAt": "2026-10-26"
+          "accessedAt": "2026-10-31"
         }
       ]
     },
@@ -2571,12 +2595,12 @@
       "officialUrl": "https://oirase.beer/saturday-night/",
       "ticketUrl": null,
       "note": "十和田市内から無料シャトルバスあり",
-      "lastVerified": "2026-10-26",
+      "lastVerified": "2026-10-31",
       "sources": [
         {
           "title": "奥入瀬ビール 公式サイト",
           "url": "https://oirase.beer/saturday-night/",
-          "accessedAt": "2026-10-26"
+          "accessedAt": "2026-10-31"
         }
       ]
     },
@@ -2595,12 +2619,12 @@
       "officialUrl": "https://oirase.beer/saturday-night/",
       "ticketUrl": null,
       "note": "十和田市内から無料シャトルバスあり",
-      "lastVerified": "2026-10-26",
+      "lastVerified": "2026-10-31",
       "sources": [
         {
           "title": "奥入瀬ビール 公式サイト",
           "url": "https://oirase.beer/saturday-night/",
-          "accessedAt": "2026-10-26"
+          "accessedAt": "2026-10-31"
         }
       ]
     },
@@ -2619,12 +2643,12 @@
       "officialUrl": "https://oirase.beer/saturday-night/",
       "ticketUrl": null,
       "note": "十和田市内から無料シャトルバスあり",
-      "lastVerified": "2026-10-26",
+      "lastVerified": "2026-10-31",
       "sources": [
         {
           "title": "奥入瀬ビール 公式サイト",
           "url": "https://oirase.beer/saturday-night/",
-          "accessedAt": "2026-10-26"
+          "accessedAt": "2026-10-31"
         }
       ]
     },
@@ -2643,12 +2667,12 @@
       "officialUrl": "https://oirase.beer/saturday-night/",
       "ticketUrl": null,
       "note": "十和田市内から無料シャトルバスあり",
-      "lastVerified": "2026-10-26",
+      "lastVerified": "2026-10-31",
       "sources": [
         {
           "title": "奥入瀬ビール 公式サイト",
           "url": "https://oirase.beer/saturday-night/",
-          "accessedAt": "2026-10-26"
+          "accessedAt": "2026-10-31"
         }
       ]
     },
@@ -2667,12 +2691,12 @@
       "officialUrl": "https://tendo-brewery.itiraku.com/",
       "ticketUrl": null,
       "note": "宿泊プランのイベント。予約・料金は公式で確認",
-      "lastVerified": "2026-10-26",
+      "lastVerified": "2026-10-31",
       "sources": [
         {
           "title": "天童ブルワリー 公式サイト（掲載のお知らせ）",
           "url": "https://tendo-brewery.itiraku.com/",
-          "accessedAt": "2026-10-26"
+          "accessedAt": "2026-10-31"
         }
       ]
     },
@@ -2691,12 +2715,12 @@
       "officialUrl": "https://tendo-brewery.itiraku.com/",
       "ticketUrl": null,
       "note": "雨天決行",
-      "lastVerified": "2026-10-26",
+      "lastVerified": "2026-10-31",
       "sources": [
         {
           "title": "天童ブルワリー 公式サイト（掲載のお知らせ）",
           "url": "https://tendo-brewery.itiraku.com/",
-          "accessedAt": "2026-10-26"
+          "accessedAt": "2026-10-31"
         }
       ]
     },
@@ -2715,12 +2739,12 @@
       "officialUrl": "https://www.cafeof.com/index.html",
       "ticketUrl": null,
       "note": "",
-      "lastVerified": "2026-10-26",
+      "lastVerified": "2026-10-31",
       "sources": [
         {
           "title": "カフェ お家パン オブ 公式サイト",
           "url": "https://www.cafeof.com/index.html",
-          "accessedAt": "2026-10-26"
+          "accessedAt": "2026-10-31"
         }
       ]
     },
@@ -3465,6 +3489,112 @@
         {
           "title": "公式サイト",
           "url": "https://marketing.dreambeer.jp/craftbeer_sousenkyo",
+          "accessedAt": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "edition": "2026年11月",
+      "status": "scheduled",
+      "ticketUrl": null,
+      "note": "毎月第3土曜のみ営業（1〜3月は休業）。車・自転車の来場はテイクアウトのみ",
+      "lastVerified": "2026-10-31",
+      "id": "tsugaru-brewing-taproom-2026-11-21",
+      "seriesId": "tsugaru-brewing-taproom",
+      "startDate": "2026-11-21",
+      "endDate": "2026-11-21",
+      "hours": "15:00〜20:30（ラストオーダー）",
+      "prefecture": "aomori",
+      "city": "つがる市",
+      "venue": "津軽醸造 タップルーム（つがる市稲垣町沼崎幾代崎121-4）",
+      "priceNote": null,
+      "officialUrl": "https://tsugarubrewing.com/pages/taproominfo",
+      "sources": [
+        {
+          "title": "津軽醸造 公式サイト（タップルーム）",
+          "url": "https://tsugarubrewing.com/pages/taproominfo",
+          "accessedAt": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "edition": "2026年12月",
+      "status": "scheduled",
+      "ticketUrl": null,
+      "note": "毎月第3土曜のみ営業（1〜3月は休業）。車・自転車の来場はテイクアウトのみ",
+      "lastVerified": "2026-10-31",
+      "id": "tsugaru-brewing-taproom-2026-12-19",
+      "seriesId": "tsugaru-brewing-taproom",
+      "startDate": "2026-12-19",
+      "endDate": "2026-12-19",
+      "hours": "15:00〜20:30（ラストオーダー）",
+      "prefecture": "aomori",
+      "city": "つがる市",
+      "venue": "津軽醸造 タップルーム（つがる市稲垣町沼崎幾代崎121-4）",
+      "priceNote": null,
+      "officialUrl": "https://tsugarubrewing.com/pages/taproominfo",
+      "sources": [
+        {
+          "title": "津軽醸造 公式サイト（タップルーム）",
+          "url": "https://tsugarubrewing.com/pages/taproominfo",
+          "accessedAt": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "edition": "秋の食材とベアレンビール",
+      "status": "scheduled",
+      "ticketUrl": null,
+      "note": "申込・問合せは店舗へ電話（0197-61-0484）。定員になり次第締切",
+      "lastVerified": "2026-10-31",
+      "id": "baeren-ariv-kitakami-beer-party-2026-11-17",
+      "seriesId": "baeren-ariv-kitakami-beer-party",
+      "startDate": "2026-11-17",
+      "endDate": "2026-11-17",
+      "hours": "19:00〜",
+      "prefecture": "iwate",
+      "city": "北上市",
+      "venue": "アリーブ北上店",
+      "priceNote": "5,500円（税込）",
+      "officialUrl": "http://www.ariv.co.jp/event.php",
+      "sources": [
+        {
+          "title": "アリーブ 公式サイト（イベント情報）",
+          "url": "http://www.ariv.co.jp/event.php",
+          "accessedAt": "2026-10-31"
+        },
+        {
+          "title": "ベアレン醸造所 公式サイト（イベント情報からのリンク）",
+          "url": "https://www.baerenbier.co.jp/event/",
+          "accessedAt": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "edition": "クリスマスビール会",
+      "status": "scheduled",
+      "ticketUrl": null,
+      "note": "申込・問合せは店舗へ電話（0197-61-0484）。定員になり次第締切",
+      "lastVerified": "2026-10-31",
+      "id": "baeren-ariv-kitakami-beer-party-2026-12-22",
+      "seriesId": "baeren-ariv-kitakami-beer-party",
+      "startDate": "2026-12-22",
+      "endDate": "2026-12-22",
+      "hours": "19:00〜",
+      "prefecture": "iwate",
+      "city": "北上市",
+      "venue": "アリーブ北上店",
+      "priceNote": "5,500円（税込）",
+      "officialUrl": "http://www.ariv.co.jp/event.php",
+      "sources": [
+        {
+          "title": "アリーブ 公式サイト（イベント情報）",
+          "url": "http://www.ariv.co.jp/event.php",
+          "accessedAt": "2026-10-31"
+        },
+        {
+          "title": "ベアレン醸造所 公式サイト（イベント情報からのリンク）",
+          "url": "https://www.baerenbier.co.jp/event/",
           "accessedAt": "2026-10-31"
         }
       ]
