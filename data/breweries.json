@@ -1,7 +1,7 @@
 {
  "meta": {
-  "version": "2026-10-31e",
-  "region": "東北6県・関東1都6県・北陸・甲信越6県・東海4県・近畿2府4県・中国5県・四国4県",
+  "version": "2026-10-31f",
+  "region": "東北6県・関東1都6県・北陸・甲信越6県・東海4県・近畿2府4県・中国5県・四国4県・九州・沖縄8県",
   "attribution": "一部の情報は仙台国税局「東北酒蔵マップ掲載酒類製造者一覧」、関東信越国税局「酒蔵マップ」、東京国税局「酒蔵マップ」を加工して作成",
   "note": "verification: official=公式サイトで確認 / official+secondary=公式＋二次情報 / secondary=報道・業界団体・紹介サイトで確認 / nta-only=国税局一覧のみ。geo.precision: block=街区・番地 / area=大字（数百m〜数km ずれ得る）。座標は国土地理院 住所検索APIの結果。status=closed は一覧・地図に出さない。"
  },
@@ -23256,6 +23256,2445 @@
     {
      "label": "Beer Tengoku（醸造所情報記事）",
      "url": "https://beertengoku.com/2025/04/18/south-horizon-brewing-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "asunaro-brewery",
+   "name": "あすなろブルワリー",
+   "nameKana": "あすなろぶるわりー",
+   "nameEn": "Asunaro Brewery",
+   "aliases": [],
+   "prefCode": "40",
+   "city": "福岡市博多区",
+   "address": "福岡県福岡市博多区千代4-6-3",
+   "geo": {
+    "lat": 33.604195,
+    "lng": 130.414841,
+    "precision": "block",
+    "matched": "福岡県福岡市博多区千代四丁目６番３号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "facebook": "https://www.facebook.com/asunarobrewery/"
+   },
+   "summary": "福岡市博多区千代の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "えびすガーデン1階",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/fukuoka-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "hakata-draft",
+   "name": "博多ドラフト（ビアレストラン オークラブルワリー）",
+   "nameKana": "はかたどらふと",
+   "nameEn": "Hakata Draft",
+   "aliases": [
+    "オークラブルワリー"
+   ],
+   "prefCode": "40",
+   "city": "福岡市博多区",
+   "address": "福岡県福岡市博多区下川端町3-2",
+   "geo": {
+    "lat": 33.595295,
+    "lng": 130.405487,
+    "precision": "block",
+    "matched": "福岡県福岡市博多区下川端町３番"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.fuk.hotelokura.co.jp/restaurant/beer/"
+   },
+   "summary": "ホテルオークラ福岡の地下にあるビアレストランで造るビール。",
+   "verification": "official+secondary",
+   "sourceNotes": "博多リバレイン ホテルオークラ福岡 地下1階",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.fuk.hotelokura.co.jp/restaurant/beer/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/fukuoka-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "ohori-brewery",
+   "name": "大濠ブルワリー",
+   "nameKana": "おおほりぶるわりー",
+   "nameEn": "Ohori Brewery",
+   "aliases": [],
+   "prefCode": "40",
+   "city": "福岡市中央区",
+   "address": "福岡県福岡市中央区大濠1丁目3-7",
+   "geo": {
+    "lat": 33.582092,
+    "lng": 130.375763,
+    "precision": "block",
+    "matched": "福岡県福岡市中央区大濠一丁目３番７号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "instagram": "https://www.instagram.com/ohori_brewery/"
+   },
+   "summary": "福岡市中央区大濠の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/fukuoka-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "mojiko-beer",
+   "name": "門司港地ビール",
+   "nameKana": "もじこうじびーる",
+   "nameEn": "Mojiko Retro Beer",
+   "aliases": [
+    "門司港ビール",
+    "門司港レトロビール"
+   ],
+   "prefCode": "40",
+   "city": "北九州市",
+   "address": null,
+   "geo": null,
+   "kind": "brewpub",
+   "status": "active",
+   "founded": 1998,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://mojibeer.ntf.ne.jp/"
+   },
+   "summary": "北九州市の醸造所。1998年に醸造を始めた。ヴァイツェンやピルスナーなどドイツ・英国系が中心。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は出典で異なる（CRAFT BEER LAB: 小倉北区米町1-3-19、Beer Tengoku 2017年: 門司区東港町6-9）ため市名のみ",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://mojibeer.ntf.ne.jp/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/fukuoka-craft-beer/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2017/12/15/mojiko-retro-beer-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "ヴァイツェン",
+     "styleId": "weizen"
+    },
+    {
+     "name": "ピルスナー",
+     "styleId": "pilsner"
+    },
+    {
+     "name": "ペールエール",
+     "styleId": "pale-ale"
+    }
+   ],
+   "features": [
+    "european"
+   ],
+   "profileSource": "http://mojibeer.ntf.ne.jp/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "kokura-brewing",
+   "name": "小倉ブルーイング（Brasserie SOMA）",
+   "nameKana": "こくらぶるーいんぐ",
+   "nameEn": "Kokura Brewing",
+   "aliases": [
+    "Brasserie SOMA"
+   ],
+   "prefCode": "40",
+   "city": "北九州市小倉北区",
+   "address": "福岡県北九州市小倉北区魚町4丁目2-22",
+   "geo": {
+    "lat": 33.881748,
+    "lng": 130.879517,
+    "precision": "block",
+    "matched": "福岡県北九州市小倉北区魚町四丁目２番２２号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "instagram": "https://www.instagram.com/brasseriesoma/"
+   },
+   "summary": "北九州市小倉北区魚町の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/fukuoka-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "camosi-brewing",
+   "name": "CAMOSI BREWING",
+   "nameKana": "かもしぶるーいんぐ",
+   "nameEn": "Camosi Brewing",
+   "aliases": [],
+   "prefCode": "40",
+   "city": "糸島市",
+   "address": "福岡県糸島市二丈深江2545-1",
+   "geo": {
+    "lat": 33.50835,
+    "lng": 130.136978,
+    "precision": "block",
+    "matched": "福岡県糸島市二丈深江２５４５番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "localPage": "https://itoshima-now.com/ja/food/camosi-brewing/"
+   },
+   "summary": "糸島市二丈深江の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/fukuoka-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "itoshima-hello-craft",
+   "name": "ITOSHIMA HELLO CRAFT（麦房 余韻）",
+   "nameKana": "いとしまはろーくらふと",
+   "nameEn": "Itoshima Hello Craft",
+   "aliases": [
+    "麦房 余韻"
+   ],
+   "prefCode": "40",
+   "city": "糸島市",
+   "address": "福岡県糸島市二丈上深江89-1",
+   "geo": {
+    "lat": 33.507492,
+    "lng": 130.15593,
+    "precision": "block",
+    "matched": "福岡県糸島市二丈上深江８９番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://hello-brewery.com/"
+   },
+   "summary": "糸島市二丈上深江の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://hello-brewery.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/fukuoka-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "dazaifu-brewery",
+   "name": "太宰府ブルワリー",
+   "nameKana": "だざいふぶるわりー",
+   "nameEn": "Dazaifu Brewery",
+   "aliases": [],
+   "prefCode": "40",
+   "city": "太宰府市",
+   "address": "福岡県太宰府市宰府1丁目14",
+   "geo": {
+    "lat": 33.519783,
+    "lng": 130.530594,
+    "precision": "block",
+    "matched": "福岡県太宰府市宰府一丁目１４番"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://dazaifu-brewery.com/"
+   },
+   "summary": "太宰府市宰府の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://dazaifu-brewery.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/fukuoka-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "yame-brewery",
+   "name": "八女ブルワリー",
+   "nameKana": "やめぶるわりー",
+   "nameEn": "Yame Brewery",
+   "aliases": [
+    "ガーランディッシュ"
+   ],
+   "prefCode": "40",
+   "city": "八女市",
+   "address": "福岡県八女市宮野100番地",
+   "geo": {
+    "lat": 33.202106,
+    "lng": 130.566422,
+    "precision": "block",
+    "matched": "福岡県八女市宮野１００番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://www.bengalamura.com/"
+   },
+   "summary": "八女市宮野の醸造所。ビアレストラン「ガーランディッシュ」を併設。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://www.bengalamura.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/fukuoka-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "toyfull-brewery",
+   "name": "トイフルブルワリー",
+   "nameKana": "といふるぶるわりー",
+   "nameEn": "Toyfull Brewery",
+   "aliases": [],
+   "prefCode": "40",
+   "city": "久留米市",
+   "address": "福岡県久留米市螢川町59-1",
+   "geo": {
+    "lat": 33.317516,
+    "lng": 130.518112,
+    "precision": "block",
+    "matched": "福岡県久留米市螢川町５９番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://toyfull.beer/"
+   },
+   "summary": "久留米市螢川町の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://toyfull.beer/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/fukuoka-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "fukuoka-craft-brewing",
+   "name": "Fukuoka Craft Brewing",
+   "nameKana": "ふくおかくらふとぶるーいんぐ",
+   "nameEn": "Fukuoka Craft Brewing",
+   "aliases": [],
+   "prefCode": "40",
+   "city": "遠賀郡岡垣町",
+   "address": "福岡県遠賀郡岡垣町内浦544",
+   "geo": {
+    "lat": 33.868061,
+    "lng": 130.564713,
+    "precision": "area",
+    "matched": "福岡県岡垣町内浦"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2022,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://fukuokacraft.com/"
+   },
+   "summary": "岡垣町内浦の醸造所。2022年10月開業。前身は福岡市大名の店。ヘイジーダブルIPAなどが中心。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は Beer Tengoku の英語表記を地理院の住所検索で照合",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://fukuokacraft.com/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2024/04/26/fukuoka-craft-brewing-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Fukuoka Daruma",
+     "styleId": "double-ipa"
+    },
+    {
+     "name": "Fukuoka Good Old ESB",
+     "styleId": "bitter"
+    },
+    {
+     "name": "Fukuoka Flying Eagle",
+     "styleId": "double-ipa"
+    }
+   ],
+   "features": [
+    "hoppy"
+   ],
+   "profileSource": "https://fukuokacraft.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "suginoya-beer",
+   "name": "杉能舎",
+   "nameKana": "すぎのや",
+   "nameEn": "Suginoya Beer",
+   "aliases": [
+    "杉能舎ビール"
+   ],
+   "prefCode": "40",
+   "city": "福岡市西区",
+   "address": "福岡県福岡市西区元岡1442",
+   "geo": {
+    "lat": 33.589958,
+    "lng": 130.218292,
+    "precision": "block",
+    "matched": "福岡県福岡市西区元岡１４４２番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://suginoya.co.jp/"
+   },
+   "summary": "1870年創業の酒蔵が福岡市西区元岡で造るビール。敷地内のパン屋ではビールを使ったパンも売る。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は Beer Tengoku の英語表記を地理院の住所検索で照合",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://suginoya.co.jp/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2018/07/20/suginoya-beer-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "ペールエール",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "アンバー",
+     "styleId": "amber-ale"
+    },
+    {
+     "name": "スタウト",
+     "styleId": "stout"
+    }
+   ],
+   "features": [
+    "sake"
+   ],
+   "profileSource": "https://suginoya.co.jp/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "ks-brewing",
+   "name": "K's Brewing Company",
+   "nameKana": "けーずぶるーいんぐかんぱにー",
+   "nameEn": "K's Brewing Company",
+   "aliases": [
+    "ブルーマスター"
+   ],
+   "prefCode": "40",
+   "city": "福岡市城南区",
+   "address": "福岡県福岡市城南区別府1-19-1",
+   "geo": {
+    "lat": 33.575333,
+    "lng": 130.372757,
+    "precision": "block",
+    "matched": "福岡県福岡市城南区別府一丁目１９番１号"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2002,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://www.brewmaster2002.com/"
+   },
+   "summary": "福岡市城南区別府の醸造所。2002年から醸造。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は Beer Tengoku の英語表記を地理院の住所検索で照合",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://www.brewmaster2002.com/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2016/05/21/ks-brewing-company-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "K's Brewmaster",
+     "styleId": "blonde-ale"
+    },
+    {
+     "name": "Amao Oatmeal Black",
+     "styleId": "oatmeal-stout"
+    },
+    {
+     "name": "Mango A",
+     "styleId": "fruit-beer"
+    }
+   ],
+   "profileSource": "http://www.brewmaster2002.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "saga-armstrong",
+   "name": "佐賀アームストロング醸造所",
+   "nameKana": "さがあーむすとろんぐじょうぞうしょ",
+   "nameEn": "Saga Armstrong Brewing",
+   "aliases": [],
+   "prefCode": "41",
+   "city": "佐賀市",
+   "address": "佐賀県佐賀市諸富町大字徳富159-1",
+   "geo": {
+    "lat": 33.221138,
+    "lng": 130.369507,
+    "precision": "block",
+    "matched": "佐賀県佐賀市諸富町徳富１５９番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "facebook": "https://www.facebook.com/SAGA.Armstrongbrewing/"
+   },
+   "summary": "佐賀市諸富町の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/saga-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "arita-bakushu",
+   "name": "有田麦酒（有田ポーセリンパーク）",
+   "nameKana": "ありたばくしゅ",
+   "nameEn": "Arita Bakushu",
+   "aliases": [
+    "有田ポーセリンパーク"
+   ],
+   "prefCode": "41",
+   "city": "西松浦郡有田町",
+   "address": "佐賀県西松浦郡有田町戸矢乙340番地28",
+   "geo": {
+    "lat": 33.161182,
+    "lng": 129.9048,
+    "precision": "block",
+    "matched": "佐賀県有田町戸矢乙３４０番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.arita-touki.com/"
+   },
+   "summary": "有田町のテーマパーク「有田ポーセリンパーク」で造るビール。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.arita-touki.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/saga-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "oa-nagasaki",
+   "name": "O/A NAGASAKI CRAFTBEER",
+   "nameKana": "おーえーながさきくらふとびあ",
+   "nameEn": "O/A Nagasaki Craftbeer",
+   "aliases": [
+    "AWAKE"
+   ],
+   "prefCode": "42",
+   "city": "長崎市",
+   "address": "長崎県長崎市目覚町11-2",
+   "geo": {
+    "lat": 32.764698,
+    "lng": 129.865265,
+    "precision": "block",
+    "matched": "長崎県長崎市目覚町１１番２号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://oa.o0o0.jp/awake/"
+   },
+   "summary": "長崎市目覚町の醸造所。「BEER PUB & CAFE AWAKE」を併設。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://oa.o0o0.jp/awake/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/nagasaki-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "sasebo-sunset-beer",
+   "name": "佐世保夕陽麦酒",
+   "nameKana": "させぼゆうひばくしゅ",
+   "nameEn": "Sasebo Sunset Beer",
+   "aliases": [],
+   "prefCode": "42",
+   "city": "佐世保市",
+   "address": "長崎県佐世保市湊町2-16",
+   "geo": {
+    "lat": 33.17165,
+    "lng": 129.719086,
+    "precision": "block",
+    "matched": "長崎県佐世保市湊町２番１６号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "instagram": "https://www.instagram.com/sasebosunsetbeer/"
+   },
+   "summary": "佐世保市湊町の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "森ビル1階",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/nagasaki-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "iki-island-brewery",
+   "name": "Island Brewery",
+   "nameKana": "あいらんどぶるわりー",
+   "nameEn": "Island Brewery",
+   "aliases": [],
+   "prefCode": "42",
+   "city": "壱岐市",
+   "address": "長崎県壱岐市勝本町勝本浦251",
+   "geo": {
+    "lat": 33.853645,
+    "lng": 129.690857,
+    "precision": "area",
+    "matched": "長崎県壱岐市勝本町勝本浦"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://iki-island.co.jp/"
+   },
+   "summary": "壱岐島の勝本浦の醸造所。タップルームを併設。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://iki-island.co.jp/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/nagasaki-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "kumamoto-craft-beer",
+   "name": "熊本クラフトビール（オワゾー）",
+   "nameKana": "くまもとくらふとびーる",
+   "nameEn": "Kumamoto Craft Beer",
+   "aliases": [],
+   "prefCode": "43",
+   "city": "熊本市中央区",
+   "address": "熊本県熊本市中央区下通2-1-20",
+   "geo": {
+    "lat": 32.799191,
+    "lng": 130.708679,
+    "precision": "block",
+    "matched": "熊本県熊本市中央区下通二丁目１番２０号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "facebook": "https://www.facebook.com/Kumamotocraftbeer/"
+   },
+   "summary": "熊本市の下通にある醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "ホンダビル1階",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/kumamoto-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "diamond-brewing",
+   "name": "ダイヤモンドブルーイング（BREWERY KAEN）",
+   "nameKana": "だいやもんどぶるーいんぐ",
+   "nameEn": "Diamond Brewing",
+   "aliases": [
+    "BREWERY KAEN"
+   ],
+   "prefCode": "43",
+   "city": "熊本市東区",
+   "address": "熊本県熊本市東区長嶺南3-1-102",
+   "geo": {
+    "lat": 32.812214,
+    "lng": 130.769226,
+    "precision": "block",
+    "matched": "熊本県熊本市東区長嶺南三丁目１番１０２号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://kaen-kumamoto.owst.jp/"
+   },
+   "summary": "熊本市東区長嶺南の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://kaen-kumamoto.owst.jp/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/kumamoto-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "amakusa-sonar-beer",
+   "name": "AMAKUSA SONAR BEER",
+   "nameKana": "あまくさそなーびーる",
+   "nameEn": "Amakusa Sonar Beer",
+   "aliases": [],
+   "prefCode": "43",
+   "city": "天草市",
+   "address": "熊本県天草市五和町鬼池1468-1",
+   "geo": {
+    "lat": 32.539398,
+    "lng": 130.167191,
+    "precision": "area",
+    "matched": "熊本県天草市五和町鬼池"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2020,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.sonarbeer.com/",
+    "facebook": "https://www.facebook.com/craftbeer.sonar/",
+    "shop": "https://sonarbeer.stores.jp/"
+   },
+   "summary": "天草市五和町の醸造所。2020年創業。ヘイジーダブルIPAなどIPAが中心。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.sonarbeer.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/kumamoto-craft-beer/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2024/11/01/amakusa-sonar-beer-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Amakusa Spiderweb",
+     "styleId": "double-ipa"
+    },
+    {
+     "name": "Amakusa Tropical Storm",
+     "styleId": "ipa"
+    }
+   ],
+   "features": [
+    "hoppy"
+   ],
+   "profileSource": "https://www.sonarbeer.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "shiranui-roman-bakushu",
+   "name": "不知火海浪漫麦酒（福田農場）",
+   "nameKana": "しらぬいかいろまんばくしゅ",
+   "nameEn": "Shiranuikai Roman Bakushu",
+   "aliases": [
+    "福田農場",
+    "湯の児スペイン村"
+   ],
+   "prefCode": "43",
+   "city": "水俣市",
+   "address": "熊本県水俣市陣内2525",
+   "geo": {
+    "lat": 32.211185,
+    "lng": 130.408997,
+    "precision": "area",
+    "matched": "熊本県水俣市陣内"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.fukuda-farm.co.jp/"
+   },
+   "summary": "水俣市の「湯の児スペイン村 福田農場」で造るビール。",
+   "verification": "official+secondary",
+   "sourceNotes": "湯の児スペイン村 福田農場 セビリア館",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.fukuda-farm.co.jp/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/kumamoto-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "kirali-brewery",
+   "name": "Kirali Brewery",
+   "nameKana": "きらりぶるわりー",
+   "nameEn": "Kirali Brewery",
+   "aliases": [],
+   "prefCode": "43",
+   "city": "山鹿市",
+   "address": "熊本県山鹿市方保田2820-4",
+   "geo": {
+    "lat": 33.005978,
+    "lng": 130.715485,
+    "precision": "block",
+    "matched": "熊本県山鹿市方保田２８２０番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "instagram": "https://www.instagram.com/kirali_brewery/"
+   },
+   "summary": "山鹿市方保田の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/kumamoto-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "vatten-brewing",
+   "name": "VATTEN BREWING",
+   "nameKana": "ばってんぶるーいんぐ",
+   "nameEn": "Vatten Brewing",
+   "aliases": [
+    "バッテンブリューイング"
+   ],
+   "prefCode": "43",
+   "city": "阿蘇郡小国町",
+   "address": "熊本県阿蘇郡小国町北里345",
+   "geo": {
+    "lat": 33.14381,
+    "lng": 131.110794,
+    "precision": "area",
+    "matched": "熊本県小国町北里"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://vatten.beer/"
+   },
+   "summary": "阿蘇の小国町北里の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://vatten.beer/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/kumamoto-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "monkey-mountain",
+   "name": "Monkey Mountain（Funai Brewery）",
+   "nameKana": "もんきーまうんてん",
+   "nameEn": "Monkey Mountain Brewing",
+   "aliases": [
+    "モンキーマウンテン"
+   ],
+   "prefCode": "44",
+   "city": "大分市",
+   "address": "大分県大分市府内町2-4-15",
+   "geo": {
+    "lat": 33.236992,
+    "lng": 131.609894,
+    "precision": "block",
+    "matched": "大分県大分市府内町二丁目４番１５号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": 2019,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.monkeybeer.co.jp/"
+   },
+   "summary": "大分市府内町の醸造所。2019年開業。ペールエールなどアメリカ系のビールが中心。",
+   "verification": "official+secondary",
+   "sourceNotes": "若竹ビル",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.monkeybeer.co.jp/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/oita-craft-beer/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2020/04/24/monkey-mountain-brewing-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Pale Ale",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "Blonde Ale",
+     "styleId": "blonde-ale"
+    },
+    {
+     "name": "IPA",
+     "styleId": "double-ipa"
+    }
+   ],
+   "profileSource": "https://www.monkeybeer.co.jp/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "yell-and-ale",
+   "name": "Yell&Ale Brewery（Abe Bond Craft Beer Kitchen）",
+   "nameKana": "えーるあんどえーるぶるわりー",
+   "nameEn": "Yell & Ale Brewery",
+   "aliases": [],
+   "prefCode": "44",
+   "city": "大分市",
+   "address": "大分県大分市府内町1-5-1",
+   "geo": {
+    "lat": 33.235092,
+    "lng": 131.610168,
+    "precision": "block",
+    "matched": "大分県大分市府内町一丁目５番１号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://abebond2018.jimdo.com/"
+   },
+   "summary": "大分市府内町の醸造所併設店。",
+   "verification": "official+secondary",
+   "sourceNotes": "COSMO2 1階",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://abebond2018.jimdo.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/oita-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "beppu-brewery",
+   "name": "別府ブルワリー",
+   "nameKana": "べっぷぶるわりー",
+   "nameEn": "Beppu Brewery",
+   "aliases": [],
+   "prefCode": "44",
+   "city": "別府市",
+   "address": "大分県別府市駅前町13-8",
+   "geo": {
+    "lat": 33.279282,
+    "lng": 131.501511,
+    "precision": "block",
+    "matched": "大分県別府市駅前町１３番８号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "instagram": "https://www.instagram.com/beppubrewery/"
+   },
+   "summary": "別府駅前町の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/oita-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "yufuin-beer",
+   "name": "ゆふいん麦酒",
+   "nameKana": "ゆふいんばくしゅ",
+   "nameEn": "Yufuin Beer",
+   "aliases": [
+    "ゆふいん麦酒館"
+   ],
+   "prefCode": "44",
+   "city": "由布市",
+   "address": "大分県由布市湯布院町川南108-1",
+   "geo": {
+    "lat": 33.25927,
+    "lng": 131.357025,
+    "precision": "block",
+    "matched": "大分県由布市湯布院町川南１０８番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://www.yufuinbeer.co.jp/"
+   },
+   "summary": "湯布院の「ゆふいん麦酒館」で造るビール。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://www.yufuinbeer.co.jp/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/oita-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "kuju-kogen-beer",
+   "name": "くじゅう地ビール",
+   "nameKana": "くじゅうじびーる",
+   "nameEn": "Kuju Kogen Beer",
+   "aliases": [
+    "くじゅう高原ビール",
+    "くじゅう水泉郷 地ビール村"
+   ],
+   "prefCode": "44",
+   "city": "竹田市",
+   "address": "大分県竹田市久住町白丹7575-1",
+   "geo": {
+    "lat": 33.031178,
+    "lng": 131.238449,
+    "precision": "area",
+    "matched": "大分県竹田市久住町白丹"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": "竹田市久住町の「くじゅう水泉郷 地ビール村」で造るビール。",
+   "verification": "secondary",
+   "sourceNotes": "CRAFT BEER LAB 掲載の公式URL（kujyukogenbeer.com）は2026-10-31時点で無関係のサイトになっていたため外した",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/oita-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "87beerworks",
+   "name": "BREW TENDER（87BeerWorks）",
+   "nameKana": "はちななびあわーくす",
+   "nameEn": "87BeerWorks",
+   "aliases": [
+    "BREW TENDER"
+   ],
+   "prefCode": "44",
+   "city": "国東市",
+   "address": "大分県国東市武蔵町糸原2543",
+   "geo": {
+    "lat": 33.488655,
+    "lng": 131.724411,
+    "precision": "area",
+    "matched": "大分県国東市武蔵町糸原"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://brewtender.jp/87beerworks"
+   },
+   "summary": "国東市武蔵町の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://brewtender.jp/87beerworks"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/oita-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "bmb-brewery",
+   "name": "B・M・B Brewery（Beer Market BASE）",
+   "nameKana": "びーえむびーぶるわりー",
+   "nameEn": "BMB Brewery",
+   "aliases": [
+    "Beer Market BASE"
+   ],
+   "prefCode": "45",
+   "city": "宮崎市",
+   "address": "宮崎県宮崎市上野町8-25",
+   "geo": {
+    "lat": 31.912615,
+    "lng": 131.421112,
+    "precision": "block",
+    "matched": "宮崎県宮崎市上野町８番２５号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://beermarketbase.tumblr.com/"
+   },
+   "summary": "宮崎市上野町の醸造所併設店。",
+   "verification": "official+secondary",
+   "sourceNotes": "フチワキビル1階",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://beermarketbase.tumblr.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/miyazaki-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "miyazaki-phoenix-brewing",
+   "name": "宮崎フェニックスブルーイング",
+   "nameKana": "みやざきふぇにっくすぶるーいんぐ",
+   "nameEn": "Miyazaki Phoenix Brewing",
+   "aliases": [],
+   "prefCode": "45",
+   "city": "宮崎市",
+   "address": "宮崎県宮崎市橘通東4-6-14",
+   "geo": {
+    "lat": 31.917639,
+    "lng": 131.424469,
+    "precision": "block",
+    "matched": "宮崎県宮崎市橘通東四丁目６番１４号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "facebook": "https://www.facebook.com/MIYAZAKIPHOENIXBREWING/"
+   },
+   "summary": "宮崎市橘通東の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/miyazaki-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "aozora-ale",
+   "name": "青空エール",
+   "nameKana": "あおぞらえーる",
+   "nameEn": "Aozora Ale",
+   "aliases": [],
+   "prefCode": "45",
+   "city": "宮崎市",
+   "address": "宮崎県宮崎市橘通西2-7-7",
+   "geo": {
+    "lat": 31.912455,
+    "lng": 131.421631,
+    "precision": "block",
+    "matched": "宮崎県宮崎市橘通西二丁目７番７号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://www1.bbiq.jp/aozoraale/"
+   },
+   "summary": "宮崎市橘通西の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "アレグリアビル2階",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://www1.bbiq.jp/aozoraale/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/miyazaki-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "unkai-bakushu",
+   "name": "雲海麦酒醸造所",
+   "nameKana": "うんかいばくしゅじょうぞうしょ",
+   "nameEn": "Unkai Bakushu Brewery",
+   "aliases": [],
+   "prefCode": "45",
+   "city": "東諸県郡綾町",
+   "address": "宮崎県東諸県郡綾町大字南俣1800-19",
+   "geo": {
+    "lat": 31.993298,
+    "lng": 131.235153,
+    "precision": "block",
+    "matched": "宮崎県綾町南俣１８００番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://kuramoto-aya-shusennomori.jp/"
+   },
+   "summary": "綾町南俣の醸造所。公式の案内は「酒泉の杜」のサイト内にある。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://kuramoto-aya-shusennomori.jp/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/miyazaki-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "hideji-beer",
+   "name": "ひでじビール",
+   "nameKana": "ひでじびーる",
+   "nameEn": "Hideji Beer",
+   "aliases": [
+    "麦酒蔵 hideji 和厨房"
+   ],
+   "prefCode": "45",
+   "city": "延岡市",
+   "address": "宮崎県延岡市中町1-4-10",
+   "geo": {
+    "lat": 32.58205,
+    "lng": 131.666946,
+    "precision": "block",
+    "matched": "宮崎県延岡市中町一丁目４番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://www.hideji-beer.jp/"
+   },
+   "summary": "延岡市のひでじビール。市内中町に直営の飲食店がある。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は CRAFT BEER LAB 掲載の店舗「麦酒蔵 hideji 和厨房」（はにわ会館2階）",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://www.hideji-beer.jp/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/miyazaki-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "nichinan-beer",
+   "name": "日南麦酒",
+   "nameKana": "にちなんばくしゅ",
+   "nameEn": "Nichinan Beer",
+   "aliases": [],
+   "prefCode": "45",
+   "city": "日南市",
+   "address": "宮崎県日南市吾田東1丁目1番37号",
+   "geo": {
+    "lat": 31.604445,
+    "lng": 131.381866,
+    "precision": "block",
+    "matched": "宮崎県日南市吾田東一丁目１番３７号"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2017,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://nichinan-beer.com/"
+   },
+   "summary": "日南市吾田東の醸造所。2017年に醸造を始めた。ベルギー系のビールや柚子のエールなど。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://nichinan-beer.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/miyazaki-craft-beer/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2018/08/10/nichinan-beer-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Belgian White",
+     "styleId": "belgian-white"
+    },
+    {
+     "name": "Pane Yuzu Ale",
+     "styleId": "fruit-beer"
+    },
+    {
+     "name": "Sakamoto Tanada Ale",
+     "styleId": "saison"
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://nichinan-beer.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "novoru-brewing",
+   "name": "NOVORU Brewing",
+   "nameKana": "のぼるぶるーいんぐ",
+   "nameEn": "Novoru Brewing",
+   "aliases": [],
+   "prefCode": "45",
+   "city": "宮崎市",
+   "address": "宮崎県宮崎市山崎町下ノ原939",
+   "geo": {
+    "lat": 31.95495,
+    "lng": 131.467422,
+    "precision": "area",
+    "matched": "宮崎県宮崎市山崎町"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2023,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://novorubrewing.com/",
+    "shop": "https://shop.novorubrewing.com/"
+   },
+   "summary": "宮崎市山崎町の醸造所。2023年12月開業。ピルスナーやヴァイツェンなど。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は Beer Tengoku の英語表記を地理院の住所検索で照合",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://novorubrewing.com/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2025/03/21/novoru-brewing-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Migaku",
+     "styleId": "pilsner"
+    },
+    {
+     "name": "Hikaru",
+     "styleId": "weizen"
+    },
+    {
+     "name": "Session IPA",
+     "styleId": "session-ipa"
+    }
+   ],
+   "profileSource": "https://novorubrewing.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "kirishima-beer",
+   "name": "霧島ビール（霧島酒造）",
+   "nameKana": "きりしまびーる",
+   "nameEn": "Kirishima Beer",
+   "aliases": [
+    "霧島酒造"
+   ],
+   "prefCode": "45",
+   "city": "都城市",
+   "address": "宮崎県都城市下川東4-28-1",
+   "geo": {
+    "lat": 31.746576,
+    "lng": 131.07489,
+    "precision": "block",
+    "matched": "宮崎県都城市下川東四丁目２８番"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 1998,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.kirishima.co.jp/"
+   },
+   "summary": "焼酎の霧島酒造が1998年から造るビール。最初の銘柄はピルスナー。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は Beer Tengoku の英語表記を地理院の住所検索で照合",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.kirishima.co.jp/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2018/12/14/kirishima-beer-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "霧島ピルスナー",
+     "styleId": "pilsner"
+    },
+    {
+     "name": "霧島ペールエール",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "霧島日向夏",
+     "styleId": "fruit-beer"
+    }
+   ],
+   "features": [
+    "sake"
+   ],
+   "profileSource": "https://www.kirishima.co.jp/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "shiroyama-brewery",
+   "name": "城山ブルワリー（城山ホテル鹿児島）",
+   "nameKana": "しろやまぶるわりー",
+   "nameEn": "Shiroyama Brewery",
+   "aliases": [],
+   "prefCode": "46",
+   "city": "鹿児島市",
+   "address": "鹿児島県鹿児島市新照院町41番1号",
+   "geo": {
+    "lat": 31.593407,
+    "lng": 130.545074,
+    "precision": "block",
+    "matched": "鹿児島県鹿児島市新照院町４１番１号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.shiroyama-g.co.jp/brewery/"
+   },
+   "summary": "鹿児島市の城山ホテル鹿児島の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.shiroyama-g.co.jp/brewery/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/kagoshima-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "hifumiyo-brewing",
+   "name": "ひふみよブリューイング",
+   "nameKana": "ひふみよぶるーいんぐ",
+   "nameEn": "Hifumiyo Brewing",
+   "aliases": [],
+   "prefCode": "46",
+   "city": "鹿児島市",
+   "address": "鹿児島県鹿児島市新屋敷町11-19",
+   "geo": {
+    "lat": 31.582306,
+    "lng": 130.555984,
+    "precision": "block",
+    "matched": "鹿児島県鹿児島市新屋敷町１１番１９号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://kagoshima.beer/"
+   },
+   "summary": "鹿児島市新屋敷町の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "川畑ハイツ",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://kagoshima.beer/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/kagoshima-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "moonrise-brewery",
+   "name": "ムーンライズ ブルワリー 天文館",
+   "nameKana": "むーんらいずぶるわりーてんもんかん",
+   "nameEn": "Moonrise Brewery Tenmonkan",
+   "aliases": [],
+   "prefCode": "46",
+   "city": "鹿児島市",
+   "address": "鹿児島県鹿児島市樋之口町10-7",
+   "geo": {
+    "lat": 31.587212,
+    "lng": 130.554611,
+    "precision": "block",
+    "matched": "鹿児島県鹿児島市樋之口町１０番７号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "instagram": "https://www.instagram.com/moonrise_kg/"
+   },
+   "summary": "鹿児島市天文館エリア、樋之口町の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "朝の海ビル1階",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/kagoshima-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "kirishima-kogen-beer",
+   "name": "霧島高原ビール",
+   "nameKana": "きりしまこうげんびーる",
+   "nameEn": "Kirishima Kogen Beer",
+   "aliases": [
+    "霧島こうじ蔵 GEN",
+    "バレルバレー"
+   ],
+   "prefCode": "46",
+   "city": "霧島市",
+   "address": "鹿児島県霧島市溝辺町麓876-15",
+   "geo": {
+    "lat": 31.797241,
+    "lng": 130.713547,
+    "precision": "block",
+    "matched": "鹿児島県霧島市溝辺町麓８７６番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://gen-khb.co.jp/"
+   },
+   "summary": "霧島市溝辺町の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://gen-khb.co.jp/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/kagoshima-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "kakuida-white-ale",
+   "name": "桷志田ホワイトエール（黒酢の郷 桷志田）",
+   "nameKana": "かくいだほわいとえーる",
+   "nameEn": "Kakuida White Ale",
+   "aliases": [
+    "黒酢の郷 桷志田"
+   ],
+   "prefCode": "46",
+   "city": "霧島市",
+   "address": "鹿児島県霧島市福山町福山311-2",
+   "geo": {
+    "lat": 31.656927,
+    "lng": 130.844055,
+    "precision": "area",
+    "matched": "鹿児島県霧島市福山町福山"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://kurozurestaurant.com/"
+   },
+   "summary": "霧島市福山町の「黒酢の郷 桷志田」で造るホワイトエール。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://kurozurestaurant.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/kagoshima-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "tanegashima-karahana",
+   "name": "種子島ブルワリー からはな",
+   "nameKana": "たねがしまぶるわりーからはな",
+   "nameEn": "Tanegashima Brewery Karahana",
+   "aliases": [],
+   "prefCode": "46",
+   "city": "熊毛郡南種子町",
+   "address": "鹿児島県熊毛郡南種子町茎永590-6",
+   "geo": {
+    "lat": 30.396236,
+    "lng": 130.947845,
+    "precision": "area",
+    "matched": "鹿児島県南種子町茎永"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://karahana.blog.jp/"
+   },
+   "summary": "種子島の南種子町の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://karahana.blog.jp/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/kagoshima-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "catch-the-beer",
+   "name": "Catch the Beer",
+   "nameKana": "きゃっちざびあ",
+   "nameEn": "Catch the Beer",
+   "aliases": [],
+   "prefCode": "46",
+   "city": "熊毛郡屋久島町",
+   "address": "鹿児島県熊毛郡屋久島町小瀬田9-5",
+   "geo": {
+    "lat": 30.384884,
+    "lng": 130.645462,
+    "precision": "area",
+    "matched": "鹿児島県屋久島町小瀬田"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://www.catchthebeer.com/"
+   },
+   "summary": "屋久島の小瀬田の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://www.catchthebeer.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/kagoshima-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "amami-beer-hall",
+   "name": "奄美ビアホール",
+   "nameKana": "あまみびあほーる",
+   "nameEn": "Amami Beer Hall",
+   "aliases": [],
+   "prefCode": "46",
+   "city": "奄美市",
+   "address": "鹿児島県奄美市名瀬港町1-2",
+   "geo": {
+    "lat": 28.380859,
+    "lng": 129.494232,
+    "precision": "block",
+    "matched": "鹿児島県奄美市名瀬港町１番"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://amamibeer.com/"
+   },
+   "summary": "奄美市名瀬の醸造所併設のビアホール。",
+   "verification": "official+secondary",
+   "sourceNotes": "松第2ビル1階",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://amamibeer.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/kagoshima-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "wolfbrau",
+   "name": "ウォルフブロイ",
+   "nameKana": "うぉるふぶろい",
+   "nameEn": "Wolfbrau",
+   "aliases": [],
+   "prefCode": "47",
+   "city": "那覇市",
+   "address": "沖縄県那覇市首里池端町34",
+   "geo": {
+    "lat": 26.220335,
+    "lng": 127.715675,
+    "precision": "block",
+    "matched": "沖縄県那覇市首里池端町３４番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.wolfbrau.com/"
+   },
+   "summary": "那覇市首里の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.wolfbrau.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/okinawa-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "ukishima-brewing",
+   "name": "浮島ブルーイング",
+   "nameKana": "うきしまぶるーいんぐ",
+   "nameEn": "Ukishima Brewing",
+   "aliases": [],
+   "prefCode": "47",
+   "city": "那覇市",
+   "address": "沖縄県那覇市牧志3-3-1",
+   "geo": {
+    "lat": 26.214893,
+    "lng": 127.68853,
+    "precision": "block",
+    "matched": "沖縄県那覇市牧志三丁目３番１号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.ukishimabrewing.com/"
+   },
+   "summary": "那覇市牧志の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "水上店舗第二街区3階",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.ukishimabrewing.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/okinawa-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "sakurazaka-brewery",
+   "name": "桜坂ブルワリー",
+   "nameKana": "さくらざかぶるわりー",
+   "nameEn": "Sakurazaka Brewery",
+   "aliases": [],
+   "prefCode": "47",
+   "city": "那覇市",
+   "address": "沖縄県那覇市牧志3丁目6-3",
+   "geo": {
+    "lat": 26.214401,
+    "lng": 127.68943,
+    "precision": "block",
+    "matched": "沖縄県那覇市牧志三丁目６番３号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "instagram": "https://www.instagram.com/sakurazakabrewery_okinawa/"
+   },
+   "summary": "那覇市牧志、桜坂の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/okinawa-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "mahowbrew",
+   "name": "Mahowbrew",
+   "nameKana": "まほうぶるー",
+   "nameEn": "Mahowbrew",
+   "aliases": [],
+   "prefCode": "47",
+   "city": "那覇市",
+   "address": "沖縄県那覇市壺屋2-4-3",
+   "geo": {
+    "lat": 26.21233,
+    "lng": 127.693649,
+    "precision": "block",
+    "matched": "沖縄県那覇市壺屋二丁目４番３号"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2024,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://mahowbrew.com/",
+    "shop": "https://shop.mahowbrew.com/"
+   },
+   "summary": "那覇市壺屋の醸造所。2024年8月開業。バルティックポーターやウィーヘビーなど濃いめのビールが並ぶ。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は Beer Tengoku の英語表記を地理院の住所検索で照合",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://mahowbrew.com/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/?p=89760"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Three-eyed Raven",
+     "styleId": "baltic-porter"
+    },
+    {
+     "name": "Depths of Muspelheim",
+     "styleId": "scotch-ale"
+    },
+    {
+     "name": "Doomsday Pythoness",
+     "styleId": "double-ipa"
+    }
+   ],
+   "profileSource": "https://mahowbrew.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "fill-brewing",
+   "name": "FILL BREWING",
+   "nameKana": "ふぃるぶるーいんぐ",
+   "nameEn": "Fill Brewing",
+   "aliases": [],
+   "prefCode": "47",
+   "city": "沖縄市",
+   "address": "沖縄県沖縄市中央1-4-8",
+   "geo": {
+    "lat": 26.337051,
+    "lng": 127.801132,
+    "precision": "block",
+    "matched": "沖縄県沖縄市中央一丁目４番８号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "instagram": "https://www.instagram.com/fillbrewing_okinawa/"
+   },
+   "summary": "沖縄市中央の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "福地ビル1階",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/okinawa-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "cliff-beer",
+   "name": "クリフビール（Cliff Beer Hiyagon Farm）",
+   "nameKana": "くりふびーる",
+   "nameEn": "Cliff Beer",
+   "aliases": [],
+   "prefCode": "47",
+   "city": "沖縄市",
+   "address": "沖縄県沖縄市比屋根6-18-1",
+   "geo": {
+    "lat": 26.31633,
+    "lng": 127.813316,
+    "precision": "block",
+    "matched": "沖縄県沖縄市比屋根六丁目１８番１号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "facebook": "https://www.facebook.com/cliffcraftbeer/"
+   },
+   "summary": "沖縄市比屋根の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/okinawa-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "koza-bakushu",
+   "name": "コザ麦酒工房",
+   "nameKana": "こざばくしゅこうぼう",
+   "nameEn": "Koza Brewing",
+   "aliases": [],
+   "prefCode": "47",
+   "city": "沖縄市",
+   "address": "沖縄県沖縄市中央1丁目24-13",
+   "geo": {
+    "lat": 26.336781,
+    "lng": 127.799431,
+    "precision": "block",
+    "matched": "沖縄県沖縄市中央一丁目２４番１３号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://kozabrewingokinawa.ti-da.net/"
+   },
+   "summary": "沖縄市中央（コザ）の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://kozabrewingokinawa.ti-da.net/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/okinawa-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "dolphin-beer",
+   "name": "ドルフィン・ビアー",
+   "nameKana": "どるふぃんびあー",
+   "nameEn": "Dolphin Beer",
+   "aliases": [],
+   "prefCode": "47",
+   "city": "名護市",
+   "address": "沖縄県名護市東江5丁目8-7",
+   "geo": {
+    "lat": 26.581804,
+    "lng": 127.983833,
+    "precision": "block",
+    "matched": "沖縄県名護市東江五丁目８番７号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "instagram": "https://www.instagram.com/dolphinbeer/"
+   },
+   "summary": "名護市東江の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/okinawa-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "helios-craft-beer",
+   "name": "ヘリオスクラフトビール（ヘリオス酒造）",
+   "nameKana": "へりおすくらふとびーる",
+   "nameEn": "Helios Brewery",
+   "aliases": [
+    "ヘリオス酒造"
+   ],
+   "prefCode": "47",
+   "city": "名護市",
+   "address": "沖縄県名護市字許田405",
+   "geo": {
+    "lat": 26.538204,
+    "lng": 127.962738,
+    "precision": "block",
+    "matched": "沖縄県名護市許田４０５番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": 1996,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://helios-syuzo.co.jp/"
+   },
+   "summary": "1961年にラム酒造りで始まったヘリオス酒造が1996年から造るビール。ゴーヤーを使ったビールなど沖縄らしい銘柄もある。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://helios-syuzo.co.jp/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/okinawa-craft-beer/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/?p=8502"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "ゴーヤーDRY",
+     "styleId": "herb-spice"
+    },
+    {
+     "name": "ヴァイツェン",
+     "styleId": "weizen"
+    },
+    {
+     "name": "ポーター",
+     "styleId": "porter"
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "http://helios-syuzo.co.jp/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "chatan-beer",
+   "name": "チャタンビール（シーフードマーケット ランブルフィッシュ）",
+   "nameKana": "ちゃたんびーる",
+   "nameEn": "Chatan Beer",
+   "aliases": [],
+   "prefCode": "47",
+   "city": "名護市",
+   "address": "沖縄県名護市字喜瀬1808",
+   "geo": {
+    "lat": 26.541317,
+    "lng": 127.934792,
+    "precision": "block",
+    "matched": "沖縄県名護市喜瀬１８０８番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.terrace.co.jp/busena/"
+   },
+   "summary": "名護市喜瀬のリゾートホテル内のレストラン「ランブルフィッシュ」で造るビール。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.terrace.co.jp/busena/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/okinawa-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "miyakojima-jibeer",
+   "name": "宮古島の地ビール",
+   "nameKana": "みやこじまのじびーる",
+   "nameEn": "Miyakojima Jibeer",
+   "aliases": [],
+   "prefCode": "47",
+   "city": "宮古島市",
+   "address": "沖縄県宮古島市平良字久貝703-3",
+   "geo": {
+    "lat": 24.796551,
+    "lng": 125.269753,
+    "precision": "block",
+    "matched": "沖縄県宮古島市平良久貝７０３番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://mmb-craftbeer.jp/"
+   },
+   "summary": "宮古島市平良の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://mmb-craftbeer.jp/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/okinawa-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "ishigaki-beer",
+   "name": "石垣島ビール",
+   "nameKana": "いしがきじまびーる",
+   "nameEn": "Ishigaki Beer",
+   "aliases": [],
+   "prefCode": "47",
+   "city": "石垣市",
+   "address": "沖縄県石垣市字新川2094-4",
+   "geo": {
+    "lat": 24.363007,
+    "lng": 124.141678,
+    "precision": "block",
+    "matched": "沖縄県石垣市新川２０９４番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://ishigaki-beer.com/"
+   },
+   "summary": "石垣島の新川の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://ishigaki-beer.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/okinawa-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "okinawa-sango-beer",
+   "name": "OKINAWA SANGO BEER（南都酒造所）",
+   "nameKana": "おきなわさんごびーる",
+   "nameEn": "Okinawa Sango Beer",
+   "aliases": [
+    "南都酒造所",
+    "玉泉洞"
+   ],
+   "prefCode": "47",
+   "city": "南城市",
+   "address": "沖縄県南城市玉城字前川1336",
+   "geo": {
+    "lat": 26.140242,
+    "lng": 127.748192,
+    "precision": "block",
+    "matched": "沖縄県南城市玉城前川１３３６番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://www.nantosyuzo.com/beer/"
+   },
+   "summary": "南城市の観光施設「文化王国・玉泉洞」にある南都酒造所のビール。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://www.nantosyuzo.com/beer/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/okinawa-craft-beer/"
     }
    ],
    "checkedAt": "2026-10-31"

@@ -361,6 +361,18 @@
       "author": "エール工房de伊賀",
       "sourceUrl": "https://alecraftdeiga.jp/wp-content/uploads/logo_ogp.jpg"
     },
+    "amakusa-sonar-beer": {
+      "file": "images/breweries/amakusa-sonar-beer.webp",
+      "license": "unverified",
+      "author": "AMAKUSA SONAR BEER",
+      "sourceUrl": "https://static.wixstatic.com/media/088774_abc1e0c499e14af6868dd054d9576d44%7Emv2.png/v1/fill/w_180%2Ch_180%2Clg_1%2Cusm_0.66_1.00_0.01/088774_abc1e0c499e14af6868dd054d9576d44%7Emv2.png"
+    },
+    "amami-beer-hall": {
+      "file": "images/breweries/amami-beer-hall.webp",
+      "license": "unverified",
+      "author": "奄美ビアホール",
+      "sourceUrl": "https://amamibeer.com/wp-content/uploads/2025/03/2-1.png?1793415664"
+    },
     "amaterasu-brewery": {
       "file": "images/breweries/amaterasu-brewery.webp",
       "license": "unverified",
@@ -541,6 +553,12 @@
       "author": "CRAFTROCK BREWING 高尾",
       "sourceUrl": "https://craftrock.jp/shared/img/shared/logo.png"
     },
+    "dazaifu-brewery": {
+      "file": "images/breweries/dazaifu-brewery.webp",
+      "license": "unverified",
+      "author": "太宰府ブルワリー",
+      "sourceUrl": "https://dazaifu-brewery.com/wp/wp-content/uploads/2023/07/cropped-favicon-180x180.png"
+    },
     "dd4d-brewing": {
       "file": "images/breweries/dd4d-brewing.webp",
       "license": "unverified",
@@ -637,6 +655,12 @@
       "author": "富士桜高原麦酒",
       "sourceUrl": "https://www.fujizakura-beer.jp/wp-content/uploads/2019/04/logo-1.png"
     },
+    "fukuoka-craft-brewing": {
+      "file": "images/breweries/fukuoka-craft-brewing.webp",
+      "license": "unverified",
+      "author": "Fukuoka Craft Brewing",
+      "sourceUrl": "https://fukuokacraft.com/cdn/shop/files/logo_00_bl.png?v=1791451396"
+    },
     "futako-beer": {
       "file": "images/breweries/futako-beer.webp",
       "license": "unverified",
@@ -709,6 +733,12 @@
       "author": "八戸麦酒",
       "sourceUrl": "https://kanekujyozo.com/cms/wp-content/themes/kanekujyozo/images/common/foot-logo.png"
     },
+    "hakata-draft": {
+      "file": "images/breweries/hakata-draft.webp",
+      "license": "unverified",
+      "author": "博多ドラフト（ビアレストラン オークラブルワリー）",
+      "sourceUrl": "https://www.fuk.hotelokura.co.jp/wp/wp-content/themes/okura/assets/img/logo_beer.svg"
+    },
     "hakone-beer": {
       "file": "images/breweries/hakone-beer.webp",
       "license": "unverified",
@@ -756,6 +786,18 @@
       "license": "unverified",
       "author": "ヒダノオクブルワリー",
       "sourceUrl": "https://hida-no-oku-brew.square.site/uploads/b/8ad6ead0-3b86-11ec-bca9-bb2392270e08/icon_180x180_ios_NTAzMj.png?width=180"
+    },
+    "hideji-beer": {
+      "file": "images/breweries/hideji-beer.webp",
+      "license": "unverified",
+      "author": "ひでじビール",
+      "sourceUrl": "https://hideji-beer.jp/cms/wp-content/uploads/2016/08/logos.png"
+    },
+    "hifumiyo-brewing": {
+      "file": "images/breweries/hifumiyo-brewing.webp",
+      "license": "unverified",
+      "author": "ひふみよブリューイング",
+      "sourceUrl": "https://kagoshima.beer/wp-content/uploads/fbrfg/apple-touch-icon.png"
     },
     "hikawa-brewery": {
       "file": "images/breweries/hikawa-brewery.webp",
@@ -817,6 +859,12 @@
       "author": "HUMANS BEER",
       "sourceUrl": "https://humansbeer.com/cdn/shop/files/logo_f1994e7d-8c86-43e7-99ed-c8dad41c410c.jpg?height=100&v=1773896304"
     },
+    "iki-island-brewery": {
+      "file": "images/breweries/iki-island-brewery.webp",
+      "license": "unverified",
+      "author": "Island Brewery",
+      "sourceUrl": "https://iki-island.co.jp/wp-content/uploads/2021/06/footer_logo.png"
+    },
     "imabari-machinaka-bakushu": {
       "file": "images/breweries/imabari-machinaka-bakushu.webp",
       "license": "unverified",
@@ -846,6 +894,12 @@
       "license": "unverified",
       "author": "ISHINOMAKI HOP WORKS",
       "sourceUrl": "https://ishinomakihopworks.com/wp-content/uploads/2024/07/cropped-logo-180x180.webp"
+    },
+    "itoshima-hello-craft": {
+      "file": "images/breweries/itoshima-hello-craft.webp",
+      "license": "unverified",
+      "author": "ITOSHIMA HELLO CRAFT（麦房 余韻）",
+      "sourceUrl": "https://hello-brewery.com/wp-content/themes/hello-brewery.com/images/logo_tate.png"
     },
     "iwami-bakushu": {
       "file": "images/breweries/iwami-bakushu.webp",
@@ -894,6 +948,12 @@
       "license": "unverified",
       "author": "かいぶつ島ビール",
       "sourceUrl": "https://www.tsurumi-jp.com/wp-content/uploads/2023/12/cropped-favicon-180x180.webp"
+    },
+    "kakuida-white-ale": {
+      "file": "images/breweries/kakuida-white-ale.webp",
+      "license": "unverified",
+      "author": "桷志田ホワイトエール（黒酢の郷 桷志田）",
+      "sourceUrl": "https://kurozurestaurant.com/renewalrest/wp-content/themes/custom-themes/img/apple-touch_icon.png"
     },
     "kamakura-beer": {
       "file": "images/breweries/kamakura-beer.webp",
@@ -955,6 +1015,12 @@
       "author": "キリンビール横浜工場",
       "sourceUrl": "https://www.kirin.co.jp/assets/images/logo.svg"
     },
+    "kirishima-beer": {
+      "file": "images/breweries/kirishima-beer.webp",
+      "license": "unverified",
+      "author": "霧島ビール（霧島酒造）",
+      "sourceUrl": "https://www.kirishima.co.jp/assets/images/common/apple-touch-icon.png"
+    },
     "kix-beer": {
       "file": "images/breweries/kix-beer.webp",
       "license": "unverified",
@@ -1003,6 +1069,18 @@
       "author": "KOSHU BEER",
       "sourceUrl": "https://baseec-img-mng.akamaized.net/images/user/logo/905d7dd7d1301066aecc8f8b01833102.png"
     },
+    "koza-bakushu": {
+      "file": "images/breweries/koza-bakushu.webp",
+      "license": "unverified",
+      "author": "コザ麦酒工房",
+      "sourceUrl": "https://img05.ti-da.net/usr/k/o/z/kozabrewingokinawa/profile.png"
+    },
+    "ks-brewing": {
+      "file": "images/breweries/ks-brewing.webp",
+      "license": "unverified",
+      "author": "K's Brewing Company",
+      "sourceUrl": "https://www.brewmaster2002.com/wp-content/uploads/2019/04/logob.png"
+    },
     "kyonan-bakushu": {
       "file": "images/breweries/kyonan-bakushu.webp",
       "license": "unverified",
@@ -1032,6 +1110,12 @@
       "license": "unverified",
       "author": "ロコビア",
       "sourceUrl": "https://www.locobeer.jp/images/sitelogo_wm.png"
+    },
+    "mahowbrew": {
+      "file": "images/breweries/mahowbrew.webp",
+      "license": "unverified",
+      "author": "Mahowbrew",
+      "sourceUrl": "https://mahowbrew.com/wp-content/uploads/2023/10/d42bda411c55f9ce6c8206714c2be6e1-e1696162036630.png"
     },
     "makigoya-beer": {
       "file": "images/breweries/makigoya-beer.webp",
@@ -1117,6 +1201,12 @@
       "author": "みぞのくち醸造所",
       "sourceUrl": "https://mizonokuchibrewery.com/cdn/shop/files/ogp.png?v=1650525968"
     },
+    "mojiko-beer": {
+      "file": "images/breweries/mojiko-beer.webp",
+      "license": "unverified",
+      "author": "門司港地ビール",
+      "sourceUrl": "https://mojibeer.ntf.ne.jp/wp/wp-content/uploads/cropped-favicon-180x180.png"
+    },
     "mt-fuji-brewing": {
       "file": "images/breweries/mt-fuji-brewing.webp",
       "license": "unverified",
@@ -1195,6 +1285,12 @@
       "author": "ノムクラフトブルーイング",
       "sourceUrl": "https://nomcraft.beer/wp-content/uploads/2019/01/cropped-NOMCRAFTicon-2-180x180.jpg"
     },
+    "novoru-brewing": {
+      "file": "images/breweries/novoru-brewing.webp",
+      "license": "unverified",
+      "author": "NOVORU Brewing",
+      "sourceUrl": "https://novorubrewing.com/assets/config/apple-touch-icon.png"
+    },
     "nutori-brewing": {
       "file": "images/breweries/nutori-brewing.webp",
       "license": "unverified",
@@ -1206,6 +1302,12 @@
       "license": "unverified",
       "author": "沼垂ビール",
       "sourceUrl": "https://nuttaribeer.co.jp/cdn/shop/articles/logo.letter.red.white_600x400_crop_center.png?v=1778664801"
+    },
+    "oa-nagasaki": {
+      "file": "images/breweries/oa-nagasaki.webp",
+      "license": "unverified",
+      "author": "O/A NAGASAKI CRAFTBEER",
+      "sourceUrl": "https://oa.o0o0.jp/wp-content/themes/OA/img/footer-logo.svg"
     },
     "obina-brewing": {
       "file": "images/breweries/obina-brewing.webp",
@@ -1236,6 +1338,12 @@
       "license": "unverified",
       "author": "オラホビール",
       "sourceUrl": "https://ohlahobeer.com/cms/wp-content/themes/ohlahobeer_themes/common/img/favicon/apple-touch-icon-180x180.png"
+    },
+    "okinawa-sango-beer": {
+      "file": "images/breweries/okinawa-sango-beer.webp",
+      "license": "unverified",
+      "author": "OKINAWA SANGO BEER（南都酒造所）",
+      "sourceUrl": "https://www.nantosyuzo.com/images/logo.gif"
     },
     "okuyamato-beer": {
       "file": "images/breweries/okuyamato-beer.webp",
@@ -1441,6 +1549,12 @@
       "author": "South Horizon Brewing",
       "sourceUrl": "https://south-horizon.jp/cdn/shop/files/logo_72031869-4505-415b-8fd3-5d7958d06641_300x.svg?v=1688441277"
     },
+    "suginoya-beer": {
+      "file": "images/breweries/suginoya-beer.webp",
+      "license": "unverified",
+      "author": "杉能舎",
+      "sourceUrl": "https://suginoya.co.jp/wp-content/uploads/2023/06/cropped-icon-1-180x180.png"
+    },
     "sunao-brewery": {
       "file": "images/breweries/sunao-brewery.webp",
       "license": "unverified",
@@ -1525,6 +1639,12 @@
       "author": "Totopia Brewery",
       "sourceUrl": "https://base-ec2.akamaized.net/images/user/base_eraser/2154417/favicon/eb62d14616885fad9aff198a0f4d9020.png"
     },
+    "toyfull-brewery": {
+      "file": "images/breweries/toyfull-brewery.webp",
+      "license": "unverified",
+      "author": "トイフルブルワリー",
+      "sourceUrl": "https://toyfull.beer/img/favicon.png"
+    },
     "tsugaru-brewing": {
       "file": "images/breweries/tsugaru-brewing.webp",
       "license": "unverified",
@@ -1585,6 +1705,12 @@
       "author": "羽後麦酒",
       "sourceUrl": "https://storage.googleapis.com/production-os-assets/assets/5bd4aae9-6890-4edb-91f4-76328c8a096c"
     },
+    "ukishima-brewing": {
+      "file": "images/breweries/ukishima-brewing.webp",
+      "license": "unverified",
+      "author": "浮島ブルーイング",
+      "sourceUrl": "https://www.ukishimabrewing.com/uploads/8/8/5/2/88529694/730467702.gif"
+    },
     "umenishiki-beer": {
       "file": "images/breweries/umenishiki-beer.webp",
       "license": "unverified",
@@ -1614,6 +1740,12 @@
       "license": "unverified",
       "author": "うついブルワリー",
       "sourceUrl": "https://baseec-img-mng.akamaized.net/images/user/logo/5fd1874d8dfbb4f963d1df55776a432d.png"
+    },
+    "vatten-brewing": {
+      "file": "images/breweries/vatten-brewing.webp",
+      "license": "unverified",
+      "author": "VATTEN BREWING",
+      "sourceUrl": "https://vatten.beer/wp-content/themes/vatten/img/common/img_logo_wh.png"
     },
     "vector-beer-factory": {
       "file": "images/breweries/vector-beer-factory.webp",
