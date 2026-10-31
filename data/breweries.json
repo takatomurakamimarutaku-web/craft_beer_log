@@ -1009,7 +1009,7 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-31"
   },
   {
    "id": "rikuzentakata-microbrewery",
@@ -1727,18 +1727,23 @@
    "tour": null,
    "links": {
     "x": "https://twitter.com/ishinomakihop",
-    "instagram": "https://www.instagram.com/ishinomakihopworks/"
+    "instagram": "https://www.instagram.com/ishinomakihopworks/",
+    "official": "https://www.ishinomakihopworks.com/"
    },
    "summary": "2022年に醸造を始めた石巻の醸造所。石巻産ホップを使った「巻風」シリーズを造り、隣にタップルームを構える。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "MyBeer、河北新報見出し（2024年1月タップルーム開店）",
    "sources": [
     {
      "label": "仙台国税局「東北酒蔵マップ掲載酒類製造者一覧」（令和7年11月1日現在）",
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "https://www.ishinomakihopworks.com/"
     }
    ],
-   "checkedAt": "2026-10-25",
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "巻風エール",
@@ -2100,7 +2105,7 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25",
+   "checkedAt": "2026-10-31",
    "flagships": [],
    "features": [],
    "profileSource": "https://craftbeer-akita.com/member/brewccoly/",
@@ -2573,8 +2578,13 @@
    "aliases": [],
    "prefCode": "06",
    "city": "天童市",
-   "address": null,
-   "geo": null,
+   "address": "山形県天童市大字久野本字日光1273-2",
+   "geo": {
+    "lat": 38.377697,
+    "lng": 140.386932,
+    "precision": "area",
+    "matched": "山形県天童市久野本"
+   },
    "kind": "brewery",
    "status": "active",
    "founded": 2020,
@@ -2590,9 +2600,13 @@
     {
      "label": "仙台国税局「東北酒蔵マップ掲載酒類製造者一覧」（令和7年11月1日現在）",
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/yamagata-craft-beer/"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-31"
   },
   {
    "id": "gassan-beer",
@@ -2605,8 +2619,13 @@
    ],
    "prefCode": "06",
    "city": "西川町",
-   "address": null,
-   "geo": null,
+   "address": "山形県西村山郡西川町水沢2304",
+   "geo": {
+    "lat": 38.436275,
+    "lng": 140.097778,
+    "precision": "block",
+    "matched": "山形県西川町水沢２３０４番地"
+   },
    "kind": "brewpub",
    "status": "active",
    "founded": 1998,
@@ -2622,9 +2641,13 @@
     {
      "label": "仙台国税局「東北酒蔵マップ掲載酒類製造者一覧」（令和7年11月1日現在）",
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/yamagata-craft-beer/"
     }
    ],
-   "checkedAt": "2026-10-25",
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "月山ビール ピルスナー",
@@ -2738,8 +2761,13 @@
    "aliases": [],
    "prefCode": "06",
    "city": "長井市",
-   "address": null,
-   "geo": null,
+   "address": "山形県長井市泉677-11",
+   "geo": {
+    "lat": 38.081642,
+    "lng": 140.040298,
+    "precision": "block",
+    "matched": "山形県長井市泉６７７番地"
+   },
    "kind": "brewery",
    "status": "active",
    "founded": 2019,
@@ -2755,9 +2783,13 @@
     {
      "label": "仙台国税局「東北酒蔵マップ掲載酒類製造者一覧」（令和7年11月1日現在）",
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/yamagata-craft-beer/"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-31"
   },
   {
    "id": "sakata-traditional-beer",
@@ -3147,7 +3179,7 @@
      "url": "https://www.nta.go.jp/about/organization/sendai/sake/sakagura/seizo_ichiran/pdf/58_ja_02.pdf"
     }
    ],
-   "checkedAt": "2026-10-25"
+   "checkedAt": "2026-10-31"
   },
   {
    "id": "asahi-fukushima",
@@ -3619,29 +3651,39 @@
    ],
    "prefCode": "08",
    "city": "つくば市",
-   "address": "茨城県つくば市二宮",
+   "address": "茨城県つくば市二の宮2-14-15",
    "geo": {
-    "lat": 36.069698,
-    "lng": 140.118256,
-    "precision": "area",
-    "matched": "茨城県つくば市二の宮"
+    "lat": 36.063316,
+    "lng": 140.121567,
+    "precision": "block",
+    "matched": "茨城県つくば市二の宮二丁目１４番"
    },
    "kind": "brewery",
    "status": "active",
    "founded": 2020,
    "taproom": true,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "http://pebbles-tsukuba.com/"
+   },
    "summary": "2020年につくば市で開業。筑波山麓の井戸水と茨城の米や果物を使い、筑波山の伝説にちなんだ名前のビールを造る。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "卸売サイトgoooodsの掲載情報（町名まで）",
    "sources": [
     {
      "label": "関東信越国税局「酒蔵マップ」ビール等・茨城県（令和6年3月現在）",
      "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_ibaraki_jp.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "http://pebbles-tsukuba.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/ibaraki-craft-beer/"
     }
    ],
-   "checkedAt": "2026-10-25",
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "TSUKUBA Sunrise Lager",
@@ -3714,24 +3756,39 @@
    ],
    "prefCode": "08",
    "city": "結城市",
-   "address": null,
-   "geo": null,
+   "address": "茨城県結城市中央町1-7-1",
+   "geo": {
+    "lat": 36.291878,
+    "lng": 139.871368,
+    "precision": "block",
+    "matched": "茨城県結城市中央町一丁目７番"
+   },
    "kind": "brewery",
    "status": "active",
    "founded": 2019,
    "taproom": null,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "https://www.yukibrewery.com/"
+   },
    "summary": "結城駅南口近くで2019年に醸造を始めた。地元の農産物を使い、結城の桑の実を使ったセゾンなども造る。ナマズのロゴが目印。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "Makuakeのプロジェクトページ（2019年）。番地未確認",
    "sources": [
     {
      "label": "関東信越国税局「酒蔵マップ」ビール等・茨城県（令和6年3月現在）",
      "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_ibaraki_jp.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "https://www.yukibrewery.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/ibaraki-craft-beer/"
     }
    ],
-   "checkedAt": "2026-10-25",
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "ペールエール",
@@ -3748,6 +3805,179 @@
    ],
    "profileSource": "https://www.makuake.com/project/yukibeer2019/",
    "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "motoyamacho-brewery",
+   "name": "元山町ブルワリー",
+   "nameKana": "もとやまちょうぶるわりー",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "08",
+   "city": "水戸市",
+   "address": "茨城県水戸市元山町1-3-22",
+   "geo": {
+    "lat": 36.379169,
+    "lng": 140.454865,
+    "precision": "block",
+    "matched": "茨城県水戸市元山町一丁目３番２２号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "instagram": "https://www.instagram.com/motoyamacho_brewery/"
+   },
+   "summary": "水戸市元山町の小さなブルワリー。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/ibaraki-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "mito-brewing",
+   "name": "大工町醸造所（MITO BREWING）",
+   "nameKana": "だいくちょうじょうぞうしょ",
+   "nameEn": null,
+   "aliases": [
+    "MITOBREWING"
+   ],
+   "prefCode": "08",
+   "city": "水戸市",
+   "address": "茨城県水戸市泉町3-5-9",
+   "geo": {
+    "lat": 36.380398,
+    "lng": 140.460205,
+    "precision": "block",
+    "matched": "茨城県水戸市泉町三丁目５番９号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": "水戸の繁華街・大工町エリアにある醸造所併設の店。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/ibaraki-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "twin-peaks-mountain-brewing",
+   "name": "Twin Peaks Mountain Brewing",
+   "nameKana": "ついんぴーくすまうんてんぶるーいんぐ",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "08",
+   "city": "つくば市",
+   "address": "茨城県つくば市東新井18-8",
+   "geo": {
+    "lat": 36.077618,
+    "lng": 140.111649,
+    "precision": "block",
+    "matched": "茨城県つくば市東新井１８番"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "https://twinpeaksmountain.com/"
+   },
+   "summary": "つくばのドイツ人経営の醸造所。ドイツの伝統的な製法とドイツ産原料で造り、タップルームで常時8〜10種類を出す。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://twinpeaksmountain.com/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "features": [
+    "european"
+   ],
+   "profileSource": "https://twinpeaksmountain.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "mugi-to-budou-ushiku",
+   "name": "麦と葡萄 牛久醸造場",
+   "nameKana": "むぎとぶどううしくじょうぞうじょう",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "08",
+   "city": "牛久市",
+   "address": "茨城県牛久市牛久町531-3",
+   "geo": {
+    "lat": 35.969093,
+    "lng": 140.139374,
+    "precision": "block",
+    "matched": "茨城県牛久市牛久町５３１番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": false,
+   "tour": null,
+   "links": {
+    "facebook": "https://www.facebook.com/%E9%BA%A6%E3%81%A8%E8%91%A1%E8%90%84-%E7%89%9B%E4%B9%85%E9%86%B8%E9%80%A0%E5%A0%B4-103550341112939/"
+   },
+   "summary": "牛久市の醸造場。直営のパブはない。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/ibaraki-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "beach-culture-brewing",
+   "name": "Beach culture brewing",
+   "nameKana": "びーちかるちゃーぶるーいんぐ",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "08",
+   "city": "大洗町",
+   "address": "茨城県東茨城郡大洗町港中央11-2",
+   "geo": {
+    "lat": 36.309238,
+    "lng": 140.568924,
+    "precision": "block",
+    "matched": "茨城県大洗町港中央１１番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": "大洗港のそば、大洗シーサイドステーション1階にあるブルワリー。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/ibaraki-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
   },
   {
    "id": "ushitora-brewery",
@@ -3830,24 +4060,39 @@
    ],
    "prefCode": "09",
    "city": "宇都宮市",
-   "address": null,
-   "geo": null,
+   "address": "栃木県宇都宮市東塙田1-5-12",
+   "geo": {
+    "lat": 36.565521,
+    "lng": 139.889771,
+    "precision": "block",
+    "matched": "栃木県宇都宮市東塙田一丁目５番１２号"
+   },
    "kind": "brewpub",
    "status": "active",
    "founded": null,
    "taproom": true,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "http://www.beatclub.jp/microb/"
+   },
    "summary": "宇都宮で自家醸造のビールを出す店。銘柄の入れ替わりが多く、果物などを使った実験的なビールを10種ほど並べる。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "栃ナビ！口コミ。番地未確認",
    "sources": [
     {
      "label": "関東信越国税局「酒蔵マップ」ビール等・栃木県（令和6年3月現在）",
      "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_tochigi_jp.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "http://www.beatclub.jp/microb/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/tochigi-craft-beer/"
     }
    ],
-   "checkedAt": "2026-10-25",
+   "checkedAt": "2026-10-31",
    "features": [
     "fruit"
    ],
@@ -4147,29 +4392,39 @@
    ],
    "prefCode": "09",
    "city": "宇都宮市",
-   "address": "栃木県宇都宮市新里町",
+   "address": "栃木県宇都宮市新里町丙255",
    "geo": {
-    "lat": 36.633896,
-    "lng": 139.812607,
+    "lat": 36.641941,
+    "lng": 139.814514,
     "precision": "area",
-    "matched": "栃木県宇都宮市新里町"
+    "matched": "栃木県宇都宮市新里町丙"
    },
    "kind": "brewpub",
    "status": "active",
    "founded": null,
    "taproom": true,
    "tour": true,
-   "links": {},
+   "links": {
+    "official": "http://www.romanticmura.com/brewery/"
+   },
    "summary": "道の駅うつのみや ろまんちっく村の中の醸造所。宇都宮産のビール麦にこだわり、工場見学もできる。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "宇都宮市の広報資料。番地未確認",
    "sources": [
     {
      "label": "関東信越国税局「酒蔵マップ」ビール等・栃木県（令和6年3月現在）",
      "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_tochigi_jp.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "http://www.romanticmura.com/brewery/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/tochigi-craft-beer/"
     }
    ],
-   "checkedAt": "2026-10-25",
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "麦太郎",
@@ -4186,6 +4441,76 @@
    "availability": "local",
    "profileSource": "https://www.city.utsunomiya.lg.jp/_res/projects/default_project/_page_/001/014/525/43.pdf",
    "profileCheckedAt": "2026-10-25"
+  },
+  {
+   "id": "murmur-biiru-stand",
+   "name": "Murmur biiru stand",
+   "nameKana": "まぁまーびーるすたんど",
+   "nameEn": null,
+   "aliases": [
+    "マァマー ビールスタンド"
+   ],
+   "prefCode": "09",
+   "city": "日光市",
+   "address": "栃木県日光市上鉢石町1013",
+   "geo": {
+    "lat": 36.752121,
+    "lng": 139.604538,
+    "precision": "block",
+    "matched": "栃木県日光市上鉢石町１０１３番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "facebook": "https://www.facebook.com/murmurbiiru/"
+   },
+   "summary": "日光東照宮へ向かう通り沿い、上鉢石町のビールスタンド。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/tochigi-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "amaku-uku",
+   "name": "甘く浮く",
+   "nameKana": "あまくうく",
+   "nameEn": "amaku uku",
+   "aliases": [],
+   "prefCode": "09",
+   "city": "那須塩原市",
+   "address": "栃木県那須塩原市豊浦中町100-10",
+   "geo": {
+    "lat": 36.964512,
+    "lng": 140.041153,
+    "precision": "block",
+    "matched": "栃木県那須塩原市豊浦中町１００番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "shop": "https://amakuuku.stores.jp/"
+   },
+   "summary": "那須塩原市の小さな醸造所。オンラインショップでビールを販売する。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/tochigi-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
   },
   {
    "id": "oct-one-brewing",
@@ -4308,17 +4633,23 @@
    "founded": null,
    "taproom": null,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "http://jizake.info/"
+   },
    "summary": "四万温泉の酒店が手がける小さな醸造所。温泉街の土産としても売られる「四万温泉エール」を造る。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "関東信越国税局の一覧、トラベルjp記事",
    "sources": [
     {
      "label": "関東信越国税局「酒蔵マップ」ビール等・群馬県（令和6年3月現在）",
      "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_gunma_jp.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "http://jizake.info/"
     }
    ],
-   "checkedAt": "2026-10-25",
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "四万温泉エール",
@@ -4352,7 +4683,9 @@
    "founded": 2016,
    "taproom": true,
    "tour": null,
-   "links": {},
+   "links": {
+    "facebook": "https://www.facebook.com/%E3%82%B7%E3%83%B3%E3%82%AD%E3%83%81%E9%86%B8%E9%80%A0%E6%89%80-1705574396327041/"
+   },
    "summary": "高崎の三軒長屋を改装した小さなブルーパブ。和食に合う食中酒としてのビールを目指し、瓶で寝かせた熟成ビールも店で飲める。",
    "verification": "secondary",
    "sourceNotes": "BE-PAL記事、関東信越国税局の一覧",
@@ -4360,9 +4693,13 @@
     {
      "label": "関東信越国税局「酒蔵マップ」ビール等・群馬県（令和6年3月現在）",
      "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_gunma_jp.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "https://www.facebook.com/%E3%82%B7%E3%83%B3%E3%82%AD%E3%83%81%E9%86%B8%E9%80%A0%E6%89%80-1705574396327041/"
     }
    ],
-   "checkedAt": "2026-10-25",
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "若松町ピルスナー",
@@ -4419,24 +4756,39 @@
    ],
    "prefCode": "10",
    "city": "嬬恋村",
-   "address": null,
-   "geo": null,
+   "address": "群馬県吾妻郡嬬恋村大笹2193-27",
+   "geo": {
+    "lat": 36.489418,
+    "lng": 138.498444,
+    "precision": "area",
+    "matched": "群馬県嬬恋村大笹"
+   },
    "kind": "brewery",
    "status": "active",
    "founded": null,
    "taproom": null,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "http://www.tsumabru.com/"
+   },
    "summary": "嬬恋村の醸造所。群馬県産の大麦と嬬恋の水で「群馬麦酒」を造る。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "関東信越国税局の一覧、ふるさと納税の返礼品ページ。番地未確認",
    "sources": [
     {
      "label": "関東信越国税局「酒蔵マップ」ビール等・群馬県（令和6年3月現在）",
      "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_gunma_jp.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "http://www.tsumabru.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/gunma-craft-beer/"
     }
    ],
-   "checkedAt": "2026-10-25",
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "嬬恋ペールエール",
@@ -4473,17 +4825,23 @@
    "founded": 1998,
    "taproom": true,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "https://www.denenplaza.co.jp/service/beer"
+   },
    "summary": "道の駅「田園プラザ川場」の中にある醸造所。1998年から川場ビールを造り、地元の素材も使う。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "群馬県の資料（26126.pdf）、関東信越国税局の一覧。住所は運営会社の所在地",
    "sources": [
     {
      "label": "関東信越国税局「酒蔵マップ」ビール等・群馬県（令和6年3月現在）",
      "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_gunma_jp.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "https://www.denenplaza.co.jp/service/beer"
     }
    ],
-   "checkedAt": "2026-10-25",
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "川場ビール",
@@ -4508,8 +4866,13 @@
    ],
    "prefCode": "10",
    "city": "伊勢崎市",
-   "address": null,
-   "geo": null,
+   "address": "群馬県伊勢崎市東小保方町983-2",
+   "geo": {
+    "lat": 36.333023,
+    "lng": 139.254715,
+    "precision": "block",
+    "matched": "群馬県伊勢崎市東小保方町９８３番地"
+   },
    "kind": "brewery",
    "status": "active",
    "founded": null,
@@ -4523,9 +4886,13 @@
     {
      "label": "関東信越国税局「酒蔵マップ」ビール等・群馬県（令和6年3月現在）",
      "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_gunma_jp.pdf"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/gunma-craft-beer/"
     }
    ],
-   "checkedAt": "2026-10-25",
+   "checkedAt": "2026-10-31",
    "features": []
   },
   {
@@ -9270,9 +9637,11 @@
   {
    "id": "15brewery",
    "name": "15brewery",
-   "nameKana": null,
+   "nameKana": "ふぃふてぃーんぶるわりー",
    "nameEn": null,
-   "aliases": [],
+   "aliases": [
+    "フィフティーンブルワリー"
+   ],
    "prefCode": "14",
    "city": "葉山町",
    "address": "神奈川県三浦郡葉山町堀内744-7",
