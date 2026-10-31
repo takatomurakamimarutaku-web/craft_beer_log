@@ -6,6 +6,7 @@ import { averageTasting, hasScores, tastingRadarSvg, tasteLabels, flavorLabels }
 import { buildShareText, shareContent } from '../share.js';
 import { renderShareCard } from '../share-card.js';
 import { resolveBreweryId } from '../breweries.js';
+import { buildBeerSummaries, similarBeers } from '../search.js';
 import { beerColor } from '../knowledge.js';
 
 export async function render({ app, outlet, params }) {
@@ -16,7 +17,13 @@ export async function render({ app, outlet, params }) {
     return;
   }
   app.setTitle(beer.name);
-  const [checkins, knowledge, breweries] = await Promise.all([app.db.listCheckinsByBeer(beer.id), app.loadKnowledge(), app.loadBreweries()]);
+  const [checkins, knowledge, breweries, allBeers, allCheckins] = await Promise.all([
+    app.db.listCheckinsByBeer(beer.id),
+    app.loadKnowledge(),
+    app.loadBreweries(),
+    app.db.listBeers(),
+    app.db.listCheckins(),
+  ]);
   // ブリュワー欄の名前がブリュワー情報と一意に一致したら、詳細へのリンクにする
   const breweryId = resolveBreweryId(beer, breweries.index);
   const tagLabel = new Map(knowledge.flavorTags.map((t) => [t.id, t.label]));
@@ -101,7 +108,36 @@ export async function render({ app, outlet, params }) {
   const sharePhotoId = checkins.find((c) => c.photoIds?.length)?.photoIds[0];
   const sharePhoto = sharePhotoId ? app.db.getPhoto(sharePhotoId).then((p) => p?.blob || null, () => null) : Promise.resolve(null);
 
-  outlet.append(...[info, rating, tasteSummary, actions, history].filter(Boolean));
+  // 似ている銘柄（記録済みの中から）
+  const similar = similarBeers(beer, buildBeerSummaries(allBeers, allCheckins), app.styles);
+  const similarSec = similar.length
+    ? h(
+        'section',
+        { class: 'similar-sec' },
+        h('h3', { class: 'section-title', text: '似ている銘柄' }),
+        h(
+          'ul',
+          { class: 'similar-row' },
+          ...similar.map(({ summary: s, reasons }) =>
+            h(
+              'li',
+              {},
+              h(
+                'a',
+                { class: 'similar-card', href: `#/beer/${encodeURIComponent(s.beer.id)}` },
+                glassIcon('glass-icon', beerColor(s.beer, app.styles)),
+                h('strong', { class: 'similar-name', text: s.beer.name }),
+                h('span', { class: 'similar-sub', text: s.beer.brewery || '' }),
+                h('span', { class: 'similar-why', text: reasons.join('・') }),
+                s.avgRating !== null ? starsView(s.avgRating) : null,
+              ),
+            ),
+          ),
+        ),
+      )
+    : null;
+
+  outlet.append(...[info, rating, tasteSummary, actions, history, similarSec].filter(Boolean));
 
   function historyItem(c) {
     const detail = [

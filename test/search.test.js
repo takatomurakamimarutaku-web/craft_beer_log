@@ -47,3 +47,25 @@ test('suggest: 前方一致を優先し、件数を制限する', () => {
   assert.deepEqual(r, ['IPA', 'ipa special', 'Session IPA']);
   assert.deepEqual(suggest(items, '  ', (x) => x.key), []);
 });
+
+test('similarBeers：同じスタイル・近い度数・共通の香りで並べ、飲んでいない銘柄と自分は除く', async () => {
+  const { similarBeers, buildBeerSummaries } = await import('../js/search.js');
+  const styles = [{ id: 'ipa', category: 'IPA' }, { id: 'dipa', category: 'IPA' }, { id: 'stout', category: 'ダーク' }];
+  const beers = [
+    { id: 'a', styleId: 'ipa', abv: 6.5 },
+    { id: 'b', styleId: 'ipa', abv: 9 },
+    { id: 'c', styleId: 'dipa', abv: 7 },
+    { id: 'd', styleId: 'stout', abv: 6 },
+    { id: 'e', styleId: 'ipa', abv: 6.5 }, // 飲んでいない
+  ];
+  const checkins = [
+    { beerId: 'a', date: '2026-10-01', tasting: { flavorTags: ['citrus'] } },
+    { beerId: 'b', date: '2026-10-02', rating: 4 },
+    { beerId: 'c', date: '2026-10-03', tasting: { flavorTags: ['citrus'] } },
+    { beerId: 'd', date: '2026-10-04' },
+  ];
+  const res = similarBeers(beers[0], buildBeerSummaries(beers, checkins), styles);
+  // b: スタイル3、c: 系統1+度数1+香り1=3（同点は評価の高い b が先）、d: 度数1のみで除外
+  assert.deepEqual(res.map((r) => r.summary.beer.id), ['b', 'c']);
+  assert.deepEqual(res[1].reasons, ['同じ系統', '近い度数', '似た香り']);
+});
