@@ -53,6 +53,7 @@ test('styles.json：必須項目・範囲・グラス・出典', () => {
     assert.ok(s.displaySrm === null || (typeof s.displaySrm === 'number' && s.displaySrm > 0), `${where}: displaySrm`);
     assert.ok(s.glass === null || GLASS_TYPES.includes(s.glass), `${where}: glass`);
     assert.ok(Array.isArray(s.aliases) && Array.isArray(s.pairing), `${where}: aliases / pairing は配列`);
+    assert.ok(s.servingTempF === null || (Array.isArray(s.servingTempF) && s.servingTempF.length === 2 && s.servingTempF[0] >= 32 && s.servingTempF[0] <= s.servingTempF[1] && s.servingTempF[1] <= 70), `${where}: servingTempF`);
     assert.ok(s.history === null || typeof s.history === 'string', `${where}: history`);
   }
 });
