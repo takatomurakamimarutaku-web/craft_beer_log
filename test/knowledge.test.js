@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { srmToHex, styleDisplaySrm, searchKnowledge, styleTexts, formatRange, filterByTags, hopTexts, basicTexts } from '../js/knowledge.js';
+import { srmToHex, styleDisplaySrm, searchKnowledge, styleTexts, formatRange, filterByTags, hopTexts, basicTexts, servingTemp } from '../js/knowledge.js';
 import { glassSvg, rangeBarSvg, ibuScaleSvg, srmScaleSvg, hopConeSvg, hopArtSvg, GLASS_TYPES } from '../js/illust.js';
 
 test('srmToHex：端・中間・不正値', () => {
@@ -137,4 +137,12 @@ test('imageEntry / imageCaption：画像の有無と表記', async () => {
   assert.equal(imageCaption({ license: 'cc0' }), '写真（CC0）');
   assert.equal(imageCaption({ license: 'pd', author: 'Jiro' }), '写真：Jiro（パブリックドメイン）');
   assert.equal(imageCaption(null), '');
+});
+
+test('servingTemp：華氏の範囲を摂氏に丸め、目安の言葉を付ける', () => {
+  assert.deepEqual(servingTemp({ servingTempF: [40, 45] }), { min: 4, max: 7, hint: 'しっかり冷やして' });
+  assert.deepEqual(servingTemp({ servingTempF: [45, 55] }), { min: 7, max: 13, hint: '軽く冷やして' });
+  assert.deepEqual(servingTemp({ servingTempF: [50, 55] }), { min: 10, max: 13, hint: '冷やしすぎずに' });
+  assert.equal(servingTemp({ servingTempF: null }), null);
+  assert.equal(servingTemp(null), null);
 });

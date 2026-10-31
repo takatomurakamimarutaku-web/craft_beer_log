@@ -170,6 +170,19 @@ export const GLASS_LABELS = {
   stange: 'シュタンゲ',
 };
 
+/**
+ * 飲みごろの温度（出典の華氏の範囲を摂氏の整数に丸める）。データが無ければ null
+ * @returns {{ min: number, max: number, hint: string } | null}
+ */
+export function servingTemp(style) {
+  const f = style?.servingTempF;
+  if (!Array.isArray(f) || f.length !== 2) return null;
+  const [min, max] = f.map((v) => Math.round(((v - 32) * 5) / 9));
+  const mid = (min + max) / 2;
+  const hint = mid < 8 ? 'しっかり冷やして' : mid < 11 ? '軽く冷やして' : '冷やしすぎずに';
+  return { min, max, hint };
+}
+
 /** 銘柄のスタイルから、グラスのイラストに使うビールの色を返す（スタイル未設定・その他は null） */
 export function beerColor(beer, styles) {
   const style = beer?.styleId && styles.find((s) => s.id === beer.styleId);

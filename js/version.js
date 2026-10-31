@@ -1,2 +1,2 @@
 // 利用者に見せるバージョン。リリースのたびに上げ、data/changelog.json の先頭に内容を追加する
-export const APP_VERSION = '1.16.1';
+export const APP_VERSION = '1.17.0';

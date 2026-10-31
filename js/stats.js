@@ -194,3 +194,118 @@ export function monthSummary(beers, checkins, styles, { now = new Date() } = {})
     topStyle: top ? top.label : null,
   };
 }
+
+/**
+ * 振り返り（年または月）。period は 'YYYY' か 'YYYY-MM'。
+ * 「はじめて」は period より前に記録が無い銘柄・スタイル。
+ * @returns {{ period, count, beerCount, avg, newBeers, newStyles: string[], topBeer, bestBeer, topStyle, topBrewery, busiest, flavorTop }}
+ */
+export function buildRecap(beers, checkins, styles, period) {
+  const inPeriod = (c) => typeof c.date === 'string' && c.date.startsWith(period);
+  const before = (c) => typeof c.date === 'string' && c.date < period;
+  const all = joinBeers(beers, checkins);
+  const rows = all.filter(({ c }) => inPeriod(c));
+  const earlierBeers = new Set(all.filter(({ c }) => before(c)).map(({ beer }) => beer.id));
+  const earlierStyles = new Set(all.filter(({ c }) => before(c)).map(({ beer }) => beer.styleId));
+  const styleName = new Map(styles.map((s) => [s.id, s.name]));
+
+  const perBeer = new Map();
+  for (const { c, beer } of rows) {
+    const p = perBeer.get(beer.id) || { beer, count: 0, best: null };
+    p.count++;
+    if (typeof c.rating === 'number' && (p.best === null || c.rating > p.best)) p.best = c.rating;
+    perBeer.set(beer.id, p);
+  }
+  const list = [...perBeer.values()];
+  const byName = (a, b) => String(a.beer.name).localeCompare(String(b.beer.name), 'ja');
+  const topBeer = [...list].sort((a, b) => b.count - a.count || byName(a, b))[0] || null;
+  const bestBeer = list.filter((p) => p.best !== null).sort((a, b) => b.best - a.best || b.count - a.count || byName(a, b))[0] || null;
+
+  const newStyles = [];
+  for (const { beer } of rows) {
+    const id = beer.styleId;
+    if (id && styleName.has(id) && !earlierStyles.has(id) && !newStyles.includes(styleName.get(id))) newStyles.push(styleName.get(id));
+  }
+  // 年は月ごと、月は日ごとにいちばん多かった時期
+  const unit = period.length === 4 ? 7 : 10;
+  const perUnit = new Map();
+  for (const { c } of rows) perUnit.set(c.date.slice(0, unit), (perUnit.get(c.date.slice(0, unit)) || 0) + 1);
+  const busiest = [...perUnit.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0];
+
+  const flavor = new Map();
+  for (const { c } of rows) for (const t of new Set(c.tasting?.flavorTags || [])) flavor.set(t, (flavor.get(t) || 0) + 1);
+
+  const style = countByStyle(beers, rows.map(({ c }) => c), styles).find((s) => s.key !== null);
+  const brewery = topBreweries(beers, rows.map(({ c }) => c), 1)[0];
+  return {
+    period,
+    count: rows.length,
+    beerCount: perBeer.size,
+    avg: summarizeRatings(rows.map(({ c }) => c)).avg,
+    newBeers: list.filter((p) => !earlierBeers.has(p.beer.id)).length,
+    newStyles,
+    topBeer: topBeer && topBeer.count > 1 ? topBeer : null,
+    bestBeer,
+    topStyle: style ? { label: style.label, count: style.count } : null,
+    topBrewery: brewery ? { label: brewery.label, count: brewery.count } : null,
+    busiest: busiest ? { key: busiest[0], count: busiest[1] } : null,
+    flavorTop: [...flavor.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 3).map(([key, count]) => ({ key, count })),
+  };
+}
+
+/** 記録のある年（新しい順）と、その年の記録のある月（新しい順） */
+export function recapPeriods(checkins) {
+  const months = new Set(checkins.map((c) => (typeof c.date === 'string' ? c.date.slice(0, 7) : '')).filter((m) => /^\d{4}-\d{2}$/.test(m)));
+  const years = [...new Set([...months].map((m) => m.slice(0, 4)))].sort().reverse();
+  return years.map((year) => ({ year, months: [...months].filter((m) => m.startsWith(year)).sort().reverse() }));
+}
+
+/**
+ * あなたの好みのスタイル（平均評価が高い順。評価のある杯が minCount 以上のもの）と、
+ * まだ飲んでいないスタイルのおすすめ。
+ * おすすめの点数：好きなスタイルと同じ系統 +3、苦味（IBU）の範囲の重なり ×2、色（SRM）の近さ ×1 を、好きなスタイルごとに計算して最大のもの。
+ * @returns {{ liked: Array<{ style, avg, count }>, picks: Array<{ style, because }> }}
+ */
+export function tastePicks(beers, checkins, styles, { minCount = 1, n = 3 } = {}) {
+  const styleById = new Map(styles.map((s) => [s.id, s]));
+  const sums = new Map();
+  const tried = new Set();
+  for (const { c, beer } of joinBeers(beers, checkins)) {
+    if (!styleById.has(beer.styleId)) continue;
+    tried.add(beer.styleId);
+    if (typeof c.rating !== 'number') continue;
+    const s = sums.get(beer.styleId) || { sum: 0, count: 0 };
+    s.sum += c.rating;
+    s.count++;
+    sums.set(beer.styleId, s);
+  }
+  const liked = [...sums.entries()]
+    .filter(([, s]) => s.count >= minCount && s.sum / s.count >= 3.5)
+    .map(([id, s]) => ({ style: styleById.get(id), avg: Math.round((s.sum / s.count) * 10) / 10, count: s.count }))
+    .sort((a, b) => b.avg - a.avg || b.count - a.count || a.style.name.localeCompare(b.style.name, 'ja'))
+    .slice(0, 3);
+  const overlap = (a, b) => {
+    if (!Array.isArray(a) || !Array.isArray(b)) return 0;
+    const inter = Math.min(a[1], b[1]) - Math.max(a[0], b[0]);
+    const span = Math.max(a[1], b[1]) - Math.min(a[0], b[0]);
+    return inter > 0 && span > 0 ? inter / span : 0;
+  };
+  const mid = (r) => (Array.isArray(r) ? (r[0] + r[1]) / 2 : null);
+  const picks = styles
+    .filter((s) => !tried.has(s.id))
+    .map((s) => {
+      let best = { score: 0, because: null };
+      for (const l of liked) {
+        const L = l.style;
+        const srm = mid(s.srm) !== null && mid(L.srm) !== null ? Math.max(0, 1 - Math.abs(mid(s.srm) - mid(L.srm)) / 20) : 0;
+        const score = (s.category === L.category ? 3 : 0) + overlap(s.ibu, L.ibu) * 2 + srm;
+        if (score > best.score) best = { score, because: L };
+      }
+      return { style: s, because: best.because, score: best.score };
+    })
+    .filter((p) => p.score > 0)
+    .sort((a, b) => b.score - a.score || a.style.name.localeCompare(b.style.name, 'ja'))
+    .slice(0, n)
+    .map(({ style, because }) => ({ style, because }));
+  return { liked, picks };
+}

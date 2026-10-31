@@ -33,6 +33,10 @@
       "サラダ",
       "白いチェダーチーズ"
     ],
+    "servingTempF": [
+      40,
+      45
+    ],
     "rangeNote": "BJCPはドイツ系（ABV 4.4〜5.2%、IBU 22〜40、SRM 2〜4）とチェコ系（ABV 4.2〜5.8%、IBU 30〜45、SRM 3.5〜6）を別スタイルとしている。CraftBeer.comのドイツ系はIBU 25〜50と苦味の上限が高い。ここでは3つを合わせた範囲を表示。",
     "sources": [
       {
@@ -84,6 +88,10 @@
       "コルビーチーズ",
       "バクラヴァ"
     ],
+    "servingTempF": [
+      45,
+      50
+    ],
     "rangeNote": "CraftBeer.comはBJCPより上限がやや高い（ABV 5.6%、IBU 25、SRM 5.5。BJCPは5.4%、22、5）。",
     "sources": [
       {
@@ -129,6 +137,10 @@
       "ローストや網焼きの肉",
       "チェダーチーズ",
       "アップルパイ"
+    ],
+    "servingTempF": [
+      45,
+      55
     ],
     "rangeNote": "色はBJCPがSRM 5〜10、CraftBeer.comが6〜14で、CraftBeer.comはより濃い色まで含む。度数もBJCP 4.5〜6.2%、CraftBeer.com 4.4〜5.4%と異なる。",
     "sources": [
@@ -177,6 +189,10 @@
       "スパイシーツナロール",
       "ブルーチーズ"
     ],
+    "servingTempF": [
+      50,
+      55
+    ],
     "rangeNote": "度数の下限がBJCP 5.5%、CraftBeer.com 6.3%と異なる。苦味もBJCP 40〜70、CraftBeer.com 50〜70。",
     "sources": [
       {
@@ -220,6 +236,10 @@
     "displaySrm": null,
     "glass": "nonic",
     "pairing": [],
+    "servingTempF": [
+      45,
+      55
+    ],
     "rangeNote": "BJCPはABV 6.0〜9.0%・IBU 25〜60と幅広く、CraftBeer.comはABV 6.3〜7.5%・IBU 30〜50とより狭い。",
     "sources": [
       {
@@ -267,6 +287,10 @@
       "味噌漬けの鮭",
       "キャロットケーキ"
     ],
+    "servingTempF": [
+      50,
+      55
+    ],
     "rangeNote": "色はBJCPがSRM 6〜14、CraftBeer.comが2〜9と大きく異なり、CraftBeer.comはより淡色寄り。度数の上限もBJCP 10%、CraftBeer.com 10.6%。",
     "sources": [
       {
@@ -307,6 +331,7 @@
     "displaySrm": 5,
     "glass": null,
     "pairing": [],
+    "servingTempF": null,
     "rangeNote": "Brewers Associationの基準は度数の下限が0.5%と非常に広い。CraftBeer.comはセッションビール全般を「5%以下」としている。",
     "sources": [
       {
@@ -349,6 +374,10 @@
     "displaySrm": 6,
     "glass": null,
     "pairing": [],
+    "servingTempF": [
+      50,
+      55
+    ],
     "rangeNote": "色の目安が出典で大きく異なる（Brewers Association：SRM 2〜6の淡い金色、BYO：約6〜14）。度数・苦味もBA 6.3〜7.5%・IBU 50〜75、BYO 5.5〜7.5%・IBU 40〜70。",
     "sources": [
       {
@@ -360,6 +389,11 @@
         "title": "Brew Your Own – West Coast IPA",
         "url": "https://byo.com/articles/west-coast-ipa/",
         "accessedAt": "2026-10-24"
+      },
+      {
+        "title": "CraftBeer.com Beer Styles – American IPA",
+        "url": "https://www.craftbeer.com/styles/american-india-pale-ale",
+        "accessedAt": "2026-10-31"
       }
     ]
   },
@@ -393,6 +427,10 @@
     "pairing": [
       "バーベキュー",
       "チェダーチーズ"
+    ],
+    "servingTempF": [
+      45,
+      55
     ],
     "rangeNote": "BJCPはABV 4.5〜6.2%・IBU 25〜40・SRM 10〜17、CraftBeer.comはABV 4.4〜6.1%・IBU 25〜45・SRM 11〜18。",
     "sources": [
@@ -437,6 +475,10 @@
     "pairing": [
       "網焼きの肉",
       "グリュイエールチーズ"
+    ],
+    "servingTempF": [
+      50,
+      55
     ],
     "rangeNote": "BJCPはイギリス系（ABV 4.0〜5.4%、IBU 18〜35）とアメリカ系（ABV 4.8〜6.5%、IBU 25〜50）を分けており、アメリカ系のほうが強く苦い。CraftBeer.comのロバストポーターはABV 5.1〜6.6%。",
     "sources": [
@@ -489,6 +531,10 @@
       "ハム",
       "チョコレート"
     ],
+    "servingTempF": [
+      50,
+      55
+    ],
     "rangeNote": "BJCPはIBU 25〜45・SRM 25〜40、CraftBeer.comはIBU 30〜40・SRM 35〜40。度数はほぼ一致（3.8〜5%）。",
     "sources": [
       {
@@ -534,6 +580,10 @@
       "フォアグラ",
       "熟成チーズ",
       "フラワーレスチョコレートケーキ"
+    ],
+    "servingTempF": [
+      50,
+      55
     ],
     "rangeNote": "BJCPはABV 8〜12%・IBU 50〜90、CraftBeer.com（アメリカンインペリアルスタウト）はABV 7〜12%・IBU 50〜80。",
     "sources": [
@@ -584,6 +634,10 @@
       "シェーブルチーズ",
       "キーライムパイ"
     ],
+    "servingTempF": [
+      40,
+      45
+    ],
     "rangeNote": "色はBJCPがSRM 2〜6、CraftBeer.comが3〜9でCraftBeer.comのほうが濃い色まで含む。",
     "sources": [
       {
@@ -630,6 +684,10 @@
     "pairing": [
       "ムール貝とフライドポテト"
     ],
+    "servingTempF": [
+      40,
+      45
+    ],
     "rangeNote": "BJCPはABV 4.5〜5.5%・IBU 8〜20、CraftBeer.comはABV 4.8〜5.6%・IBU 10〜17。色は一致（SRM 2〜4）。",
     "sources": [
       {
@@ -673,6 +731,10 @@
     "pairing": [
       "ムール貝",
       "ブリーチーズ"
+    ],
+    "servingTempF": [
+      45,
+      55
     ],
     "rangeNote": "BJCPは度数別に3段階（テーブル／標準／スーパー）を設け、淡色版（SRM 5〜14）と濃色版（SRM 15〜22）も認めている。CraftBeer.comはABV 4.4〜6.8%・SRM 3〜7と標準的なものに絞った範囲。",
     "sources": [
@@ -723,6 +785,10 @@
       "トリプルクリームチーズ",
       "鴨のロースト",
       "熟成ゴーダ"
+    ],
+    "servingTempF": [
+      40,
+      55
     ],
     "rangeNote": "淡色（BJCP：SRM 3〜6）と濃色（BJCP：SRM 12〜22）の両方を含めた範囲。苦味の上限はCraftBeer.com（IBU 50）がBJCP（35）より高い。",
     "sources": [
@@ -778,6 +844,10 @@
       "ローストターキー",
       "トリプルクリームチーズ"
     ],
+    "servingTempF": [
+      40,
+      45
+    ],
     "rangeNote": "BJCPはABV 7.5〜9.5%・IBU 20〜40、CraftBeer.comはABV 7.1〜10.1%・IBU 20〜45。",
     "sources": [
       {
@@ -817,6 +887,10 @@
     "pairing": [
       "風味の強いチーズ",
       "フルーツとクリームのデザート"
+    ],
+    "servingTempF": [
+      40,
+      50
     ],
     "rangeNote": "CraftBeer.comでは度数・苦味は「さまざま」とされ、数値の目安がない。Brewers Associationのアメリカンサワーエールの基準にも数値の範囲は示されていない。色は表示用の目安。",
     "sources": [
@@ -860,6 +934,10 @@
     "pairing": [
       "スイカのサラダ",
       "ケソフレスコ（フレッシュチーズ）"
+    ],
+    "servingTempF": [
+      40,
+      50
     ],
     "rangeNote": "BJCPはABV 4.2〜4.8%・SRM 3〜4、CraftBeer.com（コンテンポラリーゴーゼ）はABV 4.4〜5.4%・SRM 3〜9で、果物入りなど現代的なものを含むぶん幅が広い。",
     "sources": [
@@ -906,6 +984,10 @@
       "ハバティチーズ",
       "チーズケーキ"
     ],
+    "servingTempF": [
+      45,
+      50
+    ],
     "rangeNote": "BJCPはABV 2.8〜3.8%・IBU 3〜8、CraftBeer.comはABV 2.8〜3.4%・IBU 3〜6。",
     "sources": [
       {
@@ -951,6 +1033,7 @@
       "クリーミーなチーズ",
       "バニラアイスクリーム"
     ],
+    "servingTempF": null,
     "rangeNote": "BJCPはベースとなるスタイルによって数値が変わるとして、固定の範囲を示していない。表示はCraftBeer.comの範囲。色は表示用の目安。",
     "sources": [
       {
@@ -996,6 +1079,10 @@
     "pairing": [
       "牛ほほ肉の煮込み",
       "ブルーチーズ"
+    ],
+    "servingTempF": [
+      50,
+      55
     ],
     "rangeNote": "BJCPのイギリス系はIBU 35〜70・SRM 8〜22、アメリカ系はIBU 50〜100・SRM 9〜18と、苦味が大きく異なる。CraftBeer.comのアメリカ系はABV 8.5〜12.2%。",
     "sources": [
@@ -1047,6 +1134,10 @@
       "焼きソーセージ",
       "ナッツのような風味のチーズ"
     ],
+    "servingTempF": [
+      40,
+      45
+    ],
     "rangeNote": "BJCPはABV 4.4〜5.2%・IBU 18〜30・SRM 3.5〜5、CraftBeer.comはABV 4.8〜5.3%・IBU 18〜28・SRM 3〜6。",
     "sources": [
       {
@@ -1095,6 +1186,10 @@
       "リブアイステーキ",
       "熟成したスイスチーズ",
       "チョコレート"
+    ],
+    "servingTempF": [
+      45,
+      50
     ],
     "rangeNote": "ボックは種類が多く、BJCPのヘレスボック（ABV 6.3〜7.4%、SRM 6〜9）、ドッペルボック（ABV 7〜10%、SRM 6〜25）、CraftBeer.comのボック（SRM 20〜30）を合わせて表示しているため範囲が広い。",
     "sources": [
@@ -1150,6 +1245,10 @@
       "網焼きの肉",
       "熟成ゴーダ",
       "洋梨のフリッター"
+    ],
+    "servingTempF": [
+      50,
+      55
     ],
     "rangeNote": "Brewers AssociationとCraftBeer.comの数値は一致（ABV 4.2〜6.3%、IBU 30〜45、SRM 15〜26）。",
     "sources": [
