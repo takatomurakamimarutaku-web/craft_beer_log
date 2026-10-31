@@ -24454,17 +24454,11 @@
    "founded": null,
    "taproom": null,
    "tour": null,
-   "links": {
-    "official": "https://www.kujyukogenbeer.com/"
-   },
+   "links": {},
    "summary": "竹田市久住町の「くじゅう水泉郷 地ビール村」で造るビール。",
-   "verification": "official+secondary",
-   "sourceNotes": "",
+   "verification": "secondary",
+   "sourceNotes": "CRAFT BEER LAB 掲載の公式URL（kujyukogenbeer.com）は2026-10-31時点で無関係のサイトになっていたため外した",
    "sources": [
-    {
-     "label": "公式サイト",
-     "url": "https://www.kujyukogenbeer.com/"
-    },
     {
      "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
      "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/oita-craft-beer/"
