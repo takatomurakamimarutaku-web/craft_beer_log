@@ -136,6 +136,7 @@ test('imageEntry / imageCaption：画像の有無と表記', async () => {
   assert.equal(imageCaption({ license: 'cc-by-sa', author: 'Hanako' }), '写真：Hanako（CC BY-SA）');
   assert.equal(imageCaption({ license: 'cc0' }), '写真（CC0）');
   assert.equal(imageCaption({ license: 'pd', author: 'Jiro' }), '写真：Jiro（パブリックドメイン）');
+  assert.equal(imageCaption({ license: 'unverified' }), '画像（権利未確認・テスト用）');
   assert.equal(imageCaption(null), '');
 });
 

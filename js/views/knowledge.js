@@ -77,7 +77,7 @@ function renderList({ app, outlet, query }, data) {
   renderBody();
 
   function renderBody() {
-    if (s.tab === 'basics') return body.replaceChildren(...basicList(data.basics, s.q));
+    if (s.tab === 'basics') return body.replaceChildren(...basicList(data.basics, s.q, data.images));
     if (s.tab === 'styles') return body.replaceChildren(...styleList(app.styles, s.q, data.images));
     if (s.tab === 'terms') return body.replaceChildren(...termList(data.terms, s.q));
     body.replaceChildren(...hopList(data, s, (tags) => {
@@ -107,7 +107,7 @@ function segmented(value, onChange) {
   return wrap;
 }
 
-function basicList(basics, q) {
+function basicList(basics, q, images) {
   const items = searchKnowledge(basics, q, basicTexts);
   if (!items.length) return [h('p', { class: 'list-meta', text: '該当する記事がありません。' })];
   return [
@@ -121,7 +121,8 @@ function basicList(basics, q) {
           {},
           h(
             'a',
-            { class: 'card card-text', href: `#/knowledge/basic/${encodeURIComponent(a.id)}` },
+            { class: imageEntry(images, 'basics', a.id) ? 'card' : 'card card-text', href: `#/knowledge/basic/${encodeURIComponent(a.id)}` },
+            imageEntry(images, 'basics', a.id) ? h('div', { class: 'thumb knowledge-thumb' }, artwork(imageEntry(images, 'basics', a.id), () => h('span'), '')) : null,
             h(
               'div',
               { class: 'card-body' },
@@ -349,7 +350,7 @@ const THERMO_SVG =
 
 // ---- 入門（はじめに）詳細 ----
 
-function renderBasic({ app, outlet, params }, { basics, terms, hops }) {
+function renderBasic({ app, outlet, params }, { basics, terms, hops, images }) {
   const i = basics.findIndex((x) => x.id === params.id);
   const a = basics[i];
   if (!a) {
@@ -363,8 +364,11 @@ function renderBasic({ app, outlet, params }, { basics, terms, hops }) {
   insert(a.compare?.insertAfter ?? 0, a.compare ? section('違いを比べる', compareTable(a.compare), a.compare.note ? h('p', { class: 'small muted', text: a.compare.note }) : null) : null);
   insert(0, a.steps ? section('工程の流れ', stepList(a.steps)) : null);
   const next = basics[i + 1];
+  const photo = imageEntry(images, 'basics', a.id);
   fill(
     outlet,
+    photo ? h('div', { class: 'basic-hero' }, artwork(photo, () => h('span'), a.name)) : null,
+    photo ? imageNote(photo) : null,
     h('div', { class: 'term-hero' }, h('span', { class: 'tag', text: `入門 ${i + 1} / ${basics.length}` }), h('h2', { class: 'knowledge-name', text: a.name })),
     h('p', { class: 'knowledge-lead', text: a.summary }),
     ...sections,

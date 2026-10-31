@@ -1,9 +1,15 @@
 // ブリュワーの一覧（#/breweries）
 import { h, svg } from '../ui.js';
+import { imageEntry } from '../knowledge.js';
 import { PREFS, REGIONS, KIND_LABELS, PIN_LABELS, FEATURE_LABELS, AVAILABILITY, SORTS, activeBreweries, filterBreweries, countByPref, countByRegion, regionOf, groupBeersByBrewery, pinState } from '../breweries.js';
 
 export async function render({ app, outlet, query }) {
-  const [data, beers, notes] = await Promise.all([app.loadBreweries(), app.db.listBeers(), app.db.listBreweryNotes()]);
+  const [data, beers, notes, images] = await Promise.all([
+    app.loadBreweries(),
+    app.db.listBeers(),
+    app.db.listBreweryNotes(),
+    app.loadKnowledge().then((k) => k.images, () => ({})),
+  ]);
   const all = activeBreweries(data.list);
   const tried = groupBeersByBrewery(beers.filter((b) => b.status === 'tried'), data.index);
   const triedIds = new Set(tried.keys());
@@ -112,7 +118,7 @@ export async function render({ app, outlet, query }) {
       h(
         'a',
         { class: 'card', href: `#/brewery/${encodeURIComponent(b.id)}` },
-        h('div', { class: 'thumb' }, pinIcon(st)),
+        breweryThumb(imageEntry(images, 'breweries', b.id), st),
         h(
           'div',
           { class: 'card-body' },
@@ -136,6 +142,21 @@ export async function render({ app, outlet, query }) {
 
 function shortPref(code) {
   return (PREFS[code] || '').replace(/[県府都]$/, '');
+}
+
+/** 一覧のサムネイル。ロゴがあればロゴに小さなピン（飲んだ・行った等の色）を重ね、無ければピンだけ */
+function breweryThumb(logo, state) {
+  if (!logo) return h('div', { class: 'thumb' }, pinIcon(state));
+  const pin = pinIcon(state);
+  pin.classList.add('pin-badge');
+  return h('div', { class: 'thumb brewery-logo-thumb' }, breweryLogo(logo, () => pinIcon(state)), state === 'none' ? null : pin);
+}
+
+/** ブリュワーのロゴ画像。読めないとき（オフラインで未取得など）は fallback に置き換える */
+export function breweryLogo(entry, fallback) {
+  const img = h('img', { src: entry.file, alt: 'ロゴ', loading: 'lazy', decoding: 'async', class: 'brewery-logo' });
+  img.addEventListener('error', () => img.replaceWith(fallback()), { once: true });
+  return img;
 }
 
 /** 一覧のアイコン（地図のピンと同じ色） */

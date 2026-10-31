@@ -1,7 +1,9 @@
 // 記録一覧（#/beers）
 import { h, createThumbLoader, thumbView, formatDate, formatAbv, starsView, emptyState } from '../ui.js';
 import { styleLabel } from '../models.js';
-import { beerColor } from '../knowledge.js';
+import { beerColor, imageEntry } from '../knowledge.js';
+import { resolveBreweryId } from '../breweries.js';
+import { breweryLogo } from './breweries.js';
 import { monthSummary } from '../stats.js';
 import { backupReminder, backupReminderText } from '../backup.js';
 import { currentInstallState } from '../install.js';
@@ -10,10 +12,11 @@ import { showInstallGuide } from './welcome.js';
 const PAGE = 50;
 
 export async function render({ app, outlet }) {
-  const [checkins, beers, lastBackupAt] = await Promise.all([
+  const [checkins, beers, lastBackupAt, logoOf] = await Promise.all([
     app.db.listCheckins(),
     app.db.listBeers(),
     app.db.getMeta('lastBackupAt'),
+    breweryLogos(app),
   ]);
   const beerMap = new Map(beers.map((b) => [b.id, b]));
   const loader = createThumbLoader((id) => app.db.getThumb(id));
@@ -73,7 +76,7 @@ export async function render({ app, outlet }) {
         list.append(h('li', { class: 'list-month', 'aria-hidden': 'true', text: `${Number(month.slice(0, 4))}年${Number(month.slice(5))}月` }));
         lastMonth = month;
       }
-      list.append(checkinCard(c, beer, app, loader));
+      list.append(checkinCard(c, beer, app, loader, logoOf));
     }
     shown += slice.length;
     more.hidden = shown >= checkins.length;
@@ -101,7 +104,17 @@ function summaryCard(s, total) {
   );
 }
 
-function checkinCard(c, beer, app, loader) {
+/** 写真の無い記録に出すブリュワーのロゴ（銘柄→ブリュワー→ロゴ）。読めないときはロゴなし */
+async function breweryLogos(app) {
+  try {
+    const [data, k] = await Promise.all([app.loadBreweries(), app.loadKnowledge()]);
+    return (beer) => imageEntry(k.images, 'breweries', resolveBreweryId(beer, data.index));
+  } catch {
+    return () => null;
+  }
+}
+
+function checkinCard(c, beer, app, loader, logoOf) {
   const meta = [beer.brewery, styleLabel(beer, app.styles), formatAbv(beer.abv)].filter(Boolean).join(' · ');
   return h(
     'li',
@@ -109,7 +122,7 @@ function checkinCard(c, beer, app, loader) {
     h(
       'a',
       { class: 'card', href: `#/beer/${encodeURIComponent(beer.id)}` },
-      thumbView(c.photoIds?.[0], loader, 'thumb', beerColor(beer, app.styles)),
+      cardThumb(c, beer, app, loader, logoOf),
       h(
         'div',
         { class: 'card-body' },
@@ -162,4 +175,15 @@ function sessionStorageSet(k, v) {
   } catch {
     /* 保存できなくても動作に影響しない */
   }
+}
+
+/** 記録の写真、無ければブリュワーのロゴ、それも無ければスタイルの色のグラス */
+function cardThumb(c, beer, app, loader, logoOf) {
+  const color = beerColor(beer, app.styles);
+  const logo = c.photoIds?.[0] ? null : logoOf(beer);
+  if (!logo) return thumbView(c.photoIds?.[0], loader, 'thumb', color);
+  const wrap = thumbView(null, loader, 'thumb', color);
+  const glass = wrap.firstChild;
+  wrap.replaceChildren(breweryLogo(logo, () => glass));
+  return wrap;
 }

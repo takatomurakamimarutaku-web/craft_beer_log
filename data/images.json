@@ -73,7 +73,873 @@
       "author": "Ruth Hartnup",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nut_brown_ale_(8647186610).jpg",
       "licenseVersion": "2.0"
+    },
+    "pilsner": {
+      "file": "images/styles/pilsner.webp",
+      "license": "cc-by",
+      "author": "Jmcstrav（英語版ウィキペディア）",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pilsner_Urquell_2_(cropped).jpg",
+      "licenseVersion": "2.5"
+    },
+    "helles": {
+      "file": "images/styles/helles.webp",
+      "license": "cc-by",
+      "author": "Erik Cleves Kristensen",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Killarney_Helles_Lager_(26980357281).jpg",
+      "licenseVersion": "2.0"
+    },
+    "ipa": {
+      "file": "images/styles/ipa.webp",
+      "license": "cc0",
+      "author": "KyraBulinckx",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:La_Cambre_IPA_Glass%2BBottle_Transparant.png"
+    },
+    "double-ipa": {
+      "file": "images/styles/double-ipa.webp",
+      "license": "cc-by",
+      "author": "Erik Cleves Kristensen",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Midtfyns_Bryghus_Double_IPA_(16207538966).jpg",
+      "licenseVersion": "2.0"
+    },
+    "session-ipa": {
+      "file": "images/styles/session-ipa.webp",
+      "license": "cc-by",
+      "author": "Antti T. Nissinen",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Founders_All_Day_IPA_Session_Ale.jpg",
+      "licenseVersion": "2.0"
+    },
+    "west-coast-ipa": {
+      "file": "images/styles/west-coast-ipa.webp",
+      "license": "cc-by",
+      "author": "Bernt Rostad",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Founders_Centennial_IPA.jpg",
+      "licenseVersion": "2.0"
+    },
+    "amber-ale": {
+      "file": "images/styles/amber-ale.webp",
+      "license": "cc-by",
+      "author": "Scottb211",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alien_Amber_Ale_(15610616665).jpg",
+      "licenseVersion": "2.0"
+    },
+    "belgian-white": {
+      "file": "images/styles/belgian-white.webp",
+      "license": "cc0",
+      "author": "Ccyyrree",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hoegaarden_original_belgian_white_ale.JPG"
+    },
+    "saison": {
+      "file": "images/styles/saison.webp",
+      "license": "pd",
+      "author": "Jmcstrav",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saison_Dupont.jpg"
+    },
+    "belgian-strong": {
+      "file": "images/styles/belgian-strong.webp",
+      "license": "cc-by",
+      "author": "Bernt Rostad",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:New_Belgium_Wild%C2%B2_Dubbel_(14908763238).jpg",
+      "licenseVersion": "2.0"
+    },
+    "tripel": {
+      "file": "images/styles/tripel.webp",
+      "license": "cc0",
+      "author": "Pansebert",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bornem_Tripel_(Brouwerij_Van_Steenberge).jpg"
+    },
+    "gose": {
+      "file": "images/styles/gose.webp",
+      "license": "cc0",
+      "author": "Pansebert",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gose_(Gasthaus_%26_Gosebrauerei_Bayerischer_Bahnhof).jpg"
+    },
+    "kolsch": {
+      "file": "images/styles/kolsch.webp",
+      "license": "cc-by",
+      "author": "Neulich im Roxy Kino",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:K%C3%B6lsch_Sester.jpg",
+      "licenseVersion": "3.0"
+    },
+    "bock": {
+      "file": "images/styles/bock.webp",
+      "license": "cc-by",
+      "author": "Bernt Rostad",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Super_Bock_Preta_glass.jpg",
+      "licenseVersion": "2.0"
     }
   },
-  "hops": {}
+  "hops": {
+    "citra": {
+      "file": "images/hops/citra.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/citra/"
+    },
+    "mosaic": {
+      "file": "images/hops/mosaic.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/mosaic/"
+    },
+    "simcoe": {
+      "file": "images/hops/simcoe.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/simcoe-hop/"
+    },
+    "cascade": {
+      "file": "images/hops/cascade.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/cascade/"
+    },
+    "centennial": {
+      "file": "images/hops/centennial.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/centennial/"
+    },
+    "amarillo": {
+      "file": "images/hops/amarillo.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/amarillo/"
+    },
+    "chinook": {
+      "file": "images/hops/chinook.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/chinook/"
+    },
+    "columbus": {
+      "file": "images/hops/columbus.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/columbus/"
+    },
+    "el-dorado": {
+      "file": "images/hops/el-dorado.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/el-dorado/"
+    },
+    "galaxy": {
+      "file": "images/hops/galaxy.webp",
+      "license": "unverified",
+      "author": "Hop Products Australia",
+      "sourceUrl": "https://www.hops.com.au/hops/galaxy/"
+    },
+    "nelson-sauvin": {
+      "file": "images/hops/nelson-sauvin.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/nelson-sauvin/"
+    },
+    "motueka": {
+      "file": "images/hops/motueka.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/motueka/"
+    },
+    "saaz": {
+      "file": "images/hops/saaz.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/saaz/"
+    },
+    "hallertauer-mittelfrueh": {
+      "file": "images/hops/hallertauer-mittelfrueh.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/mittelfruh/"
+    },
+    "tettnanger": {
+      "file": "images/hops/tettnanger.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/tettnang/"
+    },
+    "east-kent-goldings": {
+      "file": "images/hops/east-kent-goldings.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/golding/"
+    },
+    "fuggle": {
+      "file": "images/hops/fuggle.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/fuggle/"
+    },
+    "magnum": {
+      "file": "images/hops/magnum.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/magnum/"
+    },
+    "sorachi-ace": {
+      "file": "images/hops/sorachi-ace.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/sorachi-ace-hop/"
+    }
+  },
+  "basics": {
+    "craft-beer": {
+      "file": "images/basics/craft-beer.webp",
+      "license": "cc-by",
+      "author": "Bernt Rostad",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Taps_@_McGivney%E2%80%99s_(15089278651).jpg",
+      "licenseVersion": "2.0"
+    },
+    "ingredients": {
+      "file": "images/basics/ingredients.webp",
+      "license": "pd",
+      "author": "ArnOlson",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Crystal_Malt_80L.jpg"
+    },
+    "brewing": {
+      "file": "images/basics/brewing.webp",
+      "license": "cc-by",
+      "author": "Benreis",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kommunbr%C3%A4u_Kulmbach_Kupferkessel.JPG",
+      "licenseVersion": "3.0"
+    },
+    "fermentation": {
+      "file": "images/basics/fermentation.webp",
+      "license": "pd",
+      "author": "Friman",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brewery-nogne-o.jpg"
+    },
+    "hops": {
+      "file": "images/basics/hops.webp",
+      "license": "unverified",
+      "author": "Charles Faram",
+      "sourceUrl": "https://charlesfaram.com/hop-oracle/cascade/"
+    }
+  },
+  "breweries": {
+    "315beer": {
+      "file": "images/breweries/315beer.webp",
+      "license": "unverified",
+      "author": "315BEER",
+      "sourceUrl": "https://static.wixstatic.com/media/7409ef_c07ef00b35d943a8bc150a38a5a82710~mv2.jpg/v1/fill/w_160,h_160,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/315%20beer%20logo%20pink%20cheek.jpg"
+    },
+    "808-brewery": {
+      "file": "images/breweries/808-brewery.webp",
+      "license": "unverified",
+      "author": "808 Brewery",
+      "sourceUrl": "https://808brewery.jp/wp/wp-content/uploads/2021/05/favicon.svg"
+    },
+    "akatsuki-brewery": {
+      "file": "images/breweries/akatsuki-brewery.webp",
+      "license": "unverified",
+      "author": "暁ブルワリー",
+      "sourceUrl": "https://gigaplus.makeshop.jp/AkatsukiBrew/imgs/index/concept_logo.png"
+    },
+    "aqula-akita": {
+      "file": "images/breweries/aqula-akita.webp",
+      "license": "unverified",
+      "author": "秋田あくらビール",
+      "sourceUrl": "https://www.aqula.co.jp/wp01/wp-content/uploads/2025/05/cropped-d8af0a42d4975d317342006884a98793-180x180.png"
+    },
+    "baeren-kitayama": {
+      "file": "images/breweries/baeren-kitayama.webp",
+      "license": "unverified",
+      "author": "ベアレン醸造所",
+      "sourceUrl": "https://www.baerenbier.co.jp/wp-content/uploads/header-logo.svg"
+    },
+    "baeren-shizukuishi": {
+      "file": "images/breweries/baeren-shizukuishi.webp",
+      "license": "unverified",
+      "author": "ベアレン醸造所 雫石工場",
+      "sourceUrl": "https://www.baerenbier.co.jp/wp-content/uploads/header-logo.svg"
+    },
+    "batsuji-brewing": {
+      "file": "images/breweries/batsuji-brewing.webp",
+      "license": "unverified",
+      "author": "BATSUJI BREWING",
+      "sourceUrl": "https://batsuji-brewing.com/img/apple-touch-icon.png?202105"
+    },
+    "be-easy-brewing": {
+      "file": "images/breweries/be-easy-brewing.webp",
+      "license": "unverified",
+      "author": "Be Easy Brewing",
+      "sourceUrl": "https://www.beeasybrewing.com/cdn/shop/files/0919_BeEasy_logo_new_1.jpg?v=1763682841&width=3840"
+    },
+    "black-tide-brewing": {
+      "file": "images/breweries/black-tide-brewing.webp",
+      "license": "unverified",
+      "author": "BLACK TIDE BREWING",
+      "sourceUrl": "https://blacktidebrewing.com/wp-content/themes/BTBtheme/assets/img/common/logo.svg"
+    },
+    "choshi-beer": {
+      "file": "images/breweries/choshi-beer.webp",
+      "license": "unverified",
+      "author": "銚子ビール犬吠醸造所",
+      "sourceUrl": "https://choshicheers.sakuraweb.com/wp-content/uploads/2020/10/choshi_cheers_logo-o.png"
+    },
+    "forest-brewing": {
+      "file": "images/breweries/forest-brewing.webp",
+      "license": "unverified",
+      "author": "ForestBrewing",
+      "sourceUrl": "https://forestbrewing.jp/assets/images/00_common/apple-touch-icon.webp"
+    },
+    "garuya-beer": {
+      "file": "images/breweries/garuya-beer.webp",
+      "license": "unverified",
+      "author": "ガル屋beer",
+      "sourceUrl": "https://baseec-img-mng.akamaized.net/images/user/logo/0318d2df6e93f7402ae079acec2f5bfc.png"
+    },
+    "good-hops": {
+      "file": "images/breweries/good-hops.webp",
+      "license": "unverified",
+      "author": "GOOD HOPS",
+      "sourceUrl": "https://goodhops.jp/gh_cms/wp-content/themes/goodhops/assets/img/header_logo.svg"
+    },
+    "hachinohe-bakushu": {
+      "file": "images/breweries/hachinohe-bakushu.webp",
+      "license": "unverified",
+      "author": "八戸麦酒",
+      "sourceUrl": "https://kanekujyozo.com/cms/wp-content/themes/kanekujyozo/images/common/foot-logo.png"
+    },
+    "handa-ginzan-brewery": {
+      "file": "images/breweries/handa-ginzan-brewery.webp",
+      "license": "unverified",
+      "author": "半田銀山ブルワリー",
+      "sourceUrl": "https://static.wixstatic.com/media/d79010_3c4d183bd40049e9b33a83affa920950%7Emv2.jpg/v1/fill/w_180%2Ch_180%2Clg_1%2Cusm_0.66_1.00_0.01/d79010_3c4d183bd40049e9b33a83affa920950%7Emv2.jpg"
+    },
+    "harvest-moon": {
+      "file": "images/breweries/harvest-moon.webp",
+      "license": "unverified",
+      "author": "舞浜地ビール工房 ハーヴェスト・ムーン",
+      "sourceUrl": "https://www.ikspiari.com/resource/images/harvestmoon/logo-h1-sp.png"
+    },
+    "hop-garden-brewery": {
+      "file": "images/breweries/hop-garden-brewery.webp",
+      "license": "unverified",
+      "author": "ホップガーデンブルワリー",
+      "sourceUrl": "https://hopjapan.com/wp-content/themes/hopjapan/assets/img/common/logo_main.svg"
+    },
+    "hopdog-brewing": {
+      "file": "images/breweries/hopdog-brewing.webp",
+      "license": "unverified",
+      "author": "HOPDOG BREWING",
+      "sourceUrl": "https://storage.googleapis.com/production-os-assets/assets/41b47202-c0ac-41b1-916f-a87e770f6942"
+    },
+    "iwate-kura-beer": {
+      "file": "images/breweries/iwate-kura-beer.webp",
+      "license": "unverified",
+      "author": "いわて蔵ビール",
+      "sourceUrl": "https://sekinoichi.co.jp/common/img/logo_ci.png"
+    },
+    "kankiku-brewery": {
+      "file": "images/breweries/kankiku-brewery.webp",
+      "license": "unverified",
+      "author": "KANKIKU BREWERY（九十九里オーシャンビール）",
+      "sourceUrl": "https://kankiku.com/wp2020/wp-content/uploads/2017/08/favicon-1.png"
+    },
+    "keika-brewing": {
+      "file": "images/breweries/keika-brewing.webp",
+      "license": "unverified",
+      "author": "蛍火醸造",
+      "sourceUrl": "https://www.keika-brewing.com/cms/wp-content/themes/original/assets/img/common/logo.svg"
+    },
+    "kirin-sendai": {
+      "file": "images/breweries/kirin-sendai.webp",
+      "license": "unverified",
+      "author": "キリンビール仙台工場",
+      "sourceUrl": "https://www.kirin.co.jp/assets/images/logo.svg"
+    },
+    "kohan-no-mori-beer": {
+      "file": "images/breweries/kohan-no-mori-beer.webp",
+      "license": "unverified",
+      "author": "田沢湖 湖畔の杜ビール",
+      "sourceUrl": "https://www.orae.net/files/orae_logo_footer.png"
+    },
+    "kokucho-beer": {
+      "file": "images/breweries/kokucho-beer.webp",
+      "license": "unverified",
+      "author": "穀町ビール",
+      "sourceUrl": "https://graintownbrewery.com/wp-content/uploads/2021/11/logo_trans4-230x194.png"
+    },
+    "komainu-brewery": {
+      "file": "images/breweries/komainu-brewery.webp",
+      "license": "unverified",
+      "author": "こまいぬブルワリー 柏ビール",
+      "sourceUrl": "https://store.kashiwa.beer/cdn/shop/files/KOMA_LOGO-FULL-TR.png?v=1784100055&width=400"
+    },
+    "kyonan-bakushu": {
+      "file": "images/breweries/kyonan-bakushu.webp",
+      "license": "unverified",
+      "author": "鋸南麦酒",
+      "sourceUrl": "https://kyonanbeer.com/wp-content/uploads/2024/04/kyonanlogo-2.png"
+    },
+    "locobeer": {
+      "file": "images/breweries/locobeer.webp",
+      "license": "unverified",
+      "author": "ロコビア",
+      "sourceUrl": "https://www.locobeer.jp/images/sitelogo_wm.png"
+    },
+    "matsudo-beer": {
+      "file": "images/breweries/matsudo-beer.webp",
+      "license": "unverified",
+      "author": "松戸ビール醸造所",
+      "sourceUrl": "https://cdn.goope.jp/84751/241012163227dvm2.jpg"
+    },
+    "michinoku-fukushimaji-beer": {
+      "file": "images/breweries/michinoku-fukushimaji-beer.webp",
+      "license": "unverified",
+      "author": "みちのく福島路ビール",
+      "sourceUrl": "https://user-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,h_64,w_64/151337/151122web_panel_g8yldl.png"
+    },
+    "nanbu-craft": {
+      "file": "images/breweries/nanbu-craft.webp",
+      "license": "unverified",
+      "author": "NANBU CRAFT",
+      "sourceUrl": "https://nanbucraft.com/wp/wp-content/themes/nanbucraft/assets/images/favicon/apple-touch-icon.png"
+    },
+    "nikko-brewing": {
+      "file": "images/breweries/nikko-brewing.webp",
+      "license": "unverified",
+      "author": "Nikko Brewing",
+      "sourceUrl": "https://nikko-monkeys.beer/_/img/header-logo.png"
+    },
+    "oct-one-brewing": {
+      "file": "images/breweries/oct-one-brewing.webp",
+      "license": "unverified",
+      "author": "OCT ONE Brewing",
+      "sourceUrl": "https://oct-1.com/wp-content/themes/oct-1/apple-touch-icon-180x180.png"
+    },
+    "pirono-beer": {
+      "file": "images/breweries/pirono-beer.webp",
+      "license": "unverified",
+      "author": "PIRONO BEER",
+      "sourceUrl": "https://baseec-img-mng.akamaized.net/images/user/logo/dcd9de0248e886630b53138080009ac9.jpg"
+    },
+    "rec-cider-beer-works": {
+      "file": "images/breweries/rec-cider-beer-works.webp",
+      "license": "unverified",
+      "author": "REC CIDER&BEER WORKS",
+      "sourceUrl": "https://rec-cb.work/cdn/shop/files/logo-black_500x.png?v=1680246894"
+    },
+    "rikuzentakata-microbrewery": {
+      "file": "images/breweries/rikuzentakata-microbrewery.webp",
+      "license": "unverified",
+      "author": "陸前高田マイクロブルワリー",
+      "sourceUrl": "https://camocy.jp/img/top/header_logo_pc.svg"
+    },
+    "ryusendo-beer": {
+      "file": "images/breweries/ryusendo-beer.webp",
+      "license": "unverified",
+      "author": "龍泉洞ヴィベール",
+      "sourceUrl": "https://ryusendo-wakka.com/wp/wp-content/themes/wakka/img/common/logo.svg"
+    },
+    "saien-microbrewery": {
+      "file": "images/breweries/saien-microbrewery.webp",
+      "license": "unverified",
+      "author": "菜園マイクロブルワリー with Kitchen",
+      "sourceUrl": "https://saien-microbrewery.com/wp-content/uploads/2023/04/cropped-saien-180x180.jpg"
+    },
+    "sakata-traditional-beer": {
+      "file": "images/breweries/sakata-traditional-beer.webp",
+      "license": "unverified",
+      "author": "酒田トラディショナルビール",
+      "sourceUrl": "https://www.pipe-line.co.jp/wp-content/uploads/LOGO_A_color.png"
+    },
+    "sanriku-brewing": {
+      "file": "images/breweries/sanriku-brewing.webp",
+      "license": "unverified",
+      "author": "三陸ビール",
+      "sourceUrl": "https://sanrikubeer.com/cdn/shop/files/top1_2.jpg?v=1719975739"
+    },
+    "sunao-brewery": {
+      "file": "images/breweries/sunao-brewery.webp",
+      "license": "unverified",
+      "author": "sunao brewery",
+      "sourceUrl": "https://sunao-brewery.square.site/uploads/b/66dab690-d922-11ef-883b-7195482bb8c8/icon_180x180_ios_MzExND.png?width=180"
+    },
+    "tendo-brewery": {
+      "file": "images/breweries/tendo-brewery.webp",
+      "license": "unverified",
+      "author": "天童ブルワリー",
+      "sourceUrl": "https://tendo-brewery.itiraku.com/asset/img/top_brew/logo.svg"
+    },
+    "tono-brewing": {
+      "file": "images/breweries/tono-brewing.webp",
+      "license": "unverified",
+      "author": "遠野醸造",
+      "sourceUrl": "https://tonobrewing.com/wp-content/uploads/2018/01/cropped-4c213169b36344e4384a06e63a272874-2-180x180.png"
+    },
+    "tsugaru-brewing": {
+      "file": "images/breweries/tsugaru-brewing.webp",
+      "license": "unverified",
+      "author": "津軽醸造",
+      "sourceUrl": "https://tsugarubrewing.com/cdn/shop/files/3_64ad67a9-4d41-4051-947f-0ee0a7e7e5d1.png?v=1767700442"
+    },
+    "ugo-bakushu": {
+      "file": "images/breweries/ugo-bakushu.webp",
+      "license": "unverified",
+      "author": "羽後麦酒",
+      "sourceUrl": "https://storage.googleapis.com/production-os-assets/assets/5bd4aae9-6890-4edb-91f4-76328c8a096c"
+    },
+    "yellow-beer-works": {
+      "file": "images/breweries/yellow-beer-works.webp",
+      "license": "unverified",
+      "author": "YellowBeerWorks",
+      "sourceUrl": "https://yellowbeerworks.com/wp-content/themes/ybw/img/top/logo_br.png"
+    },
+    "yonezawa-jacks-brewery": {
+      "file": "images/breweries/yonezawa-jacks-brewery.webp",
+      "license": "unverified",
+      "author": "米沢ジャックスブルワリー",
+      "sourceUrl": "https://jacks-beer.com/wp/wp-content/uploads/2018/07/cropped-YJB_logo-180x180.jpg"
+    },
+    "zao-brewery": {
+      "file": "images/breweries/zao-brewery.webp",
+      "license": "unverified",
+      "author": "蔵王ブルワリー",
+      "sourceUrl": "https://www.zao-brewery.jp/sanrina/wp-content/themes/zao-brewery/images/splash_logomark.svg"
+    },
+    "zumona": {
+      "file": "images/breweries/zumona.webp",
+      "license": "unverified",
+      "author": "遠野麦酒ZUMONA",
+      "sourceUrl": "https://kamihei-shuzo.jp/wp-content/themes/kamihei-shuzo/assets/images/common/image_product_logo_zumona.svg"
+    }
+  },
+  "brewery-photos": {
+    "oirase-brewery": {
+      "file": "images/brewery-photos/oirase-brewery.webp",
+      "license": "unverified",
+      "author": "OIRASE Brewery",
+      "sourceUrl": "https://michinoeki-oirase.com/"
+    },
+    "nanbu-craft": {
+      "file": "images/brewery-photos/nanbu-craft.webp",
+      "license": "unverified",
+      "author": "NANBU CRAFT",
+      "sourceUrl": "https://nanbucraft.com/"
+    },
+    "iwate-kura-beer": {
+      "file": "images/brewery-photos/iwate-kura-beer.webp",
+      "license": "unverified",
+      "author": "いわて蔵ビール",
+      "sourceUrl": "https://sekinoichi.co.jp/"
+    },
+    "tono-brewing": {
+      "file": "images/brewery-photos/tono-brewing.webp",
+      "license": "unverified",
+      "author": "遠野醸造",
+      "sourceUrl": "https://tonobrewing.com/"
+    },
+    "sanriku-brewing": {
+      "file": "images/brewery-photos/sanriku-brewing.webp",
+      "license": "unverified",
+      "author": "三陸ビール",
+      "sourceUrl": "https://sanrikubeer.com/"
+    },
+    "kirin-sendai": {
+      "file": "images/brewery-photos/kirin-sendai.webp",
+      "license": "unverified",
+      "author": "キリンビール仙台工場",
+      "sourceUrl": "https://www.kirin.co.jp/experience/factory/sendai/"
+    },
+    "forest-brewing": {
+      "file": "images/brewery-photos/forest-brewing.webp",
+      "license": "unverified",
+      "author": "ForestBrewing",
+      "sourceUrl": "https://forestbrewing.jp/"
+    },
+    "hopdog-brewing": {
+      "file": "images/brewery-photos/hopdog-brewing.webp",
+      "license": "unverified",
+      "author": "HOPDOG BREWING",
+      "sourceUrl": "https://hopdogbrewing.jp"
+    },
+    "ugo-bakushu": {
+      "file": "images/brewery-photos/ugo-bakushu.webp",
+      "license": "unverified",
+      "author": "羽後麦酒",
+      "sourceUrl": "https://ugobakushu.jp/"
+    },
+    "zao-brewery": {
+      "file": "images/brewery-photos/zao-brewery.webp",
+      "license": "unverified",
+      "author": "蔵王ブルワリー",
+      "sourceUrl": "https://www.zao-brewery.jp/"
+    },
+    "michinoku-fukushimaji-beer": {
+      "file": "images/brewery-photos/michinoku-fukushimaji-beer.webp",
+      "license": "unverified",
+      "author": "みちのく福島路ビール",
+      "sourceUrl": "https://www.f-beer.com/"
+    },
+    "nikko-brewing": {
+      "file": "images/brewery-photos/nikko-brewing.webp",
+      "license": "unverified",
+      "author": "Nikko Brewing",
+      "sourceUrl": "https://nikko-monkeys.beer"
+    },
+    "oct-one-brewing": {
+      "file": "images/brewery-photos/oct-one-brewing.webp",
+      "license": "unverified",
+      "author": "OCT ONE Brewing",
+      "sourceUrl": "https://oct-1.com/"
+    },
+    "kankiku-brewery": {
+      "file": "images/brewery-photos/kankiku-brewery.webp",
+      "license": "unverified",
+      "author": "KANKIKU BREWERY（九十九里オーシャンビール）",
+      "sourceUrl": "https://www.kankiku.com/"
+    }
+  },
+  "events": {
+    "american-craft-beer-experience": {
+      "file": "images/events/american-craft-beer-experience.webp",
+      "license": "unverified",
+      "author": "アメリカン クラフトビア エクスペリエンス",
+      "sourceUrl": "https://uscraftbeer.jp/"
+    },
+    "japan-hop-fest-svb": {
+      "file": "images/events/japan-hop-fest-svb.webp",
+      "license": "unverified",
+      "author": "クラフトビール ジャパンホップ フェスト in SVB東京",
+      "sourceUrl": "https://japanhop.jp/cjhf2026/"
+    },
+    "odawara-hakone-craft-beer-fes": {
+      "file": "images/events/odawara-hakone-craft-beer-fes.webp",
+      "license": "unverified",
+      "author": "小田原・箱根 クラフトビールフェス",
+      "sourceUrl": "https://kamaboko.com/events/craftbeer_festival/"
+    },
+    "omotesando-craft-beer-festa": {
+      "file": "images/events/omotesando-craft-beer-festa.webp",
+      "license": "unverified",
+      "author": "表参道クラフトビアフェスタ",
+      "sourceUrl": "https://allcraftjapan.com/events/omotesando-craft-beer-fest/"
+    },
+    "keyaki-beer-festival": {
+      "file": "images/events/keyaki-beer-festival.webp",
+      "license": "unverified",
+      "author": "けやきひろば ビール祭り",
+      "sourceUrl": "https://www.beerkeyaki.jp/"
+    },
+    "tsuyama-jibeer-festa": {
+      "file": "images/events/tsuyama-jibeer-festa.webp",
+      "license": "unverified",
+      "author": "全国地ビールフェスタ in 津山",
+      "sourceUrl": "https://www.okayama-kanko.jp/event/detail_100295.html"
+    },
+    "belgian-beer-weekend-hibiya": {
+      "file": "images/events/belgian-beer-weekend-hibiya.webp",
+      "license": "unverified",
+      "author": "ベルギービールウィークエンド 日比谷",
+      "sourceUrl": "https://belgianbeerweekend.jp/hibiya"
+    },
+    "belgian-beer-weekend-nagoya": {
+      "file": "images/events/belgian-beer-weekend-nagoya.webp",
+      "license": "unverified",
+      "author": "ベルギービールウィークエンド 名古屋",
+      "sourceUrl": "https://belgianbeerweekend.jp/nagoya"
+    },
+    "belgian-beer-weekend-yokohama": {
+      "file": "images/events/belgian-beer-weekend-yokohama.webp",
+      "license": "unverified",
+      "author": "ベルギービールウィークエンド 横浜",
+      "sourceUrl": "https://belgianbeerweekend.jp/yokohama"
+    },
+    "belgian-beer-weekend-osaka": {
+      "file": "images/events/belgian-beer-weekend-osaka.webp",
+      "license": "unverified",
+      "author": "ベルギービールウィークエンド 大阪",
+      "sourceUrl": "https://belgianbeerweekend.jp/osaka"
+    },
+    "belgian-beer-weekend-kyoto": {
+      "file": "images/events/belgian-beer-weekend-kyoto.webp",
+      "license": "unverified",
+      "author": "ベルギービールウィークエンド 京都",
+      "sourceUrl": "https://belgianbeerweekend.jp/kyoto"
+    },
+    "belgian-beer-weekend-shinjuku": {
+      "file": "images/events/belgian-beer-weekend-shinjuku.webp",
+      "license": "unverified",
+      "author": "ベルギービールウィークエンド 新宿",
+      "sourceUrl": "https://belgianbeerweekend.jp/shinjuku"
+    },
+    "beerfes-tokyo": {
+      "file": "images/events/beerfes-tokyo.webp",
+      "license": "unverified",
+      "author": "ビアフェス東京",
+      "sourceUrl": "https://beerfes.jp/tokyo2026/"
+    },
+    "beerfes-yokohama": {
+      "file": "images/events/beerfes-yokohama.webp",
+      "license": "unverified",
+      "author": "ビアフェス横浜",
+      "sourceUrl": "https://beerfes.jp/yokohama2026/"
+    },
+    "beerfes-osaka": {
+      "file": "images/events/beerfes-osaka.webp",
+      "license": "unverified",
+      "author": "ビアフェス大阪",
+      "sourceUrl": "https://beerfes.jp/osaka2026/"
+    },
+    "oktoberfest-skytree": {
+      "file": "images/events/oktoberfest-skytree.webp",
+      "license": "unverified",
+      "author": "オクトーバーフェスト in 東京スカイツリータウン",
+      "sourceUrl": "https://okfes.jp/202609-skytree/"
+    },
+    "oktoberfest-kamiyacho": {
+      "file": "images/events/oktoberfest-kamiyacho.webp",
+      "license": "unverified",
+      "author": "神谷町オクトーバーフェスト",
+      "sourceUrl": "https://www.mori-trust.co.jp/event/oktoberfest2026.html"
+    },
+    "yokohama-oktoberfest": {
+      "file": "images/events/yokohama-oktoberfest.webp",
+      "license": "unverified",
+      "author": "横浜オクトーバーフェスト",
+      "sourceUrl": "https://www.yokohama-akarenga.jp/oktoberfest/"
+    },
+    "kagawa-oktoberfest": {
+      "file": "images/events/kagawa-oktoberfest.webp",
+      "license": "unverified",
+      "author": "KAGAWA オクトーバーフェスト",
+      "sourceUrl": "https://kagawa-oktoberfest.com"
+    },
+    "tama-craft-beer-fes": {
+      "file": "images/events/tama-craft-beer-fes.webp",
+      "license": "unverified",
+      "author": "クラフトビールフェス in たま未来メッセ",
+      "sourceUrl": "https://tama-craftbeerfes.com/"
+    },
+    "tsukuba-craft-beer-fest": {
+      "file": "images/events/tsukuba-craft-beer-fest.webp",
+      "license": "unverified",
+      "author": "つくばクラフトビアフェスト",
+      "sourceUrl": "https://tsukuba-craftbeerfest.com/"
+    },
+    "hama-terrace-craft-beer-fes": {
+      "file": "images/events/hama-terrace-craft-beer-fes.webp",
+      "license": "unverified",
+      "author": "はまテラス クラフトビールフェス",
+      "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000030.000151165.html"
+    },
+    "the-beer-ten-nagaoka": {
+      "file": "images/events/the-beer-ten-nagaoka.webp",
+      "license": "unverified",
+      "author": "ザ・ビール展 in NAGAOKA",
+      "sourceUrl": "https://thebeerfes.com/"
+    },
+    "orion-beerfest": {
+      "file": "images/events/orion-beerfest.webp",
+      "license": "unverified",
+      "author": "オリオンビアフェスト",
+      "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000274.000044607.html"
+    },
+    "women-brewers-okayama": {
+      "file": "images/events/women-brewers-okayama.webp",
+      "license": "unverified",
+      "author": "女性醸造家のビールを楽しむ休日 in おかやま",
+      "sourceUrl": "https://www.okayama-kanko.jp/event/detail_101462.html"
+    },
+    "oirase-beer-oktoberfest": {
+      "file": "images/events/oirase-beer-oktoberfest.webp",
+      "license": "unverified",
+      "author": "奥入瀬ビール オクトーバーフェスト",
+      "sourceUrl": "https://oirase.beer/oktober-fest/"
+    },
+    "yukko-baeren-totonoi-fest": {
+      "file": "images/events/yukko-baeren-totonoi-fest.webp",
+      "license": "unverified",
+      "author": "ゆっこ×ベアレン ととのいフェスト",
+      "sourceUrl": "https://baeren-yukko2026.peatix.com"
+    },
+    "zao-brewery-autumn-beer-festival": {
+      "file": "images/events/zao-brewery-autumn-beer-festival.webp",
+      "license": "unverified",
+      "author": "ZAO BREWERY 秋のビール祭り",
+      "sourceUrl": "https://www.zao-brewery.jp/"
+    },
+    "oirase-saturday-night": {
+      "file": "images/events/oirase-saturday-night.webp",
+      "license": "unverified",
+      "author": "奥入瀬サタデーナイト",
+      "sourceUrl": "https://oirase.beer/saturday-night/"
+    },
+    "tachikawa-oktoberfest": {
+      "file": "images/events/tachikawa-oktoberfest.webp",
+      "license": "unverified",
+      "author": "立川オクトーバーフェスト",
+      "sourceUrl": "https://beer-fest.jp/tachikawa/"
+    },
+    "koganei-beer-festival": {
+      "file": "images/events/koganei-beer-festival.webp",
+      "license": "unverified",
+      "author": "小金井ビールフェスティバル",
+      "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000201.000005566.html"
+    },
+    "okutama-beer-fest": {
+      "file": "images/events/okutama-beer-fest.webp",
+      "license": "unverified",
+      "author": "OKUTAMA BEER FEST",
+      "sourceUrl": "https://verterebrew.com/3108/"
+    },
+    "ebina-booze-fest": {
+      "file": "images/events/ebina-booze-fest.webp",
+      "license": "unverified",
+      "author": "EBINA BOOZE FEST",
+      "sourceUrl": "https://www.kanagawa-kankou.or.jp/event/7055"
+    },
+    "minamiota-beer-fest": {
+      "file": "images/events/minamiota-beer-fest.webp",
+      "license": "unverified",
+      "author": "南太田ビール祭",
+      "sourceUrl": "https://newcal.jp/feature/beerfes_autumn_minamiota"
+    },
+    "chiba-beer-fest": {
+      "file": "images/events/chiba-beer-fest.webp",
+      "license": "unverified",
+      "author": "チバビアフェスト",
+      "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000002.000178675.html"
+    },
+    "matsudo-craft-beer-fes": {
+      "file": "images/events/matsudo-craft-beer-fes.webp",
+      "license": "unverified",
+      "author": "松戸クラフトビールフェス",
+      "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000585.000015010.html"
+    },
+    "craft-beer-house-takasaki": {
+      "file": "images/events/craft-beer-house-takasaki.webp",
+      "license": "unverified",
+      "author": "CRAFT BEER HOUSE takasaki",
+      "sourceUrl": "https://www.craftbeerhouse.jp/"
+    },
+    "kumazawa-oktoberfest": {
+      "file": "images/events/kumazawa-oktoberfest.webp",
+      "license": "unverified",
+      "author": "熊澤酒造オクトーバーフェスト",
+      "sourceUrl": "https://kumazawa.jp/"
+    },
+    "kumazawa-kura-fest": {
+      "file": "images/events/kumazawa-kura-fest.webp",
+      "license": "unverified",
+      "author": "酒蔵フェスト（熊澤酒造）",
+      "sourceUrl": "https://kumazawa.jp/"
+    },
+    "nagoya-oktoberfest": {
+      "file": "images/events/nagoya-oktoberfest.webp",
+      "license": "unverified",
+      "author": "名古屋オクトーバーフェスト",
+      "sourceUrl": "https://www.tokai-tv.com/nagoyaoktoberfest/"
+    },
+    "niigata-oktoberfest": {
+      "file": "images/events/niigata-oktoberfest.webp",
+      "license": "unverified",
+      "author": "新潟オクトーバーフェスト",
+      "sourceUrl": "https://ngt-october.com/"
+    }
+  }
 }

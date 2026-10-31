@@ -4,15 +4,17 @@ import { todayString, createBeer } from '../models.js';
 import { normalize } from '../search.js';
 import { errorText } from '../errors.js';
 import { PREFS, KIND_LABELS, FEATURE_LABELS, AVAILABILITY, VERIFICATION_LABELS, LINK_LABELS, addressText, isSafeUrl, groupBeersByBrewery, makeBreweryNote } from '../breweries.js';
-import { creditNote } from './breweries.js';
+import { creditNote, breweryLogo } from './breweries.js';
+import { imageEntry } from '../knowledge.js';
 import { joinEvents, eventsForBrewery, collapseSeries, formatEventDates, localDateString, EVENT_KINDS } from '../events.js';
 
 export async function render({ app, outlet, params }) {
-  const [data, beers, saved, eventData] = await Promise.all([
+  const [data, beers, saved, eventData, images] = await Promise.all([
     app.loadBreweries(),
     app.db.listBeers(),
     app.db.getBreweryNote(params.id),
     app.loadEvents().catch(() => null),
+    app.loadKnowledge().then((k) => k.images, () => ({})),
   ]);
   const b = data.index.byId.get(params.id);
   if (!b) {
@@ -22,12 +24,19 @@ export async function render({ app, outlet, params }) {
   app.setTitle(b.name);
   const myBeers = (groupBeersByBrewery(beers, data.index).get(b.id) || []).sort((x, y) => x.name.localeCompare(y.name, 'ja'));
   let note = saved || { visited: [], wantToVisit: false, memo: '' };
+  const logo = imageEntry(images, 'breweries', b.id);
+  const hero = imageEntry(images, 'brewery-photos', b.id);
 
   const head = h(
     'section',
     { class: 'panel' },
-    h('h2', { class: 'beer-name', text: b.name }),
-    b.nameKana ? h('p', { class: 'muted small', text: b.nameKana }) : null,
+    hero ? h('div', { class: 'brewery-hero' }, breweryLogo(hero, () => h('span'))) : null,
+    h(
+      'div',
+      { class: logo ? 'brewery-head has-logo' : 'brewery-head' },
+      logo ? h('div', { class: 'brewery-head-logo' }, breweryLogo(logo, () => h('span'))) : null,
+      h('div', {}, h('h2', { class: 'beer-name', text: b.name }), b.nameKana ? h('p', { class: 'muted small', text: b.nameKana }) : null),
+    ),
     h(
       'div',
       { class: 'tags' },
@@ -39,6 +48,9 @@ export async function render({ app, outlet, params }) {
     ),
     b.summary ? h('p', { class: 'memo', text: b.summary }) : null,
     b.features?.length ? h('div', { class: 'tags brewery-features' }, b.features.filter((f) => FEATURE_LABELS[f]).map((f) => h('span', { class: 'tag tag-feature', text: FEATURE_LABELS[f] }))) : null,
+    logo || hero
+      ? h('p', { class: 'small muted image-note' }, `${[hero && '写真', logo && 'ロゴ'].filter(Boolean).join('・')}：公式サイト等より（権利未確認・テスト用） `, h('a', { href: (logo || hero).sourceUrl, target: '_blank', rel: 'noopener noreferrer', text: '出典' }))
+      : null,
   );
 
   // ---- 代表銘柄・買いやすさ・受賞歴 ----
