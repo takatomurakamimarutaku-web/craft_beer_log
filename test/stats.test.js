@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { summarizeRatings } from '../js/stats.js';
+import { summarizeRatings, dayCalendar } from '../js/stats.js';
 
 test('summarizeRatings: 0件', () => {
   assert.deepEqual(summarizeRatings([]), { count: 0, avg: null, latest: null });
@@ -117,4 +117,18 @@ test('tastePicks: 評価の高いスタイルと、同じ系統・近い苦味�
   assert.equal(r.picks[0].because.id, 'ipa');
   assert.ok(!r.picks.some((p) => p.style.id === 'pils'), '飲んだスタイルはおすすめしない');
   assert.deepEqual(tastePicks(beers, [{ beerId: 'b', rating: 2 }], styles).picks, [], '好きなスタイルが無ければおすすめも無し');
+});
+
+test('dayCalendar：月曜はじまりの週で、直近の日数と杯数を数える', () => {
+  const now = new Date(2026, 9, 31); // 2026-10-31（土）
+  const cal = dayCalendar(
+    [{ date: '2026-10-31' }, { date: '2026-10-31' }, { date: '2026-10-26' }, { date: '2026-01-01' }],
+    { weeks: 2, now },
+  );
+  assert.equal(cal.weeks.length, 2);
+  assert.equal(cal.weeks[0][0].date, '2026-10-19'); // 前の週の月曜
+  assert.equal(cal.weeks[1][0].date, '2026-10-26');
+  assert.equal(cal.weeks[1][5].count, 2);
+  assert.equal(cal.weeks[1][6].future, true);
+  assert.deepEqual([cal.days, cal.cups, cal.max], [2, 3, 2]);
 });

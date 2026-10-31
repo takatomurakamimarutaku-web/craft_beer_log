@@ -612,6 +612,21 @@ a.summary-card:active { transform: scale(0.985); }
 .serve-card > .small { margin: var(--sp-2) 0 0; }
 .serve-pairing .chip { display: inline-flex; align-items: center; min-height: 32px; font-size: var(--fs-footnote); }
 
+/* ---- 統計：飲んだ日カレンダー ---- */
+.cal-grid { display: grid; grid-template-columns: 1.4em repeat(var(--cols), minmax(0, 1fr)); grid-template-rows: auto repeat(7, auto); gap: 3px; margin-top: var(--sp-2); }
+.cal-wd { font-size: 0.625rem; color: var(--muted); line-height: 1; align-self: center; grid-column: 1; }
+.cal-month { grid-row: 1; font-size: 0.625rem; color: var(--muted); white-space: nowrap; line-height: 1.4; }
+.cal-cell { display: block; aspect-ratio: 1; border-radius: 3px; background: color-mix(in srgb, var(--text) 7%, transparent); }
+.cal-cell[data-level="1"] { background: color-mix(in srgb, var(--primary) 35%, transparent); }
+.cal-cell[data-level="2"] { background: color-mix(in srgb, var(--primary) 60%, transparent); }
+.cal-cell[data-level="3"] { background: color-mix(in srgb, var(--primary) 80%, transparent); }
+.cal-cell[data-level="4"] { background: var(--primary); }
+.cal-cell.is-future { background: transparent; }
+.cal-legend { display: flex; align-items: center; justify-content: flex-end; gap: 3px; margin-top: var(--sp-2); font-size: var(--fs-caption); color: var(--muted); }
+.cal-legend .cal-cell { width: 11px; }
+.cal-legend span:first-child { margin-right: 2px; }
+.cal-legend span:last-child { margin-left: 2px; }
+
 /* ---- 製品化：操作の見やすさ・初回の案内 ---- */
 :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
