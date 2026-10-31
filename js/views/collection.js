@@ -3,7 +3,7 @@ import { h, svg, showToast } from '../ui.js';
 import { glassSvg } from '../illust.js';
 import { srmToHex, styleDisplaySrm } from '../knowledge.js';
 import { resolveBreweryId } from '../breweries.js';
-import { styleCollection, collectionFacts, computeBadges, newlyEarned } from '../collection.js';
+import { styleCollection, collectionFacts, computeBadges, newlyEarned, checkinHighlights } from '../collection.js';
 
 export const BADGES_SEEN_KEY = 'badgesSeen';
 
@@ -23,7 +23,7 @@ async function load(app) {
     prefOf: (id) => breweries.index.byId.get(id)?.prefCode || null,
     notes,
   });
-  return { dex: styleCollection(beers, checkins, app.styles), badges: computeBadges(facts) };
+  return { beers, checkins, dex: styleCollection(beers, checkins, app.styles), badges: computeBadges(facts) };
 }
 
 export async function render({ app, outlet, isStale }) {
@@ -119,20 +119,32 @@ function medal(b) {
 }
 
 /**
- * 記録の保存後に呼ぶ。新しく獲得したバッジがあればトーストで知らせる。
- * はじめて判定するとき（見たバッジの記録が無いとき）は、記録が1件以下なら知らせ、それ以外は黙って記録だけする
- * （既に記録がたくさんある人に一度に何件も出さないため）。
+ * 新しく記録した直後に呼ぶ。何杯目か・はじめての銘柄やスタイル・新しいバッジを1つのお知らせにまとめて出す。
+ * バッジの「見た」記録も更新する（はじめて判定するときに、既に記録が多い人には一度に出さない）。
  */
-export async function announceNewBadges(app) {
+export async function celebrateCheckin(app, beerId) {
   try {
-    const [{ badges }, seen] = await Promise.all([load(app), app.db.getMeta(BADGES_SEEN_KEY)]);
+    const [{ beers, checkins, badges }, seen] = await Promise.all([load(app), app.db.getMeta(BADGES_SEEN_KEY)]);
     const achieved = badges.filter((b) => b.achieved).map((b) => b.id);
-    const fresh = newlyEarned(badges, seen);
+    // はじめて判定するとき（見たバッジの記録が無い）で既に記録が多い人には、まとめて出さない
+    const fresh = !Array.isArray(seen) && achieved.length > 1 ? [] : newlyEarned(badges, seen);
     await app.db.setMeta(BADGES_SEEN_KEY, achieved);
-    if (!fresh.length || (!Array.isArray(seen) && achieved.length > 1)) return;
-    const names = fresh.map((b) => `「${b.title}」`).join('');
-    showToast(`バッジを獲得：${names}`, { actionLabel: '見る', onAction: () => app.navigate('#/collection'), duration: 6000 });
+    const hl = checkinHighlights(beers, checkins, app.styles, beerId);
+    const lines = [];
+    if (hl.newStyle) lines.push(`はじめてのスタイル「${hl.newStyle.name}」（図鑑 ${hl.dexTried} / ${hl.dexTotal}）`);
+    else if (hl.firstBeer) lines.push('はじめての銘柄です');
+    else lines.push(`この銘柄は${hl.beerCount}回目`);
+    if (fresh.length) lines.push(`バッジを獲得：${fresh.slice(0, 2).map((b) => `「${b.title}」`).join('')}${fresh.length > 2 ? `ほか${fresh.length - 2}個` : ''}`);
+    const toCollection = hl.newStyle || fresh.length;
+    showToast(`${hl.cupNo}杯目を記録しました`, {
+      lines,
+      icon: fresh.length ? '🏅' : hl.newStyle ? '✨' : '🍺',
+      actionLabel: toCollection ? (fresh.length ? 'バッジを見る' : '図鑑を見る') : undefined,
+      onAction: toCollection ? () => app.navigate('#/collection') : undefined,
+      duration: toCollection ? 6000 : 4000,
+    });
   } catch (e) {
-    console.warn('バッジを判定できませんでした', e);
+    console.warn('記録のお知らせを作れませんでした', e);
+    showToast('記録しました');
   }
 }

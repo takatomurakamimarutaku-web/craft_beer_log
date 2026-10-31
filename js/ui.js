@@ -97,7 +97,7 @@ export function formatBytes(n) {
 let toastTimer = null;
 
 /** 画面下部の通知。action を渡すとボタン付き（「元に戻す」など） */
-export function showToast(message, { actionLabel, onAction, duration = 3000 } = {}) {
+export function showToast(message, { actionLabel, onAction, duration = 3000, lines = [], icon = null } = {}) {
   const root = document.getElementById('toast-root');
   root.replaceChildren();
   clearTimeout(toastTimer);
@@ -107,8 +107,9 @@ export function showToast(message, { actionLabel, onAction, duration = 3000 } = 
   };
   const toast = h(
     'div',
-    { class: 'toast', role: 'status' },
-    h('span', { text: message }),
+    { class: `toast${lines.length || icon ? ' toast-rich' : ''}`, role: 'status' },
+    icon ? h('span', { class: 'toast-icon', 'aria-hidden': 'true', text: icon }) : null,
+    lines.length ? h('span', { class: 'toast-body' }, h('strong', { text: message }), ...lines.map((l) => h('span', { class: 'toast-line', text: l }))) : h('span', { text: message }),
     actionLabel
       ? h('button', {
           class: 'toast-action',

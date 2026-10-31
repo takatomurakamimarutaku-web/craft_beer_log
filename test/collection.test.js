@@ -92,3 +92,22 @@ test('quickBeers: 最近飲んだ銘柄（重複なし・新しい順）→ 飲�
   const r = quickBeers(bs, cs, { recent: 6, want: 1 });
   assert.deepEqual(r.map((x) => [x.beer.id, x.want]), [['b', false], ['a', false], ['w1', true]]);
 });
+
+test('checkinHighlights：何杯目か、はじめての銘柄・スタイルか', async () => {
+  const { checkinHighlights } = await import('../js/collection.js');
+  const styles = [{ id: 'ipa', name: 'IPA' }, { id: 'stout', name: 'スタウト' }];
+  const beers = [{ id: 'a', styleId: 'ipa' }, { id: 'b', styleId: 'stout' }, { id: 'c', styleId: 'ipa' }];
+  const checkins = [{ beerId: 'a' }, { beerId: 'a' }, { beerId: 'b' }, { beerId: 'c' }];
+  const hb = checkinHighlights(beers, checkins, styles, 'b');
+  assert.equal(hb.cupNo, 4);
+  assert.equal(hb.firstBeer, true);
+  assert.equal(hb.newStyle.id, 'stout');
+  assert.deepEqual([hb.dexTried, hb.dexTotal], [2, 2]);
+  const ha = checkinHighlights(beers, checkins, styles, 'a');
+  assert.equal(ha.firstBeer, false);
+  assert.equal(ha.beerCount, 2);
+  assert.equal(ha.newStyle, null);
+  const hc = checkinHighlights(beers, checkins, styles, 'c');
+  assert.equal(hc.firstBeer, true);
+  assert.equal(hc.newStyle, null, 'IPA は2杯目なので、はじめてのスタイルではない');
+});

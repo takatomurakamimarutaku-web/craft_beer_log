@@ -322,6 +322,13 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--p
 .toast-root { position: fixed; left: 0; right: 0; bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 12px); z-index: 40; display: flex; justify-content: center; pointer-events: none; padding: 0 16px; }
 .toast { pointer-events: auto; display: flex; align-items: center; gap: 12px; max-width: 520px; padding: 12px 16px; border-radius: 14px; background: color-mix(in srgb, #241a13 92%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); animation: pop-up 0.25s var(--ease) both; color: #fff; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); font-size: 0.92rem; }
 .toast-action { border: 0; background: none; color: #ffc76b; font: inherit; font-weight: 700; padding: 4px 0; white-space: nowrap; }
+.toast-rich { flex-wrap: wrap; align-items: center; padding: 14px 16px; }
+.toast-rich .toast-action { margin-left: auto; }
+.toast-icon { font-size: 1.6rem; line-height: 1; animation: toast-bounce 0.6s var(--ease) 0.15s both; }
+.toast-body { display: grid; gap: 2px; flex: 1 1 60%; min-width: 0; }
+.toast-line { font-size: var(--fs-footnote); color: rgba(255, 255, 255, 0.82); }
+@keyframes toast-bounce { 0% { transform: scale(0.4); } 60% { transform: scale(1.2); } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .toast-icon { animation: none; } }
 .update-banner { position: fixed; left: 12px; right: 12px; bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 12px); z-index: 30; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--primary); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); }
 .overlay { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 20px; background: rgba(20, 12, 6, 0.45); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); animation: fade-in 0.2s ease both; }
 .dialog { width: min(100%, 400px); padding: var(--sp-5) 20px 20px; border-radius: var(--radius-lg); background: var(--surface); color: var(--text); box-shadow: var(--shadow-lg); animation: pop-up 0.25s var(--ease) both; }
