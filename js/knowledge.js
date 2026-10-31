@@ -129,10 +129,10 @@ export function formatRange(range, unit = '') {
 
 // ---- 画像（data/images.json） ----
 
-export const IMAGE_KINDS = ['styles', 'hops'];
-export const IMAGE_LICENSES = ['ai', 'cc-by', 'cc-by-sa', 'cc0', 'pd', 'own', 'permission'];
+export const IMAGE_KINDS = ['styles', 'hops', 'breweries'];
+export const IMAGE_LICENSES = ['ai', 'cc-by', 'cc-by-sa', 'cc0', 'pd', 'own', 'permission', 'unverified'];
 
-/** スタイル・ホップの画像情報。無ければ null（イラストを表示する） */
+/** スタイル・ホップの画像、ブリュワーのロゴの情報。無ければ null（イラスト・ピンを表示する） */
 export function imageEntry(images, kind, id) {
   const e = images?.[kind]?.[id];
   return e && typeof e.file === 'string' ? e : null;
@@ -155,6 +155,9 @@ export function imageCaption(e) {
       return e.author ? `写真：${e.author}` : '';
     case 'permission':
       return `写真提供：${e.author}`;
+    case 'unverified':
+      // 個人・知人のテスト用に一時的に使う画像。公開前に差し替える（README「images.json」）
+      return e.author ? `画像：${e.author}（権利未確認・テスト用）` : '画像（権利未確認・テスト用）';
     default:
       return '';
   }

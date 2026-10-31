@@ -699,3 +699,14 @@ a.summary-card:active { transform: scale(0.985); }
 .flagship { justify-content: space-between; flex-wrap: nowrap; }
 .flagship-name { min-width: 0; }
 .tag-feature { background: transparent; border: 1px solid var(--border); }
+
+/* ブリュワーのロゴ（images.json の breweries）。白抜きロゴもあるため背景は画像側で塗ってある */
+.brewery-logo { width: 100%; height: 100%; object-fit: cover; display: block; }
+.brewery-logo-thumb { position: relative; overflow: visible; }
+.brewery-logo-thumb .brewery-logo { border-radius: inherit; }
+.brewery-logo-thumb .pin-badge {
+  position: absolute; right: -6px; bottom: -6px; width: 24px; height: 24px;
+  filter: drop-shadow(0 0 1.5px var(--surface)) drop-shadow(0 0 1.5px var(--surface));
+}
+.brewery-head.has-logo { display: grid; grid-template-columns: 72px 1fr; gap: var(--sp-3); align-items: center; }
+.brewery-head-logo { width: 72px; height: 72px; border-radius: 14px; overflow: hidden; border: 1px solid var(--card-border); }
