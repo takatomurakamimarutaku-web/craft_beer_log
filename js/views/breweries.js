@@ -86,7 +86,7 @@ export async function render({ app, outlet, query }) {
     h(
       'section',
       { class: 'panel' },
-      h('p', { class: 'small', text: `${data.meta.region || ''}のブリュワー（大手の工場を含む）。少しずつ地域を増やしていきます。` }),
+      h('p', { class: 'small', text: `${data.meta.region || ''}のブリュワー（大手の工場を含む）。醸造所や情報は少しずつ増やしていきます。` }),
       h('div', { class: 'actions' }, mapLink),
       search,
     ),
