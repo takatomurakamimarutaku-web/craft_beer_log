@@ -6,6 +6,7 @@ const ic = (body) => `<svg xmlns="${SVG_NS}" viewBox="0 0 24 24" fill="none" str
 
 // メニューのアイコン（自作の固定SVG）と背景色
 const ICONS = {
+  collection: [ic('<circle cx="12" cy="9" r="5.5"/><path d="M8.5 13.5L7 21l5-2.5 5 2.5-1.5-7.5"/>'), '#c08a00'],
   wishlist: [ic('<path d="M7 4h10v16l-5-3.5L7 20z"/>'), '#d9622b'],
   events: [ic('<rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4"/>'), '#c2410c'],
   breweries: [ic('<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>'), '#2e7d55'],
@@ -32,6 +33,7 @@ export function render({ outlet }) {
   outlet.replaceChildren(
     ...group(
       'たのしむ',
+      item('#/collection', 'collection', 'コレクション', 'スタイル図鑑と達成バッジ'),
       item('#/wishlist', 'wishlist', '飲みたいリスト', '気になる銘柄をメモ'),
       item('#/events', 'events', 'イベント', '全国のビアフェス・ビールイベント'),
       item('#/breweries', 'breweries', 'ブリュワー', 'ブリュワーの一覧と地図（試作）'),

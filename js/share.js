@@ -28,11 +28,11 @@ export function buildShareText(beer, checkin, styles, { tagLabels = {} } = {}) {
  * 共有する。写真があれば1枚添付（端末が対応していれば）。
  * @returns 'shared' | 'copied' | 'cancelled' | 'manual'
  */
-export async function shareContent({ title, text, photo }) {
+export async function shareContent({ title, text, photo, fileName = 'beer.jpg' }) {
   if (navigator.share) {
     const data = { title, text };
     if (photo) {
-      const file = new File([photo], 'beer.jpg', { type: photo.type || 'image/jpeg' });
+      const file = new File([photo], fileName, { type: photo.type || 'image/jpeg' });
       if (navigator.canShare?.({ files: [file] })) data.files = [file];
     }
     try {

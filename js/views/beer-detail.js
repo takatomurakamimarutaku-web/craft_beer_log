@@ -4,6 +4,7 @@ import { styleLabel, SERVING_LABELS, PLACE_TYPE_LABELS, STATUS_LABELS } from '..
 import { summarizeRatings } from '../stats.js';
 import { averageTasting, hasScores, tastingRadarSvg, tasteLabels, flavorLabels } from '../tasting.js';
 import { buildShareText, shareContent } from '../share.js';
+import { renderShareCard } from '../share-card.js';
 import { resolveBreweryId } from '../breweries.js';
 import { beerColor } from '../knowledge.js';
 
@@ -165,12 +166,46 @@ export async function render({ app, outlet, params }) {
   }
 
   async function share() {
-    // 最新の記録と、写真のある最新の記録の1枚目を共有する
-    const text = buildShareText(beer, checkins[0] || null, app.styles, { tagLabels: Object.fromEntries(tagLabel) });
+    // 最新の記録と、写真のある最新の記録の1枚目から画像カードを作り、文章と一緒に共有する
+    const latest = checkins[0] || null;
+    const text = buildShareText(beer, latest, app.styles, { tagLabels: Object.fromEntries(tagLabel) });
     const photo = await sharePhoto;
-    const result = await shareContent({ title: beer.name, text, photo });
-    if (result === 'copied') showToast('共有用の文章をコピーしました');
-    else if (result === 'manual') showManualCopy(text);
+    let card = null;
+    try {
+      card = await renderShareCard({
+        name: beer.name,
+        brewery: beer.brewery,
+        meta: [style, formatAbv(beer.abv)].filter(Boolean).join(' / '),
+        rating: latest?.rating ?? null,
+        date: latest ? formatDate(latest.date) : '',
+        place: latest?.place?.name || '',
+        taste: tasteLabels(latest?.tasting),
+        flavor: flavorLabels(latest?.tasting, tagLabel),
+        memo: latest?.memo?.trim() || '',
+        color,
+        photo,
+      });
+    } catch (e) {
+      console.warn('共有用の画像を作れませんでした', e);
+    }
+    const result = await shareContent({ title: beer.name, text, photo: card || photo, fileName: card ? 'hoptecho.png' : 'beer.jpg' });
+    if (result === 'shared' || result === 'cancelled') return;
+    if (card) showCardPreview(card, text, result === 'copied');
+    else if (result === 'copied') showToast('共有用の文章をコピーしました');
+    else showManualCopy(text);
+  }
+
+  /** 画像を添付して共有できない端末（パソコンなど）向け：画像を表示して、長押し・右クリックで保存してもらう */
+  function showCardPreview(card, text, copied) {
+    const url = URL.createObjectURL(card);
+    const area = h('textarea', { class: 'share-text', rows: 4, readonly: true, value: text });
+    const body = h('div', { class: 'card-preview' }, h('img', { src: url, alt: `${beer.name}の共有用の画像` }), area);
+    confirmDialog({
+      title: '共有用の画像',
+      message: copied ? '文章はコピーしました。画像は長押し（パソコンは右クリック）で保存できます。' : '画像は長押し（パソコンは右クリック）で保存できます。',
+      body,
+      buttons: [{ label: '閉じる', value: true, variant: 'primary' }],
+    }).finally(() => URL.revokeObjectURL(url));
   }
 
   function showManualCopy(text) {

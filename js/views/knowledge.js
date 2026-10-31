@@ -1,6 +1,6 @@
 // 知識（#/knowledge 一覧、#/knowledge/style/:id など詳細）
 import { h, svg, emptyState, chipGroup, formatDate, stars } from '../ui.js';
-import { searchKnowledge, basicTexts, styleTexts, termTexts, hopTexts, filterByTags, HOP_USE_LABELS, srmToHex, styleDisplaySrm, formatRange, GLASS_LABELS, imageEntry, imageCaption } from '../knowledge.js';
+import { searchKnowledge, basicTexts, styleTexts, termTexts, hopTexts, filterByTags, HOP_USE_LABELS, srmToHex, styleDisplaySrm, formatRange, GLASS_LABELS, imageEntry, imageCaption, servingTemp } from '../knowledge.js';
 import { buildBeerSummaries, sortSummaries } from '../search.js';
 import { matchByFlavorTags } from '../tasting.js';
 import { glassSvg, rangeBarSvg, ibuScaleSvg, srmScaleSvg, hopArtSvg } from '../illust.js';
@@ -302,6 +302,7 @@ async function renderStyle({ app, outlet, params, isStale }, { images }) {
     ),
     imageNote(photo),
     h('p', { class: 'knowledge-lead', text: st.summary }),
+    serveCard(st, color),
     section(
       '数値（代表的な目安）',
       h(
@@ -316,12 +317,35 @@ async function renderStyle({ app, outlet, params, isStale }, { images }) {
     ),
     section('味わい', h('p', { text: st.flavor })),
     st.history ? section('歴史・由来', h('p', { text: st.history })) : null,
-    st.glass ? section('よく使われるグラス', h('p', { text: GLASS_LABELS[st.glass] || st.glass })) : null,
-    st.pairing.length ? section('合う料理の例', h('ul', { class: 'plain-list' }, st.pairing.map((p) => h('li', { text: p })))) : null,
     myStyleRecords(st, beers, checkins),
     sourcesSection(st.sources),
   );
 }
+
+/** おいしい飲みかた：適温・グラス・合う料理をひと目で */
+function serveCard(st, color) {
+  const temp = servingTemp(st);
+  const tile = (label, icon, value, sub) =>
+    h('div', { class: 'serve-tile' }, h('span', { class: 'serve-icon', 'aria-hidden': 'true' }, icon), h('span', { class: 'serve-label', text: label }), h('strong', { class: 'serve-value', text: value }), sub ? h('span', { class: 'serve-sub', text: sub }) : null);
+  return h(
+    'section',
+    { class: 'panel serve-card' },
+    h('h3', { class: 'section-title', text: 'おいしい飲みかた' }),
+    h(
+      'div',
+      { class: 'serve-grid' },
+      tile('適温', svg(THERMO_SVG), temp ? `${temp.min}〜${temp.max}℃` : '銘柄による', temp ? temp.hint : '造りで変わります'),
+      tile('グラス', svg(glassSvg(st.glass, color)), st.glass ? GLASS_LABELS[st.glass] || st.glass : '好みのグラスで', null),
+    ),
+    st.pairing.length
+      ? h('div', { class: 'serve-pairing' }, h('span', { class: 'serve-label', text: '合う料理' }), h('div', { class: 'chips' }, ...st.pairing.map((p) => h('span', { class: 'chip chip-static', text: p }))))
+      : null,
+    temp ? h('p', { class: 'small muted', text: '適温は CraftBeer.com の目安（華氏）を摂氏に換算しています。' }) : null,
+  );
+}
+
+const THERMO_SVG =
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 13.5V5a2 2 0 1 1 4 0v8.5a4 4 0 1 1-4 0z"/><path d="M12 9v7"/><circle cx="12" cy="17" r="1.6" fill="currentColor"/></svg>';
 
 // ---- 入門（はじめに）詳細 ----
 
