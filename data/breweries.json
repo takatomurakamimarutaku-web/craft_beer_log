@@ -1,6 +1,6 @@
 {
  "meta": {
-  "version": "2026-10-31g",
+  "version": "2026-10-31h",
   "region": "全国47都道府県",
   "attribution": "一部の情報は仙台国税局「東北酒蔵マップ掲載酒類製造者一覧」、関東信越国税局「酒蔵マップ」、東京国税局「酒蔵マップ」を加工して作成",
   "note": "verification: official=公式サイトで確認 / official+secondary=公式＋二次情報 / secondary=報道・業界団体・紹介サイトで確認 / nta-only=国税局一覧のみ。geo.precision: block=街区・番地 / area=大字（数百m〜数km ずれ得る）。座標は国土地理院 住所検索APIの結果。status=closed は一覧・地図に出さない。"
@@ -1264,6 +1264,135 @@
     }
    ],
    "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "kirin-chitose",
+   "name": "キリンビール北海道千歳工場",
+   "nameKana": "きりんびーるほっかいどうちとせこうじょう",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "01",
+   "city": "千歳市",
+   "address": "北海道千歳市上長都949-1",
+   "geo": {
+    "lat": 42.848488,
+    "lng": 141.617233,
+    "precision": "block",
+    "matched": "北海道千歳市上長都９４９番地"
+   },
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": true,
+   "links": {
+    "official": "https://www.kirin.co.jp/experience/factory/chitose/"
+   },
+   "summary": "キリン一番搾りなどを造る大手の工場。予約制の見学ツアーではできたてを試飲でき、ビールレストランと工場限定品の売店もある。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.kirin.co.jp/experience/factory/chitose/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "キリン一番搾り生ビール",
+     "styleId": null
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://www.kirin.co.jp/experience/factory/chitose/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "asahi-hokkaido",
+   "name": "アサヒビール北海道工場",
+   "nameKana": "あさひびーるほっかいどうこうじょう",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "01",
+   "city": "札幌市白石区",
+   "address": "北海道札幌市白石区南郷通4南1-1",
+   "geo": {
+    "lat": 43.041962,
+    "lng": 141.404037,
+    "precision": "area",
+    "matched": "北海道札幌市白石区南郷通四丁目南"
+   },
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": false,
+   "links": {
+    "official": "https://www.asahibeer.co.jp/aboutus/branch/"
+   },
+   "summary": "アサヒスーパードライなどを造る大手の工場。工場見学は終了している。",
+   "verification": "official",
+   "sourceNotes": "公式サイトによると工場見学は終了",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.asahibeer.co.jp/aboutus/branch/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "アサヒスーパードライ",
+     "styleId": null
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://www.asahibeer.co.jp/aboutus/branch/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "sapporo-hokkaido",
+   "name": "サッポロビール北海道工場",
+   "nameKana": "さっぽろびーるほっかいどうこうじょう",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "01",
+   "city": "恵庭市",
+   "address": "北海道恵庭市戸磯542-1",
+   "geo": {
+    "lat": 42.861877,
+    "lng": 141.604279,
+    "precision": "block",
+    "matched": "北海道恵庭市戸磯５４２番地"
+   },
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": true,
+   "links": {
+    "official": "https://www.sapporobeer.jp/brewery/hokkaido/"
+   },
+   "summary": "北海道限定のサッポロ クラシックなどを造る大手の工場。予約制の見学ツアーで試飲ができ、レストランではジンギスカンと生ビールが楽しめる。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.sapporobeer.jp/brewery/hokkaido/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "サッポロ クラシック",
+     "styleId": null
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://www.sapporobeer.jp/brewery/hokkaido/",
+   "profileCheckedAt": "2026-10-31"
   },
   {
    "id": "be-easy-brewing",
@@ -10700,6 +10829,49 @@
    "checkedAt": "2026-10-31"
   },
   {
+   "id": "suntory-musashino",
+   "name": "サントリー〈天然水のビール工場〉東京・武蔵野",
+   "nameKana": "さんとりーてんねんすいのびーるこうじょうとうきょうむさしの",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "13",
+   "city": "府中市",
+   "address": "東京都府中市矢崎町3-1",
+   "geo": {
+    "lat": 35.661243,
+    "lng": 139.478424,
+    "precision": "block",
+    "matched": "東京都府中市矢崎町三丁目１番"
+   },
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": true,
+   "links": {
+    "official": "https://www.suntory.co.jp/factory/musashino/"
+   },
+   "summary": "ザ・プレミアム・モルツなどを造る大手の工場。有料・予約制の見学のあと、注ぎたてを試飲できる。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.suntory.co.jp/factory/musashino/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "ザ・プレミアム・モルツ",
+     "styleId": null
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://www.suntory.co.jp/factory/musashino/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
    "id": "yellow-monkey-brewing",
    "name": "Yellow Monkey Brewing",
    "nameKana": "いえろーもんきーぶるーいんぐ",
@@ -18013,6 +18185,92 @@
    "checkedAt": "2026-10-31"
   },
   {
+   "id": "kirin-nagoya",
+   "name": "キリンビール名古屋工場",
+   "nameKana": "きりんびーるなごやこうじょう",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "23",
+   "city": "清須市",
+   "address": "愛知県清須市寺野花笠100",
+   "geo": {
+    "lat": 35.209686,
+    "lng": 136.850906,
+    "precision": "block",
+    "matched": "愛知県清須市寺野花笠１００番地"
+   },
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": true,
+   "links": {
+    "official": "https://www.kirin.co.jp/experience/factory/nagoya/"
+   },
+   "summary": "キリン一番搾りなどを造る大手の工場。予約制の見学ツアーではできたてを試飲でき、工場限定品の売店もある。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.kirin.co.jp/experience/factory/nagoya/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "キリン一番搾り生ビール",
+     "styleId": null
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://www.kirin.co.jp/experience/factory/nagoya/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "asahi-nagoya",
+   "name": "アサヒビール名古屋工場",
+   "nameKana": "あさひびーるなごやこうじょう",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "23",
+   "city": "名古屋市守山区",
+   "address": "愛知県名古屋市守山区西川原町318",
+   "geo": {
+    "lat": 35.214001,
+    "lng": 136.956131,
+    "precision": "block",
+    "matched": "愛知県名古屋市守山区西川原町３１８番地"
+   },
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": false,
+   "links": {
+    "official": "https://www.asahibeer.co.jp/aboutus/branch/"
+   },
+   "summary": "アサヒスーパードライなどを造る大手の工場。工場見学は終了している。",
+   "verification": "official",
+   "sourceNotes": "公式サイトによると工場見学は終了",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.asahibeer.co.jp/aboutus/branch/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "アサヒスーパードライ",
+     "styleId": null
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://www.asahibeer.co.jp/aboutus/branch/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
    "id": "ise-kadoya",
    "name": "伊勢角屋麦酒",
    "nameKana": "いせかどやびーる",
@@ -18830,6 +19088,49 @@
    "profileCheckedAt": "2026-10-31"
   },
   {
+   "id": "kirin-shiga",
+   "name": "キリンビール滋賀工場",
+   "nameKana": "きりんびーるしがこうじょう",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "25",
+   "city": "犬上郡多賀町",
+   "address": "滋賀県犬上郡多賀町敏満寺1600",
+   "geo": {
+    "lat": 35.223724,
+    "lng": 136.271576,
+    "precision": "block",
+    "matched": "滋賀県多賀町敏満寺１６００番地"
+   },
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": true,
+   "links": {
+    "official": "https://www.kirin.co.jp/experience/factory/siga/beer/"
+   },
+   "summary": "キリン一番搾りなどを造る大手の工場。見学ツアーでは麦汁の味見や仕込釜の見学ができ、工場限定品の売店もある。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.kirin.co.jp/experience/factory/siga/beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "キリン一番搾り生ビール",
+     "styleId": null
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://www.kirin.co.jp/experience/factory/siga/beer/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
    "id": "kizakura-kappa-country",
    "name": "黄桜カッパカントリー",
    "nameKana": "きざくらかっぱかんとりー",
@@ -19384,6 +19685,49 @@
    "profileCheckedAt": "2026-10-31"
   },
   {
+   "id": "suntory-kyoto",
+   "name": "サントリー〈天然水のビール工場〉京都",
+   "nameKana": "さんとりーてんねんすいのびーるこうじょうきょうと",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "26",
+   "city": "長岡京市",
+   "address": "京都府長岡京市調子3-1-1",
+   "geo": {
+    "lat": 34.911293,
+    "lng": 135.696701,
+    "precision": "block",
+    "matched": "京都府長岡京市調子三丁目１番１号"
+   },
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": true,
+   "links": {
+    "official": "https://www.suntory.co.jp/factory/kyoto/"
+   },
+   "summary": "ザ・プレミアム・モルツなどを造る大手の工場。有料・予約制の見学で水へのこだわりを学び、注ぎたてを試飲できる。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.suntory.co.jp/factory/kyoto/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "ザ・プレミアム・モルツ",
+     "styleId": null
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://www.suntory.co.jp/factory/kyoto/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
    "id": "dotonbori-beer",
    "name": "道頓堀地ビール",
    "nameKana": "どうとんぼりじびーる",
@@ -19916,6 +20260,55 @@
     }
    ],
    "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "asahi-suita",
+   "name": "アサヒビール吹田工場（アサヒビールミュージアム）",
+   "nameKana": "あさひびーるすいたこうじょう",
+   "nameEn": null,
+   "aliases": [
+    "アサヒビールミュージアム"
+   ],
+   "prefCode": "27",
+   "city": "吹田市",
+   "address": "大阪府吹田市西の庄町1-45",
+   "geo": {
+    "lat": 34.761406,
+    "lng": 135.521042,
+    "precision": "block",
+    "matched": "大阪府吹田市西の庄町１番４５号"
+   },
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": true,
+   "links": {
+    "official": "https://www.asahibeer.co.jp/aboutus/branch/"
+   },
+   "summary": "アサヒスーパードライなどを造る大手の工場。見学施設「アサヒビールミュージアム」では、れんがの建物や製造工程を見たあと、できたてを試飲できる。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.asahibeer.co.jp/aboutus/branch/"
+    },
+    {
+     "label": "住所の確認に使ったページ",
+     "url": "https://osaka-info.jp/experience/ja/osaka/spot/438"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "アサヒスーパードライ",
+     "styleId": null
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://www.asahibeer.co.jp/aboutus/branch/",
+   "profileCheckedAt": "2026-10-31"
   },
   {
    "id": "rokko-beer",
@@ -20575,6 +20968,49 @@
     }
    ],
    "profileSource": "https://www.tsukarenaosu.co.jp/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "kirin-kobe",
+   "name": "キリンビール神戸工場",
+   "nameKana": "きりんびーるこうべこうじょう",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "28",
+   "city": "神戸市北区",
+   "address": "兵庫県神戸市北区赤松台2-1-1",
+   "geo": {
+    "lat": 34.878235,
+    "lng": 135.178513,
+    "precision": "block",
+    "matched": "兵庫県神戸市北区赤松台二丁目１番"
+   },
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": true,
+   "links": {
+    "official": "https://www.kirin.co.jp/experience/factory/kobe/"
+   },
+   "summary": "キリン一番搾りなどを造る大手の工場。見学ツアーではできたてを試飲でき、地元食材のレストランと売店もある。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.kirin.co.jp/experience/factory/kobe/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "キリン一番搾り生ビール",
+     "styleId": null
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://www.kirin.co.jp/experience/factory/kobe/",
    "profileCheckedAt": "2026-10-31"
   },
   {
@@ -22206,6 +22642,49 @@
     "european"
    ],
    "profileSource": "https://tagobrewery.co.jp/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "kirin-okayama",
+   "name": "キリンビール岡山工場",
+   "nameKana": "きりんびーるおかやまこうじょう",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "33",
+   "city": "岡山市東区",
+   "address": "岡山県岡山市東区瀬戸町万富678",
+   "geo": {
+    "lat": 34.754631,
+    "lng": 134.07811,
+    "precision": "block",
+    "matched": "岡山県岡山市東区瀬戸町万富６７８番地"
+   },
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": true,
+   "links": {
+    "official": "https://www.kirin.co.jp/experience/factory/okayama/"
+   },
+   "summary": "キリン一番搾りなどを造る大手の工場。見学ツアーの最後に工場直送の一番搾りを試飲でき、工場限定品の売店もある。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.kirin.co.jp/experience/factory/okayama/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "キリン一番搾り生ビール",
+     "styleId": null
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://www.kirin.co.jp/experience/factory/okayama/",
    "profileCheckedAt": "2026-10-31"
   },
   {
@@ -25085,6 +25564,92 @@
    "profileCheckedAt": "2026-10-31"
   },
   {
+   "id": "kirin-fukuoka",
+   "name": "キリンビール福岡工場",
+   "nameKana": "きりんびーるふくおかこうじょう",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "40",
+   "city": "朝倉市",
+   "address": "福岡県朝倉市馬田3601番地",
+   "geo": {
+    "lat": 33.409443,
+    "lng": 130.625977,
+    "precision": "block",
+    "matched": "福岡県朝倉市馬田３６０１番地"
+   },
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": true,
+   "links": {
+    "official": "https://www.kirin.co.jp/experience/factory/fukuoka/"
+   },
+   "summary": "キリン一番搾りなどを造る大手の工場。見学ツアーではできたてを試飲でき、レストラン「キリンビアファーム」と売店もある。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.kirin.co.jp/experience/factory/fukuoka/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "キリン一番搾り生ビール",
+     "styleId": null
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://www.kirin.co.jp/experience/factory/fukuoka/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "asahi-hakata",
+   "name": "アサヒビール博多工場",
+   "nameKana": "あさひびーるはかたこうじょう",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "40",
+   "city": "福岡市博多区",
+   "address": "福岡県福岡市博多区竹下3-1-1",
+   "geo": {
+    "lat": 33.572544,
+    "lng": 130.43187,
+    "precision": "block",
+    "matched": "福岡県福岡市博多区竹下三丁目１番"
+   },
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": false,
+   "links": {
+    "official": "https://www.asahibeer.co.jp/aboutus/branch/"
+   },
+   "summary": "アサヒスーパードライなどを造る大手の工場。工場見学は終了している。",
+   "verification": "official",
+   "sourceNotes": "公式サイトによると工場見学は終了",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.asahibeer.co.jp/aboutus/branch/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "アサヒスーパードライ",
+     "styleId": null
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://www.asahibeer.co.jp/aboutus/branch/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
    "id": "saga-armstrong",
    "name": "佐賀アームストロング醸造所",
    "nameKana": "さがあーむすとろんぐじょうぞうしょ",
@@ -25519,6 +26084,49 @@
    "checkedAt": "2026-10-31"
   },
   {
+   "id": "suntory-kyushu-kumamoto",
+   "name": "サントリー九州熊本工場",
+   "nameKana": "さんとりーきゅうしゅうくまもとこうじょう",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "43",
+   "city": "上益城郡嘉島町",
+   "address": "熊本県上益城郡嘉島町大字北甘木字八幡水478",
+   "geo": {
+    "lat": 32.743855,
+    "lng": 130.78186,
+    "precision": "area",
+    "matched": "熊本県嘉島町北甘木"
+   },
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": true,
+   "links": {
+    "official": "https://www.suntory.co.jp/factory/kyushu-kumamoto/"
+   },
+   "summary": "ビール類と天然水・清涼飲料を造るサントリーの工場。有料・予約制の見学のあと、ザ・プレミアム・モルツを試飲できる。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.suntory.co.jp/factory/kyushu-kumamoto/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "ザ・プレミアム・モルツ",
+     "styleId": null
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://www.suntory.co.jp/factory/kyushu-kumamoto/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
    "id": "monkey-mountain",
    "name": "Monkey Mountain（Funai Brewery）",
    "nameKana": "もんきーまうんてん",
@@ -25764,6 +26372,49 @@
     }
    ],
    "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "sapporo-kyushu-hita",
+   "name": "サッポロビール九州日田工場",
+   "nameKana": "さっぽろびーるきゅうしゅうひたこうじょう",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "44",
+   "city": "日田市",
+   "address": "大分県日田市大字高瀬6979",
+   "geo": {
+    "lat": 33.292564,
+    "lng": 130.945038,
+    "precision": "block",
+    "matched": "大分県日田市高瀬６９７９番地"
+   },
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": true,
+   "links": {
+    "official": "https://www.sapporobeer.jp/brewery/kyushuhita/"
+   },
+   "summary": "サッポロビールの九州の工場。見学ツアーのほか、日田の街を見渡せるラウンジや500席のビール園レストランがある。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.sapporobeer.jp/brewery/kyushuhita/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "サッポロ生ビール黒ラベル",
+     "styleId": null
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://www.sapporobeer.jp/brewery/kyushuhita/",
+   "profileCheckedAt": "2026-10-31"
   },
   {
    "id": "bmb-brewery",
@@ -26957,6 +27608,49 @@
     }
    ],
    "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "orion-nago",
+   "name": "オリオンビール名護工場（オリオンハッピーパーク）",
+   "nameKana": "おりおんびーるなごこうじょう",
+   "nameEn": null,
+   "aliases": [
+    "オリオンハッピーパーク"
+   ],
+   "prefCode": "47",
+   "city": "名護市",
+   "address": "沖縄県名護市東江2-2-1",
+   "geo": {
+    "lat": 26.58708,
+    "lng": 127.98822,
+    "precision": "block",
+    "matched": "沖縄県名護市東江二丁目２番１号"
+   },
+   "kind": "major",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": true,
+   "links": {},
+   "summary": "沖縄のオリオンビールの工場。見学施設「オリオンハッピーパーク」は予約制で、見学のあとにできたてを試飲できる。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "住所の確認に使ったページ",
+     "url": "https://rurubu.jp/andmore/spot/80042873"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "オリオン ザ・ドラフト",
+     "styleId": null
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://rurubu.jp/andmore/spot/80042873",
+   "profileCheckedAt": "2026-10-31"
   }
  ]
 }
