@@ -207,3 +207,42 @@ export function searchBeers(summaries, criteria) {
   const c = { ...defaultCriteria(), ...criteria };
   return sortSummaries(summaries.filter((s) => matchesCriteria(s, c)), c.sort, c.order);
 }
+
+/**
+ * 似ている銘柄（記録済みの銘柄から）。同じスタイル・同じ系統・近い度数・共通の香りタグで点を付け、上位 n 件。
+ * @param {object} beer 基準の銘柄
+ * @param {ReturnType<typeof buildBeerSummaries>} summaries 全銘柄の集計
+ * @returns {Array<{ summary, score: number, reasons: string[] }>}
+ */
+export function similarBeers(beer, summaries, styles, { n = 4, minScore = 2 } = {}) {
+  const styleById = new Map(styles.map((s) => [s.id, s]));
+  const base = summaries.find((s) => s.beer.id === beer.id);
+  const baseTags = base ? base.flavorTags : new Set();
+  const cat = styleById.get(beer.styleId)?.category;
+  const out = [];
+  for (const s of summaries) {
+    const b = s.beer;
+    if (b.id === beer.id || !s.count) continue;
+    let score = 0;
+    const reasons = [];
+    if (beer.styleId && b.styleId === beer.styleId) {
+      score += 3;
+      reasons.push('同じスタイル');
+    } else if (cat && styleById.get(b.styleId)?.category === cat) {
+      score += 1;
+      reasons.push('同じ系統');
+    }
+    if (typeof beer.abv === 'number' && typeof b.abv === 'number' && Math.abs(beer.abv - b.abv) <= 1) {
+      score += 1;
+      reasons.push('近い度数');
+    }
+    const shared = [...s.flavorTags].filter((t) => baseTags.has(t)).length;
+    if (shared) {
+      score += Math.min(shared, 3);
+      reasons.push('似た香り');
+    }
+    if (score >= minScore) out.push({ summary: s, score, reasons });
+  }
+  // 点が同じなら評価の高い順
+  return out.sort((a, b) => b.score - a.score || (b.summary.avgRating ?? 0) - (a.summary.avgRating ?? 0)).slice(0, n);
+}

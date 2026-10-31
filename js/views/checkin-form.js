@@ -8,7 +8,7 @@ import { beerFields } from './beer-fields.js';
 import { TASTE_AXES, TASTE_MAX, TASTE_TAGS, groupFlavorTags, hasScores } from '../tasting.js';
 import { errorText } from '../errors.js';
 import { joinEvents, eventsOnDate } from '../events.js';
-import { announceNewBadges } from './collection.js';
+import { celebrateCheckin } from './collection.js';
 import { beerColor } from '../knowledge.js';
 
 /** 記録画面の「すばやく選ぶ」：最近飲んだ銘柄（新しい順・重複なし）を6件、続けて飲みたいリストを3件 */
@@ -589,14 +589,14 @@ export async function render({ app, outlet, params, query }) {
         // イベントでは何杯も続けて飲むので、同じイベント・日付ですぐ次を記録できるようにする
         const next = `#/checkin/new?eventId=${encodeURIComponent(event.id)}&date=${record.date}`;
         showToast('記録しました', { actionLabel: '同じイベントで続けて記録', onAction: () => app.navigate(next), duration: 8000 });
-      } else {
-        showToast(editing ? '保存しました' : '記録しました');
+      } else if (editing) {
+        showToast('保存しました');
       }
       // 編集は元の画面へ戻る。新規は銘柄詳細へ置き換えて遷移（戻る操作でフォームに戻らないように）
       if (editing) app.goBack(`#/beer/${encodeURIComponent(beerId)}`);
       else app.navigate(`#/beer/${encodeURIComponent(beerId)}`, { replace: true });
-      // 新しいバッジがあれば、保存のトーストの後に知らせる（イベントで続けて記録するときは、その案内を消さないよう次回に回す）
-      if (!editing && !event) setTimeout(() => announceNewBadges(app), 2500);
+      // 新規は何杯目か・はじめてのスタイル・新しいバッジをまとめて知らせる（イベントで続けて記録するときは、その案内を消さないよう次回に回す）
+      if (!editing && !event) celebrateCheckin(app, beerId);
     } catch (e) {
       console.error(e);
       showToast(errorText(e, '保存'), { duration: 8000 });
