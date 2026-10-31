@@ -163,3 +163,20 @@ test('images.json：対象のID・ファイルの存在・ライセンス表記'
     }
   }
 });
+
+test('flights.json：飲み比べセットは2種類以上で、スタイルが存在する', () => {
+  const flights = load('flights');
+  const styleIds = new Set(load('styles').map((s) => s.id));
+  const ids = new Set();
+  for (const f of flights) {
+    assert.match(f.id, /^[a-z0-9-]+$/);
+    assert.ok(!ids.has(f.id), `${f.id}: ID が重複`);
+    ids.add(f.id);
+    assert.ok(f.title && f.lead, `${f.id}: title / lead`);
+    assert.ok(Array.isArray(f.items) && f.items.length >= 2, `${f.id}: items`);
+    for (const i of f.items) {
+      assert.ok(styleIds.has(i.styleId), `${f.id}: スタイル ${i.styleId} が存在しない`);
+      assert.ok(i.point && i.point.trim(), `${f.id}: point`);
+    }
+  }
+});
