@@ -1,5 +1,6 @@
 // イベント（#/events 一覧、#/event/:id 詳細）
 import { h, emptyState, segmented, formatDate, starsView, showToast } from '../ui.js';
+import { imageEntry } from '../knowledge.js';
 import {
   joinEvents,
   filterEvents,
@@ -48,7 +49,11 @@ function saveState(s) {
 }
 
 export async function render(ctx) {
-  const [data, planList] = await Promise.all([ctx.app.loadEvents(), ctx.app.db.listEventPlans().catch(() => [])]);
+  const [data, planList, images] = await Promise.all([
+    ctx.app.loadEvents(),
+    ctx.app.db.listEventPlans().catch(() => []),
+    ctx.app.loadKnowledge().then((k) => k.images, () => ({})),
+  ]);
   if (ctx.isStale()) return;
   if (!data) {
     ctx.outlet.replaceChildren(
@@ -59,7 +64,8 @@ export async function render(ctx) {
     );
     return;
   }
-  const events = joinEvents(data);
+  // 画像はシリーズの告知画像、無ければ関係する醸造所のロゴ
+  const events = joinEvents(data).map((e) => ({ ...e, image: imageEntry(images, 'events', e.seriesId) || imageEntry(images, 'breweries', e.breweryIds[0]) }));
   const plans = new Map(planList.map((p) => [p.id, p]));
   const today = localDateString();
   if (ctx.params.id) return renderDetail(ctx, events, plans, today);
@@ -167,7 +173,8 @@ function cardList(list, plans, today) {
         {},
         h(
           'a',
-          { class: 'card card-text event-card', href: `#/event/${encodeURIComponent(e.id)}` },
+          { class: `card event-card${e.image ? '' : ' card-text'}`, href: `#/event/${encodeURIComponent(e.id)}` },
+          e.image ? h('div', { class: 'thumb' }, photo(e.image, 'event-thumb')) : null,
           h(
             'div',
             { class: 'card-body' },
@@ -180,6 +187,13 @@ function cardList(list, plans, today) {
       ),
     ),
   );
+}
+
+/** 告知画像。読めないとき（オフラインで未取得など）は消す */
+function photo(entry, cls) {
+  const img = h('img', { src: entry.file, alt: '', loading: 'lazy', decoding: 'async', class: cls });
+  img.addEventListener('error', () => img.remove(), { once: true });
+  return img;
 }
 
 /** 状態のバッジ（参加状況・開催中・中止・延期・予告・情報が古い可能性） */
@@ -242,6 +256,8 @@ async function renderDetail({ app, outlet, params, isStale: stale }, events, pla
     h(
       'section',
       { class: 'panel event-head' },
+      e.image ? h('div', { class: 'event-hero' }, photo(e.image, 'event-hero-img')) : null,
+      e.image ? h('p', { class: 'small muted image-note', text: '画像：公式サイトより（権利未確認・テスト用）' }) : null,
       h('h2', { class: `event-name${e.status === 'cancelled' ? ' event-cancelled' : ''}`, text: e.name }),
       badges(e, null, today, 'card-foot'),
       h('p', { class: 'event-dates', text: formatEventDates(e.startDate, e.endDate) }),
