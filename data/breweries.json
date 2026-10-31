@@ -1,11 +1,1270 @@
 {
  "meta": {
-  "version": "2026-10-31f",
-  "region": "東北6県・関東1都6県・北陸・甲信越6県・東海4県・近畿2府4県・中国5県・四国4県・九州・沖縄8県",
+  "version": "2026-10-31g",
+  "region": "全国47都道府県",
   "attribution": "一部の情報は仙台国税局「東北酒蔵マップ掲載酒類製造者一覧」、関東信越国税局「酒蔵マップ」、東京国税局「酒蔵マップ」を加工して作成",
   "note": "verification: official=公式サイトで確認 / official+secondary=公式＋二次情報 / secondary=報道・業界団体・紹介サイトで確認 / nta-only=国税局一覧のみ。geo.precision: block=街区・番地 / area=大字（数百m〜数km ずれ得る）。座標は国土地理院 住所検索APIの結果。status=closed は一覧・地図に出さない。"
  },
  "breweries": [
+  {
+   "id": "moon-sun-brewing",
+   "name": "月と太陽BREWING",
+   "nameKana": "つきとたいようぶるーいんぐ",
+   "nameEn": "Moon & Sun Brewing",
+   "aliases": [],
+   "prefCode": "01",
+   "city": "札幌市中央区",
+   "address": "北海道札幌市中央区南3条東1-3",
+   "geo": {
+    "lat": 43.057751,
+    "lng": 141.358597,
+    "precision": "block",
+    "matched": "北海道札幌市中央区南三条東一丁目３番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://moonsunbrewing.jp/"
+   },
+   "summary": "札幌市中央区、創成川公園そばの醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "アルファ創成川公園ビル1階",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://moonsunbrewing.jp/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/hokkaido-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "susukino-jibeer",
+   "name": "薄野地麦酒",
+   "nameKana": "すすきのじびーる",
+   "nameEn": "Susukino Ji-Beer",
+   "aliases": [
+    "すすきの地ビール"
+   ],
+   "prefCode": "01",
+   "city": "札幌市中央区",
+   "address": "北海道札幌市中央区北4条西4丁目1番地",
+   "geo": {
+    "lat": 43.065773,
+    "lng": 141.349976,
+    "precision": "block",
+    "matched": "北海道札幌市中央区北四条西四丁目１番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 1999,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://susukino-jibeer.com/"
+   },
+   "summary": "札幌の醸造所。1999年創業。ピルスナーやメルツェンなどドイツ系のラガーが中心。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は CRAFT BEER LAB（醸造所のみでパブなし）。Beer Tengoku（2018年）は南6条西4-1-5と記載",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://susukino-jibeer.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/hokkaido-craft-beer/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2018/12/28/susukino-ji-beer-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "ピルスナー",
+     "styleId": "pilsner"
+    },
+    {
+     "name": "夕張炭鉱ダークラガー",
+     "styleId": "schwarzbier"
+    },
+    {
+     "name": "メルツェン",
+     "styleId": "marzen"
+    }
+   ],
+   "features": [
+    "european"
+   ],
+   "profileSource": "https://susukino-jibeer.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "trans-brewing",
+   "name": "TRANSBREWING",
+   "nameKana": "とらんすぶるーいんぐ",
+   "nameEn": "Trans Brewing",
+   "aliases": [
+    "トランスブルーイング"
+   ],
+   "prefCode": "01",
+   "city": "札幌市豊平区",
+   "address": "北海道札幌市豊平区平岸2条3-2-39",
+   "geo": {
+    "lat": 43.040184,
+    "lng": 141.368927,
+    "precision": "block",
+    "matched": "北海道札幌市豊平区平岸二条三丁目２番３９号"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2021,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://transbrewing.com/",
+    "instagram": "https://www.instagram.com/transbrewing_beer_stand/"
+   },
+   "summary": "札幌市豊平区平岸の醸造所。2021年4月開業。狸小路にビアスタンドがある。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は Beer Tengoku の英語表記を地理院の住所検索で照合。CRAFT BEER LAB 掲載の「TRANS BREWING BEER STAND」は中央区南2条西5丁目（狸小路横丁内）",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://transbrewing.com/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2025/09/26/trans-brewing-information/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/hokkaido-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "susukino-brewing",
+   "name": "すすきのブリューイング",
+   "nameKana": "すすきのぶるーいんぐ",
+   "nameEn": "Susukino Brewing",
+   "aliases": [
+    "Susukino Yell"
+   ],
+   "prefCode": "01",
+   "city": "札幌市中央区",
+   "address": "北海道札幌市中央区南7条西3丁目7番地9",
+   "geo": {
+    "lat": 43.051895,
+    "lng": 141.354645,
+    "precision": "block",
+    "matched": "北海道札幌市中央区南七条西三丁目７番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2021,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://susukino-brewing.com/"
+   },
+   "summary": "札幌・すすきのの醸造所。2021年開業。「Susukino Yell」の名でセゾンやヴァイツェンなどを造る。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://susukino-brewing.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/hokkaido-craft-beer/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2025/12/26/susukino-brewing-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Susukino Yell Saison",
+     "styleId": "saison"
+    },
+    {
+     "name": "Susukino Yell Session IPA",
+     "styleId": "session-ipa"
+    },
+    {
+     "name": "Susukino Yell Weizen",
+     "styleId": "weizen"
+    }
+   ],
+   "profileSource": "https://susukino-brewing.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "hirara-sumikawa-bakushu",
+   "name": "ビアパブ ひらら（澄川麦酒）",
+   "nameKana": "すみかわばくしゅ",
+   "nameEn": "Sumikawa Bakushu",
+   "aliases": [
+    "澄川麦酒",
+    "ひらら"
+   ],
+   "prefCode": "01",
+   "city": "札幌市南区",
+   "address": "北海道札幌市南区澄川4条3丁目4番6号",
+   "geo": {
+    "lat": 43.015072,
+    "lng": 141.367218,
+    "precision": "block",
+    "matched": "北海道札幌市南区澄川四条三丁目４番６号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://bar-hirara.com/"
+   },
+   "summary": "札幌市南区澄川の醸造所併設パブ。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://bar-hirara.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/hokkaido-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "hm-works-ozigi",
+   "name": "H.M.Works ozigi 函館麦酒醸造所",
+   "nameKana": "えいちえむわーくすおじぎ",
+   "nameEn": "H.M.Works ozigi",
+   "aliases": [],
+   "prefCode": "01",
+   "city": "函館市",
+   "address": "北海道函館市末広町16-13",
+   "geo": {
+    "lat": 41.765011,
+    "lng": 140.716293,
+    "precision": "block",
+    "matched": "北海道函館市末広町１６番１３号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "instagram": "https://www.instagram.com/ozigibrewing/"
+   },
+   "summary": "函館市末広町の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/hokkaido-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "endeavour-hakodate-yunokawa",
+   "name": "Endeavour 函館湯川店",
+   "nameKana": "えんでばーはこだてゆのかわ",
+   "nameEn": "Endeavour Hakodate Yunokawa",
+   "aliases": [],
+   "prefCode": "01",
+   "city": "函館市",
+   "address": "北海道函館市湯川町1丁目26-24",
+   "geo": {
+    "lat": 41.780258,
+    "lng": 140.784561,
+    "precision": "block",
+    "matched": "北海道函館市湯川町一丁目２６番２４号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://www.shop-endeavour.jp/index.html"
+   },
+   "summary": "函館市湯川町の醸造所併設店。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://www.shop-endeavour.jp/index.html"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/hokkaido-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "hakodate-beer",
+   "name": "はこだてビール",
+   "nameKana": "はこだてびーる",
+   "nameEn": "Hakodate Beer",
+   "aliases": [],
+   "prefCode": "01",
+   "city": "函館市",
+   "address": "北海道函館市大手町5-22",
+   "geo": {
+    "lat": 41.768497,
+    "lng": 140.721924,
+    "precision": "block",
+    "matched": "北海道函館市大手町５番２２号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.hakodate-factory.com/beer/"
+   },
+   "summary": "函館市大手町の醸造所。アルトやケルシュなどドイツ・英国系が中心。",
+   "verification": "official+secondary",
+   "sourceNotes": "明治館通り",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.hakodate-factory.com/beer/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/hokkaido-craft-beer/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2016/06/04/hakodate-beer-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "アルト",
+     "styleId": "altbier"
+    },
+    {
+     "name": "ケルシュ",
+     "styleId": "kolsch"
+    },
+    {
+     "name": "エール",
+     "styleId": "bitter"
+    }
+   ],
+   "features": [
+    "european"
+   ],
+   "profileSource": "https://www.hakodate-factory.com/beer/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "otaru-beer",
+   "name": "小樽ビール",
+   "nameKana": "おたるびーる",
+   "nameEn": "Otaru Beer",
+   "aliases": [
+    "小樽倉庫No.1"
+   ],
+   "prefCode": "01",
+   "city": "小樽市",
+   "address": "北海道小樽市銭函3-263-19",
+   "geo": {
+    "lat": 43.140865,
+    "lng": 141.173828,
+    "precision": "block",
+    "matched": "北海道小樽市銭函三丁目２６３番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "https://otarubeer.com/jp/"
+   },
+   "summary": "ドイツの伝統製法で造る小樽の醸造所。運河沿いの倉庫を使ったビアパブ「小樽倉庫No.1」がある。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は銭函の醸造所（Beer Tengoku の英語表記を地理院で照合）。運河沿いのビアパブ「小樽倉庫No.1」は港町5-4",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://otarubeer.com/jp/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2019/01/25/otaru-beer-information/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/hokkaido-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "ピルスナー",
+     "styleId": "pilsner"
+    },
+    {
+     "name": "ドンケル",
+     "styleId": "dunkel"
+    },
+    {
+     "name": "ヴァイス",
+     "styleId": "weizen"
+    }
+   ],
+   "features": [
+    "european"
+   ],
+   "profileSource": "https://otarubeer.com/jp/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "otaru-winery-beer",
+   "name": "おたるワイナリービール",
+   "nameKana": "おたるわいなりーびーる",
+   "nameEn": "Otaru Winery Beer",
+   "aliases": [],
+   "prefCode": "01",
+   "city": "小樽市",
+   "address": "北海道小樽市朝里川温泉1丁目130番地",
+   "geo": {
+    "lat": 43.153954,
+    "lng": 141.0242,
+    "precision": "block",
+    "matched": "北海道小樽市朝里川温泉一丁目１３０番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.hokkaidowine.com/index.html"
+   },
+   "summary": "小樽市朝里川温泉の醸造所。公式の案内は北海道ワインのサイト内にある。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.hokkaidowine.com/index.html"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/hokkaido-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "yoteizanroku-beer",
+   "name": "羊蹄山麓ビール",
+   "nameKana": "ようていさんろくびーる",
+   "nameEn": "Yoteizanroku Beer",
+   "aliases": [],
+   "prefCode": "01",
+   "city": "虻田郡倶知安町",
+   "address": "北海道虻田郡倶知安町字樺山58-5",
+   "geo": {
+    "lat": 42.841953,
+    "lng": 140.702972,
+    "precision": "area",
+    "matched": "北海道倶知安町樺山"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://villa.lupicia.co.jp/ja/"
+   },
+   "summary": "倶知安町樺山の醸造所。公式の案内はヴィラ ルピシアのサイト内にある。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://villa.lupicia.co.jp/ja/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/hokkaido-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "bifuka-shirakaba-brewery",
+   "name": "美深白樺ブルワリー",
+   "nameKana": "びふかしらかばぶるわりー",
+   "nameEn": "Bifuka Shirakaba Brewery",
+   "aliases": [],
+   "prefCode": "01",
+   "city": "中川郡美深町",
+   "address": "北海道中川郡美深町大通北4丁目9番地",
+   "geo": {
+    "lat": 44.485249,
+    "lng": 142.344727,
+    "precision": "area",
+    "matched": "北海道美深町大通北四丁目"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.bifukashirakaba-brewery.site/"
+   },
+   "summary": "道北の美深町の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.bifukashirakaba-brewery.site/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/hokkaido-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "okhotsk-beer",
+   "name": "オホーツクビアファクトリー",
+   "nameKana": "おほーつくびあふぁくとりー",
+   "nameEn": "Okhotsk Beer Factory",
+   "aliases": [],
+   "prefCode": "01",
+   "city": "北見市",
+   "address": "北海道北見市山下町2丁目2-2",
+   "geo": {
+    "lat": 43.804512,
+    "lng": 143.888046,
+    "precision": "block",
+    "matched": "北海道北見市山下町二丁目２番２号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://www.beers.co.jp/"
+   },
+   "summary": "北見市山下町の醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://www.beers.co.jp/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/hokkaido-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "hop-kotan",
+   "name": "忽布古丹醸造",
+   "nameKana": "ほっぷこたんじょうぞう",
+   "nameEn": "Hop Kotan Brewing",
+   "aliases": [
+    "ほっぷこたんじょうぞう"
+   ],
+   "prefCode": "01",
+   "city": "空知郡上富良野町",
+   "address": "北海道空知郡上富良野町西8線北33号",
+   "geo": {
+    "lat": 43.513458,
+    "lng": 142.450195,
+    "precision": "area",
+    "matched": "北海道上富良野町西八線北三十三号"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2018,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://hopkotan.com/"
+   },
+   "summary": "ホップ産地の上富良野町の醸造所。2018年8月開業。ハスカップを使ったファームハウスエールなど。",
+   "verification": "official+secondary",
+   "sourceNotes": "札幌市中心部にタップルームがある（Beer Tengoku）",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://hopkotan.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/hokkaido-craft-beer/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2020/02/14/hop-kotan-brewing-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Haskap",
+     "styleId": "saison"
+    },
+    {
+     "name": "Nonno",
+     "styleId": "pale-ale"
+    }
+   ],
+   "features": [
+    "local",
+    "fruit"
+   ],
+   "profileSource": "http://hopkotan.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "streetlight-brewing",
+   "name": "ストリートライト・ブルーイング",
+   "nameKana": "すとりーとらいとぶるーいんぐ",
+   "nameEn": "Streetlight Brewing",
+   "aliases": [],
+   "prefCode": "01",
+   "city": "札幌市中央区",
+   "address": "北海道札幌市中央区北10条西19丁目1-1",
+   "geo": {
+    "lat": 43.07003,
+    "lng": 141.324692,
+    "precision": "block",
+    "matched": "北海道札幌市中央区北十条西十九丁目１番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": 2022,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "https://streetlight.jp/"
+   },
+   "summary": "札幌市中央区（桑園）の醸造所。2022年12月にタップルームを開き、2023年に醸造開始。店から設備が見える。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は Beer Tengoku の英語表記を地理院の住所検索で照合",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://streetlight.jp/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2024/10/04/streetlight-brewing-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "NZHZ",
+     "styleId": "hazy-ipa"
+    },
+    {
+     "name": "Chocolate Stout",
+     "styleId": "stout"
+    },
+    {
+     "name": "Hi Lucifer",
+     "styleId": "belgian-strong"
+    }
+   ],
+   "profileSource": "https://streetlight.jp/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "41-beer-craft-works",
+   "name": "41 Beer Craft Works",
+   "nameKana": "よんいちびあくらふとわーくす",
+   "nameEn": "41 Beer Craft Works",
+   "aliases": [
+    "余市ビール"
+   ],
+   "prefCode": "01",
+   "city": "余市郡余市町",
+   "address": "北海道余市郡余市町黒川町8-7",
+   "geo": {
+    "lat": 43.185047,
+    "lng": 140.793243,
+    "precision": "block",
+    "matched": "北海道余市町黒川町八丁目７番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2021,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://www.yoichibeer.com/"
+   },
+   "summary": "余市町黒川町の醸造所。2021年開業。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は Beer Tengoku の英語表記を地理院の住所検索で照合",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://www.yoichibeer.com/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2022/09/30/41-beer-craft-works-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Kamifu Sawamachi",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "Chardonnay Farmhouse Ale",
+     "styleId": "saison"
+    },
+    {
+     "name": "Shiripa IPA",
+     "styleId": "ipa"
+    }
+   ],
+   "profileSource": "http://www.yoichibeer.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "otobe-oiwake-brewing",
+   "name": "北海道乙部追分ブルーイング",
+   "nameKana": "ほっかいどうおとべおいわけぶるーいんぐ",
+   "nameEn": "Hokkaido Otobe Oiwake Brewing",
+   "aliases": [],
+   "prefCode": "01",
+   "city": "爾志郡乙部町",
+   "address": "北海道爾志郡乙部町字館浦686-2",
+   "geo": {
+    "lat": 41.980453,
+    "lng": 140.146835,
+    "precision": "area",
+    "matched": "北海道乙部町館浦"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2018,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://www.guild-endeavour.jp/",
+    "shop": "https://otobebeer.official.ec/"
+   },
+   "summary": "道南の乙部町の醸造所。2018年8月開業。英国系IPAやヴァイツェンなど。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は Beer Tengoku の英語表記を地理院の住所検索で照合",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://www.guild-endeavour.jp/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2022/05/13/hokkaido-otobe-oiwake-brewing-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "乙部追分IPA",
+     "styleId": "english-ipa"
+    },
+    {
+     "name": "乙部ペールエール",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "乙部ヴァイツェン",
+     "styleId": "weizen"
+    }
+   ],
+   "features": [
+    "european"
+   ],
+   "profileSource": "http://www.guild-endeavour.jp/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "pirikawakka",
+   "name": "北海道ビール ピリカワッカ",
+   "nameKana": "ほっかいどうびーるぴりかわっか",
+   "nameEn": "Hokkaido Beer Pirikawakka",
+   "aliases": [
+    "ピリカワッカ"
+   ],
+   "prefCode": "01",
+   "city": "千歳市",
+   "address": "北海道千歳市東郊1丁目7-1",
+   "geo": {
+    "lat": 42.836796,
+    "lng": 141.660034,
+    "precision": "block",
+    "matched": "北海道千歳市東郊一丁目７番１号"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 1998,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://www.hokkaido-honpo.jp/products.html"
+   },
+   "summary": "千歳市の醸造所。1998年8月開業。ピルスナー、ヴァイツェン、スタウトが定番。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は Beer Tengoku の英語表記を地理院の住所検索で照合",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://www.hokkaido-honpo.jp/products.html"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2019/02/22/hokkaido-beer-pirikawakka-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "ピルスナー",
+     "styleId": "pilsner"
+    },
+    {
+     "name": "ヴァイツェン",
+     "styleId": "weizen"
+    },
+    {
+     "name": "スタウト",
+     "styleId": "stout"
+    }
+   ],
+   "features": [
+    "european"
+   ],
+   "profileSource": "http://www.hokkaido-honpo.jp/products.html",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "taisetsu-jibeer",
+   "name": "大雪地ビール",
+   "nameKana": "たいせつじびーる",
+   "nameEn": "Taisetsu Ji-Beer",
+   "aliases": [],
+   "prefCode": "01",
+   "city": "旭川市",
+   "address": "北海道旭川市宮下通11丁目1604-1",
+   "geo": {
+    "lat": 43.76265,
+    "lng": 142.363724,
+    "precision": "block",
+    "matched": "北海道旭川市宮下通十一丁目１６０４番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": 1996,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://ji-beer.com/"
+   },
+   "summary": "旭川市の醸造所。1996年創業。醸造所とレストランは登録有形文化財の建物にある。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は Beer Tengoku の英語表記を地理院の住所検索で照合",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://ji-beer.com/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2018/10/05/taisetsu-ji-beer-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Akatsuki IPA",
+     "styleId": "ipa"
+    },
+    {
+     "name": "Furano Ohmugi",
+     "styleId": "pilsner"
+    },
+    {
+     "name": "Kellar Piruka",
+     "styleId": "amber-ale"
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://ji-beer.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "oni-densetsu",
+   "name": "鬼伝説ビール（登別地ビール）",
+   "nameKana": "おにでんせつびーる",
+   "nameEn": "Oni Densetsu Brewery",
+   "aliases": [
+    "登別地ビール",
+    "わかさいも本舗"
+   ],
+   "prefCode": "01",
+   "city": "登別市",
+   "address": "北海道登別市中登別町96-6",
+   "geo": {
+    "lat": 42.46476,
+    "lng": 141.178955,
+    "precision": "block",
+    "matched": "北海道登別市中登別町９６番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": 1998,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.wakasaimo.com/onidensetsu/"
+   },
+   "summary": "登別の菓子メーカー、わかさいも本舗が1998年に始めた醸造所。ペールエールやIPAが中心。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は Beer Tengoku の英語表記を地理院の住所検索で照合",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.wakasaimo.com/onidensetsu/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2017/05/26/oni-densetsu-brewery-information/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2024/01/29/prefecture-focus-craft-beers-of-hokkaido/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "金鬼ペールエール",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "ピルスナー",
+     "styleId": "pilsner"
+    },
+    {
+     "name": "レッドエール",
+     "styleId": "brown-ale"
+    }
+   ],
+   "profileSource": "https://www.wakasaimo.com/onidensetsu/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "onuma-beer",
+   "name": "大沼ビール",
+   "nameKana": "おおぬまびーる",
+   "nameEn": "Onuma Beer",
+   "aliases": [],
+   "prefCode": "01",
+   "city": "亀田郡七飯町",
+   "address": "北海道亀田郡七飯町大沼町208",
+   "geo": {
+    "lat": 41.969452,
+    "lng": 140.67981,
+    "precision": "area",
+    "matched": "北海道七飯町大沼町"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 1997,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://onumabeer.com/"
+   },
+   "summary": "大沼国定公園のある七飯町大沼の醸造所。1997年創業。アルトやケルシュなど。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は Beer Tengoku の英語表記を地理院の住所検索で照合",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://onumabeer.com/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2017/03/10/onuma-beer-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "アルト",
+     "styleId": "altbier"
+    },
+    {
+     "name": "ケルシュ",
+     "styleId": "kolsch"
+    },
+    {
+     "name": "IPA",
+     "styleId": "english-ipa"
+    }
+   ],
+   "features": [
+    "european"
+   ],
+   "profileSource": "https://onumabeer.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "hokkaido-bakushu-jozo",
+   "name": "北海道麦酒醸造",
+   "nameKana": "ほっかいどうばくしゅじょうぞう",
+   "nameEn": "Hokkaido Brewing",
+   "aliases": [],
+   "prefCode": "01",
+   "city": "小樽市",
+   "address": "北海道小樽市高島1-8-16",
+   "geo": {
+    "lat": 43.220158,
+    "lng": 141.015442,
+    "precision": "block",
+    "matched": "北海道小樽市高島一丁目８番"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2002,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://hokkaidobeer.com/"
+   },
+   "summary": "小樽市高島の醸造所。2002年創業。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は Beer Tengoku の英語表記を地理院の住所検索で照合",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://hokkaidobeer.com/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2017/02/24/hokkaido-brewing-information/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "ダークラガー",
+     "styleId": "dunkel"
+    },
+    {
+     "name": "ラガー",
+     "styleId": null
+    },
+    {
+     "name": "エール",
+     "styleId": "pale-ale"
+    }
+   ],
+   "profileSource": "http://hokkaidobeer.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "abashiri-beer",
+   "name": "網走ビール",
+   "nameKana": "あばしりびーる",
+   "nameEn": "Abashiri Beer",
+   "aliases": [],
+   "prefCode": "01",
+   "city": "網走市",
+   "address": "北海道網走市南2条西4丁目1-2",
+   "geo": {
+    "lat": 44.021374,
+    "lng": 144.261459,
+    "precision": "block",
+    "matched": "北海道網走市南二条西四丁目１番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.abashiribeer.jp/"
+   },
+   "summary": "網走市の醸造所。青い色の「流氷ドラフト」で知られる。",
+   "verification": "official+secondary",
+   "sourceNotes": "創業年は Beer Tengoku の記事で1998年と1988年の記載があり、空欄にした",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.abashiribeer.jp/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2017/01/06/abashiri-beer-information/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2024/01/29/prefecture-focus-craft-beers-of-hokkaido/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "流氷ドラフト",
+     "styleId": "herb-spice"
+    },
+    {
+     "name": "プリズンスタウト",
+     "styleId": "stout"
+    },
+    {
+     "name": "ホワイトエール",
+     "styleId": "belgian-white"
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://www.abashiribeer.jp/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "north-island-beer",
+   "name": "ノースアイランドビール",
+   "nameKana": "のーすあいらんどびーる",
+   "nameEn": "North Island Beer",
+   "aliases": [
+    "SOC Brewing"
+   ],
+   "prefCode": "01",
+   "city": "江別市",
+   "address": "北海道江別市元町11-5",
+   "geo": {
+    "lat": 43.108177,
+    "lng": 141.536331,
+    "precision": "block",
+    "matched": "北海道江別市元町１１番"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2003,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://northislandbeer.jp/"
+   },
+   "summary": "江別市の醸造所。2003年に札幌で創業し、2009年に江別へ移転。コリアンダーなどハーブを使うビールもある。",
+   "verification": "official+secondary",
+   "sourceNotes": "2009年に札幌市東区から江別市へ移転。札幌市中心部にタップルームがある",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://northislandbeer.jp/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2015/06/17/north-island-beer-information/"
+    },
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2024/01/29/prefecture-focus-craft-beers-of-hokkaido/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "ブラウンエール",
+     "styleId": "brown-ale"
+    },
+    {
+     "name": "コリアンダーブラック",
+     "styleId": "herb-spice"
+    },
+    {
+     "name": "IPA",
+     "styleId": "ipa"
+    }
+   ],
+   "profileSource": "https://northislandbeer.jp/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "brasserie-knot",
+   "name": "Brasserie Knot",
+   "nameKana": "ぶらっすりーのっと",
+   "nameEn": "Brasserie Knot",
+   "aliases": [],
+   "prefCode": "01",
+   "city": "阿寒郡鶴居村",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2022,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": "鶴居村の醸造所。2022年創業。旧小学校の体育館を使う。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "Beer Tengoku（醸造所情報記事）",
+     "url": "https://beertengoku.com/2024/01/29/prefecture-focus-craft-beers-of-hokkaido/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
   {
    "id": "be-easy-brewing",
    "name": "Be Easy Brewing",
