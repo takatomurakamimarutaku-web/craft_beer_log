@@ -1,7 +1,7 @@
 {
  "meta": {
   "version": "2026-10-31a",
-  "region": "東北6県・関東1都6県",
+  "region": "東北6県・関東1都6県・新潟県・長野県",
   "attribution": "一部の情報は仙台国税局「東北酒蔵マップ掲載酒類製造者一覧」、関東信越国税局「酒蔵マップ」、東京国税局「酒蔵マップ」を加工して作成",
   "note": "verification: official=公式サイトで確認 / official+secondary=公式＋二次情報 / secondary=報道・業界団体・紹介サイトで確認 / nta-only=国税局一覧のみ。geo.precision: block=街区・番地 / area=大字（数百m〜数km ずれ得る）。座標は国土地理院 住所検索APIの結果。status=closed は一覧・地図に出さない。"
  },
@@ -9667,6 +9667,1601 @@
     }
    ],
    "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "tainai-kogen-beer",
+   "name": "胎内高原ビール",
+   "nameKana": "たいないこうげんびーる",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "15",
+   "city": "胎内市",
+   "address": "新潟県胎内市熱田坂670",
+   "geo": {
+    "lat": 38.027847,
+    "lng": 139.479675,
+    "precision": "area",
+    "matched": "新潟県胎内市熱田坂"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": "胎内市の高原にあるビール園の醸造所。胎内高原ビールの名で地元の水を使ったビールを造る。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "新潟県観光協会「にいがたクラフトビール」特集（2026-09-14更新）",
+     "url": "https://niigata-kankou.or.jp/feature/beer"
+    },
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」新潟県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_niigata_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "胎内高原ビール",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://niigata-kankou.or.jp/feature/beer",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "tsukioka-brewery",
+   "name": "TSUKIOKA BREWERY（月岡ブルワリー）",
+   "nameKana": "つきおかぶるわりー",
+   "nameEn": null,
+   "aliases": [
+    "月岡ブルワリー"
+   ],
+   "prefCode": "15",
+   "city": "新発田市",
+   "address": "新潟県新発田市月岡温泉552-111",
+   "geo": {
+    "lat": 37.881779,
+    "lng": 139.30867,
+    "precision": "block",
+    "matched": "新潟県新発田市月岡温泉５５２番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": "月岡温泉街の醸造所。温泉の色にちなんだ「月岡エメラルドエール」を造る。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "新潟県観光協会「にいがたクラフトビール」特集（2026-09-14更新）",
+     "url": "https://niigata-kankou.or.jp/feature/beer"
+    },
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」新潟県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_niigata_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "月岡エメラルドエール",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://niigata-kankou.or.jp/feature/beer",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "echigo-beer",
+   "name": "エチゴビール",
+   "nameKana": "えちごびーる",
+   "nameEn": "Echigo Beer",
+   "aliases": [],
+   "prefCode": "15",
+   "city": "新潟市西蒲区",
+   "address": "新潟県新潟市西蒲区松山2",
+   "geo": {
+    "lat": 37.791302,
+    "lng": 138.87175,
+    "precision": "block",
+    "matched": "新潟県新潟市西蒲区松山２番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://echigobeer.com/"
+   },
+   "summary": "全国第一号の地ビールとして知られる新潟の醸造所。主力は「のんびりふんわり白ビール」。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://echigobeer.com/"
+    },
+    {
+     "label": "新潟県観光協会「にいがたクラフトビール」特集（2026-09-14更新）",
+     "url": "https://niigata-kankou.or.jp/feature/beer"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "のんびりふんわり白ビール",
+     "styleId": "belgian-white"
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://echigobeer.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "nuttari-beer",
+   "name": "沼垂ビール",
+   "nameKana": "ぬったりびーる",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "15",
+   "city": "新潟市中央区",
+   "address": "新潟県新潟市中央区沼垂東2-9-5",
+   "geo": {
+    "lat": 37.919773,
+    "lng": 139.069946,
+    "precision": "block",
+    "matched": "新潟県新潟市中央区沼垂東二丁目９番５号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": 2016,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "http://nuttaribeer.co.jp/"
+   },
+   "summary": "2016年3月に新潟市の沼垂で生まれたマイクロブルワリー。日本海や天の川にちなんだ名前のビールを造る。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://nuttaribeer.co.jp/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "天の川ペールエール",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "荒波IPA",
+     "styleId": "ipa"
+    },
+    {
+     "name": "日本海の夕日スタウト",
+     "styleId": "stout"
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "http://nuttaribeer.co.jp/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "swan-lake-beer",
+   "name": "スワンレイクビール（瓢湖屋敷の杜ブルワリー）",
+   "nameKana": "すわんれいくびーる",
+   "nameEn": null,
+   "aliases": [
+    "瓢湖屋敷の杜ブルワリー"
+   ],
+   "prefCode": "15",
+   "city": "阿賀野市",
+   "address": "新潟県阿賀野市金屋川端345-1",
+   "geo": {
+    "lat": 37.827942,
+    "lng": 139.262695,
+    "precision": "area",
+    "matched": "新潟県阿賀野市金屋"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {},
+   "summary": "阿賀野市・瓢湖近くの醸造所。ポーターを看板にするスワンレイクビールを造る。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "新潟県観光協会「にいがたクラフトビール」特集（2026-09-14更新）",
+     "url": "https://niigata-kankou.or.jp/feature/beer"
+    },
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」新潟県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_niigata_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "ポーター",
+     "styleId": "porter"
+    }
+   ],
+   "profileSource": "https://niigata-kankou.or.jp/feature/beer",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "yahiko-brewing",
+   "name": "弥彦ブリューイング",
+   "nameKana": "やひこぶるーいんぐ",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "15",
+   "city": "弥彦村",
+   "address": "新潟県西蒲原郡弥彦村弥彦934",
+   "geo": {
+    "lat": 37.701393,
+    "lng": 138.827393,
+    "precision": "block",
+    "matched": "新潟県弥彦村弥彦９３４番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.yahiko-brewing.com/"
+   },
+   "summary": "弥彦神社の門前町にある醸造所。「伊彌彦エール」や弥彦のぶどう・枝豆を使ったIPAを造る。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.yahiko-brewing.com/"
+    },
+    {
+     "label": "新潟県観光協会「にいがたクラフトビール」特集（2026-09-14更新）",
+     "url": "https://niigata-kankou.or.jp/feature/beer"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "伊彌彦エール",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://www.yahiko-brewing.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "heisei-brewing",
+   "name": "HEISEI BREWING",
+   "nameKana": "へいせいぶるーいんぐ",
+   "nameEn": null,
+   "aliases": [
+    "ヘイセイブルーイング"
+   ],
+   "prefCode": "15",
+   "city": "長岡市",
+   "address": "新潟県長岡市川崎町字山崎778-1",
+   "geo": {
+    "lat": 37.4552,
+    "lng": 138.875671,
+    "precision": "area",
+    "matched": "新潟県長岡市川崎町"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": "長岡市の酒屋「平成堂」の店内にある醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "新潟県観光協会「にいがたクラフトビール」特集（2026-09-14更新）",
+     "url": "https://niigata-kankou.or.jp/feature/beer"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "mitsuke-local-brewery",
+   "name": "MITSUKE Local Brewery",
+   "nameKana": "みつけろーかるぶるわりー",
+   "nameEn": null,
+   "aliases": [
+    "ブルワリー ローカル ミツケ",
+    "見附ローカルブルワリー"
+   ],
+   "prefCode": "15",
+   "city": "見附市",
+   "address": "新潟県見附市葛巻1-9-49",
+   "geo": {
+    "lat": 37.527744,
+    "lng": 138.909637,
+    "precision": "block",
+    "matched": "新潟県見附市葛巻一丁目９番４９号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": "見附市の街なかにある小さな醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "新潟県観光協会「にいがたクラフトビール」特集（2026-09-14更新）",
+     "url": "https://niigata-kankou.or.jp/feature/beer"
+    },
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」新潟県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_niigata_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "tsumari-beer",
+   "name": "妻有ビール",
+   "nameKana": "つまりびーる",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "15",
+   "city": "十日町市",
+   "address": "新潟県十日町市太平塚上474-1",
+   "geo": {
+    "lat": 37.139751,
+    "lng": 138.625824,
+    "precision": "area",
+    "matched": "新潟県十日町市太平"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": "十日町市の醸造所。地元のそばを使った「十日町そばエール」を造る。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "新潟県観光協会「にいがたクラフトビール」特集（2026-09-14更新）",
+     "url": "https://niigata-kankou.or.jp/feature/beer"
+    },
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」新潟県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_niigata_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "十日町そばエール",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://niigata-kankou.or.jp/feature/beer",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "rydeen-beer",
+   "name": "猿倉山ビール醸造所（ライディーンビール）",
+   "nameKana": "さるくらやまびーるじょうぞうしょ",
+   "nameEn": null,
+   "aliases": [
+    "ライディーンビール"
+   ],
+   "prefCode": "15",
+   "city": "南魚沼市",
+   "address": "新潟県南魚沼市長森193-1",
+   "geo": {
+    "lat": 37.105324,
+    "lng": 138.932831,
+    "precision": "area",
+    "matched": "新潟県南魚沼市長森"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://www.uonuma-no-sato.jp/facility/sarukura"
+   },
+   "summary": "八海山の酒蔵が営む「魚沼の里」の醸造所。ライディーンビールを造る。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://www.uonuma-no-sato.jp/facility/sarukura"
+    },
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」新潟県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_niigata_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "myoko-kogen-beer",
+   "name": "妙高高原ビール（タトラ館）",
+   "nameKana": "みょうこうこうげんびーる",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "15",
+   "city": "妙高市",
+   "address": "新潟県妙高市池の平温泉2457-2",
+   "geo": null,
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "http://www.alpen-blick.com/blog/tatra/"
+   },
+   "summary": "池の平温泉のビール園「タトラ館」の醸造所。妙高高原ビールを造る。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://www.alpen-blick.com/blog/tatra/"
+    },
+    {
+     "label": "新潟県観光協会「にいがたクラフトビール」特集（2026-09-14更新）",
+     "url": "https://niigata-kankou.or.jp/feature/beer"
+    },
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」新潟県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_niigata_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "妙高高原ビール",
+     "styleId": null
+    }
+   ],
+   "profileSource": "http://www.alpen-blick.com/blog/tatra/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "t0ki-brewery",
+   "name": "t0ki brewery",
+   "nameKana": "ときぶるわりー",
+   "nameEn": null,
+   "aliases": [
+    "トキブルワリー"
+   ],
+   "prefCode": "15",
+   "city": "佐渡市",
+   "address": "新潟県佐渡市加茂歌代458",
+   "geo": {
+    "lat": 38.080315,
+    "lng": 138.417023,
+    "precision": "block",
+    "matched": "新潟県佐渡市加茂歌代４５８番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://t0ki.beer/"
+   },
+   "summary": "佐渡島の醸造所。島の酒蔵の米麹を使ったHazy IPAなど、佐渡の素材を生かしたビールを造る。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://t0ki.beer/"
+    },
+    {
+     "label": "新潟県観光協会「にいがたクラフトビール」特集（2026-09-14更新）",
+     "url": "https://niigata-kankou.or.jp/feature/beer"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Hazy IPA",
+     "styleId": "hazy-ipa"
+    },
+    {
+     "name": "Black IPA",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://t0ki.beer/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "sado-land-beer",
+   "name": "SADO LAND BEER",
+   "nameKana": "さどらんどびーる",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "15",
+   "city": "佐渡市",
+   "address": "新潟県佐渡市千種88-1",
+   "geo": {
+    "lat": 38.019314,
+    "lng": 138.36319,
+    "precision": "block",
+    "matched": "新潟県佐渡市千種８８番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": "佐渡島・千種の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "新潟県観光協会「にいがたクラフトビール」特集（2026-09-14更新）",
+     "url": "https://niigata-kankou.or.jp/feature/beer"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "makigoya-beer",
+   "name": "薪小屋ビール（カーブドッチ）",
+   "nameKana": "まきごやびーる",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "15",
+   "city": "新潟市西蒲区",
+   "address": "新潟県新潟市西蒲区角田浜1645",
+   "geo": {
+    "lat": 37.794285,
+    "lng": 138.825684,
+    "precision": "area",
+    "matched": "新潟県新潟市西蒲区角田浜"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "http://www.docci.com/movement/makigoya/"
+   },
+   "summary": "角田浜のワイナリー「カーブドッチ」の敷地にある、薪窯料理のレストランの醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://www.docci.com/movement/makigoya/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/niigata-craft-beer/"
+    },
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」新潟県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_niigata_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "features": [
+    "food"
+   ],
+   "profileSource": "http://www.docci.com/movement/makigoya/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "gangi-brewing",
+   "name": "Gangi Brewing",
+   "nameKana": "がんぎぶるーいんぐ",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "15",
+   "city": "上越市",
+   "address": "新潟県上越市大和2-16-4",
+   "geo": {
+    "lat": 37.086624,
+    "lng": 138.249832,
+    "precision": "block",
+    "matched": "新潟県上越市大和二丁目１６番４号"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "instagram": "https://www.instagram.com/gangibrewing/"
+   },
+   "summary": "雁木の町・上越市の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/niigata-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "otama-brewing",
+   "name": "オタマブルーイング",
+   "nameKana": "おたまぶるーいんぐ",
+   "nameEn": "Otama Brewing",
+   "aliases": [],
+   "prefCode": "15",
+   "city": "上越市",
+   "address": "新潟県上越市三和区末野新田1702",
+   "geo": {
+    "lat": 37.163357,
+    "lng": 138.364594,
+    "precision": "area",
+    "matched": "新潟県上越市三和区末野新田"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.otamabrewing.com/"
+   },
+   "summary": "上越市三和区の醸造所。ペールエールやウエストコーストIPA、ヘイジーIPAを定番に6種類を造る。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.otamabrewing.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/niigata-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "YAWA-YAWA",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "MAGIC TIME",
+     "styleId": "west-coast-ipa"
+    },
+    {
+     "name": "UME NO HANA",
+     "styleId": "hazy-ipa"
+    }
+   ],
+   "profileSource": "https://www.otamabrewing.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "ohlaho-beer",
+   "name": "オラホビール",
+   "nameKana": "おらほびーる",
+   "nameEn": "OH!LA!HO BEER",
+   "aliases": [],
+   "prefCode": "20",
+   "city": "東御市",
+   "address": "長野県東御市和3875",
+   "geo": {
+    "lat": 36.386654,
+    "lng": 138.318436,
+    "precision": "block",
+    "matched": "長野県東御市和３８７５番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "https://ohlahobeer.com/"
+   },
+   "summary": "東御市の醸造所。ゴールデンエール・アンバーエールなどを定番にする信州の地ビール。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://ohlahobeer.com/"
+    },
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」長野県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_nagano_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "ゴールデンエール",
+     "styleId": null
+    },
+    {
+     "name": "アンバーエール",
+     "styleId": "amber-ale"
+    },
+    {
+     "name": "キャプテンクロウ エクストラペールエール",
+     "styleId": "pale-ale"
+    }
+   ],
+   "availability": "regional",
+   "profileSource": "https://ohlahobeer.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "azumino-brewery",
+   "name": "安曇野ブルワリー",
+   "nameKana": "あづみのぶるわりー",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "20",
+   "city": "安曇野市",
+   "address": "長野県安曇野市穂高5950-1",
+   "geo": {
+    "lat": 36.339157,
+    "lng": 137.882156,
+    "precision": "block",
+    "matched": "長野県安曇野市穂高５９５０番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://azumino-brewery.com/"
+   },
+   "summary": "安曇野市穂高の醸造所。ホップの香りとやさしい苦味の「Sui」を造る。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://azumino-brewery.com/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "hotaka-brewery",
+   "name": "穂高ブルワリー（エイワ）",
+   "nameKana": "ほたかぶるわりー",
+   "nameEn": null,
+   "aliases": [
+    "穂高ビール",
+    "アルト 穂高ブルワリー"
+   ],
+   "prefCode": "20",
+   "city": "安曇野市",
+   "address": "長野県安曇野市穂高北穂高2845-7",
+   "geo": {
+    "lat": 36.371616,
+    "lng": 137.878723,
+    "precision": "block",
+    "matched": "長野県安曇野市穂高北穂高２８４５番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 1997,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.eiwamm.co.jp/beer/"
+   },
+   "summary": "1997年に醸造を始めた安曇野・穂高の醸造所。アルト・ケルシュなどドイツの伝統的なエールを造る。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.eiwamm.co.jp/beer/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/nagano-craft-beer/"
+    },
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」長野県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_nagano_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "アルト",
+     "styleId": null
+    },
+    {
+     "name": "ケルシュ",
+     "styleId": "kolsch"
+    },
+    {
+     "name": "ペールエール",
+     "styleId": "pale-ale"
+    }
+   ],
+   "features": [
+    "european"
+   ],
+   "profileSource": "https://www.eiwamm.co.jp/beer/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "anglo-japanese-brewing",
+   "name": "Anglo Japanese Brewing Company（里武士）",
+   "nameKana": "あんぐろじゃぱにーずぶるーいんぐかんぱにー",
+   "nameEn": null,
+   "aliases": [
+    "AJB",
+    "里武士"
+   ],
+   "prefCode": "20",
+   "city": "野沢温泉村",
+   "address": "長野県下高井郡野沢温泉村大字豊郷9347",
+   "geo": {
+    "lat": 36.923279,
+    "lng": 138.447113,
+    "precision": "block",
+    "matched": "長野県野沢温泉村豊郷９３４７番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "https://anglojapanesebeer.com/"
+   },
+   "summary": "野沢温泉村の醸造所。里武士タップルームを営み、横浜・馬車道にも拠点がある。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://anglojapanesebeer.com/"
+    },
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/nagano-craft-beer/"
+    },
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」長野県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_nagano_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Nozawa Black",
+     "styleId": null
+    },
+    {
+     "name": "The Red Dragon Pale Ale",
+     "styleId": "pale-ale"
+    }
+   ],
+   "profileSource": "https://anglojapanesebeer.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "tenjin-brewery",
+   "name": "天神BREWERY",
+   "nameKana": "てんじんぶるわりー",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "20",
+   "city": "上田市",
+   "address": "長野県上田市天神1-2-34",
+   "geo": {
+    "lat": 36.397369,
+    "lng": 138.249619,
+    "precision": "block",
+    "matched": "長野県上田市天神一丁目２番３４号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": 2021,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.tenzing-brewery.com/"
+   },
+   "summary": "2021年10月に開いた上田市初の地ビール醸造所。ラガー・エール・黒ビールを造る。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.tenzing-brewery.com/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "信州うえだ十勇士ビール",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://www.tenzing-brewery.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "matsumoto-brewery",
+   "name": "松本ブルワリー",
+   "nameKana": "まつもとぶるわりー",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "20",
+   "city": "松本市",
+   "address": "長野県松本市中央3-4-21",
+   "geo": {
+    "lat": 36.233871,
+    "lng": 137.97261,
+    "precision": "block",
+    "matched": "長野県松本市中央三丁目４番２１号"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "https://matsu-brew.com/"
+   },
+   "summary": "松本市の醸造所。中町通りの店（本社併設）でペールエールやスタウトを出す。",
+   "verification": "official+secondary",
+   "sourceNotes": "住所は中町店（本社併設）のもの",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://matsu-brew.com/"
+    },
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」長野県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_nagano_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Awesome! Pale Ale",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "SESSION IPA",
+     "styleId": "session-ipa"
+    },
+    {
+     "name": "Cattle Stout",
+     "styleId": "stout"
+    }
+   ],
+   "profileSource": "https://matsu-brew.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "mallika-brewing",
+   "name": "Mallika Brewing（毬花麦酒）",
+   "nameKana": "まりかぶるーいんぐ",
+   "nameEn": null,
+   "aliases": [
+    "マリカブルーイング"
+   ],
+   "prefCode": "20",
+   "city": "長野市",
+   "address": "長野県長野市大門町72-5",
+   "geo": {
+    "lat": 36.656933,
+    "lng": 138.187943,
+    "precision": "block",
+    "matched": "長野県長野市大字長野大門町７２番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "https://mallikabrewing.com/"
+   },
+   "summary": "善光寺門前町のブルワリー＆カフェ。長野の果物を使ったビールやホップの香るビールを造る。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://mallikabrewing.com/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "features": [
+    "fruit"
+   ],
+   "profileSource": "https://mallikabrewing.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "quartet-brewing",
+   "name": "カルテットブルーイング",
+   "nameKana": "かるてっとぶるーいんぐ",
+   "nameEn": "Quartet Brewing",
+   "aliases": [],
+   "prefCode": "20",
+   "city": "軽井沢町",
+   "address": "長野県北佐久郡軽井沢町軽井沢1277-15",
+   "geo": {
+    "lat": 36.350334,
+    "lng": 138.633438,
+    "precision": "block",
+    "matched": "長野県軽井沢町軽井沢１２７７番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "https://quartetbrewing.com/"
+   },
+   "summary": "旧軽井沢のブルワリー。2021年3月にタップルームを開き、ESBで国内外の審査会の受賞がある。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://quartetbrewing.com/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Resonance Wheat",
+     "styleId": null
+    },
+    {
+     "name": "Andante ESB",
+     "styleId": null
+    },
+    {
+     "name": "Pale Ale Tutti",
+     "styleId": "pale-ale"
+    }
+   ],
+   "features": [
+    "award"
+   ],
+   "profileSource": "https://quartetbrewing.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "hakuba-brewing",
+   "name": "Hakuba Brewing Company",
+   "nameKana": "はくばぶるーいんぐかんぱにー",
+   "nameEn": null,
+   "aliases": [
+    "ハクバ・ブルーイング・カンパニー"
+   ],
+   "prefCode": "20",
+   "city": "白馬村",
+   "address": "長野県北安曇郡白馬村神城24191-17",
+   "geo": {
+    "lat": 36.652256,
+    "lng": 137.849884,
+    "precision": "area",
+    "matched": "長野県白馬村神城"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2015,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.hakubabrewery.com/"
+   },
+   "summary": "2015年から白馬村で醸造。IPA・ペールエール・ブラックを定番にする。",
+   "verification": "official",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.hakubabrewery.com/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Thunderbird IPA",
+     "styleId": "ipa"
+    },
+    {
+     "name": "Hazy IPA",
+     "styleId": "hazy-ipa"
+    }
+   ],
+   "profileSource": "https://www.hakubabrewery.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "yamanoma-brewery",
+   "name": "山の間ブルワリー",
+   "nameKana": "やまのまぶるわりー",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "20",
+   "city": "長野市",
+   "address": "長野県長野市北石堂町1375",
+   "geo": {
+    "lat": 36.644859,
+    "lng": 138.187546,
+    "precision": "block",
+    "matched": "長野県長野市大字南長野北石堂町１３７５番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "instagram": "https://www.instagram.com/yamanoma_brewery_craftbeer_pub/"
+   },
+   "summary": "長野駅近くのクラフトビールパブ兼醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/nagano-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "nagano-minamikaze-beer",
+   "name": "長野みなみ風ビール",
+   "nameKana": "ながのみなみかぜびーる",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "20",
+   "city": "長野市",
+   "address": "長野県長野市大字南長野新田町1458",
+   "geo": {
+    "lat": 36.647858,
+    "lng": 138.186981,
+    "precision": "block",
+    "matched": "長野県長野市大字南長野新田町１４５８番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {},
+   "summary": "長野市中心部の醸造所併設の店。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/nagano-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "karuizawa-q",
+   "name": "karuizawa Q",
+   "nameKana": "かるいざわきゅー",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "20",
+   "city": "軽井沢町",
+   "address": "長野県北佐久郡軽井沢町中軽井沢6-9",
+   "geo": {
+    "lat": 36.348778,
+    "lng": 138.59111,
+    "precision": "block",
+    "matched": "長野県軽井沢町中軽井沢６番"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {},
+   "summary": "中軽井沢駅近くのブルワリー。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/nagano-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "cocono-hop",
+   "name": "COCONO HOP（コカゲビール）",
+   "nameKana": "ここのほっぷ",
+   "nameEn": null,
+   "aliases": [
+    "ココノホップ",
+    "コカゲビール"
+   ],
+   "prefCode": "20",
+   "city": "軽井沢町",
+   "address": "長野県北佐久郡軽井沢町長倉1777-16",
+   "geo": {
+    "lat": 36.334534,
+    "lng": 138.590668,
+    "precision": "block",
+    "matched": "長野県軽井沢町長倉１７７７番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": false,
+   "tour": null,
+   "links": {
+    "shop": "https://coconohop.stores.jp/"
+   },
+   "summary": "軽井沢町長倉の小さな醸造所。直営の店はなく、オンラインショップで販売する。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "CRAFT BEER LAB 都道府県別クラフトビール醸造所一覧（2026-02-18更新）",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/nagano-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "shiga-kogen-beer",
+   "name": "志賀高原ビール（玉村本店）",
+   "nameKana": "しがこうげんびーる",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "20",
+   "city": "山ノ内町",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.tamamura-honten.co.jp/"
+   },
+   "summary": "山ノ内町の酒蔵・玉村本店が造るビール。IPAやピルスナーなどを造り、上林温泉に直営店「THE FARMHOUSE」がある。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.tamamura-honten.co.jp/"
+    },
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」長野県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_nagano_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Fresh Hop IPA",
+     "styleId": "ipa"
+    },
+    {
+     "name": "HOUSE LAGER",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "sake"
+   ],
+   "availability": "national",
+   "profileSource": "https://www.tamamura-honten.co.jp/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "yoho-saku",
+   "name": "ヤッホーブルーイング 佐久醸造所",
+   "nameKana": "やっほーぶるーいんぐさくじょうぞうしょ",
+   "nameEn": null,
+   "aliases": [
+    "ヤッホーブルーイング",
+    "よなよなエール"
+   ],
+   "prefCode": "20",
+   "city": "佐久市",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://yohobrewing.com/"
+   },
+   "summary": "「よなよなエール」で知られる軽井沢発のクラフトビール会社の主力醸造所。全国のスーパーやコンビニでも買える。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://yohobrewing.com/"
+    },
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」長野県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_nagano_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "よなよなエール",
+     "styleId": "pale-ale"
+    },
+    {
+     "name": "有頂天エイリアンズ",
+     "styleId": "hazy-ipa"
+    },
+    {
+     "name": "インドの青鬼",
+     "styleId": "ipa"
+    }
+   ],
+   "availability": "national",
+   "profileSource": "https://yohobrewing.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "yoho-miyota",
+   "name": "ヤッホーブルーイング 御代田醸造所",
+   "nameKana": "やっほーぶるーいんぐみよたじょうぞうしょ",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "20",
+   "city": "御代田町",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://yohobrewing.com/"
+   },
+   "summary": "ヤッホーブルーイングの御代田町にある醸造所。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://yohobrewing.com/"
+    },
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」長野県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_nagano_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "minamishinshu-beer",
+   "name": "南信州ビール 駒ヶ岳醸造所",
+   "nameKana": "みなみしんしゅうびーる",
+   "nameEn": null,
+   "aliases": [
+    "南信州ビール"
+   ],
+   "prefCode": "20",
+   "city": "宮田村",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.minamishinshu-beer.com/"
+   },
+   "summary": "宮田村のマルス信州蒸溜所内にある醸造所。南信州産りんごを使った「アップルホップ」などを造る。駒ケ根に直営レストランがある。",
+   "verification": "official+secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.minamishinshu-beer.com/"
+    },
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」長野県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_nagano_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "アンバーエール",
+     "styleId": "amber-ale"
+    },
+    {
+     "name": "アップルホップ",
+     "styleId": "fruit-beer"
+    }
+   ],
+   "features": [
+    "fruit"
+   ],
+   "profileSource": "https://www.minamishinshu-beer.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "reijin-suwa-roman",
+   "name": "諏訪浪漫ビール（麗人酒造）",
+   "nameKana": "すわろまんびーる",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "20",
+   "city": "諏訪市",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": "諏訪市の酒蔵・麗人酒造が造るビール「諏訪浪漫」。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」長野県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_nagano_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "features": [
+    "sake"
+   ],
+   "profileSource": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_nagano_jp.pdf",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "eight-peaks-brewing",
+   "name": "8Peaks BREWING（エイトピークスブルーイング）",
+   "nameKana": "えいとぴーくすぶるーいんぐ",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "20",
+   "city": "茅野市",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": "八ヶ岳のふもと、茅野市の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」長野県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_nagano_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "ヤイヤイペールエール",
+     "styleId": "pale-ale"
+    }
+   ],
+   "profileSource": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_nagano_jp.pdf",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "in-a-daze-brewing",
+   "name": "In a daze Brewing（イナデイズ）",
+   "nameKana": "いなでいずぶるーいんぐ",
+   "nameEn": null,
+   "aliases": [
+    "ブルーイング イナデイズ"
+   ],
+   "prefCode": "20",
+   "city": "伊那市",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {},
+   "summary": "伊那市の醸造所。",
+   "verification": "secondary",
+   "sourceNotes": "",
+   "sources": [
+    {
+     "label": "関東信越国税局 酒蔵マップ「ビール等」長野県（令和6年3月）",
+     "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_nagano_jp.pdf"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "伊那日和ペールエール",
+     "styleId": "pale-ale"
+    }
+   ],
+   "profileSource": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_nagano_jp.pdf",
+   "profileCheckedAt": "2026-10-31"
   }
  ]
 }
