@@ -37,6 +37,7 @@ const routes = [
   { path: '/knowledge/style/:id', view: knowledgeView, kind: 'style', title: 'スタイル', tab: 'knowledge', back: '#/knowledge' },
   { path: '/knowledge/term/:id', view: knowledgeView, kind: 'term', title: '用語', tab: 'knowledge', back: '#/knowledge' },
   { path: '/knowledge/hop/:id', view: knowledgeView, kind: 'hop', title: 'ホップ', tab: 'knowledge', back: '#/knowledge' },
+  { path: '/knowledge/flight/:id', view: knowledgeView, kind: 'flight', title: '飲み比べ', tab: 'knowledge', back: '#/knowledge?tab=styles' },
   { path: '/more', view: moreView, title: 'その他', tab: 'more' },
   { path: '/wishlist', view: wishlistView, title: '飲みたいリスト', tab: 'more', back: '#/more' },
   { path: '/wishlist/new', view: beerEditView, title: '飲みたい銘柄を追加', tab: 'more', back: '#/wishlist' },
@@ -107,7 +108,8 @@ async function start() {
         loadJson('data/hops.json', []),
         loadJson('data/flavor-tags.json', []),
         loadJson('data/images.json', {}),
-      ]).then(([basics, terms, hops, flavorTags, images]) => ({ basics, terms, hops, flavorTags, images }))),
+        loadJson('data/flights.json', []),
+      ]).then(([basics, terms, hops, flavorTags, images, flights]) => ({ basics, terms, hops, flavorTags, images, flights }))),
     /** イベント情報。読めなかったときは null を返し、次に開いたとき読み直す */
     loadEvents: () =>
       (events ??= loadJson('data/events.json', null).then((d) => {

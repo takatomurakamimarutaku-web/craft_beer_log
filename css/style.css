@@ -645,6 +645,26 @@ a.summary-card:active { transform: scale(0.985); }
 .similar-sub, .similar-why { font-size: var(--fs-caption); color: var(--muted); }
 .similar-why { color: var(--primary); font-weight: 600; }
 
+/* ---- 知識：飲み比べセット ---- */
+.flight-row { list-style: none; margin: 0 0 var(--sp-3); padding: 2px 0 var(--sp-2); display: grid; grid-auto-flow: column; grid-auto-columns: minmax(150px, 44%); gap: var(--sp-2); overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; }
+.flight-row::-webkit-scrollbar { display: none; }
+.flight-row > li { scroll-snap-align: start; }
+.flight-card { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: var(--sp-3); border-radius: var(--radius); background: var(--surface); border: 1px solid var(--card-border); box-shadow: var(--shadow-sm); color: inherit; text-decoration: none; }
+.flight-glasses { display: flex; align-items: flex-end; gap: 2px; height: 48px; margin-bottom: var(--sp-1); color: var(--text); }
+.flight-glasses svg { width: 26px; height: 40px; }
+.flight-title { font-size: var(--fs-sub); line-height: 1.35; }
+.flight-count { font-size: var(--fs-caption); color: var(--muted); }
+.flight-steps { list-style: none; margin: var(--sp-3) 0; padding: 0; display: grid; gap: var(--sp-2); }
+.flight-step { display: grid; grid-template-columns: auto 56px 1fr auto; align-items: center; gap: var(--sp-3); padding: var(--sp-3); border-radius: var(--radius); background: var(--surface); border: 1px solid var(--card-border); box-shadow: var(--shadow-sm); color: inherit; text-decoration: none; }
+.flight-no { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 800; font-size: var(--fs-footnote); }
+.flight-art { width: 56px; height: 72px; display: grid; place-items: center; overflow: hidden; border-radius: var(--radius-sm); background: var(--surface-2); color: var(--text); }
+.flight-art svg { width: 40px; height: 56px; }
+.flight-art img { width: 100%; height: 100%; object-fit: cover; }
+.flight-body { display: grid; gap: 2px; min-width: 0; }
+.flight-point { font-size: var(--fs-footnote); }
+.flight-meta { font-size: var(--fs-caption); color: var(--muted); }
+.flight-done { align-self: start; font-size: var(--fs-caption); font-weight: 700; color: var(--primary); white-space: nowrap; }
+
 /* ---- 製品化：操作の見やすさ・初回の案内 ---- */
 :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }

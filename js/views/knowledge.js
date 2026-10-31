@@ -44,6 +44,7 @@ export async function render(ctx) {
   if (route.kind === 'basic') return renderBasic(ctx, data);
   if (route.kind === 'term') return renderTerm(ctx, data);
   if (route.kind === 'hop') return renderHop(ctx, data);
+  if (route.kind === 'flight') return renderFlight(ctx, data);
   return renderList(ctx, data);
 }
 
@@ -78,7 +79,7 @@ function renderList({ app, outlet, query }, data) {
 
   function renderBody() {
     if (s.tab === 'basics') return body.replaceChildren(...basicList(data.basics, s.q, data.images));
-    if (s.tab === 'styles') return body.replaceChildren(...styleList(app.styles, s.q, data.images));
+    if (s.tab === 'styles') return body.replaceChildren(...(s.q ? [] : flightRow(data.flights, app.styles)), ...styleList(app.styles, s.q, data.images));
     if (s.tab === 'terms') return body.replaceChildren(...termList(data.terms, s.q));
     body.replaceChildren(...hopList(data, s, (tags) => {
       s = { ...s, tags };
@@ -347,6 +348,99 @@ function serveCard(st, color) {
 
 const THERMO_SVG =
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 13.5V5a2 2 0 1 1 4 0v8.5a4 4 0 1 1-4 0z"/><path d="M12 9v7"/><circle cx="12" cy="17" r="1.6" fill="currentColor"/></svg>';
+
+// ---- 飲み比べセット ----
+
+/** スタイル一覧の上に出す、飲み比べセットの横並び */
+function flightRow(flights, styles) {
+  if (!flights?.length) return [];
+  const byId = new Map(styles.map((s) => [s.id, s]));
+  return [
+    h('h2', { class: 'section-title', text: '飲み比べセット' }),
+    h(
+      'ul',
+      { class: 'flight-row' },
+      ...flights.map((f) =>
+        h(
+          'li',
+          {},
+          h(
+            'a',
+            { class: 'flight-card', href: `#/knowledge/flight/${encodeURIComponent(f.id)}` },
+            h(
+              'span',
+              { class: 'flight-glasses', 'aria-hidden': 'true' },
+              ...f.items.map((i) => byId.get(i.styleId)).filter(Boolean).map((st) => svg(glassSvg(st.glass, srmToHex(styleDisplaySrm(st))))),
+            ),
+            h('strong', { class: 'flight-title', text: f.title }),
+            h('span', { class: 'flight-count', text: `${f.items.length}種類` }),
+          ),
+        ),
+      ),
+    ),
+  ];
+}
+
+async function renderFlight({ app, outlet, params, isStale }, { flights, images }) {
+  const f = flights.find((x) => x.id === params.id);
+  const [beers, checkins] = f ? await Promise.all([app.db.listBeers(), app.db.listCheckins()]) : [[], []];
+  if (isStale()) return;
+  if (!f) {
+    outlet.replaceChildren(emptyState('飲み比べセットが見つかりません。', h('a', { class: 'btn', href: '#/knowledge?tab=styles', text: 'スタイルへ' })));
+    return;
+  }
+  app.setTitle(f.title);
+  const styleOf = new Map(beers.map((b) => [b.id, b.styleId]));
+  const tried = new Set(checkins.map((c) => styleOf.get(c.beerId)).filter(Boolean));
+  const byId = new Map(app.styles.map((s) => [s.id, s]));
+  const rows = f.items.map((i) => ({ ...i, st: byId.get(i.styleId) })).filter((i) => i.st);
+  const done = rows.filter((r) => tried.has(r.st.id)).length;
+  fill(
+    outlet,
+    h(
+      'div',
+      { class: 'term-hero' },
+      h('span', { class: 'tag', text: `飲み比べ ${rows.length}種類` }),
+      h('h2', { class: 'knowledge-name', text: f.title }),
+    ),
+    h('p', { class: 'knowledge-lead', text: f.lead }),
+    h('p', { class: 'list-meta', text: done ? `このうち ${done} / ${rows.length} 種類を記録済みです。` : 'まだどれも記録していません。' }),
+    h(
+      'ol',
+      { class: 'flight-steps' },
+      ...rows.map((r, i) =>
+        h(
+          'li',
+          {},
+          h(
+            'a',
+            { class: 'flight-step', href: `#/knowledge/style/${encodeURIComponent(r.st.id)}` },
+            h('span', { class: 'flight-no', 'aria-hidden': 'true', text: String(i + 1) }),
+            h('span', { class: 'flight-art' }, artwork(imageEntry(images, 'styles', r.st.id), () => styleGlass(r.st), '')),
+            h(
+              'span',
+              { class: 'flight-body' },
+              h('strong', { text: r.st.name }),
+              h('span', { class: 'flight-point', text: r.point }),
+              h('span', { class: 'flight-meta', text: `度数 ${formatRange(r.st.abv, '%')}・苦味 IBU ${formatRange(r.st.ibu)}` }),
+            ),
+            tried.has(r.st.id) ? h('span', { class: 'flight-done', text: '記録済み' }) : null,
+          ),
+        ),
+      ),
+    ),
+    section(
+      '飲み比べのコツ',
+      h(
+        'ul',
+        { class: 'plain-list' },
+        h('li', { text: '小さいグラス（テイスターサイズ）で頼むと、少ない量でいくつも比べられます。' }),
+        h('li', { text: '上から順に、軽いもの・淡いものから飲むと、あとのビールの味が分かりやすくなります。' }),
+        h('li', { text: '合間に水を飲むと、口の中がリセットされて違いが分かりやすく、飲みすぎも防げます。' }),
+      ),
+    ),
+  );
+}
 
 // ---- 入門（はじめに）詳細 ----
 
