@@ -1,6 +1,6 @@
 {
  "meta": {
-  "version": "pilot-2026-10-26a",
+  "version": "2026-10-31a",
   "region": "東北6県・関東1都6県",
   "attribution": "一部の情報は仙台国税局「東北酒蔵マップ掲載酒類製造者一覧」、関東信越国税局「酒蔵マップ」、東京国税局「酒蔵マップ」を加工して作成",
   "note": "verification: official=公式サイトで確認 / official+secondary=公式＋二次情報 / secondary=報道・業界団体・紹介サイトで確認 / nta-only=国税局一覧のみ。geo.precision: block=街区・番地 / area=大字（数百m〜数km ずれ得る）。座標は国土地理院 住所検索APIの結果。status=closed は一覧・地図に出さない。"
@@ -4676,17 +4676,23 @@
    "founded": null,
    "taproom": null,
    "tour": true,
-   "links": {},
+   "links": {
+    "official": "https://www.coedobrewery.com/"
+   },
    "summary": "川越発のクラフトビール「COEDO」の醸造所。「瑠璃」「紅赤」など色の名を付けたシリーズで知られ、見学ツアー「コエドビール学校」を開いている。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "レッツエンジョイ東京の記事（2018年）、関東信越国税局の一覧",
    "sources": [
     {
      "label": "関東信越国税局「酒蔵マップ」ビール等・埼玉県（令和6年3月現在）",
      "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_saitama_jp.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "https://www.coedobrewery.com/"
     }
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "瑠璃 -Ruri-",
@@ -4781,17 +4787,23 @@
    "founded": null,
    "taproom": true,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "http://hikawa-brewery.com/"
+   },
    "summary": "さいたま市で最初のクラフトビール醸造所。氷川神社の参道近くで、アンバーエールとゴールデンエールの「氷川の杜」を直結のブルーパブで出す。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "ことりっぷの記事、関東信越国税局の一覧",
    "sources": [
     {
      "label": "関東信越国税局「酒蔵マップ」ビール等・埼玉県（令和6年3月現在）",
      "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_saitama_jp.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "http://hikawa-brewery.com/"
     }
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "氷川の杜 アンバーエール",
@@ -4833,17 +4845,23 @@
    "founded": null,
    "taproom": true,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "https://carvaan.jp/"
+   },
    "summary": "世界の食材を扱う会社が飯能河原のそばに開いたブルワリー併設レストラン。アラブ・地中海料理と自家製ビールを、川を望むテラスで楽しめる。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "タイムアウト東京の記事、関東信越国税局の一覧",
    "sources": [
     {
      "label": "関東信越国税局「酒蔵マップ」ビール等・埼玉県（令和6年3月現在）",
      "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_saitama_jp.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "https://carvaan.jp/"
     }
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "エール・アラビアンライム",
@@ -4922,20 +4940,26 @@
    },
    "kind": "brewpub",
    "status": "active",
-   "founded": 2004,
+   "founded": 2003,
    "taproom": true,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "http://www.craft-beer.net/"
+   },
    "summary": "2004年に「畑からのビール造り」を掲げて開業。自社農園の小麦やキビ、アワなどを使い、2階のタップルームで飲める。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "タイムアウト東京の記事、関東信越国税局の一覧",
    "sources": [
     {
      "label": "関東信越国税局「酒蔵マップ」ビール等・埼玉県（令和6年3月現在）",
      "url": "https://www.nta.go.jp/about/organization/kantoshinetsu/sake/sake_breweries_map/pdf/beer_jp/beer_saitama_jp.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "http://www.craft-beer.net/"
     }
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "雑穀ヴァイツェン",
@@ -4953,6 +4977,183 @@
    "availability": "local",
    "profileSource": "https://www.timeout.jp/tokyo/ja/things-to-do/zakkoku-koubou",
    "profileCheckedAt": "2026-10-26"
+  },
+  {
+   "id": "ubp-brewery",
+   "name": "U.B.P Brewery",
+   "nameKana": "ゆーびーぴーぶるわりー",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "11",
+   "city": "さいたま市浦和区",
+   "address": "埼玉県さいたま市浦和区高砂2-1-19",
+   "geo": {
+    "lat": 35.857182,
+    "lng": 139.654266,
+    "precision": "block",
+    "matched": "埼玉県さいたま市浦和区高砂二丁目１番１９号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": 2022,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "https://www.ubpbrewery.jp/"
+   },
+   "summary": "浦和駅近くのホテル1階にあるブルーパブ。ハーブを使ったセッションIPAや温泉をテーマにしたゴーゼを定番にする。",
+   "verification": "official",
+   "sourceNotes": "浦和駅近くのホテル1階。会社設立2022年",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.ubpbrewery.jp/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "スカッとハーブれもんSIPA",
+     "styleId": "session-ipa"
+    },
+    {
+     "name": "Victory Song IPA",
+     "styleId": "ipa"
+    },
+    {
+     "name": "ONSEN GOSE",
+     "styleId": null
+    }
+   ],
+   "profileSource": "https://www.ubpbrewery.jp/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "nutori-brewing",
+   "name": "びぃる食堂ぬとり（ぬとりブルーイング）",
+   "nameKana": "ぬとりぶるーいんぐ",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "11",
+   "city": "川口市",
+   "address": "埼玉県川口市川口6-9-5",
+   "geo": {
+    "lat": 35.803276,
+    "lng": 139.707962,
+    "precision": "block",
+    "matched": "埼玉県川口市川口六丁目９番５号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": 2021,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "https://nu10rin.com/"
+   },
+   "summary": "川口の築50年のアパートで2021年から自家製ビールを造る食堂。料理と一緒に日替わりのビールを出す。",
+   "verification": "official",
+   "sourceNotes": "2021年2月から築50年のアパートの1階で自家製ビールを造る食堂",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://nu10rin.com/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "features": [
+    "food"
+   ],
+   "profileSource": "https://nu10rin.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "kawaguchi-brewery",
+   "name": "川口ブルワリー",
+   "nameKana": "かわぐちぶるわりー",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "11",
+   "city": "川口市",
+   "address": "埼玉県川口市幸町2-2-16",
+   "geo": {
+    "lat": 35.805233,
+    "lng": 139.719757,
+    "precision": "block",
+    "matched": "埼玉県川口市幸町二丁目２番１６号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.kawaguchi-brewery.com/"
+   },
+   "summary": "川口駅近くのブルーパブ。店内の設備で造ったビールを提供する。",
+   "verification": "official+secondary",
+   "sourceNotes": "川口駅近くのブルーパブ（公式サイトは自動取得不可、CRAFT BEER LABの住所）",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.kawaguchi-brewery.com/"
+    },
+    {
+     "label": "住所の確認に使ったページ",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/saitama-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "fujimi-bakushu",
+   "name": "富士見麦酒醸造所",
+   "nameKana": "ふじみばくしゅじょうぞうしょ",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "11",
+   "city": "富士見市",
+   "address": "埼玉県富士見市鶴馬2605-10",
+   "geo": {
+    "lat": 35.845211,
+    "lng": 139.537827,
+    "precision": "block",
+    "matched": "埼玉県富士見市鶴馬２６０５番地"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": 2020,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "https://fujimi-craft.com/"
+   },
+   "summary": "2020年10月に鶴瀬駅前で開業した富士見市の醸造所。ヴァイツェン・レッドエール・IPAを定番にする。",
+   "verification": "official",
+   "sourceNotes": "2020年10月開業。鶴瀬駅西口から徒歩1分",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://fujimi-craft.com/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "ヴァイツェン",
+     "styleId": "weizen"
+    },
+    {
+     "name": "レッドエール",
+     "styleId": null
+    },
+    {
+     "name": "IPA",
+     "styleId": "ipa"
+    }
+   ],
+   "profileSource": "https://fujimi-craft.com/",
+   "profileCheckedAt": "2026-10-31"
   },
   {
    "id": "awa-bakushu",
@@ -5861,24 +6062,35 @@
    ],
    "prefCode": "13",
    "city": "渋谷区",
-   "address": null,
-   "geo": null,
+   "address": "東京都渋谷区笹塚3-40-1",
+   "geo": {
+    "lat": 35.678902,
+    "lng": 139.668472,
+    "precision": "block",
+    "matched": "東京都渋谷区笹塚三丁目４０番１号"
+   },
    "kind": "brewpub",
    "status": "active",
-   "founded": null,
+   "founded": 2022,
    "taproom": true,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "https://ourdaysbeer.jp/"
+   },
    "summary": "笹塚のブルーパブ。店の奥で造るヴァイツェンやラガー、ヘイジーIPAなどを8つのタップで出す。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "ビール天国の記事、東京国税局の掲載業者一覧。番地未確認",
    "sources": [
     {
      "label": "東京国税局「酒蔵マップ掲載業者の法人番号」",
      "url": "https://www.nta.go.jp/about/organization/tokyo/sake/pdf/hojinbango.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "https://ourdaysbeer.jp/"
     }
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-10-31",
    "features": [
     "european"
    ],
@@ -5897,24 +6109,35 @@
    ],
    "prefCode": "13",
    "city": "昭島市",
-   "address": null,
-   "geo": null,
+   "address": "東京都昭島市昭和町2-7-15",
+   "geo": {
+    "lat": 35.713604,
+    "lng": 139.358795,
+    "precision": "block",
+    "matched": "東京都昭島市昭和町二丁目７番１５号"
+   },
    "kind": "brewpub",
    "status": "active",
    "founded": 2018,
    "taproom": true,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "https://www.isana-brewing.com"
+   },
    "summary": "2018年に昭島で開いたブルーパブ兼コーヒー焙煎所。昭島の深井戸水で造り、小さな設備で次々と新しいビールを出す。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "BE-PALの記事、東京国税局の掲載業者一覧。番地未確認",
    "sources": [
     {
      "label": "東京国税局「酒蔵マップ掲載業者の法人番号」",
      "url": "https://www.nta.go.jp/about/organization/tokyo/sake/pdf/hojinbango.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "https://www.isana-brewing.com"
     }
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-10-31",
    "features": [
     "local"
    ],
@@ -5944,17 +6167,23 @@
    "founded": 2021,
    "taproom": true,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "https://inkhorn.jp/ja"
+   },
    "summary": "2021年に目白で開いた小さなブルーパブ。IPAやダブルIPAなど自家製ビールを中心に9つのタップで出す。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "ビール天国の記事、東京国税局の掲載業者一覧",
    "sources": [
     {
      "label": "東京国税局「酒蔵マップ掲載業者の法人番号」",
      "url": "https://www.nta.go.jp/about/organization/tokyo/sake/pdf/hojinbango.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "https://inkhorn.jp/ja"
     }
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "White INK IPA",
@@ -6121,17 +6350,23 @@
    "founded": 2017,
    "taproom": true,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "https://gahahabeer.co.jp"
+   },
    "summary": "団地の1階にある居酒屋に併設した醸造所。2017年から自家製ビールを造り、定番と限定で10種ほどを出す。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "さんたつの記事、東京国税局の掲載業者一覧",
    "sources": [
     {
      "label": "東京国税局「酒蔵マップ掲載業者の法人番号」",
      "url": "https://www.nta.go.jp/about/organization/tokyo/sake/pdf/hojinbango.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "https://gahahabeer.co.jp"
     }
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "マーシーIPA",
@@ -6205,8 +6440,13 @@
    ],
    "prefCode": "13",
    "city": "新宿区",
-   "address": null,
-   "geo": null,
+   "address": "東京都新宿区歌舞伎町1-14-5",
+   "geo": {
+    "lat": 35.694702,
+    "lng": 139.701981,
+    "precision": "block",
+    "matched": "東京都新宿区歌舞伎町一丁目１４番５号"
+   },
    "kind": "brewpub",
    "status": "active",
    "founded": null,
@@ -6216,8 +6456,13 @@
    "summary": "歌舞伎町のビール工房。新宿で造るクラフトビールを出し、屋上テラスでのバーベキューもできる。",
    "verification": "secondary",
    "sourceNotes": "レッツエンジョイ東京。番地未確認",
-   "sources": [],
-   "checkedAt": "2026-10-26",
+   "sources": [
+    {
+     "label": "住所の確認に使ったページ",
+     "url": "https://gurunavi.com/en/ggyy901/rst"
+    }
+   ],
+   "checkedAt": "2026-10-31",
    "features": [
     "food"
    ],
@@ -6244,17 +6489,23 @@
    "founded": 2025,
    "taproom": true,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "https://craftrock.jp/"
+   },
    "summary": "クラフトビアマーケットを営む会社の2つ目の醸造所で、2025年に高尾で開業。隣のタップルームで飲め、2階にはサウナもある。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "ビール天国の記事、東京国税局の掲載業者一覧。番地未確認",
    "sources": [
     {
      "label": "東京国税局「酒蔵マップ掲載業者の法人番号」",
      "url": "https://www.nta.go.jp/about/organization/tokyo/sake/pdf/hojinbango.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "https://craftrock.jp/"
     }
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-10-31",
    "features": [],
    "availability": "regional",
    "profileSource": "https://beertengoku.com/2025/07/16/craftrock-taproom-takao-takao-tokyo/",
@@ -6354,12 +6605,19 @@
    "founded": 2021,
    "taproom": true,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "https://www.uenobeer.com/"
+   },
    "summary": "2021年に上野・不忍池近くで開業したブルーパブ。羊がテーマの店で、自家製ビールとラム肉料理を出す。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "ビール天国の記事。番地未確認",
-   "sources": [],
-   "checkedAt": "2026-10-26",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.uenobeer.com/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "Sunny Side White",
@@ -6467,19 +6725,35 @@
    ],
    "prefCode": "13",
    "city": "品川区",
-   "address": null,
-   "geo": null,
+   "address": "東京都品川区東品川2-1-3",
+   "geo": {
+    "lat": 35.62286,
+    "lng": 139.747757,
+    "precision": "block",
+    "matched": "東京都品川区東品川二丁目１番３号"
+   },
    "kind": "brewpub",
    "status": "active",
-   "founded": null,
+   "founded": 1997,
    "taproom": true,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "https://www.tysons.jp/brewery"
+   },
    "summary": "天王洲の運河沿い、倉庫を改装したレストラン兼醸造所。カリフォルニアスタイルのエールやポーターを、水辺のテラスとアメリカ料理と楽しめる。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "タイムアウト東京の記事。番地未確認",
-   "sources": [],
-   "checkedAt": "2026-10-26",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.tysons.jp/brewery"
+    },
+    {
+     "label": "住所の確認に使ったページ",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/tokyo-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
    "features": [
     "food"
    ],
@@ -6571,8 +6845,13 @@
    ],
    "prefCode": "13",
    "city": "中野区",
-   "address": null,
-   "geo": null,
+   "address": "東京都中野区中野5-53-4",
+   "geo": {
+    "lat": 35.709198,
+    "lng": 139.666458,
+    "precision": "block",
+    "matched": "東京都中野区中野五丁目５３番４号"
+   },
    "kind": "brewpub",
    "status": "active",
    "founded": null,
@@ -6582,8 +6861,13 @@
    "summary": "中野駅近くの路地裏にある醸造所直結のバル。常時8種以上をそろえ、肉料理が豊富。",
    "verification": "secondary",
    "sourceNotes": "レッツエンジョイ東京。番地未確認",
-   "sources": [],
-   "checkedAt": "2026-10-26",
+   "sources": [
+    {
+     "label": "住所の確認に使ったページ",
+     "url": "https://san-tatsu.jp/articles/178690/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
    "features": [
     "food"
    ],
@@ -6710,19 +6994,35 @@
    "aliases": [],
    "prefCode": "13",
    "city": "新宿区",
-   "address": null,
-   "geo": null,
+   "address": "東京都新宿区西新宿1-26-2",
+   "geo": {
+    "lat": 35.692776,
+    "lng": 139.696732,
+    "precision": "block",
+    "matched": "東京都新宿区西新宿一丁目２６番２号"
+   },
    "kind": "brewpub",
    "status": "active",
    "founded": null,
    "taproom": true,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "https://www.beerkobo.com/"
+   },
    "summary": "西新宿駅直結の隠れ家ブルーパブ。店内で造る約9種と、自家製ビールの衣のフィッシュ＆チップスが名物。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "レッツエンジョイ東京。番地未確認",
-   "sources": [],
-   "checkedAt": "2026-10-26",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.beerkobo.com/"
+    },
+    {
+     "label": "住所の確認に使ったページ",
+     "url": "https://augustbeer.com/blog/craft_beer/japan-craftbeer/tokyo-craft-beer/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
    "features": [
     "food"
    ],
@@ -6871,17 +7171,23 @@
    "founded": 2018,
    "taproom": true,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "https://futakobeer.com/"
+   },
    "summary": "2018年に二子玉川の路地で開いたブルーパブ。世田谷産のホップや麦を使う地元ビールに取り組み、瀬田にも醸造所がある。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "ビール天国の記事、ぐるなびの店舗情報、東京国税局の掲載業者一覧（瀬田醸造所）",
    "sources": [
     {
      "label": "東京国税局「酒蔵マップ掲載業者の法人番号」",
      "url": "https://www.nta.go.jp/about/organization/tokyo/sake/pdf/hojinbango.pdf"
+    },
+    {
+     "label": "公式サイト",
+     "url": "https://futakobeer.com/"
     }
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "フタコエール",
@@ -7060,12 +7366,19 @@
    "founded": null,
    "taproom": null,
    "tour": null,
-   "links": {},
+   "links": {
+    "official": "http://www.riotbeer.biz/"
+   },
    "summary": "世田谷・砧の小さな工房で少量ずつ仕込む醸造所。IPAやESB、コーヒーポーターなどを造る。",
-   "verification": "secondary",
+   "verification": "official+secondary",
    "sourceNotes": "さんたつの記事",
-   "sources": [],
-   "checkedAt": "2026-10-26",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "http://www.riotbeer.biz/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
    "flagships": [
     {
      "name": "Salvation",
@@ -7123,6 +7436,215 @@
    "availability": "local",
    "profileSource": "https://san-tatsu.jp/collects/268949/",
    "profileCheckedAt": "2026-10-26"
+  },
+  {
+   "id": "namachan-brewing",
+   "name": "NAMACHAん Brewing（Smoke Beer Factory 大塚店）",
+   "nameKana": "なまちゃんぶるーいんぐ",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "13",
+   "city": "豊島区",
+   "address": "東京都豊島区南大塚1-60-19",
+   "geo": {
+    "lat": 35.730808,
+    "lng": 139.730469,
+    "precision": "block",
+    "matched": "東京都豊島区南大塚一丁目６０番１９号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": 2018,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://smokebeerfactory.com/"
+   },
+   "summary": "豊島区初のブルーパブとして大塚で2018年に醸造を始めた。スモークビールを看板にし、椎名町・北池袋にも醸造拠点をもつ。",
+   "verification": "official",
+   "sourceNotes": "2018年4月初醸造の告知。豊島区初のブルーパブ。スモークビール。椎名町・北池袋にも醸造拠点",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://smokebeerfactory.com/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "features": [
+    "food"
+   ],
+   "profileSource": "https://smokebeerfactory.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "takao-beer",
+   "name": "TAKAO BEER（高尾ビール）",
+   "nameKana": "たかおびーる",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "13",
+   "city": "八王子市",
+   "address": "東京都八王子市下恩方町1557-1",
+   "geo": {
+    "lat": 35.671329,
+    "lng": 139.257187,
+    "precision": "block",
+    "matched": "東京都八王子市下恩方町１５５７番地"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2017,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "https://www.takaobeer.com/"
+   },
+   "summary": "2017年創業の八王子のブルワリー。下恩方町の工場で造り、高尾駅南口のKO52にタップルームを構える。",
+   "verification": "official",
+   "sourceNotes": "おんがたブルワリー（工場）。KO52ブルワリー＆タップルームは八王子市初沢町1231-35",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.takaobeer.com/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "OH! Mountain",
+     "styleId": null
+    },
+    {
+     "name": "BIGFOOT IPA",
+     "styleId": "ipa"
+    },
+    {
+     "name": "Peche",
+     "styleId": null
+    }
+   ],
+   "features": [
+    "local"
+   ],
+   "profileSource": "https://www.takaobeer.com/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "devilcraft",
+   "name": "DevilCraft（デビルクラフト）",
+   "nameKana": "でびるくらふと",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "13",
+   "city": "品川区",
+   "address": null,
+   "geo": null,
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2015,
+   "taproom": null,
+   "tour": null,
+   "links": {
+    "official": "https://www.devilcraft.jp/"
+   },
+   "summary": "2011年に神田で創業したピザとビールの店が、2015年から品川区で自社醸造。スタウトで世界大会の金賞を重ねる。",
+   "verification": "official",
+   "sourceNotes": "2011年神田で創業、2015年秋に醸造免許、品川区で醸造。World Beer Cup 2016・2024金賞",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.devilcraft.jp/"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "flagships": [
+    {
+     "name": "Midnight Seduction",
+     "styleId": "imperial-stout"
+    },
+    {
+     "name": "Black Igneous",
+     "styleId": "stout"
+    }
+   ],
+   "features": [
+    "award",
+    "food"
+   ],
+   "awards": [
+    "World Beer Cup 2016 金賞（Arch Devil／現Midnight Seduction）",
+    "World Beer Cup 2024 金賞（Black Igneous）"
+   ],
+   "profileSource": "https://www.devilcraft.jp/",
+   "profileCheckedAt": "2026-10-31"
+  },
+  {
+   "id": "haneda-brewery",
+   "name": "羽田ブルワリー（羽田麦酒）",
+   "nameKana": "はねだぶるわりー",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "13",
+   "city": "大田区",
+   "address": "東京都大田区多摩川1-23-12",
+   "geo": {
+    "lat": 35.561348,
+    "lng": 139.698578,
+    "precision": "block",
+    "matched": "東京都大田区多摩川一丁目２３番１２号"
+   },
+   "kind": "brewery",
+   "status": "active",
+   "founded": 2014,
+   "taproom": false,
+   "tour": null,
+   "links": {
+    "official": "https://haneda-brewery.com/"
+   },
+   "summary": "大田区多摩川で2014年12月に醸造を始めた小さな醸造所。直営パブはなく、酒販店や飲食店に出荷する。",
+   "verification": "official",
+   "sourceNotes": "2014年12月に免許取得し醸造開始。パブなし",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://haneda-brewery.com/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "ryogoku-bakushu",
+   "name": "両国麦酒研究所（麦酒倶楽部ポパイ）",
+   "nameKana": "りょうごくばくしゅけんきゅうじょ",
+   "nameEn": null,
+   "aliases": [],
+   "prefCode": "13",
+   "city": "墨田区",
+   "address": "東京都墨田区両国2-18-7",
+   "geo": {
+    "lat": 35.695156,
+    "lng": 139.792786,
+    "precision": "block",
+    "matched": "東京都墨田区両国二丁目１８番７号"
+   },
+   "kind": "brewpub",
+   "status": "active",
+   "founded": null,
+   "taproom": true,
+   "tour": null,
+   "links": {
+    "official": "https://www.70beersontap.com/"
+   },
+   "summary": "両国の老舗ビアパブ「麦酒倶楽部ポパイ」が営む醸造所。店でポパイのオリジナルビールを味わえる。",
+   "verification": "official",
+   "sourceNotes": "老舗ビアパブ「麦酒倶楽部ポパイ」の醸造所",
+   "sources": [
+    {
+     "label": "公式サイト",
+     "url": "https://www.70beersontap.com/"
+    }
+   ],
+   "checkedAt": "2026-10-31"
   },
   {
    "id": "yellow-monkey-brewing",
